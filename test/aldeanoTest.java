@@ -1,11 +1,14 @@
-import junit.framework.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class aldeanoTest {
+    /**
+     *
+     */
     @Test
-    private void obtenerVidaAldeanoRecienCreado(){
+    void obtenerVidaAldeanoRecienCreado(){
         Aldeano aldeano = new Aldeano();
         int vida = aldeano.getVida();
-        Assert.assertEquals(vida, 50);
+        Assertions.assertEquals(vida, 50);
     }
 }
