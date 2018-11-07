@@ -1,2 +1,18 @@
 language: java
+jdk:
+  - oraclejdk10
+  - openjdk10
+  - openjdk11
 
+install: ant
+
+script:
+  - ant integracion-continua
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    recipients:
+      - manuelsturla@gmail.com
+    on_failure: always
