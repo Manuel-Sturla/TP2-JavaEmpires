@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk10
+  - openjdk8
 
 
 install: ant
@@ -14,4 +14,7 @@ notifications:
   email:
     recipients:
       - manuelsturla@gmail.com
+      - diego.balestieri1998@gmail.com
+      - Santiagolampropulos@gmail.com
+      - flia_giampietri@yahoo.com
     on_failure: always
