@@ -6,7 +6,7 @@ class aldeanoTest {
      *
      */
     @Test
-    void obtenerVidaAldeanoRecienCreado(){
+    public void obtenerVidaAldeanoRecienCreado(){
         Aldeano aldeano = new Aldeano();
         int vida = aldeano.getVida();
         Assertions.assertEquals(vida, 50);
