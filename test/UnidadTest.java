@@ -13,7 +13,6 @@ public class UnidadTest {
         unidad.moverHaciaDerecha(mapa);
         assertTrue(mapa.estaOcupadoElCasillero(1,0));
     }
-
     @Test
     void moverUnidadPosicionIzqTest(){
         Unidad unidad =new Unidad();
@@ -22,7 +21,6 @@ public class UnidadTest {
         unidad.moverHaciaIzquierda(mapa);
         assertTrue(mapa.estaOcupadoElCasillero(0,0));
     }
-
     @Test
     void moverUnidadPosicionArribaTest(){
         Unidad unidad =new Unidad();
@@ -31,7 +29,6 @@ public class UnidadTest {
         unidad.moverHaciaArriba(mapa);
         assertTrue(mapa.estaOcupadoElCasillero(0,1));
     }
-
     @Test
     void moverUnidadPosicionAbajoTest(){
         Unidad unidad =new Unidad();
@@ -41,7 +38,6 @@ public class UnidadTest {
         assertTrue(mapa.estaOcupadoElCasillero(0,0));
         assertFalse(mapa.estaOcupadoElCasillero(0,1));
     }
-
     @Test
     void moverUnidadPosicionArribaDerTest(){
         Unidad unidad =new Unidad();
@@ -51,7 +47,6 @@ public class UnidadTest {
         assertTrue(mapa.estaOcupadoElCasillero(1,1));
         assertFalse(mapa.estaOcupadoElCasillero(0,0));
     }
-
     @Test
     void moverUnidadPosicionAbajoDerTest(){
         Unidad unidad =new Unidad();
@@ -61,7 +56,6 @@ public class UnidadTest {
         assertTrue(mapa.estaOcupadoElCasillero(2,0));
         assertFalse(mapa.estaOcupadoElCasillero(1,1));
     }
-
     @Test
     void moverUnidadPosicionArribaIzqTest(){
         Unidad unidad =new Unidad();
@@ -71,7 +65,6 @@ public class UnidadTest {
         assertTrue(mapa.estaOcupadoElCasillero(0,2));
         assertFalse(mapa.estaOcupadoElCasillero(1,1));
     }
-
     @Test
     void moverUnidadPosicionAbajoIzqTest(){
         Unidad unidad =new Unidad();
@@ -81,4 +74,6 @@ public class UnidadTest {
         assertTrue(mapa.estaOcupadoElCasillero(0,0  ));
         assertFalse(mapa.estaOcupadoElCasillero(1,1));
     }
+
+
 }

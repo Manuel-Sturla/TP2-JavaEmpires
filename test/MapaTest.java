@@ -11,7 +11,6 @@ class MapaTest {
         Unidad elemento = new Unidad();
         assertTrue(mapaAOE.agregarElementoDeMapa(elemento, 0, 0));
     }
-
     @Test
     void agregarElementoDeMapaEnCasilleroOcupado() {
         Mapa mapaAOE = new Mapa();
@@ -20,14 +19,12 @@ class MapaTest {
         mapaAOE.agregarElementoDeMapa(elemento1, 0, 0);
         assertFalse(mapaAOE.agregarElementoDeMapa(elemento2, 0, 0));
     }
-
     @Test
     void agregarElementoDeMapaAfueraDelMapa() {
         Mapa mapaAOE = new Mapa();
         Unidad elemento = new Unidad();
         assertFalse(mapaAOE.agregarElementoDeMapa(elemento, -1, 0));
     }
-
     @Test
     void agregarElementoDeMapaOcupaElCasillero(){
         Mapa mapaAOE = new Mapa();
