@@ -18,7 +18,7 @@ public class Mapa {
         return false;
     }
 
-    private boolean esCoordenadaValida(int coordenada) {
+    public boolean esPosicionValida(int coordenadaHorizontal, int coordenadaVertical) {
         if (coordenada < TamMapa && coordenada >= 0) {
             return true;
         }

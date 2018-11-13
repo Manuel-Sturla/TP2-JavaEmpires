@@ -1,19 +1,19 @@
 public class Unidad implements ElementoDeMapa{
 
-    int posicionHorizontal;
-    int posicionVertical;
+    Posicion posicion;
 
     @Override
     public void actualizarPosicion(int coordenadaHorizontal, int coordenadaVertical) {
-        posicionHorizontal = coordenadaHorizontal;
-        posicionVertical = coordenadaVertical;
+        posicion.actualizar(coordenadaHorizontal, coordenadaVertical);
+
     }
 
 
     public void moverHaciaDerecha(Mapa mapa){
-        Unidad unidadCopia = new Unidad();
+        posicion.moverHaciaDerecha(this)
+        /*Unidad unidadCopia = new Unidad();
         mapa.agregarElementoDeMapa(unidadCopia, posicionHorizontal + 1, posicionVertical);
-        mapa.borrarElementoDeMapa(posicionHorizontal, posicionVertical);
+        mapa.borrarElementoDeMapa(posicionHorizontal, posicionVertical);*/
     }
     public void moverHaciaIzquierda(Mapa mapa){
         Unidad unidadCopia = new Unidad();
