@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -12,16 +11,16 @@ public class ArmaDeAsedioTest {
         ARA.montarArma();
         assertTrue(ARA.getEstaMontada());
     }
-
+/*
     @Test
     void inicioDeMontarADAyTraraDeMoverse(){
 
-        Assertions.assertThrows(ArmaNoDesmontadaException.class, ()->{
+        assertThrows(ArmaNoDesmontadaException.class, ()->{
             ArmaDeAsedio ARA = new ArmaDeAsedio();
             Mapa mapa = new Mapa();
             ARA.montarArma();
             ARA.moverHaciaDerecha(mapa);
         });
     }
-
+*/
 }
