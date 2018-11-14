@@ -1,8 +1,9 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
+package Unidad;
 
+import Mapa.Mapa;
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class ArmaDeAsedioTest {
 

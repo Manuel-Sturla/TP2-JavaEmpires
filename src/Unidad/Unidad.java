@@ -1,4 +1,8 @@
-public class Unidad implements ElementoDeMapa{
+package Unidad;
+
+import Mapa.*;
+
+public class Unidad implements ElementoDeMapa {
 
     int posicionHorizontal;
     int posicionVertical;

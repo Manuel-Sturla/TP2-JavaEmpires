@@ -1,3 +1,5 @@
+package Mapa;
+
 public class Mapa {
 
     int TamMapa;

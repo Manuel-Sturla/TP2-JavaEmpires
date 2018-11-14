@@ -1,4 +1,7 @@
-public class ArmaDeAsedio extends Unidad{
+package Unidad;
+import Mapa.Mapa;
+
+public class ArmaDeAsedio extends Unidad {
     int vida = 150;
     boolean montada = false;
 
@@ -12,6 +15,7 @@ public class ArmaDeAsedio extends Unidad{
         return montada;
     }
 
+    /*
     @Override
     public void moverHaciaDerecha(Mapa mapa){
         if (this.getEstaMontada()) {
@@ -22,4 +26,5 @@ public class ArmaDeAsedio extends Unidad{
         mapa.agregarElementoDeMapa(unidadCopia, posicionHorizontal + 1, posicionVertical);
         mapa.borrarElementoDeMapa(posicionHorizontal, posicionVertical);
     }
+    */
 }

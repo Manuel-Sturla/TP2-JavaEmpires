@@ -1,3 +1,7 @@
+package Unidad;
+
+import Mapa.Mapa;
+import Unidad.Unidad;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
