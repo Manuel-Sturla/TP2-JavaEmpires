@@ -1,5 +1,5 @@
-package tp1;
-
+package Edificios;
+import Unidad.*;
 public class Cuartel {
 	int vida = 250;
 	int costo = 50;
