@@ -1,12 +1,20 @@
 package Edificios;
-import Unidad.Aldeano;
+import Tablero.Posicion;
+import Unidades.Aldeano;
 
-public class PlazaCentral {
-    int vida = 450, vidaTotal = vida;
 
-    public Aldeano crearAldeano(){
-        Aldeano aldeano = new Aldeano();
-        mapa.colocarElementoDeMapa(aldeano, posicion1, posicion2);
+public class PlazaCentral extends Edificio {
+
+
+    public PlazaCentral(Posicion pos){
+        super(450,450,pos); //Usa constructor de edificio estan puestos de la sieguiente forma vida vidaTotal posicion
     }
+
+
+    public boolean crearAldeano(){
+        Aldeano aldeano = new Aldeano(posicion);
+        return posicion.ubicarElementoDeMapa(aldeano);
+    }
+
 
 }

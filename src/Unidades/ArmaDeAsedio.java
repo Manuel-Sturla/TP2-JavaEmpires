@@ -1,9 +1,12 @@
-package Unidad;
-import Mapa.Mapa;
+package Unidades;
+import Tablero.Posicion;
 
 public class ArmaDeAsedio extends Unidad {
-    int vida = 150;
     boolean montada = false;
+
+    public ArmaDeAsedio(Posicion posicion){
+        super(150,150,posicion);
+    }
 
 
     public void montarArma() {
@@ -17,12 +20,12 @@ public class ArmaDeAsedio extends Unidad {
 
     /*
     @Override
-    public void moverHaciaDerecha(Mapa mapa){
+    public void moverHaciaDerecha(Tablero mapa){
         if (this.getEstaMontada()) {
             throw new ArmaNoDesmontadaException();
         }
 
-        Unidad unidadCopia = new Unidad();
+        Unidades unidadCopia = new Unidades();
         mapa.agregarElementoDeMapa(unidadCopia, posicionHorizontal + 1, posicionVertical);
         mapa.borrarElementoDeMapa(posicionHorizontal, posicionVertical);
     }

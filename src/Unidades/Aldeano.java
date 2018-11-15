@@ -1,16 +1,17 @@
-package Unidad;
+package Unidades;
 
-import Mapa.ElementoFueraDeRangoException;
-import Mapa.Posicion;
-import Edificios.Edificios;
+import Tablero.ElementoFueraDeRangoException;
+import Tablero.*;
+import Edificios.Edificio;
 
 
 public class Aldeano extends Unidad {
-    int vida = 50;
-    //Estado estado = new Estado();
-    Posicion posicion;
 
-    public void repararEdificio( Edificios edificio) throws ElementoFueraDeRangoException {
+    public Aldeano(Posicion posicion){
+        super(50,50,posicion);
+    }
+
+    public void repararEdificio( Edificio edificio) throws ElementoFueraDeRangoException {
         if (!posicion.estaContigua(edificio)){
             throw new ElementoFueraDeRangoException();
         }
