@@ -14,17 +14,28 @@ public class Aldeano {
 
     }
 
-    public boolean moverDerecha() throws UbicableEstaOcupadoException {
+    public void moverDerecha() throws UbicableEstaOcupadoException {
         //Falta hacer el movimiento
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        estado = new Ocupado();
-        return true;
+        estado = new Ocupado(1);
     }
 
 
     public boolean estaOcupado() {
         return estado.estaOcupado();
     }
+
+    public void desocuparUnTurno(){
+        estado = estado.desocuparUnTurno();
+    }
+
+    public void crearEdificio() throws UbicableEstaOcupadoException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Ocupado(3);
+    }
 }
+
