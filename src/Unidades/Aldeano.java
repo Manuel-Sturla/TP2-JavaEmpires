@@ -1,16 +1,22 @@
 package Unidades;
 
-import Tablero.ElementoFueraDeRangoException;
+import Exceptions.ElementoFueraDeRangoException;
 import Tablero.*;
 import Edificios.Edificio;
 
 
-public class Aldeano extends Unidad {
+public class Aldeano{
+    Posicion posicion;
 
-    public Aldeano(Posicion posicion){
-        super(50,50,posicion);
+    public Aldeano(Mapa mapa , int cooordenadaHorizontal, int coordenadaVertical){
+        Posicion posicion = new Posicion(mapa, cooordenadaHorizontal, coordenadaVertical);
     }
 
+    public void moverAldeanoHaciaDerecha() {
+        posicion.moverPosicion(1,0);
+    }
+
+    /*
     public void repararEdificio( Edificio edificio) throws ElementoFueraDeRangoException {
         if (!posicion.estaContigua(edificio)){
             throw new ElementoFueraDeRangoException();
@@ -28,5 +34,4 @@ public class Aldeano extends Unidad {
 
 
         */
-    }
 }

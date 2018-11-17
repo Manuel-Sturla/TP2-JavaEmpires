@@ -1,4 +1,4 @@
-package Unidades;
+package Exceptions;
 
 public class ArmaNoDesmontadaException extends Exception {
 }

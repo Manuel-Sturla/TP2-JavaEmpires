@@ -6,51 +6,28 @@ import Unidades.Unidad;
 public class Posicion {
     int coordenadaHorizontal;
     int coordenadaVertical;
-    static Mapa mapa;
+    Mapa mapaAOE;
 
-    public Posicion(Mapa mapa, int CooH,int CooV){
-        this.coordenadaHorizontal = CooH;
-        this.coordenadaVertical = CooV;
-        this.mapa = mapa;
+    public Posicion(Mapa mapa, int CoordenadaHorizontal, int CoordenadaVertical) {
+        coordenadaHorizontal = CoordenadaHorizontal;
+        coordenadaVertical = CoordenadaVertical;
+        mapaAOE = mapa;
     }
 
-    public int getCoordenadaHorizontal() {
-        return coordenadaHorizontal;
-    }
 
-    public int getCoordenadVertical() {
-        return coordenadaVertical;
-    }
-
-    public boolean estaContigua(Edificio edificio) {
-        Posicion P2 = edificio.getPosicion();
-        return mapa.sonContiguos(this.coordenadaHorizontal, this.coordenadaVertical, P2.getCoordenadaHorizontal(), P2.getCoordenadVertical());
-    }
-
-    public boolean esIgual(Posicion posicion2) {
-        boolean resultado = coordenadaHorizontal == posicion2.getCoordenadaHorizontal();
-        resultado &= coordenadaVertical == posicion2.getCoordenadVertical();
-        return resultado;
-    }
-
-    public boolean ubicarElementoDeMapa(Unidad unidad){
-        int generador=0;
-        while(mapa.agregarElementoDeMapa(unidad,this,coordenadaHorizontal+1,coordenadaVertical+generador)){
-            generador += 1;
+    public boolean estaEnRangoDeAccion() {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (mapaAOE.estaOcupadoElCasillero(coordenadaHorizontal + i, coordenadaVertical + j) && i != 0 && j != 0) {
+                    return true;
+                }
+            }
         }
-        return true;
+        return false;
     }
 
-    public void actualizarPosicion(int nuevaCoordenadaHorizontal, int nuevaCoordenadaVertical) {
-        coordenadaHorizontal = nuevaCoordenadaHorizontal;
-        coordenadaVertical = nuevaCoordenadaVertical;
+    public void moverPosicion(int moverCoordenadaHorizontal, int moverCoordenadaVertical) {
+        coordenadaHorizontal = coordenadaHorizontal + moverCoordenadaHorizontal;
+        coordenadaVertical = coordenadaVertical + moverCoordenadaVertical;
     }
-/*
-    public Posicion[] obtenerContiguas() {
-        // Esto funciona solo para unidades (que tienen tamaño u1)
-        Posicion[] contiguas;
-        for (int i = 0; i<8; i++ ){
-            Posicion contiguaNueva = new Posicion();
-        }
-    }*/
 }

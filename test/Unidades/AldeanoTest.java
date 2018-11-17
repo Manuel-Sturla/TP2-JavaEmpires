@@ -1,5 +1,5 @@
 package Unidades;
-
+/*
 import Edificios.Cuartel;
 import Tablero.ElementoFueraDeRangoException;
 import Tablero.Mapa;
@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+*/
 public class AldeanoTest {
-    Mapa mapa = new Mapa();
+/*    Mapa mapa = new Mapa();
     Posicion p = new Posicion(mapa,0,0);
 
     @Test

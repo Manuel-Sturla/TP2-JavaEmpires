@@ -6,15 +6,15 @@ public abstract class Unidad implements ElementoDeMapa {
 
     protected int vida, vidaActual;
     protected Posicion posicion = null;
-    private int posicionHorizontal = posicion.getCoordenadaHorizontal();
-    private int posicionVertical = posicion.getCoordenadVertical();
+//    private int posicionHorizontal = posicion.getCoordenadaHorizontal();
+//    private int posicionVertical = posicion.getCoordenadVertical();
 
     public Unidad(int vida,int vidaActual,Posicion pos){
         this.vida = vida;
         this.vidaActual = vidaActual;
         this.posicion = pos;
     }
-
+/*
     public void actualizarPosicion(int coordenadaHorizontal, int coordenadaVertical) {
         posicion.actualizarPosicion(coordenadaHorizontal,coordenadaVertical);
     }
@@ -54,5 +54,5 @@ public abstract class Unidad implements ElementoDeMapa {
         mapa.borrarElementoDeMapa(posicionHorizontal,posicionVertical);
     }
 
-
+*/
 }

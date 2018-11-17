@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UnidadTest {
-
+/*
     @Test
     void moverUnidadUnaPosicionDerechaTest() {
         Mapa mapa = new Mapa();
@@ -85,5 +85,5 @@ public class UnidadTest {
         assertFalse(mapa.estaOcupadoElCasillero(1,1));
     }
 
-
+*/
 }

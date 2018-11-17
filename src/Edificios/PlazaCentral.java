@@ -10,11 +10,11 @@ public class PlazaCentral extends Edificio {
         super(450,450,pos); //Usa constructor de edificio estan puestos de la sieguiente forma vida vidaTotal posicion
     }
 
-
+/*
     public boolean crearAldeano(){
         Aldeano aldeano = new Aldeano(posicion);
         return posicion.ubicarElementoDeMapa(aldeano);
     }
 
-
+*/
 }
