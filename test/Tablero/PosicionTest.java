@@ -8,7 +8,7 @@ public class PosicionTest {
 
     int x1 = 0;
     int x2 = 0;
-
+/*
     private void setx1Yx2(Posicion p){
         x1 = p.getCoordenadaHorizontal();
         x2 = p.getCoordenadaVertical();
@@ -85,5 +85,5 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 1);
     }
-    
+  */
 }

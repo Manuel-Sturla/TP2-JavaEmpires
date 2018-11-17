@@ -3,11 +3,13 @@ package Tablero;
 public class Posicion {
     private int coordenadaHorizontal;
     private int coordenadaVertical;
+    private Mapa mapa;
 
     //constructor
-    public Posicion(int CH, int CV) {
+    public Posicion(Mapa mapaRecibido, int CH, int CV) {
         this.coordenadaHorizontal = CH;
         this.coordenadaVertical = CV;
+        mapa = mapaRecibido;
     }
 
     //getters

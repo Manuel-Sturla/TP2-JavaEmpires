@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MapaTests {
-
+/*
     @Test
     void elMapaRecienCreadoEstaVacio(){
         boolean check = true;
@@ -27,7 +27,7 @@ public class MapaTests {
         mapa.ocuparCelda(0,0);
         assertTrue(mapa.celdaEstaOcupada(0,0));
     }
-/*
+
     @Test
     void desocuparPosicionDesocupaLaPosicion(){
         Mapa mapa = new Mapa(10,10);
