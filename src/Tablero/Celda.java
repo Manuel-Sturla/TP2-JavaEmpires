@@ -14,4 +14,7 @@ public class Celda {
         ocupado = true;
     }
 
+    public void desocuparCelda() {
+        ocupado = false;
+    }
 }

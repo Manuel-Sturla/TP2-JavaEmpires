@@ -3,8 +3,9 @@ package Tablero;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CeldaTest {
+public class CeldaAndCeldasAdyacentesTest {
 
+    // PRUEBAS DE CELDA
     @Test
     void prueboCosntructorDeCelda(){
         Celda c = new Celda();
@@ -21,13 +22,8 @@ public class CeldaTest {
         c.ocuparCelda();
         assertTrue(c.estaOcupada());
     }
-    @Test
-    void desocupoUnaCelda(){
-        Celda c = new Celda();
-        c.ocuparCelda();
-        c.desocuparCelda();
-        assertTrue(!c.estaOcupada());
-    }
 
+    //PRUEBAS DE CELDA ADYACENTE
+    
 
 }
