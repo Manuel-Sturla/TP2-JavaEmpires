@@ -29,6 +29,7 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1== 1 && x2 == 0);
     }
+
     @Test <x1,x2>
     void prueboMoverIzq(){
         Posicion p = new Posicion(1,0);
@@ -36,6 +37,7 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1== 0 && x2 == 0);
     }
+
     @Test <x1,x2>
     void prueboMoverArriba(){
         Posicion p = new Posicion(0,0);
@@ -43,6 +45,7 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 1);
     }
+
     @Test <x1,x2>
     void prueboMoverAbajo(){
         Posicion p = new Posicion(0,1);
@@ -58,6 +61,7 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 ==1 && x2== 1);
     }
+
     @Test <x1,x2>
     void prueboMoverArribaIzq(){
         Posicion p = new Posicion(1,0);
@@ -65,6 +69,7 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 1);
     }
+
     @Test <x1,x2>
     void prueboMoverAbajoDer(){
         Posicion p = new Posicion(0,1);
@@ -72,6 +77,7 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 0);
     }
+
     @Test <x1,x2>
     void pruebaMoverAbajoIzq(){
         Posicion p = new Posicion(2,2);
@@ -79,4 +85,5 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 1);
     }
+    
 }
