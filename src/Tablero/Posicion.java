@@ -1,56 +1,51 @@
 package Tablero;
 
-import Edificios.Edificio;
-import Unidades.Unidad;
-
 public class Posicion {
-    int coordenadaHorizontal;
-    int coordenadaVertical;
-    static Mapa mapa;
+    private int coordenadaHorizontal;
+    private int coordenadaVertical;
 
-    public Posicion(Mapa mapa, int CooH,int CooV){
-        this.coordenadaHorizontal = CooH;
-        this.coordenadaVertical = CooV;
-        this.mapa = mapa;
+    //constructor
+    public Posicion(int CH, int CV) {
+        this.coordenadaHorizontal = CH;
+        this.coordenadaVertical = CV;
     }
 
+    //getters
     public int getCoordenadaHorizontal() {
-        return coordenadaHorizontal;
+        return this.coordenadaHorizontal;
     }
-
-    public int getCoordenadVertical() {
+    public int getCoordenadaVertical() {
         return coordenadaVertical;
     }
 
-    public boolean estaContigua(Edificio edificio) {
-        Posicion P2 = edificio.getPosicion();
-        return mapa.sonContiguos(this.coordenadaHorizontal, this.coordenadaVertical, P2.getCoordenadaHorizontal(), P2.getCoordenadVertical());
+    // metodos de movimiento
+    public void moverDer() {
+        coordenadaHorizontal += 1;
+    }
+    public void moverIzq() {
+        coordenadaHorizontal -= 1;
+    }
+    public void moverArriba() {
+        coordenadaVertical += 1;
+    }
+    public void moverAbajo() {
+        coordenadaVertical -= 1;
     }
 
-    public boolean esIgual(Posicion posicion2) {
-        boolean resultado = coordenadaHorizontal == posicion2.getCoordenadaHorizontal();
-        resultado &= coordenadaVertical == posicion2.getCoordenadVertical();
-        return resultado;
+    public void moverArribaDer() {
+        moverArriba();
+        moverDer();
     }
-
-    public boolean ubicarElementoDeMapa(Unidad unidad){
-        int generador=0;
-        while(mapa.agregarElementoDeMapa(unidad,this,coordenadaHorizontal+1,coordenadaVertical+generador)){
-            generador += 1;
-        }
-        return true;
+    public void moverArribaIzq() {
+        moverArriba();
+        moverIzq();
     }
-
-    public void actualizarPosicion(int nuevaCoordenadaHorizontal, int nuevaCoordenadaVertical) {
-        coordenadaHorizontal = nuevaCoordenadaHorizontal;
-        coordenadaVertical = nuevaCoordenadaVertical;
+    public void moverAbajoDer() {
+        moverAbajo();
+        moverDer();
     }
-/*
-    public Posicion[] obtenerContiguas() {
-        // Esto funciona solo para unidades (que tienen tamaño u1)
-        Posicion[] contiguas;
-        for (int i = 0; i<8; i++ ){
-            Posicion contiguaNueva = new Posicion();
-        }
-    }*/
+    public void moverAbajoIzq() {
+        moverAbajo();
+        moverIzq();
+    }
 }
