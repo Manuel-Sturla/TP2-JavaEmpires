@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MapaTests {
-
+/*
     @Test
     void elMapaRecienCreadoEstaVacio(){
         boolean check = true;
@@ -59,5 +59,5 @@ public class MapaTests {
         });
     }
 
-
+*/
 }

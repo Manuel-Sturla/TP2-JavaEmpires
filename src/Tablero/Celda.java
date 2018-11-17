@@ -2,11 +2,9 @@ package Tablero;
 
 public class Celda {
     protected Boolean ocupado;
-    private Posicion posicion;
 
-    public Celda(int CH, int CV){
+    public Celda(){
         this.ocupado = false;
-        this.posicion = new Posicion(CH,CV);
     }
 
     public boolean estaOcupada() {
@@ -16,7 +14,4 @@ public class Celda {
         ocupado = true;
     }
 
-    public Posicion getPoscion() {
-        return this.posicion;
-    }
 }

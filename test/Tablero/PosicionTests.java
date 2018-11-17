@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PosicionTests {
-
+/*
     @Test
     void posicionOcupaUnEspacionEnElMapa(){
         Mapa mapa = new Mapa(10,10);
@@ -79,4 +79,5 @@ public class PosicionTests {
     }
 
     //Falta diagonal y algunos casos mas de arriba abajo,derecha, izq.
+    */
 }
