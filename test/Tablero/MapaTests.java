@@ -76,41 +76,45 @@ public class MapaTests {
             mapa.moverElemento(posicion, posicionLlegada);
         });
     }
-//AGREGAR PRUEBA: ACCEDER A POSICION LIMITE DADO QUE LAS POSICIONES VAN DE 0 A N-1
     @Test<mapa,ubicable>
-    void posicionarElementoEnPosicionNegativaLevantaException(){
-        Posicion posicion = new Posicion(mapa,-1,0);
+    void posicionarElementoEnPosicionNegativaLevantaException() {
+        Posicion posicion = new Posicion(mapa, -1, 0);
 
         assertThrows(PosicionFueraDeRangoException.class, () -> {
             mapa.ocuparCelda(ubicable, posicion);
         });
-
-
     }
-/*
+
+    @Test<mapa,ubicable>
+    void posicionarElementoEnPosicionFueraDeRangoLevantaExcepcion(){
+        Posicion posicion = new Posicion(mapa, 15, 0);
+
+        assertThrows(PosicionFueraDeRangoException.class, () -> {
+            mapa.ocuparCelda(ubicable, posicion);
+        });
+     }
+
+    @Test <mapa,ubicable,posicion>
+    void posicionValidaEstaEnMapaDevuelveVerdadero(){
+        assertTrue(mapa.estaEnMapa(posicion));
+    }
+
+    @Test<mapa,ubicable>
+    void posicionInvalidaEstaEnMapaDevuelveFalso(){
+        Posicion posicion = new Posicion(mapa, 15, 0);
+        assertFalse(mapa.estaEnMapa(posicion));
+    }
+
+    //ESTA NO CORRE PORQUE HAY QUE DESCOMENTAR QUE LEVANTE ESA EXCEPCION Y ESO IMPLICA CAMBIAR
+    //TODAS LAS DECLARACIONES DE MUCHOS METODOS, O VER QUE HACER CON ESAS EXCEPCIONES PARA EVITARLO
     @Test<mapa,ubicable,posicion>
-    void ocuparUnaCeldaOcupadaLevantaExcepcion(){
+    void ocuparUnaCeldaOcupadaLevantaExcepcion() throws PosicionFueraDeRangoException {
         mapa.ocuparCelda(ubicable,posicion);
         assertThrows(PosicionNoDisponibleException.class, ()-> {
             mapa.ocuparCelda(ubicable,posicion);
         });
     }
 
-    @Test
-    void ocuparUnaPosicionEnPosicionNegativaLevantaExcepcion(){
-        Mapa mapa = new Mapa(10,10);
-        assertThrows(PosicionFueraDeRangoException.class, ()-> {
-            mapa.ocuparCelda(-1,0);
-        });
-    }
 
-    @Test
-    void ocuparUnaPosicionFueraDeRangoLevantaExcepcion(){
-        Mapa mapa = new Mapa(10,10);
-        assertThrows(PosicionFueraDeRangoException.class, ()-> {
-            mapa.ocuparPosicion(11,11);
-        });
-    }
-*/
 
 }

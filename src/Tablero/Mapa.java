@@ -25,6 +25,9 @@ public class Mapa {
     }
 
     public void ocuparCelda(Ubicable elementoMapa, Posicion posicion) throws PosicionFueraDeRangoException {
+      /*  if(this.celdaEstaOcupada(posicion)){
+            throw new PosicionNoDisponibleException();
+        }TE HACE QUE TODO TIENE QUE TENER DECLARADO UNA EXCEPCION NUEVA*/
         this.obtenerCelda(posicion).ocuparCelda(elementoMapa);
     }
 
@@ -49,6 +52,15 @@ public class Mapa {
         }
         this.obtenerCelda(posicion_llegada).ocuparCelda(elemento);
         this.obtenerCelda(posicion).desocuparCelda();
+    }
+
+    public boolean estaEnMapa(Posicion posicion) {
+        try{
+            this.obtenerCelda(posicion);
+            return true;
+        }catch (PosicionFueraDeRangoException e){
+            return false;
+        }
     }
 }
 
