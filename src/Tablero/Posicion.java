@@ -13,7 +13,6 @@ public class Posicion {
         coordenadaVertical = posicionRecibida.getCoordenadaVertical();
         coordenadaHorizontal = posicionRecibida.getCoordenadaHorizontal();
         mapa = posicionRecibida.getMapa();
-
     }
     public Posicion(Mapa mapaRecibido, int CH, int CV) {
         this.coordenadaHorizontal = CH;

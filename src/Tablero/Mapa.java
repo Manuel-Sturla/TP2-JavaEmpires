@@ -37,10 +37,17 @@ public class Mapa {
         return mapa[coordenadaHorizontal][coordenadaVertical];
     }
 
+    private boolean estaEnMapa(Posicion posicion) throws PosicionNoDisponibleException {
+        if (largo > posicion.getCoordenadaHorizontal() && posicion.getCoordenadaHorizontal() >= 0 && posicion.getCoordenadaVertical() >=0 && ancho > posicion.getCoordenadaVertical()) {
+            return  true;
+        }
+        return false;
+    }
+
     public void moverElemento(Posicion posicion, Posicion posicion_llegada) throws PosicionNoDisponibleException {
         Ubicable elemento = this.obtenerCelda(posicion).getElemento();
 
-        if(this.obtenerCelda(posicion_llegada).estaOcupada()){
+        if(!estaEnMapa(posicion_llegada) || this.obtenerCelda(posicion_llegada).estaOcupada()){
             throw new PosicionNoDisponibleException();
         }
         this.obtenerCelda(posicion_llegada).ocuparCelda(elemento);

@@ -19,7 +19,7 @@ public class Aldeano implements Ubicable {
 
     }
     public void moverDerecha() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
-        posicion.moverDer();
+       posicion.moverDer();
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }

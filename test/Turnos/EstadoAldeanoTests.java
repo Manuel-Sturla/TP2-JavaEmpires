@@ -1,8 +1,10 @@
 package Turnos;
 
+import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
+import Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -20,7 +22,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void estaOcupadoLuegoDeMoverPosicion() throws UbicableEstaOcupadoException {
+    void estaOcupadoLuegoDeMoverPosicion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -29,16 +31,18 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void realizarDosAccionesEnElMismoTurnoLevantaExcepcion() throws UbicableEstaOcupadoException{
-        Mapa mapa = new Mapa(5, 5);
+    void realizarDosAccionesEnElMismoTurnoLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
+        Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverDerecha();
-        assertThrows(UbicableEstaOcupadoException.class, aldeano::moverDerecha);
+        assertThrows(UbicableEstaOcupadoException.class,() -> {
+            aldeano.moverDerecha();
+        });
     }
 
     @Test
-    void estaDesocupadoLuegoDeMoverPosicionDesocuparUnTurno() throws UbicableEstaOcupadoException{
+    void estaDesocupadoLuegoDeMoverPosicionDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -67,7 +71,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException{
+    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);

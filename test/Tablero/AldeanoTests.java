@@ -6,6 +6,7 @@ import Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AldeanoTests {
@@ -44,9 +45,9 @@ public class AldeanoTests {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 0,2);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.moverIzquierda();
-        Posicion posicion2 = new Posicion(mapa, 0,2);
-        assertTrue(mapa.celdaEstaOcupada(posicion2));
+        assertThrows(PosicionNoDisponibleException.class , ()-> {
+            aldeano.moverIzquierda();
+        });
     }
 
     @Test

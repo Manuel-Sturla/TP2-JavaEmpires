@@ -75,12 +75,11 @@ public class MapaTests {
     }
 //AGREGAR PRUEBA: ACCEDER A POSICION LIMITE DADO QUE LAS POSICIONES VAN DE 0 A N-1
 /*
-    @Test
+    @Test<mapa,ubicable,posicion>
     void ocuparUnaCeldaOcupadaLevantaExcepcion(){
-        Mapa mapa = new Mapa(10,10);
-        mapa.ocuparCelda(0,0);
+        mapa.ocuparCelda(ubicable,posicion);
         assertThrows(PosicionYaOcupadaException.class, ()-> {
-            mapa.ocuparCelda(0,0);
+            mapa.ocuparCelda(ubicable,posicion);
         });
     }
 
