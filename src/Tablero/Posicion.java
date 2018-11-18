@@ -65,4 +65,25 @@ public class Posicion {
         coordenadaHorizontal += 1;
         coordenadaVertical += 1;
     }
+    
+     public void moverArribaIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical+1);
+        mapa.moverElemento(this, posicionLlegada);
+        coordenadaHorizontal -= 1;
+        coordenadaVertical += 1;
+    }
+
+    public void moverAbajoIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical-1);
+        mapa.moverElemento(this, posicionLlegada);
+        coordenadaHorizontal -= 1;
+        coordenadaVertical -= 1;
+    }
+
+    public void moverAbajoDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal+1,coordenadaVertical-1);
+        mapa.moverElemento(this, posicionLlegada);
+        coordenadaHorizontal += 1;
+        coordenadaVertical -= 1;
+    }
 }
