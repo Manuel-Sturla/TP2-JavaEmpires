@@ -1,4 +1,5 @@
 import Exceptions.PosicionNoDisponibleException;
+import Exceptions.PosicionYaOcupadaException;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Unidades.Aldeano;
@@ -12,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MapaTests {
 
     Mapa mapa = new Mapa(10,10);
-    Ubicable ubicable = new Aldeano();
     Posicion posicion = new Posicion(mapa,0,0);
+    Ubicable ubicable = new Aldeano(posicion);
 
     @Test
     void elMapaRecienCreadoEstaVacio(){
@@ -63,16 +64,16 @@ public class MapaTests {
     }
 
     @Test<mapa,ubicable,posicion>
-    void moverElementoACeldaOcupadaLevantaExcepcion(){
-        Posicion posicionLlegada = new Posicion(mapa,1,0);
+    void moverElementoACeldaOcupadaLevantaExcepcion() {
+        Posicion posicionLlegada = new Posicion(mapa, 1, 0);
         mapa.ocuparCelda(ubicable, posicion);
         mapa.ocuparCelda(ubicable, posicionLlegada);
 
-        assertThrows(PosicionNoDisponibleException.class, ()-> {
+        assertThrows(PosicionNoDisponibleException.class, () -> {
             mapa.moverElemento(posicion, posicionLlegada);
         });
     }
-
+//AGREGAR PRUEBA: ACCEDER A POSICION LIMITE DADO QUE LAS POSICIONES VAN DE 0 A N-1
 /*
     @Test
     void ocuparUnaCeldaOcupadaLevantaExcepcion(){

@@ -9,6 +9,12 @@ public class Posicion {
     private Mapa mapa;
 
     //constructor
+    public Posicion(Posicion posicionRecibida){
+        coordenadaVertical = posicionRecibida.getCoordenadaVertical();
+        coordenadaHorizontal = posicionRecibida.getCoordenadaHorizontal();
+        mapa = posicionRecibida.getMapa();
+
+    }
     public Posicion(Mapa mapaRecibido, int CH, int CV) {
         this.coordenadaHorizontal = CH;
         this.coordenadaVertical = CV;
@@ -21,6 +27,9 @@ public class Posicion {
     }
     public int getCoordenadaVertical() {
         return coordenadaVertical;
+    }
+    public Mapa getMapa(){
+        return mapa;
     }
 
     // metodos de movimiento

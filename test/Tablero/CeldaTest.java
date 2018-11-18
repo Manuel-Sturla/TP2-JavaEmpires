@@ -19,18 +19,22 @@ public class CeldaTest {
     }
     @Test
     void ocupoUnaCelda(){
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa,0,0);
+        Ubicable elementoMapa = new Aldeano(posicion);
         Celda c = new Celda();
-        Ubicable elementoMapa = new Aldeano();
         c.ocuparCelda(elementoMapa);
         assertTrue(c.estaOcupada());
     }
     @Test
     void desocupoUnaCelda(){
-        Celda c = new Celda();
-        Ubicable elementoMapa = new Aldeano();
-        c.ocuparCelda(elementoMapa);
-        c.desocuparCelda();
-        assertTrue(!c.estaOcupada());
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa,0,0);
+        Ubicable elementoMapa = new Aldeano(posicion);
+        Celda celda = new Celda();
+        celda.ocuparCelda(elementoMapa);
+        celda.desocuparCelda();
+        assertTrue(!celda.estaOcupada());
     }
 
 

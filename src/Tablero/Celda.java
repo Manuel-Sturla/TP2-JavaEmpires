@@ -3,7 +3,7 @@ package Tablero;
 import Unidades.Ubicable;
 
 public class Celda {
-    protected Boolean ocupado;
+    protected boolean ocupado;
     protected Ubicable ubicable;
 
     public Celda(){

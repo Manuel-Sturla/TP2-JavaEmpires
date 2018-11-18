@@ -8,7 +8,7 @@ public class Aldeano {
     Estado estado;
 
     public Aldeano(Posicion posicionRecibida){
-        posicion = posicionRecibida;
+        posicion = new Posicion(posicion);
         //Crearia otra posicion pero me da paja
         estado = new Desocupado();
 
