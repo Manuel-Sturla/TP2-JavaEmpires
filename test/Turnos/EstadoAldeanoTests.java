@@ -20,7 +20,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void estadoLuegoDeRealizarAccionEsOcupado() throws UbicableEstaOcupadoException {
+    void estaOcupadoLuegoDeMoverPosicion() throws UbicableEstaOcupadoException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -36,5 +36,57 @@ public class EstadoAldeanoTests {
         aldeano.moverDerecha();
         assertThrows(UbicableEstaOcupadoException.class, aldeano::moverDerecha);
     }
-    
+
+    @Test
+    void estaDesocupadoLuegoDeMoverPosicionDesocuparUnTurno() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(5, 5);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion);
+        aldeano.moverDerecha();
+        aldeano.desocuparUnTurno();
+        assertFalse(aldeano.estaOcupado());
+    }
+
+    @Test
+    void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(5, 5);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion);
+        aldeano.crearEdificio();
+        assertTrue(aldeano.estaOcupado());
+    }
+
+    @Test
+    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(5, 5);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion);
+        aldeano.crearEdificio();
+        aldeano.desocuparUnTurno();
+        assertTrue(aldeano.estaOcupado());
+    }
+
+    @Test
+    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(5, 5);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion);
+        aldeano.moverDerecha();
+        aldeano.desocuparUnTurno();
+        aldeano.desocuparUnTurno();
+        aldeano.desocuparUnTurno();
+        assertFalse(aldeano.estaOcupado());
+    }
+
+    @Test
+    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(5, 5);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion);
+        aldeano.crearEdificio();
+        aldeano.desocuparUnTurno();
+        assertThrows(UbicableEstaOcupadoException.class, aldeano::moverDerecha);
+    }
+
+
 }
