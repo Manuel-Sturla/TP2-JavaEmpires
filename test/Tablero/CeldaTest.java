@@ -1,7 +1,13 @@
 package Tablero;
 
+<<<<<<< Updated upstream
+import Ubicables.Aldeano;
+import Ubicables.Ubicable;
+=======
+import Exceptions.PosicionFueraDeRangoException;
 import Unidades.Aldeano;
 import Unidades.Ubicable;
+>>>>>>> Stashed changes
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,7 +24,7 @@ public class CeldaTest {
         assertTrue(!c.estaOcupada());
     }
     @Test
-    void ocupoUnaCelda(){
+    void ocupoUnaCelda() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,0,0);
         Ubicable elementoMapa = new Aldeano(posicion);
@@ -27,7 +33,7 @@ public class CeldaTest {
         assertTrue(c.estaOcupada());
     }
     @Test
-    void desocupoUnaCelda(){
+    void desocupoUnaCelda() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,0,0);
         Ubicable elementoMapa = new Aldeano(posicion);

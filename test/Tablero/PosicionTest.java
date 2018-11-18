@@ -1,5 +1,6 @@
 package Tablero;
 
+import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 import org.junit.jupiter.api.Test;
 
@@ -25,34 +26,34 @@ public class PosicionTest {
 
     //PRUEBAS DE MOVIMIENTO
     @Test <x1,x2,m>
-    void prueboMovermeDer() throws PosicionNoDisponibleException {
+    void prueboMovermeDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,0,0);
         p.moverDer();
         assertTrue(p.getCoordenadaHorizontal()== 1 && p.getCoordenadaVertical() == 0);
     }
     @Test <x1,x2,m>
-    void prueboMoverIzq() throws PosicionNoDisponibleException {
+    void prueboMoverIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,1,0);
         p.moverIzq();
         setx1Yx2(p);
         assertTrue(x1== 0 && x2 == 0);
     }
     @Test <x1,x2,m>
-    void prueboMoverArriba() throws PosicionNoDisponibleException {
+    void prueboMoverArriba() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,0,0);
         p.moverArriba();
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 1);
     }
     @Test <x1,x2,m>
-    void prueboMoverAbajo() throws PosicionNoDisponibleException {
+    void prueboMoverAbajo() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,0,1);
         p.moverAbajo();
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 0);
     }
     @Test <x1,x2,m>
-    void prueboMovermeArribaDer() throws PosicionNoDisponibleException {
+    void prueboMovermeArribaDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,0,0);
         p.moverArribaDer();
         setx1Yx2(p);

@@ -1,6 +1,6 @@
 package Tablero;
 
-import Unidades.Ubicable;
+import Ubicables.Ubicable;
 
 public class Celda {
     protected boolean ocupado;
@@ -13,6 +13,7 @@ public class Celda {
     public boolean estaOcupada() {
         return ocupado;
     }
+
     public void ocuparCelda(Ubicable elementoMapa) {
         if(this.estaOcupada()) return;
         ubicable = elementoMapa;

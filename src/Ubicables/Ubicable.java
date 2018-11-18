@@ -1,4 +1,4 @@
-package Unidades;
+package Ubicables;
 
 public interface Ubicable {
 }

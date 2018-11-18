@@ -1,4 +1,4 @@
 package Exceptions;
 
-public class PosicionNoDisponibleException extends Exception {
+public class PosicionNoDisponibleException extends PosicionException {
 }

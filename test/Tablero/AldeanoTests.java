@@ -1,8 +1,10 @@
+import Exceptions.MovimientoNoPermitidoException;
+import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Unidades.Aldeano;
+import Ubicables.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -12,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AldeanoTests {
 
     @Test
-    void crearAldeanoYUbicarloEnElMapaSeCreaCorrectamente(){
+    void crearAldeanoYUbicarloEnElMapaSeCreaCorrectamente() throws PosicionFueraDeRangoException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion);
@@ -21,7 +23,7 @@ public class AldeanoTests {
     }
 
     @Test
-    void moverAldeanoHaciaLaDerechaOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
+    void moverAldeanoHaciaLaDerechaOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion);
@@ -31,7 +33,7 @@ public class AldeanoTests {
     }
 
     @Test
-    void moverAldeanoHaciaAbajoOcupaLaNuevaPosicion() throws PosicionNoDisponibleException, UbicableEstaOcupadoException {
+    void moverAldeanoHaciaAbajoOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion);
@@ -41,7 +43,7 @@ public class AldeanoTests {
     }
 
     @Test
-    void moverAldeanoFueraDelMapaNoLoMueve() throws PosicionNoDisponibleException, UbicableEstaOcupadoException {
+    void moverAldeanoFueraDelMapaNoLoMueve() throws PosicionFueraDeRangoException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 0,2);
         Aldeano aldeano = new Aldeano(posicion);
@@ -51,7 +53,7 @@ public class AldeanoTests {
     }
 
     @Test
-    void moverAldeanoDesocupaLaPosicionInicial() throws PosicionNoDisponibleException, UbicableEstaOcupadoException {
+    void moverAldeanoDesocupaLaPosicionInicial() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion);

@@ -1,7 +1,7 @@
 package Tablero;
 
+import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
-import Unidades.Aldeano;
 
 public class Posicion {
     private int coordenadaHorizontal;
@@ -14,6 +14,7 @@ public class Posicion {
         coordenadaHorizontal = posicionRecibida.getCoordenadaHorizontal();
         mapa = posicionRecibida.getMapa();
     }
+
     public Posicion(Mapa mapaRecibido, int CH, int CV) {
         this.coordenadaHorizontal = CH;
         this.coordenadaVertical = CV;
@@ -32,7 +33,7 @@ public class Posicion {
     }
 
     // metodos de movimiento
-    public void moverDer() throws PosicionNoDisponibleException {
+    public void moverDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
 
         Posicion posicionLlegada = new Posicion(mapa, coordenadaHorizontal+1, coordenadaVertical);
         mapa.moverElemento(this, posicionLlegada);
@@ -40,27 +41,27 @@ public class Posicion {
 
     }
 
-    public void moverIzq() throws PosicionNoDisponibleException {
+    public void moverIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal-=1;
     }
 
-    public void moverArriba() throws PosicionNoDisponibleException{
+    public void moverArriba() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical+1);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaVertical += 1;
     }
 
-    public void moverAbajo() throws PosicionNoDisponibleException {
+    public void moverAbajo() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical-1);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaVertical -= 1;
     }
 
-    public void moverArribaDer() throws PosicionNoDisponibleException {
+    public void moverArribaDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal+1,coordenadaVertical+1);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal += 1;
         coordenadaVertical += 1;
     }

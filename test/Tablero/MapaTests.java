@@ -1,9 +1,9 @@
+import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
-import Exceptions.PosicionYaOcupadaException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Unidades.Aldeano;
-import Unidades.Ubicable;
+import Ubicables.Aldeano;
+import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -16,8 +16,11 @@ public class MapaTests {
     Posicion posicion = new Posicion(mapa,0,0);
     Ubicable ubicable = new Aldeano(posicion);
 
+    public MapaTests() throws PosicionFueraDeRangoException {
+    }
+
     @Test
-    void elMapaRecienCreadoEstaVacio(){
+    void elMapaRecienCreadoEstaVacio() throws PosicionFueraDeRangoException {
         boolean check = true;
         Mapa mapa = new Mapa(10,10);
         Posicion posicion;
@@ -33,20 +36,20 @@ public class MapaTests {
     }
 
     @Test<mapa,ubicable,posicion>
-    void ocuparPosicionOcupaLaCelda(){
+    void ocuparPosicionOcupaLaCelda() throws PosicionFueraDeRangoException {
         mapa.ocuparCelda(ubicable,posicion);
         assertTrue(mapa.celdaEstaOcupada(posicion));
     }
 
     @Test<mapa,ubicable,posicion>
-    void desocuparPosicionDesocupaLaPosicion(){
+    void desocuparPosicionDesocupaLaPosicion() throws PosicionFueraDeRangoException {
         mapa.ocuparCelda(ubicable,posicion);
         mapa.desocuparCelda(posicion);
         assertFalse(mapa.celdaEstaOcupada(posicion));
     }
 
     @Test<mapa,ubicable,posicion>
-    void moverElementoDeCeldaOcupaLaCeldaDeLlegada() throws PosicionNoDisponibleException {
+    void moverElementoDeCeldaOcupaLaCeldaDeLlegada() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,1,0);
         mapa.ocuparCelda(ubicable, posicion);
         mapa.moverElemento(posicion, posicionLlegada);
@@ -55,7 +58,7 @@ public class MapaTests {
     }
 
     @Test<mapa,ubicable,posicion>
-    void moverElementoDeCeldaDesocupaLaInicial() throws PosicionNoDisponibleException{
+    void moverElementoDeCeldaDesocupaLaInicial() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,1,0);
         mapa.ocuparCelda(ubicable, posicion);
         mapa.moverElemento(posicion, posicionLlegada);
@@ -64,7 +67,7 @@ public class MapaTests {
     }
 
     @Test<mapa,ubicable,posicion>
-    void moverElementoACeldaOcupadaLevantaExcepcion() {
+    void moverElementoACeldaOcupadaLevantaExcepcion() throws PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa, 1, 0);
         mapa.ocuparCelda(ubicable, posicion);
         mapa.ocuparCelda(ubicable, posicionLlegada);
@@ -74,11 +77,21 @@ public class MapaTests {
         });
     }
 //AGREGAR PRUEBA: ACCEDER A POSICION LIMITE DADO QUE LAS POSICIONES VAN DE 0 A N-1
+    @Test<mapa,ubicable>
+    void posicionarElementoEnPosicionNegativaLevantaException(){
+        Posicion posicion = new Posicion(mapa,-1,0);
+
+        assertThrows(PosicionFueraDeRangoException.class, () -> {
+            mapa.ocuparCelda(ubicable, posicion);
+        });
+
+
+    }
 /*
     @Test<mapa,ubicable,posicion>
     void ocuparUnaCeldaOcupadaLevantaExcepcion(){
         mapa.ocuparCelda(ubicable,posicion);
-        assertThrows(PosicionYaOcupadaException.class, ()-> {
+        assertThrows(PosicionNoDisponibleException.class, ()-> {
             mapa.ocuparCelda(ubicable,posicion);
         });
     }
