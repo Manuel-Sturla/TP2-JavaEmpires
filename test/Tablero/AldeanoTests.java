@@ -33,7 +33,7 @@ public class AldeanoTests {
     }
 
     @Test
-    void moverAldeanoHaciaAbajoOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
+    void moverAldeanoHaciaAbajoOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion);
@@ -47,13 +47,13 @@ public class AldeanoTests {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 0,2);
         Aldeano aldeano = new Aldeano(posicion);
-        assertThrows(PosicionNoDisponibleException.class , ()-> {
+        assertThrows(MovimientoNoPermitidoException.class , ()-> {
             aldeano.moverIzquierda();
         });
     }
 
     @Test
-    void moverAldeanoDesocupaLaPosicionInicial() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
+    void moverAldeanoDesocupaLaPosicionInicial() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion);

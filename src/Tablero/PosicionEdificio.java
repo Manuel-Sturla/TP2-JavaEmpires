@@ -1,5 +1,6 @@
 package Tablero;
 
+import Exceptions.PosicionFueraDeRangoException;
 import Ubicables.Ubicable;
 
 public class PosicionEdificio {
@@ -24,7 +25,7 @@ public class PosicionEdificio {
         return mapa;
     }
 
-    public void ocuparPosiciones(Ubicable edificio) {
+    public void ocuparPosiciones(Ubicable edificio) throws PosicionFueraDeRangoException {
         for (int i = 0; i < 4; i++) {
             mapa.ocuparCelda(edificio,posiciones[i]);
         }

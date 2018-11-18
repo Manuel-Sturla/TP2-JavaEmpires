@@ -54,8 +54,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-<<<<<<< Updated upstream
-    void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException {
+    void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -64,8 +63,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-<<<<<<< Updated upstream
-    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException{
+    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -75,8 +73,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-<<<<<<< Updated upstream
-    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
+    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -88,7 +85,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException{
+    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);

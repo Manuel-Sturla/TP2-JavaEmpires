@@ -1,5 +1,6 @@
 package Tablero;
 
+import Exceptions.PosicionFueraDeRangoException;
 import Ubicables.Aldeano;
 import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
