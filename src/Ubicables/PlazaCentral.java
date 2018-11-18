@@ -30,7 +30,7 @@ public class PlazaCentral implements Ubicable {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        Aldeano aldeano = new Aldeano(posicion.obtenerPosicionDeAldeano());
+        Aldeano aldeano = new Aldeano(posicion.obtenerPosicionDeAldeano()); //Es posicion Despliegue
         return aldeano;
     }
 }
