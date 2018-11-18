@@ -26,8 +26,10 @@ public class Posicion {
     // metodos de movimiento
     public void moverDer() throws PosicionNoDisponibleException {
 
-        Posicion posicion_llegada = new Posicion(mapa, coordenadaHorizontal+1, coordenadaVertical);
-        mapa.moverElemento(this, posicion_llegada);
+        Posicion posicionLlegada = new Posicion(mapa, coordenadaHorizontal+1, coordenadaVertical);
+        mapa.moverElemento(this, posicionLlegada);
+        coordenadaHorizontal+=1;
+
     }
 
 }

@@ -1,5 +1,6 @@
 package Tablero;
 
+import Exceptions.PosicionNoDisponibleException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,11 +25,10 @@ public class PosicionTest {
 
     //PRUEBAS DE MOVIMIENTO
     @Test <x1,x2,m>
-    void prueboMovermeDer(){
+    void prueboMovermeDer() throws PosicionNoDisponibleException {
         Posicion p = new Posicion(m,0,0);
         p.moverDer();
-        setx1Yx2(p);
-        assertTrue(x1== 1 && x2 == 0);
+        assertTrue(p.getCoordenadaHorizontal()== 1 && p.getCoordenadaVertical() == 0);
     }
 /*
     @Test <x1,x2,m>
