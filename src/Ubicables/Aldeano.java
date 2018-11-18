@@ -1,4 +1,4 @@
-package Unidades;
+package Ubicables;
 
 import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
@@ -12,12 +12,13 @@ public class Aldeano implements Ubicable {
     Estado estado;
     int vida = 50;
 
-    public Aldeano(Posicion posicionRecibida){
+   public Aldeano(Posicion posicionRecibida){
         posicion = new Posicion(posicionRecibida);
         estado = new Desocupado();
         posicionRecibida.getMapa().ocuparCelda(this, posicion);
 
     }
+
     public void moverDerecha() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
        posicion.moverDer();
         if(estado.estaOcupado()){
@@ -42,11 +43,13 @@ public class Aldeano implements Ubicable {
         estado = estado.desocuparUnTurno();
     }
 
-    public void crearEdificio() throws UbicableEstaOcupadoException {
+    public PlazaCentral crearPlazaCentral() throws UbicableEstaOcupadoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         estado = new Ocupado(3);
+        PlazaCentral plazaCentral = new PlazaCentral(posicion);
+        return plazaCentral;
     }
 
     public void moverIzquierda() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {

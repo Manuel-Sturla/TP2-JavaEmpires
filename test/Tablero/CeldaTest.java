@@ -1,7 +1,7 @@
 package Tablero;
 
-import Unidades.Aldeano;
-import Unidades.Ubicable;
+import Ubicables.Aldeano;
+import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

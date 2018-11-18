@@ -1,7 +1,7 @@
 package Tablero;
 
 import Exceptions.PosicionNoDisponibleException;
-import Unidades.Ubicable;
+import Ubicables.Ubicable;
 
 public class Mapa {
     Celda mapa[][];

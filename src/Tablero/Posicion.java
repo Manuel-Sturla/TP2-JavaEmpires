@@ -1,7 +1,6 @@
 package Tablero;
 
 import Exceptions.PosicionNoDisponibleException;
-import Unidades.Aldeano;
 
 public class Posicion {
     private int coordenadaHorizontal;
@@ -14,6 +13,7 @@ public class Posicion {
         coordenadaHorizontal = posicionRecibida.getCoordenadaHorizontal();
         mapa = posicionRecibida.getMapa();
     }
+
     public Posicion(Mapa mapaRecibido, int CH, int CV) {
         this.coordenadaHorizontal = CH;
         this.coordenadaVertical = CV;
@@ -42,25 +42,25 @@ public class Posicion {
 
     public void moverIzq() throws PosicionNoDisponibleException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal-=1;
     }
 
     public void moverArriba() throws PosicionNoDisponibleException{
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical+1);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaVertical += 1;
     }
 
     public void moverAbajo() throws PosicionNoDisponibleException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical-1);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaVertical -= 1;
     }
 
     public void moverArribaDer() throws PosicionNoDisponibleException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal+1,coordenadaVertical+1);
-        mapa.moverElemento(this,posicionLlegada);
+        mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal += 1;
         coordenadaVertical += 1;
     }

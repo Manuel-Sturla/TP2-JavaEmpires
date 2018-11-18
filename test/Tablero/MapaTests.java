@@ -1,9 +1,8 @@
 import Exceptions.PosicionNoDisponibleException;
-import Exceptions.PosicionYaOcupadaException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Unidades.Aldeano;
-import Unidades.Ubicable;
+import Ubicables.Aldeano;
+import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

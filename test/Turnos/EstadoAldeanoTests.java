@@ -4,7 +4,7 @@ import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Unidades.Aldeano;
+import Ubicables.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -53,26 +53,26 @@ public class EstadoAldeanoTests {
 
     @Test
     void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException {
-        Mapa mapa = new Mapa(5, 5);
+        Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.crearEdificio();
+        aldeano.crearPlazaCentral();
         assertTrue(aldeano.estaOcupado());
     }
 
     @Test
     void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException{
-        Mapa mapa = new Mapa(5, 5);
+        Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.crearEdificio();
+        aldeano.crearPlazaCentral();
         aldeano.desocuparUnTurno();
         assertTrue(aldeano.estaOcupado());
     }
 
     @Test
     void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
-        Mapa mapa = new Mapa(5, 5);
+        Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverDerecha();
@@ -83,13 +83,13 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException{
-        Mapa mapa = new Mapa(5, 5);
+    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException{
+        Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.crearEdificio();
+        aldeano.crearPlazaCentral();
         aldeano.desocuparUnTurno();
-        assertThrows(UbicableEstaOcupadoException.class, aldeano::moverDerecha);
+        assertThrows(UbicableEstaOcupadoException.class, aldeano::moverIzquierda);
     }
 
 
