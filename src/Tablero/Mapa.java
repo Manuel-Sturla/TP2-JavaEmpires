@@ -40,16 +40,8 @@ public class Mapa {
         }catch (ArrayIndexOutOfBoundsException e){
             throw new PosicionFueraDeRangoException();
         }
+    }
 
-    }
-/* CREO QUE YA NO ES NECESARIA
-    private boolean estaEnMapa(Posicion posicion) throws PosicionNoDisponibleException {
-        if (largo > posicion.getCoordenadaHorizontal() && posicion.getCoordenadaHorizontal() >= 0 && posicion.getCoordenadaVertical() >=0 && ancho > posicion.getCoordenadaVertical()) {
-            return  true;
-        }
-        return false;
-    }
-*/
     public void moverElemento(Posicion posicion, Posicion posicion_llegada) throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Ubicable elemento = this.obtenerCelda(posicion).getElemento();
         if (this.celdaEstaOcupada(posicion_llegada)){
@@ -58,6 +50,5 @@ public class Mapa {
         this.obtenerCelda(posicion_llegada).ocuparCelda(elemento);
         this.obtenerCelda(posicion).desocuparCelda();
     }
-
-
 }
+
