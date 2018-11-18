@@ -29,4 +29,9 @@ public class PosicionEdificio {
             mapa.ocuparCelda(edificio,posiciones[i]);
         }
     }
+
+    public Posicion obtenerPosicionDeAldeano(){
+        Posicion posicionDeploy = new Posicion(mapa, posiciones[2].getCoordenadaHorizontal() - 1, posiciones[2].getCoordenadaVertical());
+        return posicionDeploy;
+    }
 }

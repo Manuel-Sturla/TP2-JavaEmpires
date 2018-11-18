@@ -8,6 +8,7 @@ import Ubicables.PlazaCentral;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlazaCentralTests {
@@ -49,5 +50,41 @@ public class PlazaCentralTests {
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
         assertFalse(plaza.estaOcupada());
+    }
+
+    @Test
+    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(20,20);
+        Posicion posicionAldeano = new Posicion(mapa, 10,10);
+        Aldeano aldeano = new Aldeano(posicionAldeano);
+        PlazaCentral plaza = aldeano.crearPlazaCentral();
+        plaza.desocuparUnTurno();
+        assertThrows(UbicableEstaOcupadoException.class, plaza::crearAldeano);
+    }
+
+    @Test
+    void laPlazaCentralPuedeCrearUnAldeano3TurnosDespuesDeSerConstruida() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(20,20);
+        Posicion posicionAldeano = new Posicion(mapa, 10,10);
+        Aldeano aldeano = new Aldeano(posicionAldeano);
+        PlazaCentral plaza = aldeano.crearPlazaCentral();
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+        assertTrue(plaza.crearAldeano() != null);
+    }
+
+    @Test
+    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException{
+        Mapa mapa = new Mapa(20,20);
+        Posicion posicionAldeano = new Posicion(mapa, 10,10);
+        Aldeano aldeano = new Aldeano(posicionAldeano);
+        PlazaCentral plaza = aldeano.crearPlazaCentral();
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+        Aldeano aldeanoCreado = plaza.crearAldeano();
+        Posicion posDeploy = new Posicion(mapa, 10, 11);
+        assertTrue(mapa.celdaEstaOcupada(posDeploy));
     }
 }

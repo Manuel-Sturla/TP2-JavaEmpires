@@ -1,5 +1,6 @@
 package Ubicables;
 
+import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Posicion;
 import Tablero.PosicionEdificio;
 import Turnos.Estado;
@@ -22,5 +23,13 @@ public class PlazaCentral implements Ubicable {
 
     public boolean estaOcupada() {
         return estado.estaOcupado();
+    }
+
+    public Aldeano crearAldeano() throws UbicableEstaOcupadoException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        Aldeano aldeano = new Aldeano(posicion.obtenerPosicionDeAldeano());
+        return aldeano;
     }
 }
