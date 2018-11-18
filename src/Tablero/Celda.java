@@ -1,7 +1,10 @@
 package Tablero;
 
+import Unidades.Ubicable;
+
 public class Celda {
     protected Boolean ocupado;
+    protected Ubicable ubicable;
 
     public Celda(){
         this.ocupado = false;
@@ -10,11 +13,18 @@ public class Celda {
     public boolean estaOcupada() {
         return ocupado;
     }
-    public void ocuparCelda() {
+    public void ocuparCelda(Ubicable elementoMapa) {
+        if(this.estaOcupada()) return;
+        ubicable = elementoMapa;
         ocupado = true;
     }
 
     public void desocuparCelda() {
+        ubicable = null;
         ocupado = false;
+    }
+
+    public Ubicable getElemento() {
+        return ubicable;
     }
 }

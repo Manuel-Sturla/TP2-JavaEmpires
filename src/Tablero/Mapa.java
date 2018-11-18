@@ -1,5 +1,8 @@
 package Tablero;
 
+import Exceptions.PosicionNoDisponibleException;
+import Unidades.Ubicable;
+
 public class Mapa {
     Celda mapa[][];
     int largo;
@@ -16,20 +19,33 @@ public class Mapa {
         }
     }
 
-    public boolean celdaEstaOcupada(int coordenadaHorizontal, int coordenadaVertical) {
-        return (mapa[coordenadaHorizontal][coordenadaVertical].estaOcupada());
+    public boolean celdaEstaOcupada(Posicion posicion) {
+        return (this.obtenerCelda(posicion).estaOcupada());
     }
 
-    public void ocupar(int coordenadaHorizontal, int coordenadaVertical) {
-        mapa[coordenadaHorizontal][coordenadaVertical].ocuparCelda();
+    public void ocuparCelda(Ubicable elementoMapa, Posicion posicion) {
+        this.obtenerCelda(posicion).ocuparCelda(elementoMapa);
     }
 
-    public void ocuparCelda(int i, int i1) {
-        mapa[i][i1].ocuparCelda();
+    public void desocuparCelda(Posicion posicion) {
+        this.obtenerCelda(posicion).desocuparCelda();
     }
 
-    public void desocuparCelda(int i, int i1) {
-        mapa[i][i1].desocuparCelda();
-
+    private Celda obtenerCelda(Posicion posicion){
+        int coordenadaHorizontal = posicion.getCoordenadaHorizontal();
+        int coordenadaVertical = posicion.getCoordenadaVertical();
+        return mapa[coordenadaHorizontal][coordenadaVertical];
     }
+
+    public void moverElemento(Posicion posicion, Posicion posicion_llegada) throws PosicionNoDisponibleException {
+        Ubicable elemento = this.obtenerCelda(posicion).getElemento();
+
+        if(this.obtenerCelda(posicion_llegada).estaOcupada()){
+            throw new PosicionNoDisponibleException();
+        }
+        this.obtenerCelda(posicion_llegada).ocuparCelda(elemento);
+        this.obtenerCelda(posicion).desocuparCelda();
+    }
+
+
 }

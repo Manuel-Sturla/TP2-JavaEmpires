@@ -1,5 +1,7 @@
 package Tablero;
 
+import Unidades.Aldeano;
+import Unidades.Ubicable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,13 +20,15 @@ public class CeldaTest {
     @Test
     void ocupoUnaCelda(){
         Celda c = new Celda();
-        c.ocuparCelda();
+        Ubicable elementoMapa = new Aldeano();
+        c.ocuparCelda(elementoMapa);
         assertTrue(c.estaOcupada());
     }
     @Test
     void desocupoUnaCelda(){
         Celda c = new Celda();
-        c.ocuparCelda();
+        Ubicable elementoMapa = new Aldeano();
+        c.ocuparCelda(elementoMapa);
         c.desocuparCelda();
         assertTrue(!c.estaOcupada());
     }
