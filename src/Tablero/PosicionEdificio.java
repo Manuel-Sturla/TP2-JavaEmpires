@@ -1,5 +1,6 @@
 package Tablero;
 
+import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Ubicables.Ubicable;
 
@@ -9,14 +10,19 @@ public class PosicionEdificio {
     Mapa mapa;
     int largoLado;
 
-    public PosicionEdificio(Posicion posicionRecibida, int largoLadoRecibido){
+    public PosicionEdificio(Posicion posicionRecibida, int largoLadoRecibido) throws NoSePudoConstruirException {
         mapa = posicionRecibida.getMapa();
         largoLado = largoLadoRecibido;
         posiciones = new Posicion[largoLado][largoLado];
         int coordenadaHorizontalInicial = posicionRecibida.getCoordenadaHorizontal() + 1;
         int coordenadaVerticalIncial = posicionRecibida.getCoordenadaVertical();
+        Posicion posActual;
         for (int i = 0; i < largoLado; i++) {
             for (int j = 0; j < largoLado; j++) {
+                posActual = new Posicion(mapa, coordenadaHorizontalInicial + i, coordenadaVerticalIncial + j);
+                if(!mapa.estaEnMapa(posActual)){
+                    throw new NoSePudoConstruirException();
+                };
                 posiciones[i][j] = new Posicion(mapa, coordenadaHorizontalInicial + i, coordenadaVerticalIncial + j);
             }
         }

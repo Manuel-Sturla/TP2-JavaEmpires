@@ -1,9 +1,6 @@
 package Turnos;
 
-import Exceptions.MovimientoNoPermitidoException;
-import Exceptions.PosicionFueraDeRangoException;
-import Exceptions.PosicionNoDisponibleException;
-import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.*;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Aldeano;
@@ -54,7 +51,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -63,7 +60,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
@@ -85,7 +82,7 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, PosicionFueraDeRangoException {
+    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);

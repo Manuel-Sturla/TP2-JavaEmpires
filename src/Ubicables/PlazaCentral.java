@@ -1,5 +1,6 @@
 package Ubicables;
 
+import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Posicion;
@@ -12,7 +13,7 @@ public class PlazaCentral implements Ubicable {
     PosicionEdificio posicion;
     Estado estado;
 
-    public PlazaCentral(Posicion posicionAldeano) throws PosicionFueraDeRangoException {
+    public PlazaCentral(Posicion posicionAldeano) throws PosicionFueraDeRangoException, NoSePudoConstruirException {
         posicion = new PosicionEdificio(posicionAldeano, 4);
         posicion.ocuparPosiciones(this);
         estado = new Ocupado(3);

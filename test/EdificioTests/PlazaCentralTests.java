@@ -1,5 +1,6 @@
 package EdificioTests;
 
+import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlazaCentralTests {
 
     @Test
-    void laPlazaCentralOcupa4PosicionesEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void laPlazaCentralOcupa4PosicionesEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Aldeano aldeano = new Aldeano(posicionAldeano);
@@ -33,7 +34,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralEstaOcupadaEnElTurnoQueFueConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void laPlazaCentralEstaOcupadaEnElTurnoQueFueConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Aldeano aldeano = new Aldeano(posicionAldeano);
@@ -42,7 +43,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralSeDesocupaLuegoDe3Turnos() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void laPlazaCentralSeDesocupaLuegoDe3Turnos() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Aldeano aldeano = new Aldeano(posicionAldeano);
@@ -54,7 +55,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Aldeano aldeano = new Aldeano(posicionAldeano);
@@ -64,7 +65,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralPuedeCrearUnAldeano3TurnosDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void laPlazaCentralPuedeCrearUnAldeano3TurnosDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Aldeano aldeano = new Aldeano(posicionAldeano);
@@ -76,7 +77,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Aldeano aldeano = new Aldeano(posicionAldeano);
@@ -90,7 +91,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void siElAldeanoNoTieneEspacioParaConstruirElEdificioLoContruyeEnElSentidoOpuesto() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    void siElAldeanoNoTieneEspacioParaConstruirElEdificioLoContruyeEnElSentidoOpuesto() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 19,0);
         Aldeano aldeano = new Aldeano(posicionAldeano);

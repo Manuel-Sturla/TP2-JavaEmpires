@@ -1,6 +1,7 @@
 package EdificioTests;
 
 import Exceptions.MovimientoNoPermitidoException;
+import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PosicionEdificioTests {
 
     @Test
-    void PosicionDeEdificioOcupaUnCuadradoDe4DeLado() throws PosicionFueraDeRangoException {
+    void PosicionDeEdificioOcupaUnCuadradoDe4DeLado() throws PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 0, 0);
         PosicionEdificio posEdificio = new PosicionEdificio(posicion, 2);
@@ -34,10 +35,10 @@ public class PosicionEdificioTests {
     }
 
     @Test
-    void crearEdificioCuandoNoHayEspacioLevantaExcepcion() throws PosicionFueraDeRangoException{
+    void crearEdificioCuandoNoHayEspacioLevantaExcepcion() throws NoSePudoConstruirException{
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 9, 0);
-        assertThrows(PosicionFueraDeRangoException.class , ()-> {
+        assertThrows(NoSePudoConstruirException.class , ()-> {
             PosicionEdificio posEdificio = new PosicionEdificio(posicion, 2);
         });
     }

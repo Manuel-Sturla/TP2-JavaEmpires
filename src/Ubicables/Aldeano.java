@@ -63,7 +63,7 @@ public class Aldeano implements Ubicable {
         estado = estado.desocuparUnTurno();
     }
 
-    public PlazaCentral crearPlazaCentral() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    public PlazaCentral crearPlazaCentral() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
