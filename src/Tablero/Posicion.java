@@ -32,4 +32,28 @@ public class Posicion {
 
     }
 
+    public void moverIzq() throws PosicionNoDisponibleException {
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical);
+        mapa.moverElemento(this,posicionLlegada);
+        coordenadaHorizontal-=1;
+    }
+
+    public void moverArriba() throws PosicionNoDisponibleException{
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical+1);
+        mapa.moverElemento(this,posicionLlegada);
+        coordenadaVertical += 1;
+    }
+
+    public void moverAbajo() throws PosicionNoDisponibleException {
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical-1);
+        mapa.moverElemento(this,posicionLlegada);
+        coordenadaVertical -= 1;
+    }
+
+    public void moverArribaDer() throws PosicionNoDisponibleException {
+        Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal+1,coordenadaVertical+1);
+        mapa.moverElemento(this,posicionLlegada);
+        coordenadaHorizontal += 1;
+        coordenadaVertical += 1;
+    }
 }

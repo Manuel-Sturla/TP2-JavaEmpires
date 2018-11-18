@@ -30,39 +30,35 @@ public class PosicionTest {
         p.moverDer();
         assertTrue(p.getCoordenadaHorizontal()== 1 && p.getCoordenadaVertical() == 0);
     }
-/*
     @Test <x1,x2,m>
-    void prueboMoverIzq(){
+    void prueboMoverIzq() throws PosicionNoDisponibleException {
         Posicion p = new Posicion(m,1,0);
         p.moverIzq();
         setx1Yx2(p);
         assertTrue(x1== 0 && x2 == 0);
     }
-
     @Test <x1,x2,m>
-    void prueboMoverArriba(){
+    void prueboMoverArriba() throws PosicionNoDisponibleException {
         Posicion p = new Posicion(m,0,0);
         p.moverArriba();
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 1);
     }
-
     @Test <x1,x2,m>
-    void prueboMoverAbajo(){
+    void prueboMoverAbajo() throws PosicionNoDisponibleException {
         Posicion p = new Posicion(m,0,1);
         p.moverAbajo();
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 0);
     }
-
     @Test <x1,x2,m>
-    void prueboMovermeArribaDer(){
+    void prueboMovermeArribaDer() throws PosicionNoDisponibleException {
         Posicion p = new Posicion(m,0,0);
         p.moverArribaDer();
         setx1Yx2(p);
         assertTrue(x1 ==1 && x2== 1);
     }
-
+/*
     @Test <x1,x2,m>
     void prueboMoverArribaIzq(){
         Posicion p = new Posicion(m,1,0);
