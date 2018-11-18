@@ -13,7 +13,7 @@ public class PlazaCentral implements Ubicable {
     Estado estado;
 
     public PlazaCentral(Posicion posicionAldeano) throws PosicionFueraDeRangoException {
-        posicion = new PosicionEdificio(posicionAldeano);
+        posicion = new PosicionEdificio(posicionAldeano, 4);
         posicion.ocuparPosiciones(this);
         estado = new Ocupado(3);
     }
