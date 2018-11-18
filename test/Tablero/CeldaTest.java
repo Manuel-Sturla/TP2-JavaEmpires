@@ -1,13 +1,7 @@
 package Tablero;
 
-<<<<<<< Updated upstream
 import Ubicables.Aldeano;
 import Ubicables.Ubicable;
-=======
-import Exceptions.PosicionFueraDeRangoException;
-import Unidades.Aldeano;
-import Unidades.Ubicable;
->>>>>>> Stashed changes
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

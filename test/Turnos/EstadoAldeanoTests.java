@@ -57,10 +57,6 @@ public class EstadoAldeanoTests {
 <<<<<<< Updated upstream
     void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException {
         Mapa mapa = new Mapa(10, 10);
-=======
-    void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
-        Mapa mapa = new Mapa(5, 5);
->>>>>>> Stashed changes
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.crearPlazaCentral();
@@ -71,10 +67,6 @@ public class EstadoAldeanoTests {
 <<<<<<< Updated upstream
     void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException{
         Mapa mapa = new Mapa(10, 10);
-=======
-    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
-        Mapa mapa = new Mapa(5, 5);
->>>>>>> Stashed changes
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.crearPlazaCentral();
@@ -86,10 +78,6 @@ public class EstadoAldeanoTests {
 <<<<<<< Updated upstream
     void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10, 10);
-=======
-    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
-        Mapa mapa = new Mapa(5, 5);
->>>>>>> Stashed changes
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverDerecha();
@@ -100,13 +88,8 @@ public class EstadoAldeanoTests {
     }
 
     @Test
-<<<<<<< Updated upstream
     void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException{
         Mapa mapa = new Mapa(10, 10);
-=======
-    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
-        Mapa mapa = new Mapa(5, 5);
->>>>>>> Stashed changes
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.crearPlazaCentral();
