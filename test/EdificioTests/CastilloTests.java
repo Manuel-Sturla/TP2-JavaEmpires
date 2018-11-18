@@ -12,7 +12,7 @@ public class CastilloTests {
     void crearCastilloOcupa16CeldasEnElMapa() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicion = new Posicion(mapa, 0,0);
-        Castillo castillo = new Castillo(mapa, posicion);
+        Castillo castillo = new Castillo(posicion);
         boolean check = true;
         for (int i = 1; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
