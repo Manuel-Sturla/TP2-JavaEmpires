@@ -46,14 +46,13 @@ public abstract class Unidad implements Ubicable{
         estado = new Ocupado(1);
     }
     public void moverIzquierda() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, MovimientoNoPermitidoException {
-        try{
+        try {
             posicion.moverIzq();
-        } catch (PosicionException e) {
+        }catch (PosicionException e){
             throw new MovimientoNoPermitidoException();
         }
-        if(estado.estaOcupado()){
-            throw new UbicableEstaOcupadoException();
-        }
+
+        if(estado.estaOcupado()) throw new UbicableEstaOcupadoException();
         estado = new Ocupado(1);
     }
 

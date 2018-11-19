@@ -28,8 +28,6 @@ public class PosicionEdificio {
         }
     }
 
-
-
     public Mapa getMapa() {
         return mapa;
     }

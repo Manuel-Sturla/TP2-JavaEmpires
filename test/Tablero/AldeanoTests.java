@@ -61,7 +61,7 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 2,2);
         assertFalse(mapa.celdaEstaOcupada(posicion2));
     }
-
+/*
     @Test
     public void testMoverAldeanoArribaVerificaQueLaNuevaPosicionEsteOcupadaYLaAnteriorNo() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
@@ -111,7 +111,6 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 2,0);
         assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));
     }
-    /*
-    void contruirEdificioLoCrea
+
     */
 }
