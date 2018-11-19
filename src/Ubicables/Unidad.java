@@ -55,7 +55,65 @@ public abstract class Unidad implements Ubicable{
         if(estado.estaOcupado()) throw new UbicableEstaOcupadoException();
         estado = new Ocupado(1);
     }
+    public void moverArriba() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, MovimientoNoPermitidoException {
+        try{
+            posicion.moverArriba();
+        } catch (PosicionException e) {
+            throw new MovimientoNoPermitidoException();
+        }
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Ocupado(1);
+    }
 
+    public void moverArribaIzq() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+        try{
+            posicion.moverArribaIzq();
+        } catch (PosicionException e) {
+            throw new MovimientoNoPermitidoException();
+        }
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Ocupado(1);
+    }
+
+    public void moverArribaDer() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+        try{
+            posicion.moverArribaDer();
+        } catch (PosicionException e) {
+            throw new MovimientoNoPermitidoException();
+        }
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Ocupado(1);
+    }
+
+    public void moverAbajoIzq() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+        try{
+            posicion.moverAbajoIzq();
+        } catch (PosicionException e) {
+            throw new MovimientoNoPermitidoException();
+        }
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Ocupado(1);
+    }
+
+    public void moverAbajoDer() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+        try{
+            posicion.moverAbajoDer();
+        } catch (PosicionException e) {
+            throw new MovimientoNoPermitidoException();
+        }
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Ocupado(1);
+    }
     //ESTADOS
     public boolean estaOcupado() {
         return estado.estaOcupado();
