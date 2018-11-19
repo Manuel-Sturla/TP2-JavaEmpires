@@ -89,7 +89,7 @@ public class PlazaCentralTests {
         Posicion posDeploy = new Posicion(mapa, 10, 11);
         assertTrue(mapa.celdaEstaOcupada(posDeploy));
     }
-
+    //ESTO LE TOCA A DIEGUIN!!!!
     @Test
     void siElAldeanoNoTieneEspacioParaConstruirElEdificioLoContruyeEnElSentidoOpuesto() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);

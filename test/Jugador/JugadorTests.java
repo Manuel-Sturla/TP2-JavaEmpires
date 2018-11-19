@@ -2,6 +2,7 @@ package Jugador;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Aldeano;
@@ -89,26 +90,77 @@ public class JugadorTests {
         assertTrue(jugador.iniciarTurno() == null);
     }
 
-
-
-/* PRUEBA CREAR EDIFICIOS Y UNIDADES
     @Test
-    void crearPlazaCentralLaCreaCorrectamente() throws PosicionFueraDeRangoException {
+    void matarAldeanoPertenecienteAlJugadorLoQuitaDeSusUbicables() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(50,50);
         Posicion posicion1 = new Posicion(mapa,1,1);
-        Posicion posicion2 = new Posicion(mapa,2,2);
-        Posicion posicion3 = new Posicion(mapa,3,3);
-        Posicion posicion4 = new Posicion(mapa,10,10);
-        Aldeano aldeanos[];
-        aldeanos = new Aldeano[3];
-        aldeanos[0] = new Aldeano(posicion1);
-        aldeanos[1] = new Aldeano(posicion2);
-        aldeanos[2] = new Aldeano(posicion3);
-        Castillo castillo = new Castillo(posicion4);
-        Jugador jugador1 = new Jugador(aldeanos, castillo);
-        jugador1.crearPlazaCentral("Unidad1");
+        ArrayList ubicables = new ArrayList();
+        Aldeano aldeano = new Aldeano(posicion1);
+        ubicables.add(aldeano);
+        Jugador jugador = new Jugador(ubicables);
+        Aldeano aldeanoJugador = (Aldeano)jugador.iniciarTurno();
+
+        aldeanoJugador.quitarVida(50); //Se pone en estado Muerto
+        jugador.siguiente(); //Termino el turno del jugador porque no tiene mas Ubicables
+        assertTrue(jugador.getElementos().isEmpty());
     }
 
+    @Test
+    void destuirEdificioPertenecienteAlJugadorLoQuitaDeSusUbicables() throws NoSePudoConstruirException, PosicionFueraDeRangoException {
+        Mapa mapa = new Mapa(50,50);
+        Posicion posicion1 = new Posicion(mapa,1,1);
+        ArrayList ubicables = new ArrayList();
+        PlazaCentral plazaCentral = new PlazaCentral(posicion1);
+        ubicables.add(plazaCentral);
+        Jugador jugador = new Jugador(ubicables);
+        PlazaCentral plazaJugador = (PlazaCentral) jugador.iniciarTurno();
+
+        plazaJugador.quitarVida(500); //Se pone en estado Muerto
+        jugador.siguiente(); //Termino el turno del jugador porque no tiene mas Ubicables
+        assertTrue(jugador.getElementos().isEmpty());
+    }
+
+
+// PRUEBA CREAR EDIFICIOS Y UNIDADES
+    @Test
+    void crearPlazaCentralLaCreaYSeAgregaALosElementosUbicables() throws PosicionFueraDeRangoException, NoSePudoConstruirException, UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(50,50);
+        Posicion posicion1 = new Posicion(mapa,1,1);
+        ArrayList ubicables = new ArrayList();
+        Aldeano aldeano = new Aldeano(posicion1);
+        ubicables.add(aldeano);
+        Jugador jugador = new Jugador(ubicables);
+        Aldeano aldeanoJugador = (Aldeano)jugador.iniciarTurno();
+
+        PlazaCentral plazaCentralNueva = aldeanoJugador.crearPlazaCentral();
+        jugador.agregar(plazaCentralNueva); //ACA ES UN METODO QUE SE TIENE QUE EJECUTAR MANUALMENTE POSIBLEMENTE SEA MEJOR AUTOMATICAMENTE
+        assertTrue(jugador.getElementos().contains(plazaCentralNueva));
+    }
+/*
+    @Test
+    void crearAldeanoLoCreaYSeAgregaALosElementosUbicables() throws NoSePudoConstruirException, PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(50,50);
+        Posicion posicion1 = new Posicion(mapa,1,1);
+        ArrayList ubicables = new ArrayList();
+        PlazaCentral plazaCentral = new PlazaCentral(posicion1);
+        ubicables.add(plazaCentral);
+        Jugador jugador = new Jugador(ubicables);
+
+        //Hago que pasen 3 turnos para que se termine de construir la plaza central
+        for (int i= 0; i<3; i++){
+            jugador.iniciarTurno();
+            jugador.siguiente(); //Termina el turno porque no tiene mas elementos
+        }
+        //Inicio el 4to turno
+        jugador.iniciarTurno();
+        PlazaCentral plazaJugador = (PlazaCentral) jugador.iniciarTurno();
+
+
+        Aldeano aldeanoNuevo = plazaJugador.crearAldeano();
+        jugador.agregar(aldeanoNuevo);
+        assertTrue(jugador.getElementos().contains(aldeanoNuevo));
+    }
+/*
     @Test
     void crearAldeanoLoAgregaAElementosUbicables(){
         Mapa mapa = new Mapa(50,50);

@@ -2,6 +2,7 @@ package Jugador;
 
 import Ubicables.Aldeano;
 import Ubicables.Castillo;
+import Ubicables.PlazaCentral;
 import Ubicables.Ubicable;
 
 import java.awt.*;
@@ -15,6 +16,7 @@ public class Jugador {
 
     ArrayList elementos = new ArrayList();
     Iterator<Ubicable> iterador;
+    String nombre;
 /* obsoleto?
     public Jugador(Aldeano aldeanos[], Castillo castillo){
         //Crea al jugador con sus 3 aldeanos iniciales y su castillo
@@ -40,9 +42,23 @@ public class Jugador {
 
     public Ubicable siguiente(){
         if (!iterador.hasNext()){
-            //this.finalizarTurno();
+            this.finalizarTurno();
             return null;
         }
         return iterador.next();
+    }
+
+    private void finalizarTurno(){
+        iterador = elementos.iterator();
+        while (iterador.hasNext()){
+            if(iterador.next().estaMuerto()){
+                iterador.remove();
+            }
+        }
+        //Le avisa al manejador de turnos que termino el turno
+    }
+
+    public void agregar(Ubicable elemento) {
+        elementos.add(elementos.size()-1,elemento);
     }
 }

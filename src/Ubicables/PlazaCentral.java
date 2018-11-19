@@ -12,6 +12,9 @@ import Ubicables.Ubicable;
 public class PlazaCentral implements Ubicable {
     PosicionEdificio posicion;
     Estado estado;
+    private int vida= 450;
+    private int vidaActual = vida;
+
 
     public PlazaCentral(Posicion posicionAldeano) throws PosicionFueraDeRangoException, NoSePudoConstruirException {
         posicion = new PosicionEdificio(posicionAldeano, 4);
@@ -33,5 +36,16 @@ public class PlazaCentral implements Ubicable {
         }
         Aldeano aldeano = new Aldeano(posicion.obtenerPosicionDeAldeano()); //Es posicion Despliegue
         return aldeano;
+    }
+
+
+    @Override
+    public boolean estaMuerto() {
+        return vidaActual<1;
+    }
+
+    @Override
+    public void quitarVida(int dañoRecibido) {
+        vidaActual -= dañoRecibido;
     }
 }

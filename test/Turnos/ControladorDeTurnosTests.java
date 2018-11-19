@@ -1,31 +1,40 @@
 package Turnos;
 
+import Jugador.Jugador;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ControladorDeTurnosTests {
-/*
+
     @Test
-    void elPrimerJugadorEsElJugador1(){
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        jugador1.inicializarJugador();
-        jugador2.inicializaJugador();
-        ControladorDeTurnos controlador = new ControladorDeTurnos(jugador1, jugador2);
-        assertTrue(controlador.obtenerJugadorActual() = jugador1);
+    void elPrimerJugadorEsUnoDeLosPosibles(){
+        ArrayList ubicables = new ArrayList();
+        Jugador jugador1 = new Jugador(ubicables);
+        Jugador jugador2 = new Jugador(ubicables);
+        ArrayList jugadores = new ArrayList<Jugador>();
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+        ArrayList jugadoresCopia = new ArrayList(jugadores);
+        ControladorTurnos controlador = new ControladorTurnos(jugadores);
+        assertTrue(jugadoresCopia.contains(controlador.obtenerJugadorActual()));
     }
 
     @Test
     void jugador1TerminaTurnoEntoncesVaJugador2(){
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        jugador1.inicializarJugador();
-        jugador2.inicializaJugador();
-        ControladorDeTurnos controlador = new ControladorDeTurnos(jugador1, jugador2);
-        jugador1.finalizarTurno();
+        ArrayList ubicables = new ArrayList();
+        Jugador jugador1 = new Jugador(ubicables);
+        Jugador jugador2 = new Jugador(ubicables);
+        ArrayList jugadores = new ArrayList<Jugador>();
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+        ControladorTurnos controlador = new ControladorTurnos(jugadores);
 
-        assertTrue(controlador.obtenerJugadorActual() = jugador2);
+        Jugador jugadorPrimerTurno = controlador.obtenerJugadorActual();
+        controlador.siguienteTurno();
+        assertTrue(controlador.obtenerJugadorActual() != jugadorPrimerTurno);
     }
 /*
     @Test

@@ -2,7 +2,7 @@ package Turnos;
 
 public interface Estado {
 
-    public boolean estaOcupado();
+    boolean estaOcupado();
 
     Estado desocuparUnTurno();
 
