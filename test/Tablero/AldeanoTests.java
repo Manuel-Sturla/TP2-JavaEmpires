@@ -1,3 +1,5 @@
+package Tablero;
+
 import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
@@ -21,7 +23,6 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 2,2);
         assertTrue(mapa.celdaEstaOcupada(posicion));
     }
-
     @Test
     void moverAldeanoHaciaLaDerechaOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa  = new Mapa(3,3);
@@ -31,7 +32,6 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 2,1);
         assertTrue(mapa.celdaEstaOcupada(posicion2));
     }
-
     @Test
     void moverAldeanoHaciaAbajoOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
@@ -41,7 +41,6 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 2,2);
         assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));;
     }
-
     @Test
     void moverAldeanoFueraDelMapaNoLoMueve() throws PosicionFueraDeRangoException {
         Mapa mapa  = new Mapa(3,3);
@@ -51,7 +50,6 @@ public class AldeanoTests {
             aldeano.moverIzquierda();
         });
     }
-
     @Test
     void moverAldeanoDesocupaLaPosicionInicial() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
@@ -61,56 +59,49 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 2,2);
         assertFalse(mapa.celdaEstaOcupada(posicion2));
     }
-/*
     @Test
     public void testMoverAldeanoArribaVerificaQueLaNuevaPosicionEsteOcupadaYLaAnteriorNo() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverArriba();
-        Posicion posicion2 = new Posicion(mapa, 1,2);
-        assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));
+        Posicion posicion2 = new Posicion(mapa, 1,1);
+        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));
     }
-
     @Test
     public void testMoverAldeanoArribaIzqVerificaQueLaNuevaPosicionEsteOcupadaYLaAnteriorNo() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverArribaIzq();
-        Posicion posicion2 = new Posicion(mapa, 0,2);
-        assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));
+        Posicion posicion2 = new Posicion(mapa, 1,1);
+        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));
     }
-
     @Test
     public void testMoverAldeanoArribaDerVerificaQueLaNuevaPosicionEsteOcupadaYLaAnteriorNo() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverArribaDer();
-        Posicion posicion2 = new Posicion(mapa, 2,2);
-        assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));
+        Posicion posicion2 = new Posicion(mapa, 1,1);
+        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));
     }
-
     @Test
     public void testMoverAldeanoAbajoIzqVerificaQueLaNuevaPosicionEsteOcupadaYLaAnteriorNo() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverAbajoIzq();
-        Posicion posicion2 = new Posicion(mapa, 0,0);
-        assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));
+        Posicion posicion2 = new Posicion(mapa, 1,1);
+        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));
     }
-
     @Test
     public void testMoverAldeanoAbajoDerVerificaQueLaNuevaPosicionEsteOcupadaYLaAnteriorNo() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverAbajoDer();
-        Posicion posicion2 = new Posicion(mapa, 2,0);
-        assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));
+        Posicion posicion2 = new Posicion(mapa, 1,1);
+        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));
     }
-
-    */
 }

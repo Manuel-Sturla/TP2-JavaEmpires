@@ -35,10 +35,10 @@ public class PosicionEdificioTests {
     }
 
     @Test
-    void crearEdificioCuandoNoHayEspacioLevantaExcepcion() throws NoSePudoConstruirException{
+    void crearEdificioCuandoNoHayEspacioLevantaExcepcion() throws PosicionFueraDeRangoException{
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 9, 0);
-        assertThrows(NoSePudoConstruirException.class , ()-> {
+        assertThrows(PosicionFueraDeRangoException.class , ()-> {
             PosicionEdificio posEdificio = new PosicionEdificio(posicion, 2);
         });
     }
