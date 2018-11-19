@@ -1,15 +1,9 @@
 package Jugador;
 
-import Ubicables.Aldeano;
-import Ubicables.Castillo;
-import Ubicables.PlazaCentral;
 import Ubicables.Ubicable;
 
-import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Hashtable;
 import java.util.Iterator;
 
 public class Jugador {
@@ -26,7 +20,7 @@ public class Jugador {
         }
     }
 */
-    //Constructor que recibe coleccion! de ubicables generica y los agrega
+    //Constructor que recibe coleccion! de ubicab+les generica y los agrega
     public Jugador(Collection <Ubicable> ubicables){
         elementos = new ArrayList(ubicables);
     }

@@ -4,6 +4,7 @@ import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Aldeano;
 import Ubicables.Ubicable;
+import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -105,6 +106,14 @@ public class MapaTests {
         });
     }
 
+    @Test<posicion>
+    void enMapaDe1x2LaPrimeraCeldaEsAdyacenteALaSegunda() throws PosicionFueraDeRangoException {
+        Mapa mapa = new Mapa(2,1);
+        Posicion posicion2 = new Posicion(mapa, 1,0);
+        assertTrue(mapa.esAdyacente(posicion,posicion2));
+    }
+
+    //FALTAN PRUEBAS DDE ADYACENCIA CON MAPAS MAS GRANDES (#PONELE)
 
 
 }

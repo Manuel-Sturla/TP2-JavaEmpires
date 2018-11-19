@@ -4,6 +4,11 @@ import Exceptions.PosicionFueraDeRangoException;
 import Ubicables.Aldeano;
 import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CeldaTest {
@@ -38,5 +43,22 @@ public class CeldaTest {
         assertTrue(!celda.estaOcupada());
     }
 
+    @Test
+    void crearCeldaConUnaCeldaAdyacenteSonAdyacentes(){
+        Celda celda = new Celda();
+        Celda celda2 = new Celda();
+        ArrayList celdasAdyacentes = new ArrayList();
+        celdasAdyacentes.add(celda2);
+        celda.setCeldasAdyacentes(celdasAdyacentes);
+
+        assertTrue(celda.esAdyacente(celda2));
+
+    }
+    @Test
+    void crearCeldaSinCeldasAdyacentesDevuelveConjuntoVacioAlPedirselas(){
+        Celda celda = new Celda();
+        Celda celda2 = new Celda();
+        assertFalse(celda.esAdyacente(celda2));
+    }
 
 }

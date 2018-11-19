@@ -80,4 +80,8 @@ public class Posicion {
         coordenadaHorizontal += 1;
         coordenadaVertical -= 1;
     }
+
+    public boolean esAdyacente(Posicion posicionAdyacente) throws PosicionFueraDeRangoException {
+        return mapa.esAdyacente(this, posicionAdyacente);
+    }
 }
