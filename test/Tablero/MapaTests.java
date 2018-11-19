@@ -18,7 +18,6 @@ public class MapaTests {
 
     public MapaTests() throws PosicionFueraDeRangoException {
     }
-
     @Test
     void elMapaRecienCreadoEstaVacio() throws PosicionFueraDeRangoException {
         boolean check = true;
@@ -34,20 +33,17 @@ public class MapaTests {
         }
         assertTrue(check);
     }
-
     @Test<mapa,ubicable,posicion>
     void ocuparPosicionOcupaLaCelda() throws PosicionFueraDeRangoException {
         mapa.ocuparCelda(ubicable,posicion);
         assertTrue(mapa.celdaEstaOcupada(posicion));
     }
-
     @Test<mapa,ubicable,posicion>
     void desocuparPosicionDesocupaLaPosicion() throws PosicionFueraDeRangoException {
         mapa.ocuparCelda(ubicable,posicion);
         mapa.desocuparCelda(posicion);
         assertFalse(mapa.celdaEstaOcupada(posicion));
     }
-
     @Test<mapa,ubicable,posicion>
     void moverElementoDeCeldaOcupaLaCeldaDeLlegada() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,1,0);
@@ -56,7 +52,6 @@ public class MapaTests {
 
         assertTrue(mapa.celdaEstaOcupada(posicionLlegada));
     }
-
     @Test<mapa,ubicable,posicion>
     void moverElementoDeCeldaDesocupaLaInicial() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,1,0);
@@ -65,7 +60,6 @@ public class MapaTests {
 
         assertFalse(mapa.celdaEstaOcupada(posicion));
     }
-
     @Test<mapa,ubicable,posicion>
     void moverElementoACeldaOcupadaLevantaExcepcion() throws PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa, 1, 0);
@@ -84,21 +78,17 @@ public class MapaTests {
             mapa.ocuparCelda(ubicable, posicion);
         });
     }
-
     @Test<mapa,ubicable>
     void posicionarElementoEnPosicionFueraDeRangoLevantaExcepcion(){
         Posicion posicion = new Posicion(mapa, 15, 0);
-
         assertThrows(PosicionFueraDeRangoException.class, () -> {
             mapa.ocuparCelda(ubicable, posicion);
         });
      }
-
     @Test <mapa,ubicable,posicion>
     void posicionValidaEstaEnMapaDevuelveVerdadero(){
         assertTrue(mapa.estaEnMapa(posicion));
     }
-
     @Test<mapa,ubicable>
     void posicionInvalidaEstaEnMapaDevuelveFalso(){
         Posicion posicion = new Posicion(mapa, 15, 0);

@@ -38,8 +38,8 @@ public class AldeanoTests {
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion);
         aldeano.moverAbajo();
-        Posicion posicion2 = new Posicion(mapa, 2,1);
-        assertTrue(mapa.celdaEstaOcupada(posicion2) && !mapa.celdaEstaOcupada(posicion));;
+        Posicion posicion2 = new Posicion(mapa, 2,2);
+        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));;
     }
 
     @Test
