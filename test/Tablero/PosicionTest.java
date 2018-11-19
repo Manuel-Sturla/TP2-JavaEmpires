@@ -59,9 +59,9 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 ==1 && x2== 1);
     }
-/*
+
     @Test <x1,x2,m>
-    void prueboMoverArribaIzq(){
+    void prueboMoverArribaIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,1,0);
         p.moverArribaIzq();
         setx1Yx2(p);
@@ -69,7 +69,7 @@ public class PosicionTest {
     }
 
     @Test <x1,x2,m>
-    void prueboMoverAbajoDer(){
+    void prueboMoverAbajoDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,0,1);
         p.moverAbajoDer();
         setx1Yx2(p);
@@ -77,11 +77,11 @@ public class PosicionTest {
     }
 
     @Test <x1,x2,m>
-    void pruebaMoverAbajoIzq(){
+    void pruebaMoverAbajoIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m,2,2);
         p.moverAbajoIzq();
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 1);
     }
-    */
+
 }
