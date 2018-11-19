@@ -4,6 +4,9 @@ import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 import Ubicables.Ubicable;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Mapa {
     Celda mapa[][];
     int largo;
@@ -18,6 +21,31 @@ public class Mapa {
                 mapa[i][j] = new Celda();
             }
         }
+        //Creo celdas adyacentes para cada celda
+        for(int i = 0;i < largo; i++){
+            for(int j = 0; j < ancho;j++){
+                ArrayList celdasAdyacentes = this.verCeldasAdyacentes(i,j);
+                mapa[i][j].setCeldasAdyacentes(celdasAdyacentes);
+            }
+        }
+    }
+
+    private ArrayList verCeldasAdyacentes(int coordenadaHorizontalInicial, int coordenadaVerticalInicial) {
+        ArrayList celdasAdyacentes = new ArrayList();
+        for(int i= coordenadaHorizontalInicial-1; i < coordenadaHorizontalInicial+2; i++ ){
+            for (int j= coordenadaVerticalInicial-1; j < coordenadaVerticalInicial+2; j++){
+                if ((i==coordenadaHorizontalInicial) && (j==coordenadaVerticalInicial)){
+                    continue;
+                }
+                try{
+                    celdasAdyacentes.add(mapa[i][j]);
+
+                }catch (ArrayIndexOutOfBoundsException e){
+                    continue;
+                }
+            }
+        }
+        return celdasAdyacentes;
     }
 
     public boolean celdaEstaOcupada(Posicion posicion) throws PosicionFueraDeRangoException {
@@ -61,6 +89,11 @@ public class Mapa {
         }catch (PosicionFueraDeRangoException e){
             return false;
         }
+    }
+
+
+    public boolean esAdyacente(Posicion posicion, Posicion posicion2) throws PosicionFueraDeRangoException {
+        return this.obtenerCelda(posicion).esAdyacente(obtenerCelda(posicion2));
     }
 }
 
