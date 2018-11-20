@@ -3,6 +3,7 @@ package Jugador;
 public class ManejadorDeRecursos {
     int poblacion;
     int oro_actual;
+
     public ManejadorDeRecursos(int unidades,int oro){
         poblacion = unidades;
         oro_actual = oro;

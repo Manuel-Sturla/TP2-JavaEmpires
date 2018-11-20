@@ -23,10 +23,10 @@ public class Aldeano extends Unidad {
 
 
     public void quitarVida(int dañoRecibido) {
-       vida -= dañoRecibido;
-       if(vida < 1){
-           estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
-       }
+        vida -= dañoRecibido;
+        if(vida < 1){
+            estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
+        }
     }
 
     @Override

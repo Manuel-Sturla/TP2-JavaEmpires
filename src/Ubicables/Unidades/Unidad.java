@@ -122,5 +122,9 @@ public abstract class Unidad implements Ubicable {
     public void desocuparUnTurno(){
         estado = estado.desocuparUnTurno();
     }
+/*
+    public boolean estaEnRango(int rango,Ubicable objetivo){
 
+    }
+    */
 }
