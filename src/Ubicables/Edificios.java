@@ -15,6 +15,8 @@ public abstract class Edificios implements Ubicable {
     public Edificios(Posicion posicionCostruccion,int vidaRecibida,int largo) throws PosicionFueraDeRangoException {
         posicion = new PosicionEdificio(posicionCostruccion, largo);
         posicion.ocuparPosiciones(this);
+        vida =vidaRecibida;
+        vidaActual =vidaRecibida;
     }
 
     public void desocuparUnTurno() {
