@@ -55,8 +55,9 @@ public class EstadoAldeanoTests {
     void estaOcupadoLuegoDeCrearEdificio() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
+        Posicion posicionCostruccion = new Posicion(mapa,4,3);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.crearPlazaCentral();
+        aldeano.crearPlazaCentral(posicionCostruccion);
         assertTrue(aldeano.estaOcupado());
     }
 
@@ -64,8 +65,9 @@ public class EstadoAldeanoTests {
     void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
+        Posicion posicionCostruccion = new Posicion(mapa,4,3);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.crearPlazaCentral();
+        aldeano.crearPlazaCentral(posicionCostruccion);
         aldeano.desocuparUnTurno();
         assertTrue(aldeano.estaOcupado());
     }
@@ -86,8 +88,9 @@ public class EstadoAldeanoTests {
     void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
+        Posicion posicionCostruccion = new Posicion(mapa,4,3);
         Aldeano aldeano = new Aldeano(posicion);
-        aldeano.crearPlazaCentral();
+        aldeano.crearPlazaCentral(posicionCostruccion);
         aldeano.desocuparUnTurno();
         assertThrows(UbicableEstaOcupadoException.class, aldeano::moverIzquierda);
     }

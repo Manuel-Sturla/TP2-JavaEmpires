@@ -13,12 +13,12 @@ public class Aldeano extends Unidad {
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
     }
 
-    public PlazaCentral crearPlazaCentral() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    public PlazaCentral crearPlazaCentral(Posicion posicionCostruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         estado = new Ocupado(3);
-        PlazaCentral plazaCentral = new PlazaCentral(posicion);
+        PlazaCentral plazaCentral = new PlazaCentral(posicionCostruccion);
         return plazaCentral;
     }
 

@@ -126,13 +126,14 @@ public class JugadorTests {
     void crearPlazaCentralLaCreaYSeAgregaALosElementosUbicables() throws PosicionFueraDeRangoException, NoSePudoConstruirException, UbicableEstaOcupadoException {
         Mapa mapa = new Mapa(50,50);
         Posicion posicion1 = new Posicion(mapa,1,1);
+        Posicion posicionCostruccion = new Posicion(mapa,2,1);
         ArrayList ubicables = new ArrayList();
         Aldeano aldeano = new Aldeano(posicion1);
         ubicables.add(aldeano);
         Jugador jugador = new Jugador(ubicables);
         Aldeano aldeanoJugador = (Aldeano)jugador.iniciarTurno();
 
-        PlazaCentral plazaCentralNueva = aldeanoJugador.crearPlazaCentral();
+        PlazaCentral plazaCentralNueva = aldeanoJugador.crearPlazaCentral(posicionCostruccion);
         jugador.agregar(plazaCentralNueva); //ACA ES UN METODO QUE SE TIENE QUE EJECUTAR MANUALMENTE POSIBLEMENTE SEA MEJOR AUTOMATICAMENTE
         assertTrue(jugador.getElementos().contains(plazaCentralNueva));
     }
