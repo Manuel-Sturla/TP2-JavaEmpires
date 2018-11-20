@@ -113,14 +113,14 @@ public class PosicionTest {
         Posicion posicion = new Posicion(m,1,1);
         Posicion posicion1 = new Posicion(m,1,2);
         PosicionEdificio posicionEdificio = new PosicionEdificio(posicion1,2);
-        assertTrue(posicion.estaEnRango(posicionEdificio));
+        assertTrue(posicion.edificioEstaEnRango(posicionEdificio));
     }
     @Test<m>
     void meFijoSiEstaARangoDeOTraPosicionFalla() throws PosicionFueraDeRangoException {
         Posicion posicion = new Posicion(m,1,1);
         Posicion posicion1 = new Posicion(m,2,3);
         PosicionEdificio posicionEdificio = new PosicionEdificio(posicion1,2);
-        assertTrue(!posicion.estaEnRango(posicionEdificio));
+        assertTrue(!posicion.edificioEstaEnRango(posicionEdificio));
     }
 
 }

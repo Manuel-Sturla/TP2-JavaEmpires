@@ -11,7 +11,7 @@ public class Espadachin extends Unidad {
     }
 
     public void atacarUnidad(Ubicable objetivo){
-        return;
+
     }
 
     public void quitarVida(int dañoRecibido) {

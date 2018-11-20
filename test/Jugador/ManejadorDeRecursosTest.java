@@ -18,14 +18,12 @@ public class ManejadorDeRecursosTest {
         public void testElControladorDeRecursosNoDejaTenerMasDe50Unidades(){
             ManejadorDeRecursos manejador = new ManejadorDeRecursos(50,100);
             assertFalse(manejador.CrearAldeano() && manejador.CrearEspadachin() && manejador.CrearArquero() && manejador.CrearArmaDeAsedio());
-
         }
 
         @Test
         public void testElControladorDeRecursosNoDejaCrearAldeanoConMenosDe25DeOro(){
             ManejadorDeRecursos manejador = new ManejadorDeRecursos(3,24);
             assertFalse(manejador.CrearAldeano());
-
         }
 
         @Test
@@ -39,14 +37,12 @@ public class ManejadorDeRecursosTest {
         public void testElControladorDeRecursosNoDejaCrearEspadachinConMenosDe50DeOro(){
             ManejadorDeRecursos manejador = new ManejadorDeRecursos(3,49);
             assertFalse(manejador.CrearArquero());
-
         }
 
         @Test
         public void testElControladorDeRecursosNoDejaCrearArmaDeAsedioConMenosDe150DeOro(){
             ManejadorDeRecursos manejador = new ManejadorDeRecursos(3,149);
             assertFalse(manejador.CrearArmaDeAsedio());
-
         }
 
         @Test

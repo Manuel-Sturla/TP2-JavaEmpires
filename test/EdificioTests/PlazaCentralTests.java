@@ -95,23 +95,4 @@ public class PlazaCentralTests {
         Posicion posDeploy = new Posicion(mapa, 10, 11);
         assertTrue(mapa.celdaEstaOcupada(posDeploy));
     }
-    //ESTO LE TOCA A DIEGUIN!!!!
-    @Test
-    void siElAldeanoNoTieneEspacioParaConstruirElEdificioLoContruyeEnElSentidoOpuesto() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, NoSePudoConstruirException {
-        Mapa mapa = new Mapa(20,20);
-        Posicion posicionAldeano = new Posicion(mapa, 19,0);
-        Posicion posicionCostruccion = new Posicion(mapa,20,0);
-        Aldeano aldeano = new Aldeano(posicionAldeano);
-        PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
-        boolean check = true;
-        for (int i = 17; i < 19; i++) {
-            for (int j = 0; j < 2; j++) {
-                Posicion posMapa = new Posicion(mapa, i, j);
-                if(mapa.celdaEstaOcupada(posMapa)){
-                    check = false;
-                }
-            }
-        }
-        assertTrue(check);
-    }
 }

@@ -18,7 +18,7 @@ public class ConstructorEdificios {
 
     public void consturirPlazaCentral(Posicion posicionAldeano, Posicion posicionCostruccion) throws NoSePudoConstruirException, PosicionFueraDeRangoException {
         PosicionEdificio posicionEdificio = new PosicionEdificio(posicionCostruccion,2);
-        if(!posicionAldeano.estaEnRango(posicionEdificio)) throw new PosicionFueraDeRangoException();
+        if(!posicionAldeano.edificioEstaEnRango(posicionEdificio)) throw new PosicionFueraDeRangoException();
         PlazaCentral plazaCentral = new PlazaCentral(posicionCostruccion);
         jugador.agregar(plazaCentral);
     }
