@@ -87,7 +87,7 @@ public class Posicion {
         return mapa.esAdyacente(this, posicionAdyacente);
     }
 
-    public boolean estaArango(PosicionEdificio posicionEdificio) throws PosicionFueraDeRangoException {
+    public boolean estaEnRango(PosicionEdificio posicionEdificio) throws PosicionFueraDeRangoException {
         ArrayList posicionCostrucccion = posicionEdificio.getArrayPosiciones();
         Posicion posicionActual;
         for(int i=0; i < posicionCostrucccion.size(); i++) {

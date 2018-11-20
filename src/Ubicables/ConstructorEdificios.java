@@ -22,4 +22,5 @@ public class ConstructorEdificios {
         PlazaCentral plazaCentral = new PlazaCentral(posicionCostruccion);
         jugador.agregar(plazaCentral);
     }
+
 }

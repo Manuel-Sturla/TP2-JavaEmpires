@@ -8,15 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConstructorEdificiosTest {
 
-    /*
-    public void crearPlazaCentral(Posicion posicionInicial){
-        PosicionEdificio zonaCostruccion = new PosicionEdificio()
-    }
-    */
 
     ArrayList aldeanos = new ArrayList();
     Jugador jugador1 = new Jugador(aldeanos);
@@ -43,12 +40,26 @@ public class ConstructorEdificiosTest {
         }
         assertTrue(ok);
     }
-/*
+
     @Test
-    public void TratoDecrearEdificioFueraDeMapa(){
+    public void TratoDeCrearEdificioFueraDeMapa(){
         Mapa mapa = new Mapa(10,10);
         Posicion posicionAldeano = new Posicion(mapa,8,8);
-        Posicion posicionCostruccion = new Posicion()
+        Posicion posicionConstruccion = new Posicion(mapa,9,8);
+        ConstructorEdificios constructorEdificios = new ConstructorEdificios(jugador1);
+        assertThrows(PosicionFueraDeRangoException.class , ()->{
+            constructorEdificios.consturirPlazaCentral(posicionAldeano,posicionConstruccion);
+        });
     }
-*/
+
+    @Test
+    public void TratoDeCrearEdificioFueraDeRangoDelAldeano(){
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicionAldeano = new Posicion(mapa,5,5);
+        Posicion posicionConstruccion = new Posicion(mapa,2,2);
+        ConstructorEdificios constructorEdificios = new ConstructorEdificios(jugador1);
+        assertThrows(PosicionFueraDeRangoException.class , ()->{
+            constructorEdificios.consturirPlazaCentral(posicionAldeano,posicionConstruccion);
+        });
+    }
 }

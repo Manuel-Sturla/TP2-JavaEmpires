@@ -22,6 +22,4 @@ public class PlazaCentral extends Edificios {
         return aldeano;
     }
 
-
-
 }
