@@ -4,7 +4,6 @@ import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Aldeano;
 import Ubicables.Ubicable;
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

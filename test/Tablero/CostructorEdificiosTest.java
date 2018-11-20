@@ -1,5 +1,6 @@
 package Tablero;
 
+import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Jugador.Jugador;
 import Ubicables.CostructorEdificios;
@@ -25,25 +26,24 @@ public class CostructorEdificiosTest {
         CostructorEdificios costructorEdificios = new CostructorEdificios(jugador1);
         assertTrue(costructorEdificios != null);
     }
-/*
+
     @Test
-    public void TratoDeCrearUnEdificio() throws PosicionFueraDeRangoException {
+    public void TratoDeCrearUnEdificio() throws PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(10,10);
-        Posicion posicionAldeano = new Posicion(mapa,1,1);
-        Posicion posicionCostruccion = new Posicion(mapa,2,2);
-        PosicionEdificio posicionEdificio = new PosicionEdificio(posicionCostruccion,2);
+        Posicion posicionAldeano = new Posicion(mapa,5,5);
+        Posicion posicionCostruccion = new Posicion(mapa,3,3);
         CostructorEdificios costructorEdificios = new CostructorEdificios(jugador1);
         costructorEdificios.consturirPlazaCentral(posicionAldeano,posicionCostruccion);
         boolean ok = true;
-        for(int i = 2; i<4;i++){
-            for (int j=2; j<4;j++){
+        for(int i = 3; i<4;i++){
+            for (int j=3; j<4;j++){
                 Posicion posicion = new Posicion(mapa,i,j);
                 ok = mapa.celdaEstaOcupada(posicion);
             }
         }
         assertTrue(ok);
     }
-
+/*
     @Test
     public void TratoDecrearEdificioFueraDeMapa(){
         Mapa mapa = new Mapa(10,10);

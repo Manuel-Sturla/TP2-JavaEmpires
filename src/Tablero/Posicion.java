@@ -3,6 +3,8 @@ package Tablero;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 
+import java.util.ArrayList;
+
 public class Posicion {
     private int coordenadaHorizontal;
     private int coordenadaVertical;
@@ -83,5 +85,15 @@ public class Posicion {
 
     public boolean esAdyacente(Posicion posicionAdyacente) throws PosicionFueraDeRangoException {
         return mapa.esAdyacente(this, posicionAdyacente);
+    }
+
+    public boolean estaArango(PosicionEdificio posicionEdificio) throws PosicionFueraDeRangoException {
+        ArrayList posicionCostrucccion = posicionEdificio.getArrayPosiciones();
+        Posicion posicionActual;
+        for(int i=0; i < posicionCostrucccion.size(); i++) {
+            posicionActual = (Posicion) posicionCostrucccion.get(i);
+            if(posicionActual.esAdyacente(this)) return true;
+        }
+        return false;
     }
 }

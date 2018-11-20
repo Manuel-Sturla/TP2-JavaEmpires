@@ -53,6 +53,7 @@ public class Jugador {
     }
 
     public void agregar(Ubicable elemento) {
-        elementos.add(elementos.size()-1,elemento);
+        elementos.add(elementos.size(),elemento);//saque un -1 que no vi sentido pero me tiraba error
+        //linea anterios elementos.add(elementos.size()-1,elemento);
     }
 }

@@ -4,6 +4,7 @@ import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PosicionTest {
@@ -16,7 +17,6 @@ public class PosicionTest {
         x1 = p.getCoordenadaHorizontal();
         x2 = p.getCoordenadaVertical();
     }
-
     @Test
     <x1, x2, m>
     void prueboConstructor() {
@@ -33,7 +33,6 @@ public class PosicionTest {
         p.moverDer();
         assertTrue(p.getCoordenadaHorizontal() == 1 && p.getCoordenadaVertical() == 0);
     }
-
     @Test
     <x1, x2, m>
     void prueboMoverIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -42,7 +41,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 0);
     }
-
     @Test
     <x1, x2, m>
     void prueboMoverArriba() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -51,7 +49,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 1);
     }
-
     @Test
     <x1, x2, m>
     void prueboMoverAbajo() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -60,7 +57,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 0);
     }
-
     @Test
     <x1, x2, m>
     void prueboMovermeArribaDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -69,7 +65,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 1);
     }
-
     @Test
     <x1, x2, m>
     void prueboMoverArribaIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -78,7 +73,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 1);
     }
-
     @Test
     <x1, x2, m>
     void prueboMoverAbajoDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -87,7 +81,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 0);
     }
-
     @Test
     <x1, x2, m>
     void pruebaMoverAbajoIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
@@ -96,8 +89,6 @@ public class PosicionTest {
         setx1Yx2(p);
         assertTrue(x1 == 1 && x2 == 1);
     }
-
-
     @Test
     void obtenerAdyacenteDaLaCorrecta() throws PosicionFueraDeRangoException {
         Posicion p = new Posicion(m, 5, 5);
@@ -114,6 +105,22 @@ public class PosicionTest {
             }
         }
         assertTrue(check);
+    }
+
+    //TEST DE SI ESTA EN RANGO
+    @Test<m>
+    void meFijoSiEstaARangoOtraPosicion() throws PosicionFueraDeRangoException {
+        Posicion posicion = new Posicion(m,1,1);
+        Posicion posicion1 = new Posicion(m,1,2);
+        PosicionEdificio posicionEdificio = new PosicionEdificio(posicion1,2);
+        assertTrue(posicion.estaArango(posicionEdificio));
+    }
+    @Test<m>
+    void meFijoSiEstaARangoDeOTraPosicionFalla() throws PosicionFueraDeRangoException {
+        Posicion posicion = new Posicion(m,1,1);
+        Posicion posicion1 = new Posicion(m,2,3);
+        PosicionEdificio posicionEdificio = new PosicionEdificio(posicion1,2);
+        assertTrue(!posicion.estaArango(posicionEdificio));
     }
 
 }

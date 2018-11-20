@@ -1,9 +1,9 @@
 package Tablero;
 
-import Exceptions.NoSePudoConstruirException;
-import Exceptions.PosicionException;
 import Exceptions.PosicionFueraDeRangoException;
 import Ubicables.Ubicable;
+
+import java.util.ArrayList;
 
 public class PosicionEdificio {
 
@@ -15,7 +15,7 @@ public class PosicionEdificio {
         mapa = posicionRecibida.getMapa();
         largoLado = largoLadoRecibido;
         posiciones = new Posicion[largoLado][largoLado];
-        int coordenadaHorizontalInicial = posicionRecibida.getCoordenadaHorizontal() + 1;
+        int coordenadaHorizontalInicial = posicionRecibida.getCoordenadaHorizontal();
         int coordenadaVerticalIncial = posicionRecibida.getCoordenadaVertical();
         Posicion posActual;
         for (int i = 0; i < largoLado; i++) {
@@ -31,6 +31,16 @@ public class PosicionEdificio {
 
     public Mapa getMapa() {
         return mapa;
+    }
+
+    public ArrayList getArrayPosiciones() {
+        ArrayList arrayPosiciones = new ArrayList();
+        for(int i = 0; i<largoLado;i++){
+            for(int j =0; j<largoLado;j++){
+                arrayPosiciones.add(posiciones[i][j]);
+            }
+        }
+        return arrayPosiciones;
     }
 
     public void ocuparPosiciones(Ubicable edificio) throws PosicionFueraDeRangoException {
