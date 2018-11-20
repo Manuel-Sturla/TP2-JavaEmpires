@@ -3,6 +3,7 @@ package Ubicables;
 import Exceptions.PosicionFueraDeRangoException;
 import Tablero.Posicion;
 import Tablero.PosicionEdificio;
+import Turnos.Desocupado;
 import Turnos.Estado;
 import Turnos.Ocupado;
 

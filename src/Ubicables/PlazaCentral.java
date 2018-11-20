@@ -1,13 +1,8 @@
 package Ubicables;
 
-import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Posicion;
-import Tablero.PosicionEdificio;
-import Turnos.Estado;
-import Turnos.Ocupado;
-import Ubicables.Ubicable;
 
 public class PlazaCentral extends Edificios {
 
