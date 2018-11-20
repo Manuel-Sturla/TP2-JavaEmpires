@@ -1,4 +1,4 @@
-package Ubicables;
+package Ubicables.Edificios;
 
 import Exceptions.PosicionFueraDeRangoException;
 import Tablero.Posicion;
@@ -6,6 +6,7 @@ import Tablero.PosicionEdificio;
 import Turnos.Desocupado;
 import Turnos.Estado;
 import Turnos.Ocupado;
+import Ubicables.Ubicable;
 
 public abstract class Edificios implements Ubicable {
 

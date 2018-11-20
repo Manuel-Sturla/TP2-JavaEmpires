@@ -1,12 +1,11 @@
 package EdificioTests;
 
-import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Tablero.PosicionEdificio;
-import Ubicables.Aldeano;
+import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 

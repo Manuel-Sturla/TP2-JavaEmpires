@@ -2,7 +2,7 @@ import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Ubicables.Aldeano;
+import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 

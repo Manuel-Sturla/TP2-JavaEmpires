@@ -1,11 +1,10 @@
 package Tablero;
 
 import Exceptions.PosicionFueraDeRangoException;
-import Ubicables.Aldeano;
+import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

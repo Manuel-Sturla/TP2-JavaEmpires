@@ -1,10 +1,11 @@
-package Ubicables;
+package Ubicables.Edificios;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Tablero.PosicionEdificio;
+import Ubicables.Ubicable;
 
 public class Castillo implements Ubicable {
     PosicionEdificio posicion;

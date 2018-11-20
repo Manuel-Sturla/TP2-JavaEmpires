@@ -1,4 +1,4 @@
-package Tablero;
+package Unidades;
 
 import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.PosicionFueraDeRangoException;
@@ -6,7 +6,7 @@ import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Ubicables.Aldeano;
+import Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

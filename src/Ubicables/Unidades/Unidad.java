@@ -1,4 +1,4 @@
-package Ubicables;
+package Ubicables.Unidades;
 
 import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.PosicionException;
@@ -8,8 +8,9 @@ import Tablero.Posicion;
 import Turnos.Desocupado;
 import Turnos.Estado;
 import Turnos.Ocupado;
+import Ubicables.Ubicable;
 
-public abstract class Unidad implements Ubicable{
+public abstract class Unidad implements Ubicable {
     protected int vida;
     protected Estado estado;
     protected Posicion posicion;

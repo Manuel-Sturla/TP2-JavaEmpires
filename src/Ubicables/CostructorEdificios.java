@@ -5,6 +5,7 @@ import Exceptions.PosicionFueraDeRangoException;
 import Jugador.Jugador;
 import Tablero.Posicion;
 import Tablero.PosicionEdificio;
+import Ubicables.Edificios.PlazaCentral;
 
 public class CostructorEdificios {
 

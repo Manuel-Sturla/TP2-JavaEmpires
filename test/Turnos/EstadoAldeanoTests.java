@@ -3,8 +3,7 @@ package Turnos;
 import Exceptions.*;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Ubicables.Aldeano;
-import Ubicables.Unidad;
+import Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

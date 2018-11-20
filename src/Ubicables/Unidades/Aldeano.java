@@ -1,10 +1,9 @@
-package Ubicables;
+package Ubicables.Unidades;
 
 import Exceptions.*;
 import Tablero.Posicion;
-import Turnos.Desocupado;
-import Turnos.Estado;
 import Turnos.Ocupado;
+import Ubicables.Edificios.PlazaCentral;
 
 public class Aldeano extends Unidad {
 

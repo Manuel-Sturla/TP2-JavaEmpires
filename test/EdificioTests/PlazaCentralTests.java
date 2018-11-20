@@ -5,8 +5,8 @@ import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Ubicables.Aldeano;
-import Ubicables.PlazaCentral;
+import Ubicables.Unidades.Aldeano;
+import Ubicables.Edificios.PlazaCentral;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -4,7 +4,7 @@ import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
-import Ubicables.Castillo;
+import Ubicables.Edificios.Castillo;
 import org.junit.jupiter.api.Test;
 
 public class CastilloTests {
