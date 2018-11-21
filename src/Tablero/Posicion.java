@@ -35,14 +35,14 @@ public class Posicion {
     }
 
     // metodos de movimiento
-    public void moverDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+    public void moverDerecha() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
 
         Posicion posicionLlegada = new Posicion(mapa, coordenadaHorizontal+1, coordenadaVertical);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal+=1;
 
     }
-    public void moverIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+    public void moverIzquierda() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal-=1;

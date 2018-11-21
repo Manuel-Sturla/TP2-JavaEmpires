@@ -104,4 +104,19 @@ public class AldeanoTests {
         Posicion posicion2 = new Posicion(mapa, 1,1);
         assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));
     }
+
+    @Test
+    public void moverAldeanoOcupadoNoMueveNoLoMueve() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
+        Mapa mapa  = new Mapa(5,5);
+        Posicion posicion = new Posicion(mapa, 3,3);
+        Aldeano aldeano = new Aldeano(posicion);
+        aldeano.moverIzquierda();
+        try{
+            aldeano.moverIzquierda();
+        }catch (UbicableEstaOcupadoException e){}
+
+        Posicion posicionChequeo = new Posicion(mapa, 2,3);
+        assertTrue(mapa.celdaEstaOcupada(posicionChequeo));
+
+    }
 }

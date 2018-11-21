@@ -30,14 +30,14 @@ public class PosicionTest {
     <x1, x2, m>
     void prueboMovermeDer() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m, 0, 0);
-        p.moverDer();
+        p.moverDerecha();
         assertTrue(p.getCoordenadaHorizontal() == 1 && p.getCoordenadaVertical() == 0);
     }
     @Test
     <x1, x2, m>
     void prueboMoverIzq() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion p = new Posicion(m, 1, 0);
-        p.moverIzq();
+        p.moverIzquierda();
         setx1Yx2(p);
         assertTrue(x1 == 0 && x2 == 0);
     }

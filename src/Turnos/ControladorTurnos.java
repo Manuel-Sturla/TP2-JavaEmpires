@@ -3,7 +3,6 @@ package Turnos;
 import Jugador.Jugador;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Random;
 
