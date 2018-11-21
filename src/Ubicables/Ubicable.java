@@ -4,5 +4,5 @@ public interface Ubicable {
 
     boolean estaMuerto();
 
-    void quitarVida(int dañoRecibido);
+    void recibirDanio(int danioRecibido);
 }

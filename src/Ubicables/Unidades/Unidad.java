@@ -4,6 +4,7 @@ import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.PosicionException;
 import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
+import Jugador.Faccion;
 import Tablero.Posicion;
 import Turnos.Desocupado;
 import Turnos.Estado;
@@ -15,7 +16,7 @@ public abstract class Unidad implements Ubicable {
     protected Estado estado;
     protected Posicion posicion;
 
-    public Unidad(int vidaRecibida,Posicion posicionRescibida){
+    public Unidad(int vidaRecibida, Posicion posicionRescibida){
         vida = vidaRecibida;
         posicion = posicionRescibida;
         estado = new Desocupado();
@@ -122,6 +123,9 @@ public abstract class Unidad implements Ubicable {
     public void desocuparUnTurno(){
         estado = estado.desocuparUnTurno();
     }
+
+
+
 /*
     public boolean estaEnRango(int rango,Ubicable objetivo){
 

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Juego {
     Mapa mapa;
     ControladorTurnos controladorTurnos;
-
+/*
     public void iniciar(int largo, int ancho) throws MapaMuyPequeñoException {
         mapa = new Mapa(largo, ancho);
         ArrayList <Ubicable> ubicablesJugador1;
@@ -67,5 +67,5 @@ public class Juego {
 
     public Jugador obtenerJugadorActual() {
         return controladorTurnos.obtenerJugadorActual();
-    }
-    }
+    }*/
+}

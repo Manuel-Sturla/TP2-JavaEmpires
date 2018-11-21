@@ -3,7 +3,6 @@ package Jugador;
 import Ubicables.Ubicable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 public class Jugador {
@@ -11,7 +10,8 @@ public class Jugador {
     ArrayList elementos = new ArrayList();
     Iterator<Ubicable> iterador;
     String nombre;
-/* obsoleto?
+
+    /* obsoleto?
     public Jugador(Aldeano aldeanos[], Castillo castillo){
         //Crea al jugador con sus 3 aldeanos iniciales y su castillo
         elementos[0] = castillo;
@@ -21,8 +21,11 @@ public class Jugador {
     }
 */
     //Constructor que recibe coleccion! de ubicab+les generica y los agrega
-    public Jugador(Collection <Ubicable> ubicables){
-        elementos = new ArrayList(ubicables);
+    public Jugador(){
+        elementos = new ArrayList();
+    }
+
+    public void inicializarJuego(){
     }
 
     public ArrayList <Ubicable> getElementos() {
@@ -55,4 +58,5 @@ public class Jugador {
     public void agregar(Ubicable elemento) {
         elementos.add(elementos.size(),elemento);
     }
+
 }

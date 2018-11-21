@@ -2,24 +2,26 @@ package Ubicables.Edificios;
 
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;
+import Jugador.Faccion;
 import Tablero.Posicion;
 import Turnos.Ocupado;
-import Ubicables.Unidades.Aldeano;
 
 public class PlazaCentral extends Edificios {
+    Faccion faccion;
 
-    public PlazaCentral(Posicion posicionAldeano) throws PosicionFueraDeRangoException {
+    public PlazaCentral(Posicion posicionAldeano, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
         super(posicionAldeano,450,2);
         estado = new Ocupado(3);
+        faccion = faccionRecibida;
     }
 
 
-    public Aldeano crearAldeano() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    public void crearAldeano() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        Aldeano aldeano = new Aldeano(posicion.obtenerPosicionDeAldeano()); //Es posicion Despliegue
-        return aldeano;
+        estado = new Ocupado(1);
+
     }
 
 }

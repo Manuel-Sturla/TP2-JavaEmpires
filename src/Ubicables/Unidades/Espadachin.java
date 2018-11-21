@@ -1,21 +1,29 @@
 package Ubicables.Unidades;
 
-import Tablero.Posicion;
+import Jugador.Faccion;
+import Tablero.*;
 import Turnos.Ocupado;
-import Ubicables.Ubicable;
 
 public class Espadachin extends Unidad {
+    Faccion faccion;
 
-    public Espadachin(Posicion posicionRescibida) {
-        super(100, posicionRescibida);
+    public Espadachin(Posicion posicionRecibida, Faccion faccionRecibida) {
+        super(100, posicionRecibida);
+        faccion = faccionRecibida;
+        faccion.agregarMiembro(this);
     }
 
-    public void atacarUnidad(Ubicable objetivo){
-
+    public void atacarUnidad(Unidad objetivo){
+        //posicion.estaEnRango(objetivo, 1)
+        try{
+            faccion.perteneceFaccion(objetivo);
+        }catch (NullPointerException e){
+            objetivo.recibirDanio(25);
+        }
     }
 
-    public void quitarVida(int dañoRecibido) {
-        vida -= dañoRecibido;
+    public void recibirDanio(int danioRecibido) {
+        vida -= danioRecibido;
         if(vida < 1){
             estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
         }

@@ -26,7 +26,7 @@ public class CeldaTest {
     void ocupoUnaCelda() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,0,0);
-        Ubicable elementoMapa = new Aldeano(posicion);
+        Ubicable elementoMapa = new Aldeano(posicion, null);
         Celda c = new Celda();
         c.ocuparCelda(elementoMapa);
         assertTrue(c.estaOcupada());
@@ -35,7 +35,7 @@ public class CeldaTest {
     void desocupoUnaCelda() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,0,0);
-        Ubicable elementoMapa = new Aldeano(posicion);
+        Ubicable elementoMapa = new Aldeano(posicion, null);
         Celda celda = new Celda();
         celda.ocuparCelda(elementoMapa);
         celda.desocuparCelda();

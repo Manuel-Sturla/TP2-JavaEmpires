@@ -11,19 +11,14 @@ public class PosicionEdificio {
     Mapa mapa;
     int largoLado;
 
-    public PosicionEdificio(Posicion posicionRecibida, int largoLadoRecibido) throws PosicionFueraDeRangoException {
+    public PosicionEdificio(Posicion posicionRecibida, int largoLadoRecibido) {
         mapa = posicionRecibida.getMapa();
         largoLado = largoLadoRecibido;
         posiciones = new Posicion[largoLado][largoLado];
         int coordenadaHorizontalInicial = posicionRecibida.getCoordenadaHorizontal();
         int coordenadaVerticalIncial = posicionRecibida.getCoordenadaVertical();
-        Posicion posActual;
         for (int i = 0; i < largoLado; i++) {
             for (int j = 0; j < largoLado; j++) {
-                posActual = new Posicion(mapa, coordenadaHorizontalInicial + i, coordenadaVerticalIncial + j);
-                if(!mapa.estaEnMapa(posActual)){
-                    throw new PosicionFueraDeRangoException();
-                };
                 posiciones[i][j] = new Posicion(mapa, coordenadaHorizontalInicial + i, coordenadaVerticalIncial + j);
             }
         }
@@ -45,14 +40,14 @@ public class PosicionEdificio {
 
     public void ocuparPosiciones(Ubicable edificio) throws PosicionFueraDeRangoException {
         for (int i = 0; i < largoLado; i++) {
-            for (int j = 0; j < largoLado; j++) {
-                mapa.ocuparCelda(edificio,posiciones[i][j]);
+            for(int j = 0; j < largoLado; j++) {
+                mapa.ocuparCelda(edificio, posiciones[i][j]);
             }
         }
     }
 
-    public Posicion obtenerPosicionDeAldeano(){
-        Posicion posicionDeploy = new Posicion(mapa, posiciones[0][1].getCoordenadaHorizontal() - 1, posiciones[0][1].getCoordenadaVertical());
-        return posicionDeploy;
+    public Posicion obtenerPosicionDeDespliegue(){
+        Posicion posicionDespliegue = new Posicion(mapa, posiciones[0][1].getCoordenadaHorizontal() - 1, posiciones[0][1].getCoordenadaVertical());
+        return posicionDespliegue;
     }
 }

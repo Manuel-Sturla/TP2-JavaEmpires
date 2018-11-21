@@ -24,7 +24,7 @@ public class Castillo implements Ubicable {
     }
 
     @Override
-    public void quitarVida(int dañoRecibido) {
-        vidaActual -= dañoRecibido;
+    public void recibirDanio(int danioRecibido) {
+        vidaActual -= danioRecibido;
     }
 }

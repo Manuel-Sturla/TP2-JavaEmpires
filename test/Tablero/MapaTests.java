@@ -1,5 +1,6 @@
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
+import Jugador.Jugador;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Unidades.Aldeano;
@@ -14,7 +15,8 @@ public class MapaTests {
 
     Mapa mapa = new Mapa(10,10);
     Posicion posicion = new Posicion(mapa,0,0);
-    Ubicable ubicable = new Aldeano(posicion);
+    Jugador jugador = new Jugador();
+    Ubicable ubicable = new Aldeano(posicion, null);
 
     public MapaTests() throws PosicionFueraDeRangoException {
     }

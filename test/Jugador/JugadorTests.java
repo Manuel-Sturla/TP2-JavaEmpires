@@ -32,7 +32,7 @@ public class JugadorTests {
         Jugador jugador1 = new Jugador(aldeanos, castillo);
         assertTrue(jugador1 != null);
     }
-*/
+
     @Test
     void jugadorRecienCreadoTieneLosUbicablesIniciales() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(50,50);
@@ -46,8 +46,7 @@ public class JugadorTests {
 
     @Test
     void jugadorRecienCreadoSinUbicablesNoTieneNinguno(){
-        ArrayList listaVacia = new ArrayList();
-        Jugador jugador = new Jugador(listaVacia);
+        Jugador jugador = new Jugador();
 
         assertTrue(jugador.getElementos().isEmpty());
     }
