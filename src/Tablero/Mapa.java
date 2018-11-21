@@ -6,6 +6,7 @@ import Ubicables.Ubicable;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 
 public class Mapa {
     Celda mapa[][];
@@ -94,6 +95,15 @@ public class Mapa {
 
     public boolean esAdyacente(Posicion posicion, Posicion posicion2) throws PosicionFueraDeRangoException {
         return this.obtenerCelda(posicion).esAdyacente(obtenerCelda(posicion2));
+
+    }
+
+    public boolean estaEnRango(Posicion posicion, Posicion posicion2, int rango) throws PosicionFueraDeRangoException {
+        Celda celdaBuscada = this.obtenerCelda(posicion2);
+        Celda celdaActual = this.obtenerCelda(posicion);
+
+        return celdaActual.obtenerCeldasAdyacentesEnRango(rango).contains(celdaBuscada);
+
     }
 }
 

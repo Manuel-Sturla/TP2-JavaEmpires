@@ -39,16 +39,10 @@ public class Celda {
     public boolean esAdyacente(Celda celda2) {
         return celdasAdyacentes.contiene(celda2);
     }
-/*
-    public ArrayList verificarCeldasAdyacentesEnRango(int rango){
-        ArrayList adyacentes = new ArrayList();
-        if(rango < 0){
-            return adyacentes;
-        }
-        for (int i = 0; i < conjuntoCeldas.size(); i++) {
-            adyacentes.addAll(conjuntoCeldas.get(i).verificarCeldasAdyacentesEnRango(rango-1));
-        }
-        return adyacentes;
+
+    public ArrayList obtenerCeldasAdyacentesEnRango(int rango){
+        return celdasAdyacentes.obtenerCeldasAdyacentesEnRango(rango);
+
     }
-    */
+
 }

@@ -97,4 +97,7 @@ public class Posicion {
         return false;
     }
 
+    public boolean estaEnRango(Posicion posicion, int rango) throws PosicionFueraDeRangoException {
+        return mapa.estaEnRango(this, posicion, rango);
+    }
 }
