@@ -42,7 +42,7 @@ public class Jugador {
         return iterador.next();
     }
 
-    private void finalizarTurno(){
+    public void finalizarTurno(){
         iterador = elementos.iterator();
         while (iterador.hasNext()){
             if(iterador.next().estaMuerto()){
