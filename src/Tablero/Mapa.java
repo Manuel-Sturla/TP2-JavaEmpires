@@ -9,8 +9,8 @@ import java.util.Collection;
 
 public class Mapa {
     Celda mapa[][];
-    int largo;
-    int ancho;
+    private int largo;
+    private int ancho;
 
     public Mapa(int largoRecibido, int anchoRecibido){
         largo = largoRecibido;
