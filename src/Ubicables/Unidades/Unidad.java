@@ -15,6 +15,7 @@ public abstract class Unidad implements Ubicable {
     protected int vida;
     protected Estado estado;
     protected Posicion posicion;
+    protected Faccion faccion;
 
     public Unidad(int vidaRecibida, Posicion posicionRescibida){
         vida = vidaRecibida;
