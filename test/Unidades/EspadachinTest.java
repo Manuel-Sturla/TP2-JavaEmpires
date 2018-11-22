@@ -37,4 +37,6 @@ public class EspadachinTest {
         assertTrue(aldeanoEnemigo.getVida() == 50);
     }
 
+
+
 }

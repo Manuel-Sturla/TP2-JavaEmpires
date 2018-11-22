@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PosicionTests {
-
+/*
     @Test
     void posicionOcupaUnEspacionEnElMapa() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa, 0, 0);
         assertTrue(mapa.celdaEstaOcupada(posicion));
     }
-/*
+
     @Test
     void posicionMoverDerechaOcupaLaPosicionDerecha(){
         Mapa mapa = new Mapa(10,10);

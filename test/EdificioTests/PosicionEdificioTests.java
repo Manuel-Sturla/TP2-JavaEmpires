@@ -19,7 +19,7 @@ public class PosicionEdificioTests {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 0, 0);
         PosicionEdificio posEdificio = new PosicionEdificio(posicion, 2);
-        Ubicable ubicable = new Aldeano(posicion,null);
+        Ubicable ubicable = new Aldeano(posicion);
         posEdificio.ocuparPosiciones(ubicable);
         boolean check = true;
         for (int i = 1; i < 5; i++) {

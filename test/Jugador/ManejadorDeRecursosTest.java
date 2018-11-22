@@ -79,7 +79,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ManejadorDeRecursosTest extends TestCase {
-
+/*
     @Test
     public void testCrearElControladorDeRecursosTiene3Aldeanos3Trabajando3libresY100DeOro(){
         ManejadorDeRecursos manejador = new ManejadorDeRecursos();

@@ -14,10 +14,8 @@ public class Espadachin extends Unidad {
     }
 
     public void atacarUnidad(Unidad objetivo){
-        //posicion.estaEnRango(objetivo, 1)
-        try{
-            faccion.perteneceFaccion(objetivo);
-        }catch (NullPointerException e){
+        //posicion.estaEnRango(objetivo, 1
+        if(!faccion.perteneceFaccion(objetivo)) {
             objetivo.recibirDanio(25);
         }
     }

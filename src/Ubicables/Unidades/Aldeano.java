@@ -15,6 +15,11 @@ public class Aldeano extends Unidad {
         faccion.agregarMiembro(this);
     }
 
+    public Aldeano(Posicion posicionRecibida) throws PosicionFueraDeRangoException {
+        super(50,posicionRecibida);
+        posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
+    }
+
     public void crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();

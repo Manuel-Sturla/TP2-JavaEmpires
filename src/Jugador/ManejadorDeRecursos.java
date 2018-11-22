@@ -47,7 +47,7 @@ import Exceptions.OroInsuficienteException;
 import Exceptions.UnidadesMaximasException;
 
 public class ManejadorDeRecursos {
-    int poblacion;
+/*    int poblacion;
     int aldeanos_desocupados;
     int aldeanos_ocupados;
     int oro_actual;
