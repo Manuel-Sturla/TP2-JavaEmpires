@@ -4,6 +4,7 @@ import Exceptions.*;
 import Jugador.Faccion;
 import Tablero.Posicion;
 import Turnos.Ocupado;
+import Ubicables.Edificios.PlazaCentral;
 
 public class Aldeano extends Unidad {
     Faccion faccion;
@@ -15,16 +16,12 @@ public class Aldeano extends Unidad {
         faccion.agregarMiembro(this);
     }
 
-    public Aldeano(Posicion posicionRecibida) throws PosicionFueraDeRangoException {
-        super(50,posicionRecibida);
-        posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
-    }
-
-    public void crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         estado = new Ocupado(3);
+        return new PlazaCentral(posicionConstruccion, faccion);
     }
 
 

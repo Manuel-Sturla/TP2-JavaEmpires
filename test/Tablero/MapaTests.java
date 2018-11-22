@@ -6,6 +6,7 @@ import Tablero.Posicion;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
+import Jugador.Faccion;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -16,7 +17,8 @@ public class MapaTests {
     Mapa mapa = new Mapa(10,10);
     Posicion posicion = new Posicion(mapa,0,0);
     Jugador jugador = new Jugador();
-    Ubicable ubicable = new Aldeano(posicion);
+    Faccion faccion = new Faccion();
+    Ubicable ubicable = new Aldeano(posicion, faccion);
 
     public MapaTests() throws PosicionFueraDeRangoException {
     }

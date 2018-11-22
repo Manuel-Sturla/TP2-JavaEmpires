@@ -9,20 +9,21 @@ import Tablero.Posicion;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Edificios.PlazaCentral;
 import org.junit.jupiter.api.Test;
+import Jugador.Faccion;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlazaCentralTests {
-/*
+    Faccion faccion = new Faccion();
+
     @Test
     void laPlazaCentralOcupa4PosicionesEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
-        Jugador jugador = new Jugador();
-        Aldeano aldeano = new Aldeano(posicionAldeano, null);
+        Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         aldeano.crearPlazaCentral(posicionCostruccion);
         boolean check = true;
         for (int i = 11; i <= 12; i++) {
@@ -42,8 +43,8 @@ public class PlazaCentralTests {
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
         Jugador jugador = new Jugador();
-        Aldeano aldeano = new Aldeano(posicionAldeano, null);
-        aldeano.crearPlazaCentral(posicionCostruccion);
+        Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
+        PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         assertTrue(plaza.estaOcupada());
     }
 
@@ -53,7 +54,7 @@ public class PlazaCentralTests {
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
         Jugador jugador = new Jugador();
-        Aldeano aldeano = new Aldeano(posicionAldeano, null);
+        Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
@@ -67,7 +68,7 @@ public class PlazaCentralTests {
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,11);
         Jugador jugador = new Jugador();
-        Aldeano aldeano = new Aldeano(posicionAldeano, null);
+        Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
         assertThrows(UbicableEstaOcupadoException.class, plaza::crearAldeano);
@@ -79,7 +80,7 @@ public class PlazaCentralTests {
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
         Jugador jugador = new Jugador();
-        Aldeano aldeano = new Aldeano(posicionAldeano, null);
+        Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
@@ -93,7 +94,7 @@ public class PlazaCentralTests {
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
         Jugador jugador = new Jugador();
-        Aldeano aldeano = new Aldeano(posicionAldeano, null);
+        Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
@@ -101,5 +102,5 @@ public class PlazaCentralTests {
         Aldeano aldeanoCreado = plaza.crearAldeano();
         Posicion posDeploy = new Posicion(mapa, 10, 11);
         assertTrue(mapa.celdaEstaOcupada(posDeploy));
-    }*/
+    }
 }

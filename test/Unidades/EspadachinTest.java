@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class EspadachinTest {
 
     @Test
-    void elEspadachinAtacaAldeanoDeOtraFaccion() throws PosicionFueraDeRangoException {
+    void elEspadachinAtacaAldeanoDeOtraFaccionEnRangoDeAtaque() throws PosicionFueraDeRangoException {
         Faccion faccion1 = new Faccion();
         Faccion faccion2 = new Faccion();
         Mapa mapa = new Mapa(10,10);
@@ -26,17 +26,16 @@ public class EspadachinTest {
     }
 
     @Test
-    void elEspadachinNoAtacaAldeanoDeMismaFaccion() throws PosicionFueraDeRangoException {
+    void elEspadachinNoAtacaAldeanoDeMismaFaccionEnRangoAtaque() throws PosicionFueraDeRangoException {
         Faccion faccion = new Faccion();
-        Mapa mapa = new Mapa(10,10);
-        Posicion posEspadachin = new Posicion(mapa, 0,0);
-        Posicion posAldeano = new Posicion(mapa, 1,0);
+        Mapa mapa = new Mapa(10, 10);
+        Posicion posEspadachin = new Posicion(mapa, 0, 0);
+        Posicion posAldeano = new Posicion(mapa, 1, 0);
         Espadachin espadachin = new Espadachin(posEspadachin, faccion);
         Aldeano aldeanoEnemigo = new Aldeano(posAldeano, faccion);
         espadachin.atacarUnidad(aldeanoEnemigo);
         assertTrue(aldeanoEnemigo.getVida() == 50);
     }
-
 
 
 }
