@@ -123,10 +123,4 @@ public abstract class Unidad implements Ubicable {
     }
 
 
-
-/*
-    public boolean estaEnRango(int rango,Ubicable objetivo){
-
-    }
-    */
 }
