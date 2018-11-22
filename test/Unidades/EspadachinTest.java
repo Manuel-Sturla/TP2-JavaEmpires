@@ -1,6 +1,7 @@
 package Unidades;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Faccion;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -8,6 +9,7 @@ import Ubicables.Unidades.Aldeano;
 import Ubicables.Unidades.Espadachin;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EspadachinTest {
@@ -37,5 +39,17 @@ public class EspadachinTest {
         assertTrue(aldeanoEnemigo.getVida() == 50);
     }
 
-
+    @Test
+    void elEspadachinNoAtacaAldeanoEnemigoFueraDeRangoYLevantaExcepcion() throws PosicionFueraDeRangoException {
+        Faccion faccion1 = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Mapa mapa = new Mapa(10, 10);
+        Posicion posEspadachin = new Posicion(mapa, 0, 0);
+        Posicion posAldeano = new Posicion(mapa, 2, 0);
+        Espadachin espadachin = new Espadachin(posEspadachin, faccion1);
+        Aldeano aldeanoEnemigo = new Aldeano(posAldeano, faccion2);
+        assertThrows(PosicionFueraDeRangoException.class, () -> {
+            espadachin.atacarUnidad(aldeanoEnemigo);
+        });
+    }
 }
