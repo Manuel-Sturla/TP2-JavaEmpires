@@ -1,0 +1,49 @@
+package Ubicables.Unidades;
+
+import Exceptions.PosicionFueraDeRangoException;
+import Jugador.Faccion;
+import Jugador.Jugador;
+import Tablero.*;
+import Turnos.Ocupado;
+
+public class Espadachin extends Unidad {
+    //Faccion faccion;
+    Jugador dueño;
+
+
+    public Espadachin(Posicion posicionRecibida,Jugador jugador /*Faccion faccionRecibida*/) throws PosicionFueraDeRangoException {
+        super(100,posicionRecibida);
+        Jugador dueño = jugador;
+        posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
+        dueño.agregar(this);
+        /*super(100, posicionRecibida);
+        faccion = faccionRecibida;
+        faccion.agregarMiembro(this);
+        dueño = jugador;*/
+    }
+
+   /* public void atacarUnidad(Unidad objetivo){
+        //posicion.estaEnRango(objetivo, 1)
+        try{
+            faccion.perteneceFaccion(objetivo);
+        }catch (NullPointerException e){
+            objetivo.quitarVida(25);
+        }
+    }*/
+
+    public void recibirDanio(int danioRecibido) {
+        vida -= danioRecibido;
+        if(vida < 1){
+            estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
+        }
+    }
+    @Override
+    public boolean estaMuerto() {
+        return vida<1; //estado.estaMuerto();
+    }
+
+    @Override
+    public void quitarVida(int dañoRecibido) {
+
+    }
+}
