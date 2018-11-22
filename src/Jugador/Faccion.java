@@ -1,12 +1,8 @@
 package Jugador;
 
 import Ubicables.Ubicable;
-import Ubicables.Unidades.Unidad;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
 
 public class Faccion {
     ArrayList miembros;

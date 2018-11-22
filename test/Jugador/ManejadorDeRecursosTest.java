@@ -74,11 +74,12 @@ import Ubicables.Edificios.Cuartel;
 import Ubicables.Edificios.PlazaCentral;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Unidades.Espadachin;
-import junit.framework.TestCase;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class ManejadorDeRecursosTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class ManejadorDeRecursosTest {
 /*
     @Test
     public void testCrearElControladorDeRecursosTiene3Aldeanos3Trabajando3libresY100DeOro(){
@@ -171,7 +172,7 @@ public class ManejadorDeRecursosTest extends TestCase {
         });
 
     }
-/*        
+
     @Test
     public void testElControladorDeRecursosNoDejaCrearArqueroConMenosDe75DeOro(){
         ManejadorDeRecursos manejador = new ManejadorDeRecursos(3,74);

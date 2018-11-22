@@ -22,9 +22,6 @@ public abstract class Unidad implements Ubicable {
         estado = new Desocupado();
     }
 
-
-    //MOVIMIENTO
-    // FALTA MOVIMIENTOS: arriba, diagonales
     public void moverDerecha() throws UbicableEstaOcupadoException, MovimientoNoPermitidoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();

@@ -9,6 +9,7 @@ public class Jugador {
 
     ArrayList elementos = new ArrayList();
     Iterator<Ubicable> iterador;
+    Faccion faccion;
     String nombre;
 
     /* obsoleto?
@@ -21,8 +22,10 @@ public class Jugador {
     }
 */
     //Constructor que recibe coleccion! de ubicab+les generica y los agrega
-    public Jugador(){
-        elementos = new ArrayList();
+    public Jugador(ArrayList <Ubicable> elementosRecibidos, Faccion faccionRecibida){
+        elementos = new ArrayList(elementosRecibidos);
+        faccion = faccionRecibida;
+
     }
 
     public void inicializarJuego(){

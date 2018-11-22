@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JuegoTest {
-/*
+
     @Test
     void iniciarJuegoIniciaALosJugadoresCon5Elementos() throws MapaMuyPequeñoException {
         Juego juego = new Juego();
