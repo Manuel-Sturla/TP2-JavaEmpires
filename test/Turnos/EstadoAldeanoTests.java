@@ -19,7 +19,6 @@ public class EstadoAldeanoTests {
     void estadoInicialEsDesocupado() throws PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         assertFalse(aldeano.estaOcupado());
     }
@@ -28,7 +27,6 @@ public class EstadoAldeanoTests {
     void estaOcupadoLuegoDeMoverPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.moverDerecha();
         assertTrue(aldeano.estaOcupado());
@@ -38,7 +36,6 @@ public class EstadoAldeanoTests {
     void realizarDosAccionesEnElMismoTurnoLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.moverDerecha();
         assertThrows(UbicableEstaOcupadoException.class,() -> {
@@ -50,7 +47,6 @@ public class EstadoAldeanoTests {
     void estaDesocupadoLuegoDeMoverPosicionDesocuparUnTurno() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa = new Mapa(5, 5);
         Posicion posicion = new Posicion(mapa, 3, 3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.moverDerecha();
         aldeano.desocuparUnTurno();
@@ -62,7 +58,6 @@ public class EstadoAldeanoTests {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Posicion posicionCostruccion = new Posicion(mapa,4,3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.crearPlazaCentral(posicionCostruccion);
         assertTrue(aldeano.estaOcupado());
@@ -73,7 +68,6 @@ public class EstadoAldeanoTests {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Posicion posicionCostruccion = new Posicion(mapa,4,3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.crearPlazaCentral(posicionCostruccion);
         aldeano.desocuparUnTurno();
@@ -84,7 +78,6 @@ public class EstadoAldeanoTests {
     void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.moverDerecha();
         aldeano.desocuparUnTurno();
@@ -98,7 +91,6 @@ public class EstadoAldeanoTests {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Posicion posicionCostruccion = new Posicion(mapa,4,3);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicion, faccion);
         aldeano.crearPlazaCentral(posicionCostruccion);
         aldeano.desocuparUnTurno();

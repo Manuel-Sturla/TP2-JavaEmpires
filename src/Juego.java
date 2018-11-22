@@ -36,10 +36,12 @@ public class Juego {
         Jugador jugador1 = new Jugador(ubicablesJugador1, faccionJugador1);
         Jugador jugador2 = new Jugador(ubicablesJugador2, faccionJugador2);
         ArrayList <Jugador> jugadores = new ArrayList<Jugador>();
+
         jugadores.add(jugador1);
         jugadores.add(jugador2);
-
         controladorTurnos = new ControladorTurnos(jugadores);
+        jugador1.setControlador(controladorTurnos);
+        jugador2.setControlador(controladorTurnos);
 
     }
 

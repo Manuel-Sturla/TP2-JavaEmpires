@@ -42,7 +42,6 @@ public class PlazaCentralTests {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         assertTrue(plaza.estaOcupada());
@@ -53,7 +52,6 @@ public class PlazaCentralTests {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
@@ -67,7 +65,6 @@ public class PlazaCentralTests {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,11);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
@@ -79,7 +76,6 @@ public class PlazaCentralTests {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();
@@ -93,7 +89,6 @@ public class PlazaCentralTests {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
-        Jugador jugador = new Jugador();
         Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
         plaza.desocuparUnTurno();

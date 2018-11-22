@@ -17,7 +17,8 @@ public class JuegoTest {
         assertTrue(jugador1.getElementos().size()==5);
 
     }
-/*
+
+    /*
     @Test
     void iniciarJuegoIniciaALosJugadoresCon3Aldeanos() throws MapaMuyPequeñoException {
         Juego juego = new Juego();
@@ -65,7 +66,7 @@ public class JuegoTest {
         Castillo castilloJugador1 = (Castillo) jugador1.getElementos().get(0);
         castilloJugador1.obtenerPosicion(); // NO SE COMO PROBARLO
     }
-
+*/
     @Test
     void iniciarJuegoConTamañoDeMapaPequeñoLevantaError(){
         Juego juego = new Juego();
@@ -98,5 +99,5 @@ public class JuegoTest {
 
 
 
-    }*/
+    }
 }

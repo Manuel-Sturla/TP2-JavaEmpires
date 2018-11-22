@@ -2,18 +2,20 @@ package Turnos;
 
 import Jugador.Jugador;
 import org.junit.jupiter.api.Test;
-
+import Jugador.Faccion;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ControladorDeTurnosTests {
-/*
+
     @Test
     void elPrimerJugadorEsUnoDeLosPosibles(){
         ArrayList ubicables = new ArrayList();
-        Jugador jugador1 = new Jugador(ubicables);
-        Jugador jugador2 = new Jugador(ubicables);
+        Faccion faccion1 = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Jugador jugador1 = new Jugador(ubicables, faccion1);
+        Jugador jugador2 = new Jugador(ubicables, faccion2);
         ArrayList jugadores = new ArrayList<Jugador>();
         jugadores.add(jugador1);
         jugadores.add(jugador2);
@@ -25,8 +27,10 @@ public class ControladorDeTurnosTests {
     @Test
     void jugador1TerminaTurnoEntoncesVaJugador2(){
         ArrayList ubicables = new ArrayList();
-        Jugador jugador1 = new Jugador(ubicables);
-        Jugador jugador2 = new Jugador(ubicables);
+        Faccion faccion1 = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Jugador jugador1 = new Jugador(ubicables, faccion1);
+        Jugador jugador2 = new Jugador(ubicables, faccion2);
         ArrayList jugadores = new ArrayList<Jugador>();
         jugadores.add(jugador1);
         jugadores.add(jugador2);
@@ -39,8 +43,11 @@ public class ControladorDeTurnosTests {
 /*
     @Test
     void losJugadoresSeAlternanCorrectamente(){
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
+          ArrayList ubicables = new ArrayList();
+        Faccion faccion1 = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Jugador jugador1 = new Jugador(ubicables, faccion1);
+        Jugador jugador2 = new Jugador(ubicables, faccion2);
         jugador1.inicializarJugador();
         jugador2.inicializaJugador();
         ControladorDeTurnos controlador = new ControladorDeTurnos(jugador1, jugador2);

@@ -16,7 +16,6 @@ public class MapaTests {
 
     Mapa mapa = new Mapa(10,10);
     Posicion posicion = new Posicion(mapa,0,0);
-    Jugador jugador = new Jugador();
     Faccion faccion = new Faccion();
     Ubicable ubicable = new Aldeano(posicion, faccion);
 

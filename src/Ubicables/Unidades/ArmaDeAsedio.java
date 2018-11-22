@@ -1,6 +1,8 @@
 package Ubicables.Unidades;
 
 import Exceptions.ArmaNoDesmontadaException;
+import Exceptions.MovimientoNoPermitidoException;
+import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Faccion;
 import Tablero.Posicion;
 import Turnos.Ocupado;
@@ -40,12 +42,12 @@ public class ArmaDeAsedio extends Unidad {
 
     public int getVida(){return vida;}
     @Override
-    public void moverDerecha(){
+    public void moverDerecha() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException {
         if (this.getEstaMontada()) {
             //throw new ArmaNoDesmontadaException();
             return;
         }
-        super moverDerecha();
+        super.moverDerecha();
 
     }
 }
