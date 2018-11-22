@@ -1,0 +1,42 @@
+
+package Ubicables.Edificios;
+
+import Exceptions.NoSePudoConstruirException;
+import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.UbicableEstaOcupadoException;
+import Jugador.Jugador;
+import Jugador.ManejadorDeRecursos;
+import Tablero.Posicion;
+import Turnos.Desocupado;
+import Turnos.Ocupado;
+import Ubicables.Unidades.Aldeano;
+
+public class PlazaCentral extends Edificios {
+    Jugador dueño;
+
+    public PlazaCentral(Posicion posicionAldeano,Jugador jugador) throws PosicionFueraDeRangoException {
+        super(posicionAldeano,450,2);
+        estado = new Ocupado(3);
+        dueño = jugador;
+    }
+
+
+    public Aldeano crearAldeano() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        if(!dueño.CrearAldeano()){
+            throw new NoSePudoConstruirException();
+        }
+        Aldeano aldeano = new Aldeano(posicion.obtenerPosicionDeAldeano(),dueño);//Es posicion Despliegue
+        dueño.agregar(aldeano);
+        //dueño.nuevoAldeano();
+        return aldeano;
+    }
+
+    public void desocupado(){
+        estado = new Desocupado();
+
+    }
+
+}
