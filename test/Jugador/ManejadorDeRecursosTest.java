@@ -148,21 +148,30 @@ public class ManejadorDeRecursosTest extends TestCase {
         assertTrue(manejador.NumeroDeUnidades() == 4);
 
     }
-/*
     @Test
     public void testElControladorDeRecursosNoDejaTenerMasDe50Unidades(){
+       // Mapa mapa  = new Mapa(8,8);
         ManejadorDeRecursos manejador = new ManejadorDeRecursos();
-        assertFalse(manejador.CrearAldeano() && manejador.CrearEspadachin() && manejador.CrearArquero() && manejador.CrearArmaDeAsedio());
+        Jugador jugador = new Jugador(manejador);
+        manejador.AgregarUnidades(47);
+        assertThrows(UnidadesMaximasException.class , ()-> {
+            manejador.CrearAldeano();
+        });
 
     }
 
     @Test
     public void testElControladorDeRecursosNoDejaCrearAldeanoConMenosDe25DeOro(){
-        ManejadorDeRecursos manejador = new ManejadorDeRecursos(3,24);
-        assertFalse(manejador.CrearAldeano());
+        //Mapa mapa  = new Mapa(8,8);
+        ManejadorDeRecursos manejador = new ManejadorDeRecursos();
+        Jugador jugador = new Jugador(manejador);
+        manejador.AsignarOro(24);
+        assertThrows(OroInsuficienteException.class , ()-> {
+            manejador.CrearAldeano();
+        });
 
     }
-
+/*        
     @Test
     public void testElControladorDeRecursosNoDejaCrearArqueroConMenosDe75DeOro(){
         ManejadorDeRecursos manejador = new ManejadorDeRecursos(3,74);
@@ -198,5 +207,5 @@ public class ManejadorDeRecursosTest extends TestCase {
 
     }*/
 
-
+}
 
