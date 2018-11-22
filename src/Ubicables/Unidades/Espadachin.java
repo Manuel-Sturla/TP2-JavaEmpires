@@ -1,5 +1,6 @@
 package Ubicables.Unidades;
 
+import Exceptions.PosicionFueraDeRangoException;
 import Jugador.Faccion;
 import Tablero.*;
 import Turnos.Ocupado;
@@ -13,8 +14,8 @@ public class Espadachin extends Unidad {
         faccion.agregarMiembro(this);
     }
 
-    public void atacarUnidad(Unidad objetivo){
-        //posicion.estaEnRango(objetivo, 1
+    public void atacarUnidad(Unidad objetivo) throws PosicionFueraDeRangoException {
+        posicion.estaEnRango(objetivo.getPosicion(), 1);
         if(!faccion.perteneceFaccion(objetivo)) {
             objetivo.recibirDanio(25);
         }
@@ -26,8 +27,13 @@ public class Espadachin extends Unidad {
             estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
         }
     }
+
     @Override
     public boolean estaMuerto() {
         return vida<1; //estado.estaMuerto();
+    }
+
+    public Posicion getPosicion(){
+        return posicion;
     }
 }

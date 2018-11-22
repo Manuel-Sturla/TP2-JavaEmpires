@@ -122,5 +122,6 @@ public abstract class Unidad implements Ubicable {
         estado = estado.desocuparUnTurno();
     }
 
+    public abstract Posicion getPosicion();
 
 }

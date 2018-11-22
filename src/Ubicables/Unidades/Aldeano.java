@@ -38,6 +38,10 @@ public class Aldeano extends Unidad {
     public boolean estaMuerto() {
         return vida<1; //estado.estaMuerto();
     }
+
+    public Posicion getPosicion(){
+        return posicion;
+    }
 }
 
 

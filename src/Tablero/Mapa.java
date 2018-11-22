@@ -101,9 +101,10 @@ public class Mapa {
     public boolean estaEnRango(Posicion posicion, Posicion posicion2, int rango) throws PosicionFueraDeRangoException {
         Celda celdaBuscada = this.obtenerCelda(posicion2);
         Celda celdaActual = this.obtenerCelda(posicion);
-
-        return celdaActual.obtenerCeldasAdyacentesEnRango(rango).contains(celdaBuscada);
-
+        if(!celdaActual.obtenerCeldasAdyacentesEnRango(rango).contains(celdaBuscada)){
+            throw new PosicionFueraDeRangoException();
+        }
+        return true;
     }
 }
 
