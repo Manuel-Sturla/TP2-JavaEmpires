@@ -6,6 +6,7 @@ import Jugador.Faccion;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Edificios.Cuartel;
+import Ubicables.Unidades.Arquero;
 import Ubicables.Unidades.Espadachin;
 import org.junit.jupiter.api.Test;
 
@@ -41,6 +42,20 @@ public class CuartelTest {
         Espadachin espadachin = cuartel.crearEspadachin();
         assertTrue(espadachin != null);
     }
+
+    @Test
+    void creoUnArquero() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(10,10);
+        Faccion faccion = new Faccion();
+        Posicion posicionCostruccion = new Posicion(mapa,2,2);
+        Cuartel cuartel = new Cuartel(posicionCostruccion, faccion);
+        cuartel.desocuparUnTurno();
+        cuartel.desocuparUnTurno();
+        cuartel.desocuparUnTurno();
+        Arquero arquero = cuartel.crearArquero();
+        assertTrue(arquero != null);
+    }
+
     @Test
     void creoUnEspadachinCuandoElCuartelEstaOcupado() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
         Mapa mapa = new Mapa(10,10);
@@ -52,4 +67,17 @@ public class CuartelTest {
         assertThrows(UbicableEstaOcupadoException.class, cuartel::crearEspadachin);
     }
 
+    @Test
+    void creoUnEspadachinYocupasuEspacio() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(10,10);
+        Faccion faccion = new Faccion();
+        Posicion posicionCostruccion = new Posicion(mapa,2,2);
+        Cuartel cuartel = new Cuartel(posicionCostruccion, faccion);
+        cuartel.desocuparUnTurno();
+        cuartel.desocuparUnTurno();
+        cuartel.desocuparUnTurno();
+        cuartel.crearEspadachin();
+        Posicion posicionEspadachin = new Posicion(mapa,1,3);
+        assertTrue(mapa.celdaEstaOcupada(posicionEspadachin));
+    }
 }

@@ -94,7 +94,7 @@ public class PlazaCentralTests {
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
-        Aldeano aldeanoCreado = plaza.crearAldeano();
+        plaza.crearAldeano();
         Posicion posDeploy = new Posicion(mapa, 10, 11);
         assertTrue(mapa.celdaEstaOcupada(posDeploy));
     }

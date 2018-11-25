@@ -5,6 +5,7 @@ import Jugador.Faccion;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Unidades.Aldeano;
+import Ubicables.Unidades.Arquero;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;

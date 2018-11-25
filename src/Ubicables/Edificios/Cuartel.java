@@ -7,6 +7,7 @@ import Tablero.Posicion;
 import Turnos.Desocupado;
 import Turnos.Ocupado;
 import Ubicables.Unidades.Aldeano;
+import Ubicables.Unidades.Arquero;
 import Ubicables.Unidades.Espadachin;
 
 public class Cuartel extends Edificios {
@@ -30,6 +31,13 @@ public class Cuartel extends Edificios {
         }
         estado = new Desocupado();
         return new Espadachin(posicion.obtenerPosicionDeDespliegue(), faccion);
+    }
+    public Arquero crearArquero() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        estado = new Desocupado();
+        return new Arquero(posicion.obtenerPosicionDeDespliegue(), faccion);
     }
 
 }

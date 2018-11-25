@@ -1,4 +1,4 @@
-package Unidades;
+package Ubicables.Unidades;
 
 import Exceptions.PosicionFueraDeRangoException;
 import Jugador.Faccion;
@@ -9,9 +9,10 @@ import Ubicables.Unidades.Unidad;
 public class Arquero extends Unidad {
     Faccion faccion;
 
-    public Arquero(Posicion posicionRecibida, Faccion faccionRecibida) {
+    public Arquero(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
         super(100, posicionRecibida);
         faccion = faccionRecibida;
+        posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
         faccion.agregarMiembro(this);
     }
 

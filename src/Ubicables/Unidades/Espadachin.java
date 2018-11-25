@@ -8,8 +8,9 @@ import Turnos.Ocupado;
 public class Espadachin extends Unidad {
     Faccion faccion;
 
-    public Espadachin(Posicion posicionRecibida, Faccion faccionRecibida) {
+    public Espadachin(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
         super(100, posicionRecibida);
+        posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
         faccion = faccionRecibida;
         faccion.agregarMiembro(this);
     }
