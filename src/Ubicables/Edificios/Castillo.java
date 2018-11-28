@@ -8,15 +8,11 @@ import Tablero.Posicion;
 import Tablero.PosicionEdificio;
 import Ubicables.Ubicable;
 
-public class Castillo implements Ubicable {
-    PosicionEdificio posicion;
-    private int vida = 1000;
-    private int vidaActual = vida;
+public class Castillo extends Edificios {
     Faccion faccion;
 
     public Castillo(Posicion posicionInicial, Faccion faccionRecibida) throws PosicionFueraDeRangoException, NoSePudoConstruirException {
-        posicion = new PosicionEdificio(posicionInicial, 4);
-        posicion.ocuparPosiciones(this);
+        super(posicionInicial,1000,4);
         faccion = faccionRecibida;
         faccion.agregarMiembro(this);
     }

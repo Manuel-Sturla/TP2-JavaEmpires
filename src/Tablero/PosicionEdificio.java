@@ -1,6 +1,7 @@
 package Tablero;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Ubicables.Ubicable;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class PosicionEdificio {
     Mapa mapa;
     int largoLado;
 
-    public PosicionEdificio(Posicion posicionRecibida, int largoLadoRecibido) {
+    public PosicionEdificio(Posicion posicionRecibida, int largoLadoRecibido) throws PosicionFueraDeRangoException {
         mapa = posicionRecibida.getMapa();
         largoLado = largoLadoRecibido;
         posiciones = new Posicion[largoLado][largoLado];
@@ -22,6 +23,7 @@ public class PosicionEdificio {
                 posiciones[i][j] = new Posicion(mapa, coordenadaHorizontalInicial + i, coordenadaVerticalIncial + j);
             }
         }
+        if(!mapa.estaEnMapa(posiciones[largoLado-1][largoLado-1])) throw new PosicionFueraDeRangoException();
     }
 
     public Mapa getMapa() {

@@ -1,4 +1,4 @@
-package Unidades;
+package Ubicables.Unidades;
 
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;

@@ -1,12 +1,12 @@
-package Unidades;
+package Ubicables.Unidades;
 
 import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
-import Jugador.Jugador;
 import Tablero.Mapa;
 import Tablero.Posicion;
+import Ubicables.Edificios.Cuartel;
 import Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 import Jugador.Faccion;
@@ -120,5 +120,24 @@ public class AldeanoTests {
         Posicion posicionChequeo = new Posicion(mapa, 2,3);
         assertTrue(mapa.celdaEstaOcupada(posicionChequeo));
 
+    }
+
+    @Test
+    public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa,5,5);
+        Posicion posicionConstruccion = new Posicion(mapa,1,1);
+        Faccion faccion = new Faccion();
+        Aldeano aldeano = new Aldeano(posicion,faccion);
+        assertThrows( PosicionFueraDeRangoException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
+    }
+    @Test
+    public void aldaeanoCreaCuartelALaIzquierdaDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa,5,5);
+        Posicion posicionConstruccion = new Posicion(mapa,4,5);
+        Faccion faccion = new Faccion();
+        Aldeano aldeano = new Aldeano(posicion,faccion);
+        assertThrows( PosicionFueraDeRangoException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
     }
 }

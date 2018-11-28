@@ -1,4 +1,4 @@
-package EdificioTests;
+package Ubicables.Edificios;
 
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;

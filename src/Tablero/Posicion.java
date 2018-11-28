@@ -96,6 +96,10 @@ public class Posicion {
         }
         return false;
     }
+    public boolean edificioEstaEnRango(Posicion posicionCostruccion) throws PosicionFueraDeRangoException {
+        PosicionEdificio posicionEdificio = new PosicionEdificio(posicionCostruccion,2);
+        return edificioEstaEnRango(posicionEdificio);
+    }
 
     public boolean estaEnRango(Posicion posicion, int rango) throws PosicionFueraDeRangoException {
         return mapa.estaEnRango(this, posicion, rango);

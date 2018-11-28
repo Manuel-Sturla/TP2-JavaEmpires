@@ -1,9 +1,8 @@
-package EdificioTests;
+package Ubicables.Edificios;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
 import Exceptions.UbicableEstaOcupadoException;
-import Jugador.Jugador;
 import Tablero.Mapa;
 import Tablero.Posicion;
 import Ubicables.Unidades.Aldeano;

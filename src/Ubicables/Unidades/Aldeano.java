@@ -4,6 +4,7 @@ import Exceptions.*;
 import Jugador.Faccion;
 import Tablero.Posicion;
 import Turnos.Ocupado;
+import Ubicables.Edificios.Cuartel;
 import Ubicables.Edificios.PlazaCentral;
 
 public class Aldeano extends Unidad {
@@ -16,12 +17,21 @@ public class Aldeano extends Unidad {
         faccion.agregarMiembro(this);
     }
 
-    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         estado = new Ocupado(3);
         return new PlazaCentral(posicionConstruccion, faccion);
+    }
+
+    public Cuartel aldaeanoCreaCuartel(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        if(!posicion.edificioEstaEnRango(posicionConstruccion)) throw new PosicionFueraDeRangoException();
+        estado = new Ocupado(3);
+        return new Cuartel(posicionConstruccion, faccion);
     }
 
 

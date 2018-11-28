@@ -1,4 +1,4 @@
-package EdificioTests;
+package Ubicables.Edificios;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
@@ -34,13 +34,12 @@ public class PosicionEdificioTests {
         }
         assertTrue(check);
     }
-/*
+
     @Test
     void crearEdificioCuandoNoHayEspacioLevantaExcepcion() throws PosicionFueraDeRangoException{
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 9, 0);
-        assertThrows(PosicionFueraDeRangoException.class , ()-> {
-            PosicionEdificio posEdificio = new PosicionEdificio(posicion, 2);
-        });
-    }*/
+        assertThrows(PosicionFueraDeRangoException.class, ()-> new PosicionEdificio(posicion, 2));
+    }
+
 }
