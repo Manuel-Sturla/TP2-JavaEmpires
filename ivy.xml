@@ -5,17 +5,16 @@
         <conf name="analysis"  description="analysis jars"/>
         <conf name="build" description="binary jars"/>
     </configurations>
+    
 
     <dependencies>
-        <!-- Dependencies for JunitLauncher-->
-        <dependency org='org.junit.platform' name='junit-platform-commons' rev='1.3.1' conf='build->default' />
-        <dependency org='org.junit.platform' name='junit-platform-engine' rev='1.3.1' conf='build->default' />
-        <dependency org='org.junit.platform' name='junit-platform-launcher' rev='1.3.1' conf='build->default' />
-        <dependency org='org.opentest4j' name='opentest4j' rev='1.1.1' conf='build->default' />
+    	<!-- Descarga el task para Junit5 de ant y todas las dependencias necesarias
+    		(incluye Junit4 y Junit5) -->
+    	<!-- https://mvnrepository.com/artifact/org.apache.ant/ant-junitlauncher -->
+		<dependency org="org.apache.ant" name="ant-junitlauncher" rev="1.10.5"/>
 
-        <!-- Dependencies for JUnit5 and JUnit4-->
-        <dependency org="org.junit.jupiter" name="junit-jupiter-api" rev="5.3.1" conf="build->default"/>
-        <dependency org='org.junit.jupiter' name='junit-jupiter-engine' rev='5.3.1' conf='build->default'/>
-        <dependency org="junit" name="junit" rev="4.11" conf="build->default"/>
+	   
+
     </dependencies>
-</ivy-module>
+
+</ivy-module>    

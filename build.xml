@@ -1,5 +1,6 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="TP2-JavaEmpires" basedir="." default="test">
 
+
   <!-- input directories and files -->
     <property name="sources.dir" value="src" />
     <property name="tests.dir" value="test" />
@@ -11,35 +12,6 @@
     <property name="testsclasses.dir" value="${build.dir}/tests" />
     <property name="reports.dir" value="${build.dir}/reports" />
 
-  <!-- IVY STUFF -->
-    <!-- Ivy customization -->
-    <property name="ivy.install.version" value="2.5.0-rc1" />
-    <property name="ivy.dir" value="${lib.dir}/" />
-    <property name="ivy.jar" value="${lib.dir}/ivy.jar" />
-    <!-- End of 'Ivy customization -->
-    <!-- Ivy installation -->
-    <target name="download-ivy" unless="skip.download">
-      <mkdir dir="${ivy.dir}" />
-      <!-- download Ivy from web site so that it can be used even
-         without any special installation -->
-      <echo message="installing ivy..." />
-      <get src="https://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar}" usetimestamp="true" />
-    </target>
-
-    <target name="install-ivy" depends="download-ivy" description="--> install ivy">
-      <path id="ivy.lib.path">
-        <fileset dir="${ivy.dir}" includes="*.jar" />
-      </path>
-      <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path" />
-    </target>
-    <!-- End of 'Ivy installation -->
-   
-  <!-- Resolve dependencies -->
-    <target name="resolve-dependencies"  depends="install-ivy"  description="--> retrieve dependencies with ivy">
-      <ivy:retrieve conf="build"  pattern="${lib.dir}/[artifact].[ext]" />
-      <ivy:retrieve conf="analysis" pattern="${lib.dir}/analysis/[artifact](-[classifier]).[ext]"/>
-    </target>
-  
 
   <!-- Classpath Setup-->  
     <path id="classpath">
@@ -47,15 +19,44 @@
         <include name="*.jar" />
         <include name="*.zip"/>
       </fileset>
-      <pathelement location="${build.dir}" />
       <pathelement location="${sources.dir}" />
-      <pathelement location="${lib.dir}" />
       <pathelement location="${tests.dir}" /> 
       <pathelement location="${classes.dir}" /> 
       <pathelement location="${testsclasses.dir}" />
     </path>  
+       
    
+  <!-- IVY STUFF -->
+    <!-- Ivy version and output directories -->
+    <property name="ivy.install.version" value="2.5.0-rc1" />
+    <property name="ivy.dir" value="${lib.dir}/" />
+    <property name="ivy.jar" value="${lib.dir}/ivy.jar" />
+    
+    <!-- Ivy installation -->
+    <target name="check-installation" unless="ivy.jar.exists">
+    	<available property="ivy.jar.exists" file="${ivy.jar}"/>
+	  </target>
 
+    <target name="download-ivy" depends="check-installation" unless="ivy.jar.exists">
+      <mkdir dir="${ivy.dir}" />
+      <!-- download Ivy from web site so that it can be used even
+         without any special installation -->
+      <echo message="downloading ivy..." />
+      <get src="https://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar}" usetimestamp="true" />
+    </target>  
+
+    <target name="install-ivy" depends="download-ivy" description="--> install ivy">
+		<path id="ivy-lib-path">
+			<fileset dir="${ivy.dir}" includes="*.jar" />
+		</path>
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy-lib-path" />
+	</target>
+
+	<!-- Resolve Ivy dependencies -->
+    <target name="resolve-dependencies"  depends="install-ivy"  description="--> retrieve dependencies with ivy">
+      <ivy:retrieve conf="build"  pattern="${lib.dir}/[artifact]-[type]-[revision].[ext]" />
+      <ivy:retrieve conf="analysis" pattern="${lib.dir}/analysis/[artifact](-[classifier]).[ext]"/>
+    </target>
 
 
 
@@ -69,11 +70,11 @@
       <mkdir dir="${classes.dir}" />
       <mkdir dir="${testsclasses.dir}" />
       <mkdir dir="${reports.dir}" />
+      <mkdir dir='${lib.dir}'/>
     </target>
     
     <target name="build" depends='setup, resolve-dependencies'>
-      <javac srcdir = "${sources.dir}" includeantruntime="false" debug="yes" destdir = "${classes.dir}" 
-         verbose = "false">
+      <javac srcdir = "${sources.dir}" includeantruntime="false" debug="yes" destdir = "${classes.dir}" verbose = "false">
          <classpath refid = "classpath"/>
       </javac>
       <javac srcdir="${tests.dir}" destdir="${testsclasses.dir}" includeantruntime="false" debug="yes" target="1.8">
@@ -81,40 +82,26 @@
       </javac>
     </target>
 
+  <!-- Testing with Junit! -->
+  <path id="test.classpath">
+    <pathelement location="${build.dir}" />
+    <pathelement location="${reports.dir}" />
+    
 
-  <!-- TARGET DE TEST -->
-
-    <target name="test" depends="build">
+    
+  </path>
+   <target name="test" depends='build' >
       <!-- Usa Junit5-->
-      <junitlauncher printSummary='true' >
-        <classpath location="classpath" />
-        <classpath refid="classpath"/>
-        <listener type="legacy-brief" sendSysOut="true" sendSysErr="true" />
-
+      <junitlauncher printSummary='true' haltOnFailure='false' >
+        <classpath refid='classpath' />  
+        <classpath refid='test.classpath'/>
+        
         <testclasses outputdir="${reports.dir}">
-          <fileset dir="${testsclasses.dir}" includes = "*.class">
-              <!--<include name="**/*Test*.class"/> -->
-             
-              
+          <fileset dir="${testsclasses.dir}">
           </fileset>
         </testclasses>
-      </junitlauncher>
-      <!-- Usa Junit4-->
-        <!-- <junit printsummary="yes" logfailedtests='true'>
-	        <classpath location="classpath" />
-	        <classpath refid="classpath"/>
-
-	        <formatter type="plain" usefile='false'/>
-
-	        <batchtest fork="no" todir="${reports.dir}">
-	          <fileset dir="${tests.dir}">
-	              <include name="**/*Test*.java"/>
-	              <exclude name="**/AllTests.java"/>
-	          </fileset>
-	        </batchtest>
-      	</junit> -->
-    </target>
-
-    <target name="install" depends="build">
-    </target>
+          <listener type="legacy-brief" sendSysOut="true" sendSysErr="true" />
+        
+      </junitlauncher>  
+    </target>  
 </project>
