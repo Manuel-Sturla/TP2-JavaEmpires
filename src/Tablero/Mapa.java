@@ -53,10 +53,10 @@ public class Mapa {
         return (this.obtenerCelda(posicion).estaOcupada());
     }
 
-    public void ocuparCelda(Ubicable elementoMapa, Posicion posicion) throws PosicionFueraDeRangoException {
-      /*  if(this.celdaEstaOcupada(posicion)){
+    public void ocuparCelda(Ubicable elementoMapa, Posicion posicion) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
+        if(this.celdaEstaOcupada(posicion)){
             throw new PosicionNoDisponibleException();
-        }TE HACE QUE TODO TIENE QUE TENER DECLARADO UNA EXCEPCION NUEVA*/
+        }
         this.obtenerCelda(posicion).ocuparCelda(elementoMapa);
     }
 

@@ -10,14 +10,14 @@ import Ubicables.Edificios.PlazaCentral;
 public class Aldeano extends Unidad {
     Faccion faccion;
 
-    public Aldeano(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
+    public Aldeano(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         super(50,posicionRecibida);
         faccion = faccionRecibida;
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
         faccion.agregarMiembro(this);
     }
 
-    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException{
+    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
@@ -25,13 +25,14 @@ public class Aldeano extends Unidad {
         return new PlazaCentral(posicionConstruccion, faccion);
     }
 
-    public Cuartel aldaeanoCreaCuartel(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    public Cuartel aldaeanoCreaCuartel(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         if(!posicion.edificioEstaEnRango(posicionConstruccion)) throw new PosicionFueraDeRangoException();
+        Cuartel cuartel = new Cuartel(posicionConstruccion, faccion);
         estado = new Ocupado(3);
-        return new Cuartel(posicionConstruccion, faccion);
+        return cuartel;
     }
 
 

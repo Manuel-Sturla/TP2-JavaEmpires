@@ -1,6 +1,7 @@
 import Exceptions.MapaMuyPequeñoException;
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Jugador;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -19,18 +20,20 @@ public class Juego {
 
     public void iniciar(int largo, int ancho) throws MapaMuyPequeñoException {
         mapa = new Mapa(largo, ancho);
-        ArrayList <Ubicable> ubicablesJugador1;
-        ArrayList <Ubicable> ubicablesJugador2;
+        ArrayList <Ubicable> ubicablesJugador1 = null;
+        ArrayList <Ubicable> ubicablesJugador2 = null;
         Faccion faccionJugador1 = new Faccion();
         Faccion faccionJugador2 = new Faccion();
         try{
             ubicablesJugador1 = this.crearUbicablesIniciales(largo/6, ancho/6, 1,faccionJugador1 );
-            ubicablesJugador2 = this.crearUbicablesIniciales(largo/6, ancho/6, 1, faccionJugador2);
+            ubicablesJugador2 = this.crearUbicablesIniciales(largo-10, ancho-10, -1, faccionJugador2);
 
         }catch (NoSePudoConstruirException e) {
             throw new MapaMuyPequeñoException();
         } catch (PosicionFueraDeRangoException e) {
             throw new MapaMuyPequeñoException();
+        } catch (PosicionNoDisponibleException e) {
+            e.printStackTrace();
         }
 
         Jugador jugador1 = new Jugador(ubicablesJugador1, faccionJugador1);
@@ -45,7 +48,7 @@ public class Juego {
 
     }
 
-    private ArrayList <Ubicable> crearUbicablesIniciales(int coordenadaHorizontalInicial, int coordenadaVerticalInicial,int direccion, Faccion faccion) throws NoSePudoConstruirException, PosicionFueraDeRangoException {
+    private ArrayList <Ubicable> crearUbicablesIniciales(int coordenadaHorizontalInicial, int coordenadaVerticalInicial,int direccion, Faccion faccion) throws NoSePudoConstruirException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
 
         Posicion posicionCastillo = new Posicion(mapa, coordenadaHorizontalInicial ,coordenadaVerticalInicial);
         Posicion posicionPlaza = new Posicion(mapa, coordenadaHorizontalInicial,coordenadaVerticalInicial+6*direccion);

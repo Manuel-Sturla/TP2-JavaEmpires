@@ -19,7 +19,7 @@ public class MapaTests {
     Faccion faccion = new Faccion();
     Ubicable ubicable = new Aldeano(posicion, faccion);
 
-    public MapaTests() throws PosicionFueraDeRangoException {
+    public MapaTests() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
     }
 
     @Test
@@ -39,14 +39,13 @@ public class MapaTests {
     }
 
     @Test<mapa,ubicable,posicion>
-    void ocuparPosicionOcupaLaCelda() throws PosicionFueraDeRangoException {
-        mapa.ocuparCelda(ubicable,posicion);
+    void ocuparPosicionOcupaLaCelda() throws PosicionFueraDeRangoException{
+
         assertTrue(mapa.celdaEstaOcupada(posicion));
     }
 
     @Test<mapa,ubicable,posicion>
     void desocuparPosicionDesocupaLaPosicion() throws PosicionFueraDeRangoException {
-        mapa.ocuparCelda(ubicable,posicion);
         mapa.desocuparCelda(posicion);
         assertFalse(mapa.celdaEstaOcupada(posicion));
     }
@@ -54,7 +53,6 @@ public class MapaTests {
     @Test<mapa,ubicable,posicion>
     void moverElementoDeCeldaOcupaLaCeldaDeLlegada() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,1,0);
-        mapa.ocuparCelda(ubicable, posicion);
         mapa.moverElemento(posicion, posicionLlegada);
 
         assertTrue(mapa.celdaEstaOcupada(posicionLlegada));
@@ -63,16 +61,14 @@ public class MapaTests {
     @Test<mapa,ubicable,posicion>
     void moverElementoDeCeldaDesocupaLaInicial() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Posicion posicionLlegada = new Posicion(mapa,1,0);
-        mapa.ocuparCelda(ubicable, posicion);
         mapa.moverElemento(posicion, posicionLlegada);
 
         assertFalse(mapa.celdaEstaOcupada(posicion));
     }
 
     @Test<mapa,ubicable,posicion>
-    void moverElementoACeldaOcupadaLevantaExcepcion() throws PosicionFueraDeRangoException {
+    void moverElementoACeldaOcupadaLevantaExcepcion() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Posicion posicionLlegada = new Posicion(mapa, 1, 0);
-        mapa.ocuparCelda(ubicable, posicion);
         mapa.ocuparCelda(ubicable, posicionLlegada);
 
         assertThrows(PosicionNoDisponibleException.class, () -> {

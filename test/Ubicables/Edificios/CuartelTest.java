@@ -1,6 +1,7 @@
 package Ubicables.Edificios;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Faccion;
 import Tablero.Mapa;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CuartelTest {
 
     @Test
-    void creoUnCuartel() throws PosicionFueraDeRangoException {
+    void creoUnCuartel() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
         Cuartel cuartel = new Cuartel(posicionCostruccion);
@@ -24,14 +25,14 @@ public class CuartelTest {
     }
 
     @Test
-    void creoElCuartelEstaOcupado() throws PosicionFueraDeRangoException {
+    void creoElCuartelEstaOcupado() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
         Cuartel cuartel = new Cuartel(posicionCostruccion);
         assertTrue(cuartel.estaOcupada());
     }
     @Test
-    void creoUnEspadachin() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    void creoUnEspadachin() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
@@ -44,7 +45,7 @@ public class CuartelTest {
     }
 
     @Test
-    void creoUnArquero() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    void creoUnArquero() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
@@ -57,7 +58,7 @@ public class CuartelTest {
     }
 
     @Test
-    void creoUnEspadachinCuandoElCuartelEstaOcupado() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    void creoUnEspadachinCuandoElCuartelEstaOcupado() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
@@ -68,7 +69,7 @@ public class CuartelTest {
     }
 
     @Test
-    void creoUnEspadachinYocupasuEspacio() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    void creoUnEspadachinYocupasuEspacio() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Posicion posicionCostruccion = new Posicion(mapa,2,2);

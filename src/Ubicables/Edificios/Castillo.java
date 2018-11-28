@@ -2,6 +2,7 @@ package Ubicables.Edificios;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Faccion;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -11,7 +12,7 @@ import Ubicables.Ubicable;
 public class Castillo extends Edificios {
     Faccion faccion;
 
-    public Castillo(Posicion posicionInicial, Faccion faccionRecibida) throws PosicionFueraDeRangoException, NoSePudoConstruirException {
+    public Castillo(Posicion posicionInicial, Faccion faccionRecibida) throws PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         super(posicionInicial,1000,4);
         faccion = faccionRecibida;
         faccion.agregarMiembro(this);

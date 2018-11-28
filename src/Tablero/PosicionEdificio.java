@@ -40,7 +40,7 @@ public class PosicionEdificio {
         return arrayPosiciones;
     }
 
-    public void ocuparPosiciones(Ubicable edificio) throws PosicionFueraDeRangoException {
+    public void ocuparPosiciones(Ubicable edificio) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         for (int i = 0; i < largoLado; i++) {
             for(int j = 0; j < largoLado; j++) {
                 mapa.ocuparCelda(edificio, posiciones[i][j]);
@@ -51,5 +51,14 @@ public class PosicionEdificio {
     public Posicion obtenerPosicionDeDespliegue(){
         Posicion posicionDespliegue = new Posicion(mapa, posiciones[0][1].getCoordenadaHorizontal() - 1, posiciones[0][1].getCoordenadaVertical());
         return posicionDespliegue;
+    }
+
+    public boolean estanDisponible() throws PosicionFueraDeRangoException {
+        for (int i = 0; i < largoLado; i++) {
+            for(int j = 0; j < largoLado; j++) {
+                if(mapa.celdaEstaOcupada(posiciones[i][j])) return false;
+            }
+        }
+        return true;
     }
 }

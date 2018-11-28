@@ -1,6 +1,7 @@
 package Ubicables.Unidades;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Faccion;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ArqueroTest {
 
     @Test
-    void elArqueroAtacaAldeanoDeOtraFaccionADistancia1DeAtaque() throws PosicionFueraDeRangoException {
+    void elArqueroAtacaAldeanoDeOtraFaccionADistancia1DeAtaque() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
             Faccion faccion1 = new Faccion();
             Faccion faccion2 = new Faccion();
             Mapa mapa = new Mapa(10,10);
@@ -27,7 +28,7 @@ public class ArqueroTest {
     }
 
     @Test
-    void elarqueroNoAtacaAldeanoDeMismaFaccionEnRangoAtaque() throws PosicionFueraDeRangoException {
+    void elarqueroNoAtacaAldeanoDeMismaFaccionEnRangoAtaque() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Faccion faccion = new Faccion();
         Mapa mapa = new Mapa(10, 10);
         Posicion posarquero = new Posicion(mapa, 0, 0);
@@ -39,7 +40,7 @@ public class ArqueroTest {
     }
 
     @Test
-    void elarqueroNoAtacaAldeanoEnemigoFueraDeRangoYLevantaExcepcion() throws PosicionFueraDeRangoException {
+    void elarqueroNoAtacaAldeanoEnemigoFueraDeRangoYLevantaExcepcion() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Faccion faccion1 = new Faccion();
         Faccion faccion2 = new Faccion();
         Mapa mapa = new Mapa(10, 10);

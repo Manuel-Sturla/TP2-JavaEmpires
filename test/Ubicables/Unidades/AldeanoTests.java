@@ -19,14 +19,14 @@ public class AldeanoTests {
     Faccion faccion = new Faccion();
 
     @Test
-    void crearAldeanoYUbicarloEnElMapaSeCreaCorrectamente() throws PosicionFueraDeRangoException {
+    void crearAldeanoYUbicarloEnElMapaSeCreaCorrectamente() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 2,2);
         Aldeano aldeano = new Aldeano(posicion, faccion);
         assertTrue(mapa.celdaEstaOcupada(posicion));
     }
     @Test
-    void moverAldeanoHaciaLaDerechaOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException {
+    void moverAldeanoHaciaLaDerechaOcupaLaNuevaPosicion() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, MovimientoNoPermitidoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 1,1);
         Aldeano aldeano = new Aldeano(posicion, faccion);
@@ -44,7 +44,7 @@ public class AldeanoTests {
         assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));;
     }
     @Test
-    void moverAldeanoFueraDelMapaNoLoMueve() throws PosicionFueraDeRangoException {
+    void moverAldeanoFueraDelMapaNoLoMueve() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa  = new Mapa(3,3);
         Posicion posicion = new Posicion(mapa, 0,2);
         Aldeano aldeano = new Aldeano(posicion, faccion);
@@ -123,7 +123,7 @@ public class AldeanoTests {
     }
 
     @Test
-    public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,5,5);
         Posicion posicionConstruccion = new Posicion(mapa,1,1);
@@ -132,12 +132,25 @@ public class AldeanoTests {
         assertThrows( PosicionFueraDeRangoException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
     }
     @Test
-    public void aldaeanoCreaCuartelALaIzquierdaDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException {
+    public void aldaeanoCreaCuartelALaIzquierdaDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,5,5);
         Posicion posicionConstruccion = new Posicion(mapa,4,5);
         Faccion faccion = new Faccion();
         Aldeano aldeano = new Aldeano(posicion,faccion);
-        assertThrows( PosicionFueraDeRangoException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
+        assertThrows( PosicionNoDisponibleException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
+    }
+
+    @Test
+    public void aldeanoCreaCuartelDondeHayUnaTropa() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicionAldeano = new Posicion(mapa,5,5);
+        Posicion posicionAldaeno1 = new Posicion(mapa,7,6);
+        Posicion posicionConstruccion = new Posicion(mapa,6,5);
+        Faccion faccion = new Faccion();
+        Aldeano aldeano = new Aldeano(posicionAldeano,faccion);
+        Aldeano aldeano1 = new Aldeano(posicionAldaeno1,faccion);
+        assertThrows( PosicionNoDisponibleException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
+        assertTrue(!mapa.celdaEstaOcupada(posicionConstruccion));
     }
 }

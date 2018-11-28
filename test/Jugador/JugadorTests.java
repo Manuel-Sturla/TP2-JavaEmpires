@@ -2,6 +2,7 @@ package Jugador;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class JugadorTests {
 
    @Test
-    void crearJugadorLoCreaCorrectamente() throws PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void crearJugadorLoCreaCorrectamente() throws PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(50,50);
         Faccion faccion = new Faccion();
         Posicion posicion1 = new Posicion(mapa,1,1);
@@ -36,7 +37,7 @@ public class JugadorTests {
     }
 
     @Test
-    void jugadorRecienCreadoTieneLosUbicablesIniciales() throws PosicionFueraDeRangoException {
+    void jugadorRecienCreadoTieneLosUbicablesIniciales() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(50,50);
         Faccion faccion = new Faccion();
         Posicion posicion1 = new Posicion(mapa,1,1);
@@ -57,7 +58,7 @@ public class JugadorTests {
     }
 
     @Test
-    void jugadorCreadoCon1UbicableAlIniciarTurnoDevuelveEseUbicable() throws PosicionFueraDeRangoException {
+    void jugadorCreadoCon1UbicableAlIniciarTurnoDevuelveEseUbicable() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(50,50);
         Posicion posicion1 = new Posicion(mapa,1,1);
         ArrayList aldeanos = new ArrayList();
@@ -69,7 +70,7 @@ public class JugadorTests {
     }
 
     @Test
-    void jugadorCreadoCon2UbicablesPedirSiguienteDevuelveElSegundo() throws PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void jugadorCreadoCon2UbicablesPedirSiguienteDevuelveElSegundo() throws PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(50,50);
         Posicion posicion1 = new Posicion(mapa,1,1);
         Posicion posicion2 = new Posicion(mapa,2,1);
@@ -130,7 +131,7 @@ public class JugadorTests {
 
 // PRUEBA CREAR EDIFICIOS Y UNIDADES
     @Test
-    void crearPlazaCentralLaCreaYSeAgregaALosElementosUbicables() throws PosicionFueraDeRangoException, NoSePudoConstruirException, UbicableEstaOcupadoException {
+    void crearPlazaCentralLaCreaYSeAgregaALosElementosUbicables() throws PosicionFueraDeRangoException, NoSePudoConstruirException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(50,50);
         Posicion posicion1 = new Posicion(mapa,1,1);
         Posicion posicionCostruccion = new Posicion(mapa,2,1);

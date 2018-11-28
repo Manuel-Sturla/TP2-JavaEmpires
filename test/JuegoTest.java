@@ -12,7 +12,7 @@ public class JuegoTest {
     void iniciarJuegoIniciaALosJugadoresCon5Elementos() throws MapaMuyPequeñoException {
         Juego juego = new Juego();
 
-        juego.iniciar(10,10);
+        juego.iniciar(50,50);
         Jugador jugador1 = juego.obtenerJugadorActual();
         assertTrue(jugador1.getElementos().size()==5);
 
@@ -80,7 +80,7 @@ public class JuegoTest {
     void iniciarJuegoCrea2JugadoresDistintos() throws MapaMuyPequeñoException {
         Juego juego = new Juego();
 
-        juego.iniciar(10,10);
+        juego.iniciar(50,50);
         Jugador jugador1 = juego.obtenerJugadorActual();
         jugador1.finalizarTurno();
         assertTrue(juego.obtenerJugadorActual()!= jugador1);
@@ -90,7 +90,7 @@ public class JuegoTest {
     void iniciarJuegoCreaSolamente2Jugadores() throws MapaMuyPequeñoException {
         Juego juego = new Juego();
 
-        juego.iniciar(10,10);
+        juego.iniciar(50,50);
         Jugador jugador1 = juego.obtenerJugadorActual();
         jugador1.finalizarTurno();
         Jugador jugador2 = juego.obtenerJugadorActual();

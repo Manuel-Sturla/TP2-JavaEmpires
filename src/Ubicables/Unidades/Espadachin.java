@@ -1,6 +1,7 @@
 package Ubicables.Unidades;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Faccion;
 import Tablero.*;
 import Turnos.Ocupado;
@@ -8,7 +9,7 @@ import Turnos.Ocupado;
 public class Espadachin extends Unidad {
     Faccion faccion;
 
-    public Espadachin(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
+    public Espadachin(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         super(100, posicionRecibida);
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
         faccion = faccionRecibida;

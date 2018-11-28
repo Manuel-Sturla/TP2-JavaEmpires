@@ -1,6 +1,7 @@
 package Tablero;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Faccion;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
@@ -25,7 +26,7 @@ public class CeldaTest {
         assertTrue(!c.estaOcupada());
     }
     @Test
-    void ocupoUnaCelda() throws PosicionFueraDeRangoException {
+    void ocupoUnaCelda() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,0,0);
         Ubicable elementoMapa = new Aldeano(posicion, faccion);
@@ -34,7 +35,7 @@ public class CeldaTest {
         assertTrue(c.estaOcupada());
     }
     @Test
-    void desocupoUnaCelda() throws PosicionFueraDeRangoException {
+    void desocupoUnaCelda() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,0,0);
         Ubicable elementoMapa = new Aldeano(posicion, faccion);

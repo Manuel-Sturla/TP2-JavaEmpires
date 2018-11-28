@@ -78,7 +78,6 @@ public abstract class Unidad implements Ubicable {
         }
         estado = new Ocupado(1);
     }
-
     public void moverArribaDer() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -90,7 +89,6 @@ public abstract class Unidad implements Ubicable {
         }
         estado = new Ocupado(1);
     }
-
     public void moverAbajoIzq() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -102,7 +100,6 @@ public abstract class Unidad implements Ubicable {
         }
         estado = new Ocupado(1);
     }
-
     public void moverAbajoDer() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -114,6 +111,7 @@ public abstract class Unidad implements Ubicable {
         }
         estado = new Ocupado(1);
     }
+
     //ESTADOS
     public boolean estaOcupado() {
         return estado.estaOcupado();
@@ -124,4 +122,6 @@ public abstract class Unidad implements Ubicable {
 
     public abstract Posicion getPosicion();
 
+
 }
+

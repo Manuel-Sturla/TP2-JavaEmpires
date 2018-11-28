@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class EspadachinTest {
 
     @Test
-    void elEspadachinAtacaAldeanoDeOtraFaccionEnRangoDeAtaque() throws PosicionFueraDeRangoException {
+    void elEspadachinAtacaAldeanoDeOtraFaccionEnRangoDeAtaque() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Faccion faccion1 = new Faccion();
         Faccion faccion2 = new Faccion();
         Mapa mapa = new Mapa(10,10);
@@ -28,7 +28,7 @@ public class EspadachinTest {
     }
 
     @Test
-    void elEspadachinNoAtacaAldeanoDeMismaFaccionEnRangoAtaque() throws PosicionFueraDeRangoException {
+    void elEspadachinNoAtacaAldeanoDeMismaFaccionEnRangoAtaque() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Faccion faccion = new Faccion();
         Mapa mapa = new Mapa(10, 10);
         Posicion posEspadachin = new Posicion(mapa, 0, 0);
@@ -40,7 +40,7 @@ public class EspadachinTest {
     }
 
     @Test
-    void elEspadachinNoAtacaAldeanoEnemigoFueraDeRangoYLevantaExcepcion() throws PosicionFueraDeRangoException {
+    void elEspadachinNoAtacaAldeanoEnemigoFueraDeRangoYLevantaExcepcion() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Faccion faccion1 = new Faccion();
         Faccion faccion2 = new Faccion();
         Mapa mapa = new Mapa(10, 10);

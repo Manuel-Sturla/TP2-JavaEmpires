@@ -1,6 +1,7 @@
 package Ubicables.Edificios;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Jugador.Faccion;
 import Tablero.Posicion;
 import Tablero.PosicionEdificio;
@@ -16,8 +17,9 @@ public abstract class Edificios implements Ubicable {
     protected Estado estado;
     protected Faccion faccion;
 
-    public Edificios(Posicion posicionCostruccion,int vidaRecibida,int largo) throws PosicionFueraDeRangoException {
+    public Edificios(Posicion posicionCostruccion,int vidaRecibida,int largo) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         posicion = new PosicionEdificio(posicionCostruccion, largo);
+        if(!posicion.estanDisponible()) throw new PosicionNoDisponibleException();
         posicion.ocuparPosiciones(this);
         vida =vidaRecibida;
         vidaActual =vidaRecibida;

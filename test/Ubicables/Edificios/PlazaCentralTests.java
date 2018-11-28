@@ -2,6 +2,7 @@ package Ubicables.Edificios;
 
 import Exceptions.NoSePudoConstruirException;
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -18,7 +19,7 @@ public class PlazaCentralTests {
     Faccion faccion = new Faccion();
 
     @Test
-    void laPlazaCentralOcupa4PosicionesEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void laPlazaCentralOcupa4PosicionesEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
@@ -37,7 +38,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralEstaOcupadaEnElTurnoQueFueConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void laPlazaCentralEstaOcupadaEnElTurnoQueFueConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
@@ -47,7 +48,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralSeDesocupaLuegoDe3Turnos() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void laPlazaCentralSeDesocupaLuegoDe3Turnos() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
@@ -60,7 +61,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,11);
@@ -71,7 +72,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void laPlazaCentralPuedeCrearUnAldeano3TurnosDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void laPlazaCentralPuedeCrearUnAldeano3TurnosDespuesDeSerConstruida() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
@@ -84,7 +85,7 @@ public class PlazaCentralTests {
     }
 
     @Test
-    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException {
+    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, NoSePudoConstruirException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(20,20);
         Posicion posicionAldeano = new Posicion(mapa, 10,10);
         Posicion posicionCostruccion = new Posicion(mapa,11,10);

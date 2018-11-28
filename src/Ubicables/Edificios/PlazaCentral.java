@@ -1,6 +1,7 @@
 package Ubicables.Edificios;
 
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Faccion;
 import Tablero.Posicion;
@@ -11,7 +12,7 @@ import Ubicables.Unidades.Aldeano;
 public class PlazaCentral extends Edificios {
     Faccion faccion;
 
-    public PlazaCentral(Posicion posicionConstruccion, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
+    public PlazaCentral(Posicion posicionConstruccion, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         super(posicionConstruccion,450,2);
         estado = new Ocupado(3);
         faccion = faccionRecibida;
@@ -19,7 +20,7 @@ public class PlazaCentral extends Edificios {
     }
 
 
-    public Aldeano crearAldeano() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    public Aldeano crearAldeano() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
