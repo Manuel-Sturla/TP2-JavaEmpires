@@ -29,7 +29,7 @@ public class CuartelTest {
         Mapa mapa = new Mapa(10,10);
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
         Cuartel cuartel = new Cuartel(posicionCostruccion);
-        assertTrue(cuartel.estaOcupada());
+        assertTrue(cuartel.estaOcupado());
     }
     @Test
     void creoUnEspadachin() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {

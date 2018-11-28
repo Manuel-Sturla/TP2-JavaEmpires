@@ -8,14 +8,13 @@ import Tablero.PosicionEdificio;
 import Turnos.Desocupado;
 import Turnos.Estado;
 import Turnos.Ocupado;
+import Ubicables.Pieza;
 import Ubicables.Ubicable;
 
-public abstract class Edificios implements Ubicable {
+public abstract class Edificios extends Pieza implements Ubicable {
 
-    protected int vida,vidaActual;
+    protected int vidaActual;
     protected PosicionEdificio posicion;
-    protected Estado estado;
-    protected Faccion faccion;
 
     public Edificios(Posicion posicionCostruccion,int vidaRecibida,int largo) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         posicion = new PosicionEdificio(posicionCostruccion, largo);
@@ -25,21 +24,8 @@ public abstract class Edificios implements Ubicable {
         vidaActual =vidaRecibida;
     }
 
-    public void desocuparUnTurno() {
-        estado = estado.desocuparUnTurno();
-    }
-    public boolean estaOcupada() {
-        return estado.estaOcupado();
-    }
 
-    @Override
-    public boolean estaMuerto() {
-        return vidaActual<1;
-    }
 
-    @Override
-    public void recibirDanio(int danioRecibido) {
-        vidaActual -= danioRecibido;
-    }
+
 
 }

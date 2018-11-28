@@ -9,13 +9,13 @@ import Tablero.Posicion;
 import Turnos.Desocupado;
 import Turnos.Estado;
 import Turnos.Ocupado;
+import Ubicables.Pieza;
 import Ubicables.Ubicable;
 
-public abstract class Unidad implements Ubicable {
-    protected int vida;
-    protected Estado estado;
+public abstract class Unidad extends Pieza implements Ubicable {
+
     protected Posicion posicion;
-    protected Faccion faccion;
+
 
     public Unidad(int vidaRecibida, Posicion posicionRescibida){
         vida = vidaRecibida;
@@ -112,13 +112,7 @@ public abstract class Unidad implements Ubicable {
         estado = new Ocupado(1);
     }
 
-    //ESTADOS
-    public boolean estaOcupado() {
-        return estado.estaOcupado();
-    }
-    public void desocuparUnTurno(){
-        estado = estado.desocuparUnTurno();
-    }
+
 
     public abstract Posicion getPosicion();
 

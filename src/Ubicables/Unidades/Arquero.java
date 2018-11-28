@@ -19,7 +19,7 @@ public class Arquero extends Unidad {
 
     public void atacarUnidad(Unidad objetivo) throws PosicionFueraDeRangoException {
         posicion.estaEnRango(objetivo.getPosicion(), 3);
-        if(!faccion.perteneceFaccion(objetivo)) {
+        if (!faccion.perteneceFaccion(objetivo)) {
             objetivo.recibirDanio(25);
         }
     }
@@ -30,15 +30,4 @@ public class Arquero extends Unidad {
     }
 
 
-    public boolean estaMuerto() {
-        return false;
-    }
-
-    @Override
-    public void recibirDanio(int danioRecibido) {
-        vida -= danioRecibido;
-        if(vida < 1){
-            estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
-        }
-    }
 }

@@ -23,18 +23,6 @@ public class Espadachin extends Unidad {
         }
     }
 
-    public void recibirDanio(int danioRecibido) {
-        vida -= danioRecibido;
-        if(vida < 1){
-            estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
-        }
-    }
-
-    @Override
-    public boolean estaMuerto() {
-        return vida<1; //estado.estaMuerto();
-    }
-
     public Posicion getPosicion(){
         return posicion;
     }
