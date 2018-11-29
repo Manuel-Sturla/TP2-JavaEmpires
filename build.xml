@@ -90,9 +90,21 @@
 
     
   </path>
+  <!-- defino el target Junitlauncher para travis -->
+    <path id="junitlauncher.classpath">
+      <fileset dir="${lib.dir}">
+        <include name="*.jar" />
+      </fileset>
+    </path>
+
+    <taskdef name="junit5" classname="org.apache.tools.ant.taskdefs.optional.junitlauncher.JUnitLauncherTask" >
+      <classpath refid="junitlauncher.classpath" />
+    </taskdef>
+
+  <!--Testeo con el target echo a mano de Junitlauncher -->
    <target name="test" depends='build' >
-      <!-- Usa Junit5-->
-      <junitlauncher printSummary='true' haltOnFailure='false' >
+      <!-- Usa Junit5 y 4-->
+      <junit5 printSummary='true' haltOnFailure='false' >
         <classpath refid='classpath' />  
         <classpath refid='test.classpath'/>
         
@@ -100,8 +112,14 @@
           <fileset dir="${testsclasses.dir}">
           </fileset>
         </testclasses>
-          <listener type="legacy-brief" sendSysOut="true" sendSysErr="true" />
+          <listener type="legacy-xml" sendSysOut="true" sendSysErr="true" />
         
-      </junitlauncher>  
-    </target>  
+      </junit5>  
+      <junitreport todir="${reports.dir}">
+            <fileset dir="${reports.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="noframes" todir="${reports.dir}/resumen"/>
+        </junitreport>
+    </target> 
 </project>
