@@ -3,7 +3,7 @@ package Ubicables;
 import Jugador.Faccion;
 import Turnos.Estado;
 
-public class Pieza implements Ubicable{
+public abstract class Pieza implements Ubicable{
     protected int vida;
     protected int precio;
     protected Faccion faccion;

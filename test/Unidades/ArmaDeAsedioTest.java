@@ -1,9 +1,6 @@
 package Unidades;
 
-import Exceptions.ArmaNoDesmontadaException;
-import Exceptions.MovimientoNoPermitidoException;
-import Exceptions.PosicionFueraDeRangoException;
-import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.*;
 import Jugador.Faccion;
 import Tablero.Mapa;
 import Tablero.Posicion;
@@ -19,7 +16,7 @@ public class ArmaDeAsedioTest {
     Faccion faccion = new Faccion();
 
     @Test
-    void moverArmaALaDerechaCuandoNoEstaMontadaALaMueve() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void moverArmaALaDerechaCuandoNoEstaMontadaALaMueve() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion, faccion);
         armaDeAsedio.moverDerecha();
@@ -28,11 +25,10 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    void moverArmaCuandoEstaMontadaNoSeMueve() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    void moverArmaCuandoEstaMontadaNoSeMueve() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion, faccion);
         armaDeAsedio.montarArma();
-        armaDeAsedio.moverDerecha();
         Posicion posicionLlegada = new Posicion(mapa, 4,3);
         assertTrue(!mapa.celdaEstaOcupada(posicionLlegada));
         assertTrue(mapa.celdaEstaOcupada(posicion));
@@ -40,7 +36,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    void crearArmaDeAsedioSeCreaCorrectamente() throws PosicionFueraDeRangoException {
+    void crearArmaDeAsedioSeCreaCorrectamente() throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion, faccion);
         assertTrue(mapa.celdaEstaOcupada(posicion));
         assertTrue(faccion.perteneceFaccion(armaDeAsedio));

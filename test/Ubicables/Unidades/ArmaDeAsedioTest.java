@@ -2,6 +2,7 @@ package Ubicables.Unidades;
 
 import Exceptions.MovimientoNoPermitidoException;
 import Exceptions.PosicionFueraDeRangoException;
+import Exceptions.PosicionNoDisponibleException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Faccion;
 import Tablero.Mapa;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ArmaDeAsedioTest {
 
     @Test
-    public void creoUnArmaDeAsedio(){
+    public void creoUnArmaDeAsedio() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,2,2);
         Faccion faccion = new Faccion();
@@ -23,7 +24,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void creoUnArmaDeAsedioIniciaDesmontada() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionFueraDeRangoException {
+    public void creoUnArmaDeAsedioIniciaDesmontada() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,2,2);
         Posicion posicion1 = new Posicion(mapa, 3,2);
@@ -34,7 +35,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void creoUnArmaDeAsedioSeMonta() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException {
+    public void creoUnArmaDeAsedioSeMonta() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,2,2);
         Faccion faccion = new Faccion();

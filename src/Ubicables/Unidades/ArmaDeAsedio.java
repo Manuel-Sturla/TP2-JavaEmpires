@@ -1,8 +1,6 @@
 package Ubicables.Unidades;
 
-import Exceptions.ArmaNoDesmontadaException;
-import Exceptions.MovimientoNoPermitidoException;
-import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.*;
 import Jugador.Faccion;
 import Tablero.Posicion;
 import Turnos.Ocupado;
@@ -10,7 +8,7 @@ import Turnos.Ocupado;
 public class ArmaDeAsedio extends Unidad {
         boolean montada = false;
 
-    public ArmaDeAsedio(Posicion posicion, Faccion faccionRecibida) throws PosicionFueraDeRangoException {
+    public ArmaDeAsedio(Posicion posicion, Faccion faccionRecibida) throws  PosicionNoDisponibleException, PosicionFueraDeRangoException {
             super(150,posicion);
             faccion = faccionRecibida;
             crear(this);
@@ -61,7 +59,7 @@ public class ArmaDeAsedio extends Unidad {
     }
 
 
-    }
+
 
     @Override
     public Posicion getPosicion() {
