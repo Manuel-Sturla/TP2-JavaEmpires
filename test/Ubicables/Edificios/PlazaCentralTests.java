@@ -44,7 +44,7 @@ public class PlazaCentralTests {
         Posicion posicionCostruccion = new Posicion(mapa,11,10);
         Aldeano aldeano = new Aldeano(posicionAldeano, faccion);
         PlazaCentral plaza = aldeano.crearPlazaCentral(posicionCostruccion);
-        assertTrue(plaza.estaOcupada());
+        assertTrue(plaza.estaOcupado());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class PlazaCentralTests {
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
-        assertFalse(plaza.estaOcupada());
+        assertFalse(plaza.estaOcupado());
     }
 
     @Test
