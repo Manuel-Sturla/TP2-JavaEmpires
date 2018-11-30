@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Celda {
     protected boolean ocupado;
     protected Ubicable ubicable;
-    private CeldasAdayacentes celdasAdyacentes = new CeldasAdayacentes();
+    private CeldasAdyacentes celdasAdyacentes = new CeldasAdyacentes();
 
     public Celda(){
         this.ocupado = false;
@@ -33,7 +33,7 @@ public class Celda {
     }
 
     public void setCeldasAdyacentes(ArrayList celdasAdyacentesRecibidas) {
-        celdasAdyacentes.agregarCeldasAdayacentes(celdasAdyacentesRecibidas);
+        celdasAdyacentes.agregarCeldasAdyacentes(celdasAdycentesRecibidas);
     }
 
     public boolean esAdyacente(Celda celda2) {
