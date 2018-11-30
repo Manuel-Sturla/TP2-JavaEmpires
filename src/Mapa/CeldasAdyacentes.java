@@ -4,10 +4,10 @@ import Mapa.Celda;
 
 import java.util.ArrayList;
 
-public class CeldasAdayacentes {
+public class CeldasAdyacentes {
     ArrayList<Celda> conjuntoCeldas = new ArrayList();
 
-    public void agregarCeldasAdayacentes(ArrayList celdasAdyacentesRecibidas){
+    public void agregarCeldasAdyacentes(ArrayList celdasAdyacentesRecibidas){
         conjuntoCeldas.addAll(celdasAdyacentesRecibidas);
     }
 
