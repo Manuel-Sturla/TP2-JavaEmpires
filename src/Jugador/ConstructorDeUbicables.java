@@ -4,6 +4,7 @@ import Exceptions.PosicionInvalidaException;
 import Posiciones.Posicion;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Edificios.PlazaCentral;
+import Ubicables.Unidades.ArmaDeAsedio;
 import Ubicables.Unidades.Arquero;
 import Ubicables.Unidades.Espadachin;
 
@@ -38,5 +39,11 @@ public class ConstructorDeUbicables {
         banco.gastarOro(100);
         poblacion.agregarHabitante();
         return new Arquero(posicionDeDespliegue);
+    }
+
+    public ArmaDeAsedio crearArmaDeAsedio(Posicion posicionDeDespliegue) throws PosicionInvalidaException {
+        banco.gastarOro(200);
+        poblacion.agregarHabitante();
+        return new ArmaDeAsedio(posicionDeDespliegue);
     }
 }
