@@ -1,8 +1,7 @@
 package PruebasUbicables.PruebasUnidades;
 
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableEstaOcupadoException;
-import Exceptions.UbicableFueraDeRangoException;
+import Exceptions.*;
+import Jugador.Faccion;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
 import Ubicables.Edificios.Edificio;
@@ -120,13 +119,17 @@ public class AldeanoTest {
     }
 
     @Test
-    void repararEdificioOcupaAlAldeano1TurnoCompleto() throws PosicionInvalidaException, UbicableFueraDeRangoException {
+    void repararEdificioOcupaAlAldeano1TurnoCompleto() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
         Mapa mapa = new Mapa(10, 10);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion, null);
         Posicion posicion2 = new Posicion(mapa, 4, 3);
 
         Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
         cuartel.recibirDanio(50);
         aldeano.reparar(cuartel);
         assertTrue(aldeano.estaOcupado());
@@ -136,13 +139,17 @@ public class AldeanoTest {
     }
 
     @Test
-    void repararEdificioOcupaAlAldeano3TurnoCompletos() throws PosicionInvalidaException, UbicableFueraDeRangoException {
+    void repararEdificioOcupaAlAldeano3TurnoCompletos() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
         Mapa mapa = new Mapa(15, 15);
         Posicion posicion = new Posicion(mapa, 3, 3);
         Aldeano aldeano = new Aldeano(posicion, null);
         Posicion posicion2 = new Posicion(mapa, 4, 3);
 
         Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
         cuartel.recibirDanio(150);
         aldeano.reparar(cuartel);
         assertTrue(aldeano.estaOcupado());
@@ -161,10 +168,141 @@ public class AldeanoTest {
         Posicion posicion2 = new Posicion(mapa, 10, 10);
 
         Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
         cuartel.recibirDanio(150);
         assertThrows(UbicableFueraDeRangoException.class, ()->aldeano.reparar(cuartel));
     }
 
+    @Test
+    void soloPuedeRepararUnAldeanoALaVez() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
+        Mapa mapa = new Mapa(15, 15);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion, null);
+        Posicion posicion2 = new Posicion(mapa, 4, 3);
+
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
+        cuartel.recibirDanio(150);
+        aldeano.reparar(cuartel);
+
+        Posicion posicion3 = new Posicion(mapa, 3, 4);
+        Aldeano aldeano2 = new Aldeano(posicion3, null);
+
+        aldeano2.reparar(cuartel);
+
+        assertTrue(aldeano.estaOcupado());
+        assertTrue(!aldeano2.estaOcupado());
+    }
+
+    @Test
+    void luegoDeUnTurnoSoloPuedeSeguirReparandoElAldeanoQueLoComenzo() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
+        Mapa mapa = new Mapa(15, 15);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion, null);
+        Posicion posicion2 = new Posicion(mapa, 4, 3);
+
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
+
+        cuartel.recibirDanio(150);
+        aldeano.reparar(cuartel);
+
+        Posicion posicion3 = new Posicion(mapa, 3, 4);
+        Aldeano aldeano2 = new Aldeano(posicion3, null);
+
+        aldeano.desocuparUnTurno();
+        aldeano2.desocuparUnTurno();
+        cuartel.desocuparUnTurno();
+
+        aldeano2.reparar(cuartel);
+        assertTrue(aldeano.estaOcupado());
+        assertTrue(!aldeano2.estaOcupado());
+    }
+    @Test
+    void elEdificioSePuedeRepararPorOtroAldeanoSiElPrimeroDejoDeConstruir() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
+        Mapa mapa = new Mapa(15, 15);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion, null);
+        Posicion posicion2 = new Posicion(mapa, 4, 3);
+
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
+
+        cuartel.recibirDanio(50);
+        aldeano.reparar(cuartel);
+
+        Posicion posicion3 = new Posicion(mapa, 3, 4);
+        Aldeano aldeano2 = new Aldeano(posicion3, null);
+
+        aldeano2.asignarFaccion(faccion1);
+
+
+        aldeano.desocuparUnTurno();
+        aldeano2.desocuparUnTurno();
+        cuartel.desocuparUnTurno();
+
+        cuartel.recibirDanio(50);
+        aldeano2.reparar(cuartel);
+        assertTrue(!aldeano.estaOcupado());
+        assertTrue(aldeano2.estaOcupado());
+    }
+
+    @Test
+    void repararDosVecesNoCambiaLaVelocidadDeReparacion() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
+        Mapa mapa = new Mapa(15, 15);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion, null);
+        Posicion posicion2 = new Posicion(mapa, 4, 3);
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        Faccion faccion1 = new Faccion();
+        aldeano.asignarFaccion(faccion1);
+        cuartel.asignarFaccion(faccion1);
+
+
+        cuartel.recibirDanio(150);
+        aldeano.reparar(cuartel);
+        assertTrue(cuartel.estaEnConstruccion());
+        aldeano.desocuparUnTurno();
+        aldeano.reparar(cuartel);
+        assertTrue(cuartel.estaEnConstruccion());
+        aldeano.desocuparUnTurno();
+        aldeano.reparar(cuartel);
+        assertTrue(!cuartel.estaEnConstruccion());
+    }
+
+
+    @Test
+    void repararEdificioDeOtraFaccionNoEstaPermitido() throws PosicionInvalidaException, UbicableFueraDeRangoException {
+        Mapa mapa = new Mapa(10, 10);
+        Posicion posicion = new Posicion(mapa, 3, 3);
+        Aldeano aldeano = new Aldeano(posicion, null);
+        Posicion posicion2 = new Posicion(mapa, 4, 3);
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        cuartel.recibirDanio(50);
+        Faccion faccion1 = new Faccion();
+        Faccion faccion2 = new Faccion();
+
+        aldeano.asignarFaccion(faccion1);
+        aldeano.asignarFaccion(faccion2);
+
+
+
+        assertThrows(UbicableDeOtraFaccionException.class,()->aldeano.reparar(cuartel));
+        assertTrue(!aldeano.estaOcupado());
+
+    }
 /*Hay que decidir como se va a hacer esto a nivel interfaz
     @Test
     public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws UbicableEstaOcupadoException, PosicionInvalidaException {

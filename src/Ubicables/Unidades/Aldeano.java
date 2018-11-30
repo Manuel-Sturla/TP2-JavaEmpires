@@ -3,6 +3,7 @@ package Ubicables.Unidades;
 import Estados.Ocupado;
 import Estados.Reparando;
 import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableDeOtraFaccionException;
 import Exceptions.UbicableEstaOcupadoException;
 import Exceptions.UbicableFueraDeRangoException;
 import Jugador.ConstructorDeUbicables;
@@ -36,12 +37,15 @@ public class Aldeano extends Unidad {
         }
     }
 
-    public void reparar(Edificio edificio) throws PosicionInvalidaException, UbicableFueraDeRangoException {
+    public void reparar(Edificio edificio) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
         if (edificio.estaEnConstruccion()){
             return; //no hace nadaaaa
          }
         if (!posicion.edificioEstaEnRango(edificio.getPosicion())){
             throw new UbicableFueraDeRangoException();
+        }
+        if (!faccion.perteneceFaccion(edificio)){
+            throw  new UbicableDeOtraFaccionException();
         }
         estado = new Reparando(edificio);
         edificio.reparar(); // no se
