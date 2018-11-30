@@ -1,61 +1,73 @@
 package Jugador;
 
-import Turnos.ControladorTurnos;
-import Ubicables.Ubicable;
+import Exceptions.PosicionInvalidaException;
+import Mapa.Mapa;
+import Posiciones.Posicion;
+import Ubicables.Unidades.Aldeano;
+import Ubicables.Edificios.PlazaCentral;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Jugador {
-
-    ArrayList elementos = new ArrayList();
-    Iterator<Ubicable> iterador;
+    Banco banco;
     Faccion faccion;
-    String nombre;
-    static ControladorTurnos controlador;
+    ConstructorDeUbicables constructor;
+    Poblacion poblacion;
+    Mapa mapa;
 
-    //Constructor que recibe coleccion! de ubicab+les generica y los agrega
-    public Jugador(ArrayList <Ubicable> elementosRecibidos, Faccion faccionRecibida){
-        elementos = new ArrayList(elementosRecibidos);
-        faccion = faccionRecibida;
-
+    public Jugador(Mapa mapaRecibido){
+        mapa = mapaRecibido;
     }
 
-
-
-    public ArrayList <Ubicable> getElementos() {
-        return new ArrayList<Ubicable>(elementos);
+    public void inicializarJugador() throws PosicionInvalidaException {
+        banco = new Banco(215); //Crear 3 aldeanos y 1 plaza consume 175 de oro
+        faccion = new Faccion();
+        poblacion = new Poblacion();
+        constructor = new ConstructorDeUbicables(banco, poblacion);
+        crearAldeanos(3);
+        crearPlazaCentral();
     }
 
-    public void setControlador(ControladorTurnos controladorTurnos){
-        controlador = controladorTurnos;
-    }
-    public Ubicable iniciarTurno() {
-        iterador = elementos.iterator();
-        return this.siguiente();
+    private void crearPlazaCentral() throws PosicionInvalidaException {
+        Posicion posicion = new Posicion(mapa, 1,1);
+        PlazaCentral plaza = constructor.crearPlazaCentral(posicion);
+        plaza.asignarFaccion(faccion);
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
     }
 
-    public Ubicable siguiente(){
-        if (!iterador.hasNext()){
-            this.finalizarTurno();
-            return null;
+    private void crearAldeanos(int cantidadDeAldeanos) throws PosicionInvalidaException {
+        for (int i = 0; i < cantidadDeAldeanos; i++) {
+            Posicion posicion = new Posicion(mapa, i, 3);
+            Aldeano aldeano = constructor.crearAldeano(posicion);
+            aldeano.asignarFaccion(faccion);
         }
-        return iterador.next();
     }
 
-    public void finalizarTurno(){
-        iterador = elementos.iterator();
-        while (iterador.hasNext()){
-            if(iterador.next().estaMuerto()){
-                iterador.remove();
-            }
-        }
-        //Le avisa al manejador de turnos que termino el turno
-        controlador.siguienteTurno();
+    public ArrayList obtenerAldeanos() {
+        return faccion.obtenerAldeanos();
     }
 
-    public void agregar(Ubicable elemento) {
-        elementos.add(elementos.size(),elemento);
+    public int getOro() {
+        return banco.getCantidadDeOro();
     }
 
+    public int getPoblacion() {
+        return poblacion.getPoblacion();
+    }
+
+    public void iniciarTurno() {
+        faccion.desocuparUnTurnoTodosLosElementos();
+        banco.agregarOro(faccion.obtenerCantidadDeAldeanosDesocupados()*20);
+    }
+
+    public ArrayList obtenerUbicablesDesocupados() {
+        ArrayList desocupados = faccion.getDesocupados();
+        return desocupados;
+    }
+
+    public void terminarTurno() {
+        faccion.ocuparUnTurnoTodosLosElementosDesocupados();
+    }
 }

@@ -1,29 +1,26 @@
 package Ubicables.Unidades;
 
-import Exceptions.PosicionFueraDeRangoException;
-import Exceptions.PosicionNoDisponibleException;
-import Jugador.Faccion;
-import Tablero.*;
-import Turnos.Ocupado;
+import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableDeMismaFaccionException;
+import Exceptions.UbicableFueraDeRangoException;
+import Posiciones.Posicion;
 
-public class Espadachin extends Unidad {
-    Faccion faccion;
+public class Espadachin extends Unidad{
 
-    public Espadachin(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
+    public Espadachin(Posicion posicionRecibida) throws PosicionInvalidaException {
         super(100, posicionRecibida);
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
-        faccion = faccionRecibida;
-        faccion.agregarMiembro(this);
     }
 
-    public void atacarUnidad(Unidad objetivo) throws PosicionFueraDeRangoException {
-        posicion.estaEnRango(objetivo.getPosicion(), 1);
+    public void atacarUnidad(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        if(!posicion.estaEnRango(objetivo.getPosicion(), 1)){
+            throw new UbicableFueraDeRangoException();
+        }
+        if(faccion.perteneceFaccion(objetivo)){
+            throw new UbicableDeMismaFaccionException();
+        }
         if(!faccion.perteneceFaccion(objetivo)) {
             objetivo.recibirDanio(25);
         }
-    }
-
-    public Posicion getPosicion(){
-        return posicion;
     }
 }

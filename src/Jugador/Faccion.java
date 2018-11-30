@@ -1,8 +1,7 @@
 package Jugador;
 
-import Ubicables.Pieza;
+import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
-
 import java.util.ArrayList;
 
 public class Faccion {
@@ -20,7 +19,55 @@ public class Faccion {
         miembros.add(miembro);
     }
 
-    public void eliminarMiembro(Ubicable pieza) {
-        miembros.remove(pieza);
+    public Ubicable obtenerUbicable(int numeroDeUbicable) {
+        return (Ubicable)miembros.get(numeroDeUbicable);
+    }
+
+    public ArrayList obtenerAldeanos() {
+        ArrayList aldeanos = new ArrayList();
+        for (int i = 0; i < miembros.size(); i++) {
+            if(miembros.get(i) instanceof Aldeano){
+                aldeanos.add(miembros.get(i));
+            }
+        }
+        return aldeanos;
+    }
+
+    public void desocuparUnTurnoTodosLosElementos() {
+        for (int i = 0; i < miembros.size(); i++) {
+            Ubicable miembro = (Ubicable)miembros.get(i);
+            miembro.desocuparUnTurno();
+        }
+    }
+
+    public ArrayList getDesocupados() {
+        ArrayList desocupados = new ArrayList();
+        for (int i = 0; i < miembros.size(); i++) {
+            Ubicable miembro = (Ubicable)miembros.get(i);
+            if(!miembro.estaOcupado()){
+                desocupados.add(miembro);
+            }
+        }
+        return desocupados;
+    }
+
+    public void ocuparUnTurnoTodosLosElementosDesocupados() {
+        ArrayList desocupados = getDesocupados();
+        for (int i = 0; i < desocupados.size(); i++) {
+            Ubicable desocupado = (Ubicable)desocupados.get(i);
+            desocupado.ocuparUnTurno();
+        }
+    }
+
+    public int obtenerCantidadDeAldeanosDesocupados() {
+        ArrayList aldeanos = obtenerAldeanos();
+        int cantidad = 0;
+        for (int i = 0; i < aldeanos.size(); i++) {
+            Ubicable aldeano = (Ubicable)aldeanos.get(i);
+            if(!aldeano.estaOcupado()){
+                cantidad++;
+            }
+        }
+        return cantidad;
     }
 }

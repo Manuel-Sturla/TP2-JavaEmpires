@@ -1,44 +1,35 @@
 package Ubicables.Edificios;
 
-import Exceptions.PosicionFueraDeRangoException;
-import Exceptions.PosicionNoDisponibleException;
+import Estados.Ocupado;
+import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
-import Jugador.Faccion;
-import Tablero.Posicion;
-import Turnos.Desocupado;
-import Turnos.Ocupado;
-import Ubicables.Unidades.Aldeano;
+import Jugador.ConstructorDeUbicables;
+import Posiciones.Posicion;
 import Ubicables.Unidades.Arquero;
 import Ubicables.Unidades.Espadachin;
 
-public class Cuartel extends Edificios {
+public class Cuartel extends Edificio {
 
-    Faccion faccion;
-    public Cuartel(Posicion posicionCostruccion) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
-        super(posicionCostruccion, 250, 2);
+    public Cuartel(Posicion posicionCostruccion, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
+        super(posicionCostruccion, 250, 2, constructorRecibido);
         estado = new Ocupado(3);
     }
 
-    public Cuartel(Posicion posicionCostruccion, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
-        super(posicionCostruccion, 250, 2);
-        estado = new Ocupado(3);
-        faccion = faccionRecibida;
-        faccion.agregarMiembro(this);
-    }
-
-    public Espadachin crearEspadachin() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
+    public void crearEspadachin() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        estado = new Desocupado();
-        return new Espadachin(posicion.obtenerPosicionDeDespliegue(), faccion);
+        ocuparUnTurno();
+        Espadachin espadachin = constructor.crearEspadachin(posicion.obtenerPosicionDeDespliegue());
+        espadachin.asignarFaccion(faccion);
     }
-    public Arquero crearArquero() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
+
+    public void crearArquero() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        estado = new Desocupado();
-        return new Arquero(posicion.obtenerPosicionDeDespliegue(), faccion);
+        ocuparUnTurno();
+        Arquero arquero = constructor.crearArquero(posicion.obtenerPosicionDeDespliegue());
+        arquero.asignarFaccion(faccion);
     }
-
 }

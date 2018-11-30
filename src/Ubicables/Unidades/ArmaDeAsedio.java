@@ -1,68 +1,53 @@
 package Ubicables.Unidades;
 
-import Exceptions.*;
-import Jugador.Faccion;
-import Tablero.Posicion;
-import Turnos.Ocupado;
+import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableEstaOcupadoException;
+import Posiciones.Posicion;
 
-public class ArmaDeAsedio extends Unidad {
-        boolean montada = false;
+public class ArmaDeAsedio extends Unidad{
+    boolean montada = false;
 
-    public ArmaDeAsedio(Posicion posicion, Faccion faccionRecibida) throws  PosicionNoDisponibleException, PosicionFueraDeRangoException {
-            super(150,posicion);
-            faccion = faccionRecibida;
-            crear(this);
-            posicion.getMapa().ocuparCelda(this, posicion);
-        }
+    public ArmaDeAsedio(Posicion posicion) throws PosicionInvalidaException {
+        super(150,posicion);
+        posicion.getMapa().ocuparCelda(this, posicion);
+    }
 
 
     public void montarArma() {
-            montada = true;
-        }
+        montada = true;
+    }
 
     public void desmontarArma(){ montada = false;}
-
-    public boolean getEstaMontada() {
-            return montada;
-        }
 
     public int getVida(){return vida;}
 
 
     @Override
-    public void moverDerecha() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException {
-        if (this.getEstaMontada()) {
-            throw new MovimientoNoPermitidoException();
+    public void moverDerecha() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
         }
         super.moverDerecha();
     }
     @Override
-    public void moverIzquierda() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
-        if (this.getEstaMontada()) {
-            throw new MovimientoNoPermitidoException();
+    public void moverIzquierda() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
         }
         super.moverIzquierda();
     }
     @Override
-    public void moverArriba() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
-        if (this.getEstaMontada()) {
-            throw new MovimientoNoPermitidoException();
+    public void moverArriba() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
         }
         super.moverArriba();
     }
     @Override
-    public void moverAbajo() throws MovimientoNoPermitidoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
-        if (this.getEstaMontada()) {
-            throw new MovimientoNoPermitidoException();
+    public void moverAbajo() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
         }
         super.moverAbajo();
-    }
-
-
-
-
-    @Override
-    public Posicion getPosicion() {
-        return posicion;
     }
 }

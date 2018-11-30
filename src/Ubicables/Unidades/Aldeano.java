@@ -1,52 +1,41 @@
 package Ubicables.Unidades;
 
-import Exceptions.*;
-import Jugador.Faccion;
-import Tablero.Posicion;
-import Turnos.Ocupado;
-import Ubicables.Edificios.Cuartel;
+import Estados.Ocupado;
+import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableEstaOcupadoException;
+import Jugador.ConstructorDeUbicables;
+import Posiciones.Posicion;
 import Ubicables.Edificios.PlazaCentral;
 
 public class Aldeano extends Unidad {
+    ConstructorDeUbicables constructor;
 
-    public Aldeano(Posicion posicionRecibida, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
-        super(50,posicionRecibida);
-        faccion = faccionRecibida;
-        crear(this);
+    public Aldeano(Posicion posicionRecibida, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
+        super(50, posicionRecibida);
+        constructor = constructorRecibido;
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
-
     }
 
-    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
+    public void crearPlazaCentral() throws PosicionInvalidaException, UbicableEstaOcupadoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        //ver si hay plata
-        PlazaCentral plazaCentral = new PlazaCentral(posicionConstruccion, faccion);
         estado = new Ocupado(3);
-        //gasta plata
-        return plazaCentral;
+        Posicion posicionConstruccion = new Posicion(posicion.getMapa(), posicion.getCoordenadaHorizontal() + 1,posicion.getCoordenadaVertical()); //Parche
+        PlazaCentral plaza = constructor.crearPlazaCentral(posicionConstruccion);
+        plaza.asignarFaccion(faccion);
     }
 
-    public Cuartel aldaeanoCreaCuartel(Posicion posicionConstruccion) throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
-        if(estado.estaOcupado()){
-            throw new UbicableEstaOcupadoException();
+    public void recibirDanio(int danioRecibido) {
+        vida -= danioRecibido;
+        if(vida < 1){
+            estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
         }
-        if(!posicion.edificioEstaEnRango(posicionConstruccion)) throw new PosicionFueraDeRangoException();
-        Cuartel cuartel = new Cuartel(posicionConstruccion, faccion);
-        estado = new Ocupado(3);
-        return cuartel;
     }
-
 
     public int getVida(){return vida;}
-
-
 
     public Posicion getPosicion(){
         return posicion;
     }
 }
-
-
-

@@ -1,31 +1,28 @@
 package Ubicables.Edificios;
 
-import Exceptions.PosicionFueraDeRangoException;
-import Exceptions.PosicionNoDisponibleException;
+import Estados.Ocupado;
+import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
-import Jugador.Faccion;
-import Tablero.Posicion;
-import Turnos.Desocupado;
-import Turnos.Ocupado;
+import Jugador.ConstructorDeUbicables;
+import Posiciones.Posicion;
+import Posiciones.PosicionEdificio;
+import Ubicables.Ubicable;
 import Ubicables.Unidades.Aldeano;
 
-public class PlazaCentral extends Edificios {
-    Faccion faccion;
+public class PlazaCentral extends Edificio {
 
-    public PlazaCentral(Posicion posicionConstruccion, Faccion faccionRecibida) throws PosicionFueraDeRangoException, PosicionNoDisponibleException {
-        super(posicionConstruccion,450,2);
+    public PlazaCentral(Posicion posicionConstruccion, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
+        super(posicionConstruccion, 450, 2, constructorRecibido);
         estado = new Ocupado(3);
-        faccion = faccionRecibida;
-        faccion.agregarMiembro(this);
     }
 
-
-    public Aldeano crearAldeano() throws UbicableEstaOcupadoException, PosicionFueraDeRangoException, PosicionNoDisponibleException {
+    public void crearAldeano() throws PosicionInvalidaException, UbicableEstaOcupadoException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        estado = new Desocupado();
-        return new Aldeano(posicion.obtenerPosicionDeDespliegue(), faccion);
+        estado = new Ocupado(3);
+        Aldeano aldeano = constructor.crearAldeano(posicion.obtenerPosicionDeDespliegue());
+        aldeano.asignarFaccion(faccion);
     }
 
 }

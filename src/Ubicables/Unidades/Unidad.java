@@ -1,21 +1,14 @@
 package Ubicables.Unidades;
 
-import Exceptions.MovimientoNoPermitidoException;
-import Exceptions.PosicionException;
-import Exceptions.PosicionNoDisponibleException;
+import Estados.Desocupado;
+import Estados.Ocupado;
+import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
-import Jugador.Faccion;
-import Tablero.Posicion;
-import Turnos.Desocupado;
-import Turnos.Estado;
-import Turnos.Ocupado;
-import Ubicables.Pieza;
+import Posiciones.Posicion;
 import Ubicables.Ubicable;
 
-public abstract class Unidad extends Pieza implements Ubicable {
-
-    protected Posicion posicion;
-
+public class Unidad extends Ubicable {
+    Posicion posicion;
 
     public Unidad(int vidaRecibida, Posicion posicionRescibida){
         vida = vidaRecibida;
@@ -23,99 +16,71 @@ public abstract class Unidad extends Pieza implements Ubicable {
         estado = new Desocupado();
     }
 
-    public void moverDerecha() throws UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+    public void moverDerecha() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverDerecha();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverDerecha();
         estado = new Ocupado(1);
     }
-    public void moverAbajo() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, MovimientoNoPermitidoException {
+
+    public void moverAbajo() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverAbajo();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverAbajo();
         estado = new Ocupado(1);
     }
-    public void moverIzquierda() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, MovimientoNoPermitidoException {
-        if(estado.estaOcupado()) throw new UbicableEstaOcupadoException();
-        try {
-            posicion.moverIzquierda();
-        }catch (PosicionException e){
-            throw new MovimientoNoPermitidoException();
-        }
 
-        estado = new Ocupado(1);
-    }
-    public void moverArriba() throws UbicableEstaOcupadoException, PosicionNoDisponibleException, MovimientoNoPermitidoException {
+    public void moverIzquierda() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverArriba();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverIzquierda();
         estado = new Ocupado(1);
     }
 
-    public void moverArribaIzq() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+    public void moverArriba() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverArribaIzq();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverArriba();
         estado = new Ocupado(1);
     }
-    public void moverArribaDer() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+
+    public void moverArribaIzq() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverArribaDer();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverArribaIzq();
         estado = new Ocupado(1);
     }
-    public void moverAbajoIzq() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+
+    public void moverArribaDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverAbajoIzq();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverArribaDer();
         estado = new Ocupado(1);
     }
-    public void moverAbajoDer() throws PosicionNoDisponibleException, UbicableEstaOcupadoException, MovimientoNoPermitidoException {
+
+    public void moverAbajoIzq() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        try{
-            posicion.moverAbajoDer();
-        } catch (PosicionException e) {
-            throw new MovimientoNoPermitidoException();
-        }
+        posicion.moverAbajoIzq();
         estado = new Ocupado(1);
     }
 
+    public void moverAbajoDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        posicion.moverAbajoDer();
+        estado = new Ocupado(1);
+    }
 
-
-    public abstract Posicion getPosicion();
-
-
+    public Posicion getPosicion(){
+        return posicion;
+    }
 }
-
