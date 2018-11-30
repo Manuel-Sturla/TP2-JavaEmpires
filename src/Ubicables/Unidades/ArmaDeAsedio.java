@@ -50,4 +50,32 @@ public class ArmaDeAsedio extends Unidad{
         }
         super.moverAbajo();
     }
+    @Override
+    public void moverArribaDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
+        }
+        super.moverArribaDer();
+    }
+    @Override
+    public void moverArribaIzq() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
+        }
+        super.moverArribaIzq();
+    }
+    @Override
+    public void moverAbajoDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
+        }
+        super.moverAbajoDer();
+    }
+    @Override
+    public void moverAbajoIzq() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+        if (montada) {
+            throw new UbicableEstaOcupadoException();
+        }
+        super.moverAbajoIzq();
+    }
 }
