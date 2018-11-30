@@ -12,7 +12,7 @@ import Ubicables.Unidades.Aldeano;
 public class PlazaCentral extends Edificio {
 
     public PlazaCentral(Posicion posicionConstruccion, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
-        super(posicionConstruccion, 450, 2, constructorRecibido);
+        super(posicionConstruccion, 450, 2, constructorRecibido, 25);
         estado = new Ocupado(3);
     }
 

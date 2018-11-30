@@ -11,7 +11,7 @@ import Ubicables.Unidades.Espadachin;
 public class Cuartel extends Edificio {
 
     public Cuartel(Posicion posicionCostruccion, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
-        super(posicionCostruccion, 250, 2, constructorRecibido);
+        super(posicionCostruccion, 250, 2, constructorRecibido, 50);
         estado = new Ocupado(3);
     }
 

@@ -6,6 +6,6 @@ import Posiciones.Posicion;
 
 public class Castillo extends Edificio{
     public Castillo(Posicion posicionRecibida, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
-        super(posicionRecibida,1000,4, constructorRecibido);
+        super(posicionRecibida,1000,4, constructorRecibido,15);
     }
 }

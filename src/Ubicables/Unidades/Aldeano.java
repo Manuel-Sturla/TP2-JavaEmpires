@@ -1,10 +1,13 @@
 package Ubicables.Unidades;
 
 import Estados.Ocupado;
+import Estados.Reparando;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UbicableFueraDeRangoException;
 import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Edificio;
 import Ubicables.Edificios.PlazaCentral;
 
 public class Aldeano extends Unidad {
@@ -29,8 +32,19 @@ public class Aldeano extends Unidad {
     public void recibirDanio(int danioRecibido) {
         vida -= danioRecibido;
         if(vida < 1){
-            estado = new Ocupado(100); //estado = new Muerto(); EL ESTADO MUERTO NO ESTA POR AHORA NO PARECE SER NECESARIO
+            estado = new Ocupado(100);
         }
+    }
+
+    public void reparar(Edificio edificio) throws PosicionInvalidaException, UbicableFueraDeRangoException {
+        if (edificio.estaEnConstruccion()){
+            return; //no hace nadaaaa
+         }
+        if (!posicion.edificioEstaEnRango(edificio.getPosicion())){
+            throw new UbicableFueraDeRangoException();
+        }
+        estado = new Reparando(edificio);
+        edificio.reparar(); // no se
     }
 
     public int getVida(){return vida;}
@@ -38,4 +52,6 @@ public class Aldeano extends Unidad {
     public Posicion getPosicion(){
         return posicion;
     }
+
+
 }
