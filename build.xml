@@ -97,12 +97,13 @@
       </fileset>
     </path>
 
-    <taskdef name="junit5" classname="org.apache.tools.ant.taskdefs.optional.junitlauncher.JUnitLauncherTask" >
+   
+  <!--Testeo con el target echo a mano de Junitlauncher -->
+   <target name="test" depends='build' >
+     <taskdef name="junit5" classname="org.apache.tools.ant.taskdefs.optional.junitlauncher.JUnitLauncherTask" >
       <classpath refid="junitlauncher.classpath" />
     </taskdef>
 
-  <!--Testeo con el target echo a mano de Junitlauncher -->
-   <target name="test" depends='build' >
       <!-- Usa Junit5 y 4-->
       <junit5 printSummary='true' haltOnFailure='false' >
         <classpath refid='classpath' />  
