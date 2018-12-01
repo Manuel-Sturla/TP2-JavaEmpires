@@ -75,6 +75,7 @@ public class Jugador extends Observable {
         banco.agregarOro(faccion.obtenerCantidadDeAldeanosDesocupados()*20);
         Castillo castillo = faccion.obtenerCastillo();
         castillo.atacar();
+        setChanged();
 
     }
 

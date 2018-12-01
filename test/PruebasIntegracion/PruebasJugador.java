@@ -19,7 +19,7 @@ public class PruebasJugador {
     Mapa mapa = new Mapa(30,30);
     Jugador jugador = new Jugador(mapa);
 
-    //Pruebas inicializa Juego:
+    //Pruebas inicializa Juego.Juego:
     @Test
     void unJugadorRecienInicializadoTiene3Aldeanos() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);

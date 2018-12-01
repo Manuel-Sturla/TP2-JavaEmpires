@@ -1,3 +1,5 @@
+package Juego;
+
 import Exceptions.PosicionInvalidaException;
 import Jugador.Jugador;
 
@@ -11,9 +13,16 @@ public class ControladorDeTurnos implements Observer {
     public ControladorDeTurnos(ArrayList<Jugador> jugadores){
         Random random = new Random();
         int jugadorInicial = random.nextInt(2);
+
         colaTurnos = new LinkedList<Jugador>();
-        colaTurnos.add(jugadores.remove(jugadorInicial));
-        colaTurnos.add(jugadores.remove(0));
+        Jugador jugador = jugadores.remove(jugadorInicial);
+        jugador.addObserver(this);
+        colaTurnos.add(jugador);
+        Jugador jugador2 = jugadores.remove(0);
+        jugador2.addObserver(this);
+        colaTurnos.add(jugador2);
+
+
     }
 
 
