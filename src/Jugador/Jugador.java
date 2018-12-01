@@ -60,6 +60,7 @@ public class Jugador {
     public void iniciarTurno() {
         faccion.desocuparUnTurnoTodosLosElementos();
         banco.agregarOro(faccion.obtenerCantidadDeAldeanosDesocupados()*20);
+        //Castillo ataca
     }
 
     public ArrayList obtenerUbicablesDesocupados() {
@@ -69,5 +70,6 @@ public class Jugador {
 
     public void terminarTurno() {
         faccion.ocuparUnTurnoTodosLosElementosDesocupados();
+        //Aca viene lo del controlador de turnos
     }
 }

@@ -3,10 +3,7 @@ package Ubicables;
 import Estados.Estado;
 import Estados.Ocupado;
 import Jugador.Faccion;
-import Posiciones.Posicion;
 import Ubicables.Edificios.Castillo;
-import Ubicables.Unidades.Arquero;
-import Ubicables.Unidades.Espadachin;
 
 public abstract class Ubicable {
     protected Estado estado;

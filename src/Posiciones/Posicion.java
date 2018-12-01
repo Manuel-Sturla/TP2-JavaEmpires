@@ -5,12 +5,11 @@ import Mapa.Mapa;
 import Ubicables.Ubicable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Posicion {
+    private Mapa mapa;
     private int coordenadaHorizontal;
     private int coordenadaVertical;
-    private Mapa mapa;
 
     //Constructores:
     public Posicion(Posicion posicionRecibida){
@@ -34,7 +33,7 @@ public class Posicion {
         return coordenadaVertical;
     }
 
-    public Mapa getMapa(){
+    public Mapa getMapa() {
         return mapa;
     }
 

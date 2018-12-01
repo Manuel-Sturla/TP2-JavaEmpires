@@ -53,9 +53,6 @@ public class Aldeano extends Unidad {
 
     public int getVida(){return vida;}
 
-    public Posicion getPosicion(){
-        return posicion;
-    }
 
 
 }

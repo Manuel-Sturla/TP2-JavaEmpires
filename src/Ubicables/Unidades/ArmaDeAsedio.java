@@ -6,7 +6,6 @@ import Exceptions.UbicableEstaOcupadoException;
 import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Edificio;
-import Ubicables.Ubicable;
 
 public class ArmaDeAsedio extends Unidad{
     boolean montada = false;
@@ -85,13 +84,11 @@ public class ArmaDeAsedio extends Unidad{
 
 
 
-    public void atacarUnidad(Edificio objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
-        if(!posicion.edificioEstaEnRango(objetivo.getPosicion(),3)){
-            throw new UbicableFueraDeRangoException();
+    public void atacar(Edificio objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        if(!montada) {
+            return;
         }
-        if (faccion.perteneceFaccion(objetivo)) {
-            throw new UbicableDeMismaFaccionException();
-        }
+        super.atacar(objetivo, 5);
         objetivo.recibirDanio(this);
         ocuparUnTurno();
     }

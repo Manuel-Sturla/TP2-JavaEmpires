@@ -31,8 +31,8 @@ public class Castillo extends Edificio{
          Iterator iterador = unidadesEnRango.iterator();
          while(iterador.hasNext()){
              Ubicable ubicableActual = (Ubicable) iterador.next();
-             if (faccion.perteneceFaccion(ubicableActual)) continue;
-             ubicableActual.recibirDanioDe(this);
+             if (faccion.perteneceFaccion(ubicableActual) || ubicableActual==null) continue;
+             ubicableActual.recibirDanio(this);
          }
 
     }

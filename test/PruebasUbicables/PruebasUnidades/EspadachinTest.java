@@ -6,6 +6,7 @@ import Exceptions.UbicableFueraDeRangoException;
 import Jugador.Faccion;
 import Mapa.Mapa;
 import Posiciones.Posicion;
+import Ubicables.Edificios.PlazaCentral;
 import Ubicables.Unidades.Espadachin;
 import Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class EspadachinTest {
         espadachin.asignarFaccion(faccion1);
         Aldeano aldeanoEnemigo = new Aldeano(posAldeano, null);
         aldeanoEnemigo.asignarFaccion(faccion2);
-        espadachin.atacarUnidad(aldeanoEnemigo);
+        espadachin.atacar(aldeanoEnemigo);
         assertTrue(aldeanoEnemigo.getVida() == 25); //No pasa esta prueba
     }
 
@@ -41,7 +42,7 @@ public class EspadachinTest {
         Aldeano aldeano = new Aldeano(posAldeano, null);
         aldeano.asignarFaccion(faccion);
         assertThrows(UbicableDeMismaFaccionException.class, () -> {
-            espadachin.atacarUnidad(aldeano);
+            espadachin.atacar(aldeano);
         });
     }
 
@@ -56,8 +57,26 @@ public class EspadachinTest {
         espadachin.asignarFaccion(faccion1);
         Aldeano aldeanoEnemigo = new Aldeano(posAldeano, null);
         aldeanoEnemigo.asignarFaccion(faccion2);
+
         assertThrows(UbicableFueraDeRangoException.class, () -> {
-            espadachin.atacarUnidad(aldeanoEnemigo);
+            espadachin.atacar(aldeanoEnemigo);
         });
+    }
+
+    @Test
+    void atacarEdificioLeQuita10DeVida() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        Faccion faccion1 = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Mapa mapa = new Mapa(10, 10);
+        Posicion posEspadachin = new Posicion(mapa, 0, 0);
+        Posicion posPlazaCentral = new Posicion(mapa, 1, 0);
+        Espadachin espadachin = new Espadachin(posEspadachin);
+        espadachin.asignarFaccion(faccion1);
+        PlazaCentral plazaCentralEnemiga = new PlazaCentral(posPlazaCentral, null);
+        plazaCentralEnemiga.asignarFaccion(faccion2);
+
+        espadachin.atacar(plazaCentralEnemiga);
+
+        assertTrue(plazaCentralEnemiga.getvida() == 435);
     }
 }

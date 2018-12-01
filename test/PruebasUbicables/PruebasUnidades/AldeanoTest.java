@@ -4,7 +4,6 @@ import Exceptions.*;
 import Jugador.Faccion;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
-import Ubicables.Edificios.Edificio;
 import Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 import Mapa.Mapa;

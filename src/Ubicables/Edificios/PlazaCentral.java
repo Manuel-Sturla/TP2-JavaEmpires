@@ -5,8 +5,6 @@ import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
-import Posiciones.PosicionEdificio;
-import Ubicables.Ubicable;
 import Ubicables.Unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {

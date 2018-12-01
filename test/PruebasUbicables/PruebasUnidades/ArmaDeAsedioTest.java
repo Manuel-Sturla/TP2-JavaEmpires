@@ -1,9 +1,12 @@
 package PruebasUbicables.PruebasUnidades;
 
 import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UbicableFueraDeRangoException;
 import Jugador.Faccion;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Cuartel;
 import Ubicables.Unidades.ArmaDeAsedio;
 import org.junit.jupiter.api.Test;
 import Mapa.Mapa;
@@ -85,6 +88,62 @@ public class ArmaDeAsedioTest {
         assertTrue(!mapa.celdaEstaOcupada(posicionLlegada));
         assertTrue(mapa.celdaEstaOcupada(posicion));
 
+    }
+
+    @Test
+    void atacarEdificioLeQuita75DeVida() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa, 3,3);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
+        armaDeAsedio.montarArma();
+        Faccion faccion = new Faccion();
+        Faccion faccion2 = new Faccion();
+        armaDeAsedio.asignarFaccion(faccion);
+
+        Posicion posicion2 = new Posicion(mapa, 5,5);
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        cuartel.asignarFaccion(faccion2);
+
+        armaDeAsedio.atacar(cuartel);
+        assertTrue(cuartel.getvida() == 175);
+
+    }
+/* Esta No se puede descomentar porque el metodo armaDeAsedio.atacer(Unidad) no esta implementado
+    eso esta bien así (creo) porque no le permite al arma de asedio atacar unidades.
+
+    @Test
+    void atacerUnidadLevantaExcepcion() throws PosicionInvalidaException {
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa, 3,3);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
+        armaDeAsedio.montarArma();
+        Faccion faccion = new Faccion();
+        Faccion faccion2 = new Faccion();
+        armaDeAsedio.asignarFaccion(faccion);
+
+        Posicion posicion2 = new Posicion(mapa, 5,5);
+        Aldeano aldeano = new Aldeano(posicion2, null);
+        aldeano.asignarFaccion(faccion2);
+
+        armaDeAsedio.atacar(aldeano);
+    }*/
+
+    @Test
+    void atacarConArmaNoMontadaNoLeQuitaVida() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        Mapa mapa = new Mapa(10,10);
+        Posicion posicion = new Posicion(mapa, 3,3);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
+
+        Faccion faccion = new Faccion();
+        Faccion faccion2 = new Faccion();
+        armaDeAsedio.asignarFaccion(faccion);
+
+        Posicion posicion2 = new Posicion(mapa, 5,5);
+        Cuartel cuartel = new Cuartel(posicion2, null);
+        cuartel.asignarFaccion(faccion2);
+
+        armaDeAsedio.atacar(cuartel);
+        assertTrue(cuartel.getvida() == 250);
     }
 
 }

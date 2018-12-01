@@ -9,8 +9,6 @@ import Jugador.Poblacion;
 import Mapa.Mapa;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
-import Ubicables.Unidades.Arquero;
-import Ubicables.Unidades.Espadachin;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;

@@ -11,7 +11,6 @@ import Ubicables.Unidades.ArmaDeAsedio;
 import Ubicables.Unidades.Arquero;
 import Ubicables.Unidades.Espadachin;
 
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -34,7 +33,7 @@ public class AtaqueTest {
         arquero.asignarFaccion(faccion1);
 
 
-        espadachin.atacarUnidad(arquero);
+        espadachin.atacar(arquero);
         assertTrue(arquero.getvida() == 50);
         assertTrue(espadachin.estaOcupado());// no se pone como ocupado
     }
@@ -46,16 +45,16 @@ public class AtaqueTest {
         Arquero arquero = new Arquero(posicion2);
         espadachin.asignarFaccion (faccion);
         arquero.asignarFaccion(faccion1);
-        assertThrows(UbicableFueraDeRangoException.class, ()-> espadachin.atacarUnidad(arquero));
+        assertThrows(UbicableFueraDeRangoException.class, ()-> espadachin.atacar(arquero));
     }
 
     @Test
-    void atacoUnEdificioConUnArmaDeAsedio(){
+    void atacoUnEdificioConUnArmaDeAsedio() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
         Cuartel cuartel = new Cuartel(posicion1,null);
         armaDeAsedio.asignarFaccion(faccion);
         cuartel.asignarFaccion(faccion1);
 
-        armaDeAsedio.
+        armaDeAsedio.atacar(cuartel);
     }
 }

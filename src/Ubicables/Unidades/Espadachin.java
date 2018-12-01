@@ -4,6 +4,7 @@ import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Edificio;
 
 public class Espadachin extends Unidad{
 
@@ -12,10 +13,16 @@ public class Espadachin extends Unidad{
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
     }
 
-    @Override
-    public void atacarUnidad(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
-        super.atacarUnidad(objetivo);
+
+    public void atacar(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        super.atacar(objetivo, 1);
         objetivo.recibirDanio(this);
         ocuparUnTurno();
     }
+    public void atacar(Edificio objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        super.atacar(objetivo, 1);
+        objetivo.recibirDanio(this);
+        ocuparUnTurno();
+    }
+
 }

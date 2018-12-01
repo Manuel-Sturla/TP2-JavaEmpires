@@ -105,7 +105,7 @@ public class Mapa {
         return true;
     }
 
-    public ArrayList<Celda> obtenerCeldasAdyacentesEnRango(Posicion posicion,int rango) throws PosicionInvalidaException {
+    public ArrayList<Celda> obtenerCeldasAdyacentesEnRango(Posicion posicion, int rango) throws PosicionInvalidaException {
         Celda celda = obtenerCelda(posicion);
         return celda.obtenerCeldasAdyacentesEnRango(rango);
 

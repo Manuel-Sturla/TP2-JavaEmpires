@@ -7,7 +7,7 @@ import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableEstaOcupadoException;
 import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
-import Ubicables.Edificios.Castillo;
+import Ubicables.Edificios.Edificio;
 import Ubicables.Ubicable;
 
 public class Unidad extends Ubicable {
@@ -81,8 +81,8 @@ public class Unidad extends Ubicable {
         return posicion;
     }
 
-    public void atacarUnidad(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
-        if(!posicion.estaEnRango(objetivo.getPosicion(), 3)){
+    public void atacar(Unidad objetivo, int rango) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        if(!objetivo.getPosicion().estaEnRango(posicion, rango)){
             throw new UbicableFueraDeRangoException();
         }
         if (faccion.perteneceFaccion(objetivo)) {
@@ -90,6 +90,18 @@ public class Unidad extends Ubicable {
         }
 
     }
+
+    public void atacar(Edificio objetivo, int rango) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        if(!posicion.estaEnRango(objetivo.getPosicion(), rango)){
+            throw new UbicableFueraDeRangoException();
+        }
+        if (faccion.perteneceFaccion(objetivo)) {
+            throw new UbicableDeMismaFaccionException();
+        }
+
+
+    }
+
     public void recibirDanio(Espadachin espadachin){ vida -= 25; }
     public void recibirDanio(Arquero arquero){ vida -= 15;}
 

@@ -15,6 +15,6 @@ public class Juego {
     }
 
     public void iniciarPrimerTurno(){
-
+        jugador1.iniciarTurno();
     }
 }

@@ -10,7 +10,6 @@ import Mapa.Mapa;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Castillo;
 import Ubicables.Unidades.Aldeano;
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -108,7 +107,7 @@ public class CastilloTest {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Faccion faccion2 = new Faccion();
-        Posicion posicion = new Posicion(mapa, 1,0);
+        Posicion posicion = new Posicion(mapa, 0,0);
         Posicion posicion2 = new Posicion(mapa, 6,0);
         Posicion posicion3 = new Posicion(mapa, 7,0);
         Castillo castillo = new Castillo(posicion, null);
@@ -121,8 +120,8 @@ public class CastilloTest {
         aldeano2.asignarFaccion(faccion2);
         castillo.atacar();
         assertTrue(aldeano.getVida()==30);
-        assertTrue(aldeano.getVida()==50);
+        assertTrue(aldeano2.getVida()==50);
     }
-    
+
 
 }

@@ -7,9 +7,8 @@ import Ubicables.Ubicable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class PosicionEdificio {
-
-    Mapa mapa;
+public class PosicionEdificio{
+    private Mapa mapa;
     int largoLado;
     Posicion posiciones[][];
 
@@ -71,5 +70,15 @@ public class PosicionEdificio {
             }
         }
         return unidades;
+    }
+
+
+    public boolean estaEnRango(Posicion posicion, int rango) throws PosicionInvalidaException {
+        for (int i = 0; i < largoLado; i++) {
+            for (int j = 0; j < largoLado; j++) {
+                if (mapa.estaEnRango(posiciones[i][j],posicion,rango)) return true;
+            }
+        }
+        return false;
     }
 }
