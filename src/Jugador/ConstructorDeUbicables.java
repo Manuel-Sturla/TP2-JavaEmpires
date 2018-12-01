@@ -2,6 +2,7 @@ package Jugador;
 
 import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
+import Exceptions.UnidadesMaximasException;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
 import Ubicables.Unidades.Aldeano;
@@ -20,13 +21,18 @@ public class ConstructorDeUbicables {
     }
 
 
-    public Aldeano crearAldeano(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+    public Aldeano crearAldeano(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
         try {
             banco.gastarOro(25);
         } catch (OroInsuficienteException e) {
             throw new OroInsuficienteException();
         }
-        poblacion.agregarHabitante();
+        try {
+            poblacion.agregarHabitante();
+        } catch (UnidadesMaximasException e) {
+            banco.agregarOro(25);
+            throw new UnidadesMaximasException();
+        }
         return new Aldeano(posicionDespliegue, this);
     }
 
@@ -48,33 +54,48 @@ public class ConstructorDeUbicables {
         return new Cuartel(posicionConstruccion, this);
     }
 
-    public Espadachin crearEspadachin(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+    public Espadachin crearEspadachin(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
         try {
             banco.gastarOro(50);
         } catch (OroInsuficienteException e) {
             throw new OroInsuficienteException();
         }
-        poblacion.agregarHabitante();
+        try {
+            poblacion.agregarHabitante();
+        } catch (UnidadesMaximasException e) {
+            banco.agregarOro(50);
+            throw new UnidadesMaximasException();
+        }
         return new Espadachin(posicionDespliegue);
     }
 
-    public Arquero crearArquero(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+    public Arquero crearArquero(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
         try {
             banco.gastarOro(75);
         } catch (OroInsuficienteException e) {
             throw new OroInsuficienteException();
         }
-        poblacion.agregarHabitante();
+        try {
+            poblacion.agregarHabitante();
+        } catch (UnidadesMaximasException e) {
+            banco.agregarOro(75);
+            throw new UnidadesMaximasException();
+        }
         return new Arquero(posicionDeDespliegue);
     }
 
-    public ArmaDeAsedio crearArmaDeAsedio(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+    public ArmaDeAsedio crearArmaDeAsedio(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
         try {
             banco.gastarOro(200);
         } catch (OroInsuficienteException e) {
             throw new OroInsuficienteException();
         }
-        poblacion.agregarHabitante();
+        try {
+            poblacion.agregarHabitante();
+        } catch (UnidadesMaximasException e) {
+            banco.agregarOro(200);
+            throw new UnidadesMaximasException();
+        }
         return new ArmaDeAsedio(posicionDeDespliegue);
     }
 
