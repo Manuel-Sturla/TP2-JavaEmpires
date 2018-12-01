@@ -1,11 +1,13 @@
 package Jugador;
 
+import Ubicables.Edificios.Castillo;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Ubicable;
 import java.util.ArrayList;
 
 public class Faccion {
     ArrayList miembros;
+    Castillo castillo;
 
     public Faccion(){
         miembros = new ArrayList();
@@ -19,6 +21,11 @@ public class Faccion {
         miembros.add(miembro);
     }
 
+    public void agregarCastillo(Castillo castilloRecibido){
+        castillo= castilloRecibido;
+        miembros.add(castillo);
+    }
+
     public Ubicable obtenerUbicable(int numeroDeUbicable) {
         return (Ubicable)miembros.get(numeroDeUbicable);
     }
@@ -28,6 +35,7 @@ public class Faccion {
         for (int i = 0; i < miembros.size(); i++) {
             if(miembros.get(i) instanceof Aldeano){
                 aldeanos.add(miembros.get(i));
+
             }
         }
         return aldeanos;
@@ -69,5 +77,9 @@ public class Faccion {
             }
         }
         return cantidad;
+    }
+
+    public Castillo obtenerCastillo() {
+        return castillo;
     }
 }

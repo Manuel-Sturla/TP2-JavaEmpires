@@ -20,28 +20,28 @@ public class PruebasJugador {
     //Pruebas inicializa Juego:
     @Test
     void unJugadorRecienInicializadoTiene3Aldeanos() throws PosicionInvalidaException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         ArrayList aldeanos = jugador.obtenerAldeanos();
         assertTrue(aldeanos.size() == 3);
     }
 
     @Test
     void unJugadorRecienInicializadoTiene100DeOroEnSuPrimerTurno() throws PosicionInvalidaException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         assertTrue(jugador.getOro() == 100);
     }
 
     @Test
     void unJugadorRecienInicializadoTiene3DePoblacion() throws PosicionInvalidaException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         assertTrue(jugador.getPoblacion() == 3);
     }
 
     //Pruebas iniciar turno:
     @Test
     void unJugadorCuandoComienzaElPrimerTurnoTieneTodosSusUbicablesDesocupado() throws PosicionInvalidaException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         assertTrue(jugador.obtenerUbicablesDesocupados().size() == 4);
     }
@@ -49,7 +49,7 @@ public class PruebasJugador {
     //Pruebas terminar turno:
     @Test
     void unJugadorCuandoTerminaSuTurnoTieneTodosSusUbicablesOcupados() throws PosicionInvalidaException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         jugador.terminarTurno();
         assertTrue(jugador.obtenerUbicablesDesocupados().size() == 0);
@@ -57,7 +57,7 @@ public class PruebasJugador {
 
     @Test
     void siNigunoDeLosAldeanosTrabajoElTurnoAnteriorElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         jugador.terminarTurno();
         jugador.iniciarTurno();
@@ -66,9 +66,9 @@ public class PruebasJugador {
 
     @Test
     void siNingunoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         jugador.iniciarTurno();
-        ArrayList ubicables = jugador.obtenerUbicablesDesocupados();
+        ArrayList ubicables = jugador.obtenerAldeanos();
         for (int i = 0; i < 3; i++) {
             Aldeano aldeano = (Aldeano)ubicables.get(i);
             aldeano.moverArriba();
@@ -80,7 +80,7 @@ public class PruebasJugador {
 
     @Test
     void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException {
-        jugador.inicializarJugador();
+        jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         ArrayList aldeanos = jugador.obtenerAldeanos();
         for (int i = 0; i < 2; i++) {
