@@ -33,7 +33,7 @@ public class Celda {
     }
 
     public void setCeldasAdyacentes(ArrayList celdasAdyacentesRecibidas) {
-        celdasAdyacentes.agregarCeldasAdyacentes(celdasAdycentesRecibidas);
+        celdasAdyacentes.agregarCeldasAdyacentes(celdasAdyacentesRecibidas);
     }
 
     public boolean esAdyacente(Celda celda2) {

@@ -93,4 +93,6 @@ public class PruebasJugador {
         jugador.iniciarTurno();
         assertEquals(40, jugador.getOro());//Gasto 100 en construir la plazaCentral
     }
+
+
 }

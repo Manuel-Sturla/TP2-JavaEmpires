@@ -41,14 +41,14 @@ public class Aldeano extends Unidad {
         if (edificio.estaEnConstruccion()){
             return; //no hace nadaaaa
          }
-        if (!posicion.edificioEstaEnRango(edificio.getPosicion())){
+        if (!posicion.estaEnRango(edificio.getPosicion())){
             throw new UbicableFueraDeRangoException();
         }
         if (!faccion.perteneceFaccion(edificio)){
             throw  new UbicableDeOtraFaccionException();
         }
         estado = new Reparando(edificio);
-        edificio.reparar(); // no se
+        edificio.reparar();
     }
 
     public int getVida(){return vida;}

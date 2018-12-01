@@ -9,6 +9,7 @@ import Jugador.Poblacion;
 import Mapa.Mapa;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Castillo;
+import Ubicables.Unidades.Aldeano;
 import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
@@ -65,9 +66,63 @@ public class CastilloTest {
         Castillo castillo = new Castillo(posicion, constructor);
         castillo.asignarFaccion(faccion);
 
-        Posicion posicionArmaDeAsedio = new Posicion(mapa, 0,1);
+
         castillo.crearArmaDeAsedio();
         assertThrows(UbicableEstaOcupadoException.class, castillo::crearArmaDeAsedio);
 
     }
+
+    @Test
+    void atacarAUnaUnidadEnemigaLeQuita20DeVida() throws PosicionInvalidaException {
+        Mapa mapa = new Mapa(10,10);
+        Faccion faccion = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Posicion posicion = new Posicion(mapa, 1,0);
+        Posicion posicion2 = new Posicion(mapa, 0,0);
+        Castillo castillo = new Castillo(posicion, null);
+        castillo.asignarFaccion(faccion);
+
+        Aldeano aldeano = new Aldeano(posicion2, null);
+        aldeano.asignarFaccion(faccion2);
+        castillo.atacar();
+        assertTrue(aldeano.getVida()==30);
+    }
+
+    @Test
+    void atacarNoAtacaAUnidadAliada() throws PosicionInvalidaException {
+        Mapa mapa = new Mapa(10,10);
+        Faccion faccion = new Faccion();
+        Posicion posicion = new Posicion(mapa, 1,0);
+        Posicion posicion2 = new Posicion(mapa, 0,0);
+        Castillo castillo = new Castillo(posicion, null);
+        castillo.asignarFaccion(faccion);
+
+        Aldeano aldeano = new Aldeano(posicion2, null);
+        aldeano.asignarFaccion(faccion);
+        castillo.atacar();
+        assertTrue(aldeano.getVida()==50);
+    }
+
+    @Test
+    void atacarAtacaEnElRangoCorrecto() throws PosicionInvalidaException {
+        Mapa mapa = new Mapa(10,10);
+        Faccion faccion = new Faccion();
+        Faccion faccion2 = new Faccion();
+        Posicion posicion = new Posicion(mapa, 1,0);
+        Posicion posicion2 = new Posicion(mapa, 6,0);
+        Posicion posicion3 = new Posicion(mapa, 7,0);
+        Castillo castillo = new Castillo(posicion, null);
+        castillo.asignarFaccion(faccion);
+
+        Aldeano aldeano = new Aldeano(posicion2, null);
+        Aldeano aldeano2 = new Aldeano(posicion3, null);
+
+        aldeano.asignarFaccion(faccion2);
+        aldeano2.asignarFaccion(faccion2);
+        castillo.atacar();
+        assertTrue(aldeano.getVida()==30);
+        assertTrue(aldeano.getVida()==50);
+    }
+    
+
 }

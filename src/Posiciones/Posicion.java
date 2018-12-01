@@ -2,8 +2,10 @@ package Posiciones;
 
 import Exceptions.PosicionInvalidaException;
 import Mapa.Mapa;
+import Ubicables.Ubicable;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Posicion {
     private int coordenadaHorizontal;
@@ -94,13 +96,15 @@ public class Posicion {
     public boolean esAdyacente(Posicion posicionAdyacente) throws PosicionInvalidaException {
         return mapa.esAdyacente(this, posicionAdyacente);
     }
-
-    public boolean edificioEstaEnRango(PosicionEdificio posicionEdificio) throws PosicionInvalidaException {
+    public boolean estaEnRango(PosicionEdificio posicionEdificio) throws PosicionInvalidaException {
+        return this.estaEnRango(posicionEdificio, 1);
+    }
+    public boolean estaEnRango(PosicionEdificio posicionEdificio, int rango) throws PosicionInvalidaException {
         ArrayList posicionCostrucccion = posicionEdificio.getArrayPosiciones();
         Posicion posicionActual;
         for(int i=0; i < posicionCostrucccion.size(); i++) {
             posicionActual = (Posicion) posicionCostrucccion.get(i);
-            if(posicionActual.esAdyacente(this)) return true;
+            if(posicionActual.estaEnRango(this,rango)) return true;
         }
         return false;
     }
@@ -109,4 +113,8 @@ public class Posicion {
         return mapa.estaEnRango(this, posicion, rango);
     }
 
+    public ArrayList<Ubicable> obtenerUnidadesEnRango(int rango) throws PosicionInvalidaException {
+        ArrayList<Ubicable> unidades = mapa.obtenerUnidadesEnRango(this, rango);
+        return unidades;
+    }
 }

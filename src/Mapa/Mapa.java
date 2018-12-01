@@ -104,4 +104,19 @@ public class Mapa {
         }
         return true;
     }
+
+    public ArrayList<Celda> obtenerCeldasAdyacentesEnRango(Posicion posicion,int rango) throws PosicionInvalidaException {
+        Celda celda = obtenerCelda(posicion);
+        return celda.obtenerCeldasAdyacentesEnRango(rango);
+
+    }
+
+    public ArrayList<Ubicable> obtenerUnidadesEnRango(Posicion posicion, int rango) throws PosicionInvalidaException {
+        ArrayList <Celda> celdasAdyacentes= obtenerCeldasAdyacentesEnRango(posicion, rango);
+        ArrayList <Ubicable> unidades = new ArrayList<>();
+        for (int i= 0; i< celdasAdyacentes.size(); i++){
+            unidades.add(celdasAdyacentes.get(i).getElemento());
+        }
+        return unidades;
+    }
 }

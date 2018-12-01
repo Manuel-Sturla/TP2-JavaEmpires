@@ -1,13 +1,15 @@
 package Ubicables.Edificios;
 
 import Estados.Desocupado;
-import Estados.Ocupado;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
-import Ubicables.Unidades.Aldeano;
+import Ubicables.Ubicable;
 import Ubicables.Unidades.ArmaDeAsedio;
+
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Castillo extends Edificio{
     public Castillo(Posicion posicionRecibida, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
@@ -24,5 +26,20 @@ public class Castillo extends Edificio{
         armaDeAsedio.asignarFaccion(faccion);
     }
 
+    public void atacar() throws PosicionInvalidaException {
+         HashSet<Ubicable> unidadesEnRango=  this.obtenerUnidadesEnRango();
+         Iterator iterador = unidadesEnRango.iterator();
+         while(iterador.hasNext()){
+             Ubicable ubicableActual = (Ubicable) iterador.next();
+             if (faccion.perteneceFaccion(ubicableActual)) continue;
+             ubicableActual.recibirDanioDe(this);
+         }
+
+    }
+
+    public HashSet<Ubicable> obtenerUnidadesEnRango() throws PosicionInvalidaException {
+        return  posicion.obtenerUnidadesEnRango(3);
+
+    }
 }
 
