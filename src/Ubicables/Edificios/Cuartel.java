@@ -1,6 +1,7 @@
 package Ubicables.Edificios;
 
 import Estados.Ocupado;
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.ConstructorDeUbicables;
@@ -15,7 +16,7 @@ public class Cuartel extends Edificio {
         estado = new Ocupado(3);
     }
 
-    public void crearEspadachin() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    public void crearEspadachin() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
@@ -24,7 +25,7 @@ public class Cuartel extends Edificio {
         espadachin.asignarFaccion(faccion);
     }
 
-    public void crearArquero() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    public void crearArquero() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
