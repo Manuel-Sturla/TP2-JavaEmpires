@@ -3,6 +3,7 @@ package PruebasIntegracion;
 import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UnidadesMaximasException;
 import Jugador.Jugador;
 import Mapa.Mapa;
 import Ubicables.Unidades.Aldeano;
@@ -20,28 +21,28 @@ public class PruebasJugador {
 
     //Pruebas inicializa Juego:
     @Test
-    void unJugadorRecienInicializadoTiene3Aldeanos() throws PosicionInvalidaException {
+    void unJugadorRecienInicializadoTiene3Aldeanos() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         ArrayList aldeanos = jugador.obtenerAldeanos();
         assertTrue(aldeanos.size() == 3);
     }
 
     @Test
-    void unJugadorRecienInicializadoTiene100DeOroEnSuPrimerTurno() throws PosicionInvalidaException {
+    void unJugadorRecienInicializadoTiene100DeOroEnSuPrimerTurno() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         assertTrue(jugador.getOro() == 100);
     }
 
     @Test
-    void unJugadorRecienInicializadoTiene3DePoblacion() throws PosicionInvalidaException {
+    void unJugadorRecienInicializadoTiene3DePoblacion() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         assertTrue(jugador.getPoblacion() == 3);
     }
 
     //Pruebas iniciar turno:
     @Test
-    void unJugadorCuandoComienzaElPrimerTurnoTieneTodosSusUbicablesDesocupado() throws PosicionInvalidaException {
+    void unJugadorCuandoComienzaElPrimerTurnoTieneTodosSusUbicablesDesocupado() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         assertTrue(jugador.obtenerUbicablesDesocupados().size() == 4);
@@ -49,7 +50,7 @@ public class PruebasJugador {
 
     //Pruebas terminar turno:
     @Test
-    void unJugadorCuandoTerminaSuTurnoTieneTodosSusUbicablesOcupados() throws PosicionInvalidaException {
+    void unJugadorCuandoTerminaSuTurnoTieneTodosSusUbicablesOcupados() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         jugador.terminarTurno();
@@ -57,7 +58,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siNigunoDeLosAldeanosTrabajoElTurnoAnteriorElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException {
+    void siNigunoDeLosAldeanosTrabajoElTurnoAnteriorElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         jugador.terminarTurno();
@@ -66,7 +67,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siNingunoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void siNingunoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         ArrayList ubicables = jugador.obtenerAldeanos();
@@ -80,7 +81,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
+    void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         ArrayList aldeanos = jugador.obtenerAldeanos();
