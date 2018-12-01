@@ -1,6 +1,7 @@
 package Ubicables.Edificios;
 
 import Estados.Desocupado;
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.ConstructorDeUbicables;
@@ -18,12 +19,17 @@ public class Castillo extends Edificio {
         estado = new Desocupado();
     }
 
-    public void crearArmaDeAsedio() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    public void crearArmaDeAsedio() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         if (estado.estaOcupado()) {
             throw new UbicableEstaOcupadoException();
         }
         ocuparUnTurno();
-        ArmaDeAsedio armaDeAsedio = constructor.crearArmaDeAsedio(posicion.obtenerPosicionDeDespliegue());
+        ArmaDeAsedio armaDeAsedio = null;
+        try {
+            armaDeAsedio = constructor.crearArmaDeAsedio(posicion.obtenerPosicionDeDespliegue());
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         armaDeAsedio.asignarFaccion(faccion);
     }
 
@@ -49,4 +55,3 @@ public class Castillo extends Edificio {
         faccion.agregarCastillo(this);
     }
 }
-
