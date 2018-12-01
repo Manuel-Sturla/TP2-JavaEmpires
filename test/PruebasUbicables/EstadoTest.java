@@ -1,5 +1,6 @@
 package PruebasUbicables;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Banco;
@@ -54,7 +55,7 @@ public class EstadoTest {
     }
 
     @Test
-    void estaOcupadoLuegoDeCrearEdificio() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void estaOcupadoLuegoDeCrearEdificio() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Faccion faccion = new Faccion();
         aldeano.asignarFaccion(faccion);
         aldeano.crearPlazaCentral();
@@ -62,7 +63,7 @@ public class EstadoTest {
     }
 
     @Test
-    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void estaOcupadoLuegoDeConstruirEdificioDesocuparUnTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Faccion faccion = new Faccion();
         aldeano.asignarFaccion(faccion);
         aldeano.crearPlazaCentral();
@@ -71,7 +72,7 @@ public class EstadoTest {
     }
 
     @Test
-    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    void estaDesocupadoLuegoDeConstruirEdificioDesocuparUnTurno3Veces() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         Faccion faccion = new Faccion();
         aldeano.asignarFaccion(faccion);
         aldeano.crearPlazaCentral();
@@ -82,7 +83,7 @@ public class EstadoTest {
     }
 
     @Test
-    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    void realizarUnaAccionUnTurnoDespuesDeConstruirEdificioLevantaExcepcion() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         Faccion faccion = new Faccion();
         aldeano.asignarFaccion(faccion);
         aldeano.crearPlazaCentral();

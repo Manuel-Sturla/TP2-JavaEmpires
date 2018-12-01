@@ -1,5 +1,6 @@
 package PruebasUbicables.PruebasEdificios;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Banco;
@@ -36,7 +37,7 @@ public class CastilloTest {
     }
 
     @Test
-    void crearArmaDeAsedioLaCrea() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void crearArmaDeAsedioLaCrea() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Banco banco = new Banco(200);
@@ -54,7 +55,7 @@ public class CastilloTest {
     }
 
     @Test
-    void crear2ArmasDeAsedioEnElMismoTurnoLevantaExcepcionPorqueEstaOcupado() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void crear2ArmasDeAsedioEnElMismoTurnoLevantaExcepcionPorqueEstaOcupado() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Mapa mapa = new Mapa(10,10);
         Faccion faccion = new Faccion();
         Banco banco = new Banco(200);

@@ -11,7 +11,7 @@ public class Juego {
     public void inicializarJuego() throws PosicionInvalidaException {
         mapa = new Mapa(50,50);
         jugador1.inicializarJugador(1);
-        jugador2.inicializarJugador(1);
+        jugador2.inicializarJugador(2);
     }
 
     public void iniciarPrimerTurno() throws PosicionInvalidaException {

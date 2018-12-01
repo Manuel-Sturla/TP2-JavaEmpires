@@ -1,5 +1,6 @@
 package PruebasIntegracion;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Jugador;
@@ -79,7 +80,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         ArrayList aldeanos = jugador.obtenerAldeanos();

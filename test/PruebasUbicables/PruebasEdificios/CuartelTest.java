@@ -1,5 +1,6 @@
 package PruebasUbicables.PruebasEdificios;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Banco;
@@ -42,7 +43,7 @@ public class CuartelTest {
     }
 
     @Test
-    void creoUnEspadachinOcupaSuPosicion() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void creoUnEspadachinOcupaSuPosicion() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Faccion faccion = new Faccion();
         Cuartel cuartel = new Cuartel(posicionCostruccion, constructor);
         cuartel.asignarFaccion(faccion);

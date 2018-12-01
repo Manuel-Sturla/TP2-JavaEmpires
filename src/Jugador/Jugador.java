@@ -23,7 +23,7 @@ public class Jugador extends Observable {
         mapa = mapaRecibido;
     }
 
-    public void inicializarJugador(int numeroJugador) throws PosicionInvalidaException, OroInsuficienteException {
+    public void inicializarJugador(int numeroJugador) throws PosicionInvalidaException {
         banco = new Banco(215); //Crear 3 aldeanos y 1 plaza consume 175 de oro
         faccion = new Faccion();
         poblacion = new Poblacion();
@@ -33,7 +33,7 @@ public class Jugador extends Observable {
 
     }
 
-    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException, OroInsuficienteException {
+    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException {
         Posicion posicionCastillo = new Posicion(mapa, posicionInicial ,posicionInicial);
         Posicion posicionPlaza = new Posicion(mapa, posicionInicial+6*direccion,posicionInicial);
         Posicion posicionAldeano1 = new Posicion(mapa, posicionInicial+1*direccion,posicionInicial+5*direccion);
@@ -41,16 +41,19 @@ public class Jugador extends Observable {
         Posicion posicionAldeano3 = new Posicion(mapa, posicionInicial+3*direccion,posicionInicial+5*direccion);
 
         Castillo castillo = new Castillo(posicionCastillo, constructor);
-        PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
-        Aldeano aldeano1 = constructor.crearAldeano(posicionAldeano1);
-        Aldeano aldeano2 = constructor.crearAldeano(posicionAldeano2);
-        Aldeano aldeano3 = constructor.crearAldeano(posicionAldeano3);
+        try {
+            PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
+            Aldeano aldeano1 = constructor.crearAldeano(posicionAldeano1);
+            Aldeano aldeano2 = constructor.crearAldeano(posicionAldeano2);
+            Aldeano aldeano3 = constructor.crearAldeano(posicionAldeano3);
+            castillo.asignarFaccion(faccion);
+            plaza.asignarFaccion(faccion);
+            aldeano1.asignarFaccion(faccion);
+            aldeano2.asignarFaccion(faccion);
+            aldeano3.asignarFaccion(faccion);
+        } catch (OroInsuficienteException e){}
 
-        castillo.asignarFaccion(faccion);
-        plaza.asignarFaccion(faccion);
-        aldeano1.asignarFaccion(faccion);
-        aldeano2.asignarFaccion(faccion);
-        aldeano3.asignarFaccion(faccion);
+
     }
 
 

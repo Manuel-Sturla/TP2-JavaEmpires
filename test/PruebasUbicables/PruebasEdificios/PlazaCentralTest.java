@@ -1,5 +1,6 @@
 package PruebasUbicables.PruebasEdificios;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Banco;
@@ -21,7 +22,7 @@ public class PlazaCentralTest {
     Posicion posicionPlaza = new Posicion(mapa, 10,10);
 
     @Test
-    void laPlazaCentralOcupa4PosicionesEnElMapa() throws PosicionInvalidaException {
+    void laPlazaCentralOcupa4PosicionesEnElMapa() throws PosicionInvalidaException, OroInsuficienteException {
         constructor.crearPlazaCentral(posicionPlaza);
         boolean check = true;
         for (int i = 10; i < 12; i++) {
@@ -36,13 +37,13 @@ public class PlazaCentralTest {
     }
 
     @Test
-    void laPlazaCentralEstaOcupadaEnElTurnoQueFueConstruida() throws PosicionInvalidaException {
+    void laPlazaCentralEstaOcupadaEnElTurnoQueFueConstruida() throws PosicionInvalidaException, OroInsuficienteException {
         PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
         assertTrue(plaza.estaOcupado());
     }
 
     @Test
-    void laPlazaCentralSeDesocupaLuegoDe3Turnos() throws PosicionInvalidaException {
+    void laPlazaCentralSeDesocupaLuegoDe3Turnos() throws PosicionInvalidaException, OroInsuficienteException {
         PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
         plaza.desocuparUnTurno();
         plaza.desocuparUnTurno();
@@ -51,7 +52,7 @@ public class PlazaCentralTest {
     }
 
     @Test
-    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws PosicionInvalidaException {
+    void laPlazaCentralNoPuedeCrearUnAldeanoUnTurnoDespuesDeSerConstruida() throws PosicionInvalidaException, OroInsuficienteException {
         PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
         Faccion faccion = new Faccion();
         plaza.asignarFaccion(faccion);
@@ -60,7 +61,7 @@ public class PlazaCentralTest {
     }
 
     @Test
-    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
         Faccion faccion = new Faccion();
         plaza.asignarFaccion(faccion);

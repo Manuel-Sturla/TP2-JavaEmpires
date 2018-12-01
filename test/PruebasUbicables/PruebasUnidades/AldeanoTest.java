@@ -307,7 +307,7 @@ public class AldeanoTest {
     }
 /*Hay que decidir como se va a hacer esto a nivel interfaz*/
     @Test
-    public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws UbicableEstaOcupadoException, PosicionInvalidaException {
+    public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,5,5);
         Posicion posicionConstruccion = new Posicion(mapa,6,5);
