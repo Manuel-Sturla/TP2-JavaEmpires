@@ -1,5 +1,6 @@
 package PruebasIntegracion;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
 import Jugador.Banco;
@@ -12,6 +13,7 @@ import Ubicables.Unidades.Aldeano;
 import Ubicables.Edificios.PlazaCentral;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PruebasCrearUbicables {
@@ -21,10 +23,11 @@ public class PruebasCrearUbicables {
     Banco banco = new Banco(200);
     Poblacion poblacion = new Poblacion();
     ConstructorDeUbicables constructor = new ConstructorDeUbicables(banco, poblacion);
-
+    Banco banco2 = new Banco(0);
+    ConstructorDeUbicables constructor2 = new ConstructorDeUbicables(banco2,poblacion);
     //Pruebas crear aldeano:
     @Test
-    void plazaCentralCreaUnAldeanoEsaPosicionEnElMapaSeOcupa() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void plazaCentralCreaUnAldeanoEsaPosicionEnElMapaSeOcupa() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posPlaza = new Posicion(mapa, 1,0);
 
         PlazaCentral plaza = new PlazaCentral(posPlaza, constructor);
@@ -39,7 +42,7 @@ public class PruebasCrearUbicables {
     }
 
     @Test
-    void plazaCentralCreaUnAldeanoLaCantidadDeOroSeReduceEn25() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void plazaCentralCreaUnAldeanoLaCantidadDeOroSeReduceEn25() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posPlaza = new Posicion(mapa, 1,0);
 
         PlazaCentral plaza = new PlazaCentral(posPlaza, constructor);
@@ -53,7 +56,22 @@ public class PruebasCrearUbicables {
     }
 
     @Test
-    void plazaCentralCreaUnAldeanoLaPoblacionAumentaEn1() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void plazaCentralIntentaCreaUnAldeanoSinOroTiraExcepcion() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
+        Posicion posPlaza = new Posicion(mapa, 1,0);
+
+        PlazaCentral plaza = new PlazaCentral(posPlaza, constructor2);
+        plaza.asignarFaccion(faccion);
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+        plaza.desocuparUnTurno();
+
+        assertThrows(OroInsuficienteException.class , ()-> {
+            plaza.crearAldeano();
+        });
+    }
+
+    @Test
+    void plazaCentralCreaUnAldeanoLaPoblacionAumentaEn1() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posPlaza = new Posicion(mapa, 1,0);
 
         PlazaCentral plaza = new PlazaCentral(posPlaza, constructor);
@@ -68,7 +86,7 @@ public class PruebasCrearUbicables {
 
     //Pruebas crear plaza central:
     @Test
-    void aldeanoCreaUnaPlazaCentralEsaPosicionEnElMapaSeOcupa() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void aldeanoCreaUnaPlazaCentralEsaPosicionEnElMapaSeOcupa() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posAldeano = new Posicion(mapa, 0, 0);
         Aldeano aldeano = new Aldeano(posAldeano, constructor);
         aldeano.asignarFaccion(faccion);
@@ -87,7 +105,7 @@ public class PruebasCrearUbicables {
     }
 
     @Test
-    void aldeanoCreaUnaPlazaCentralLaCantidadDeOroSeReduceEn100() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void aldeanoCreaUnaPlazaCentralLaCantidadDeOroSeReduceEn100() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posAldeano = new Posicion(mapa, 0, 0);
         Aldeano aldeano = new Aldeano(posAldeano, constructor);
         aldeano.asignarFaccion(faccion);
@@ -95,9 +113,20 @@ public class PruebasCrearUbicables {
         assertTrue(banco.getCantidadDeOro() == 100);
     }
 
+    @Test
+    void aldeanoIntentaCreaUnaPlazaCentralSinOroTiraException() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
+        Posicion posAldeano = new Posicion(mapa, 0, 0);
+        Aldeano aldeano = new Aldeano(posAldeano, constructor2);
+        aldeano.asignarFaccion(faccion);
+        assertThrows(OroInsuficienteException.class , ()-> {
+            aldeano.crearPlazaCentral();
+        });
+
+    }
+
     //Pruebas crear combinaciones
     @Test
-    void unaPlazaCentralCreadaPorUnAldeanoPuedeCrearOtroAldeanoEseAldeanoOcupaUnaPosicionEnELMapa() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void unaPlazaCentralCreadaPorUnAldeanoPuedeCrearOtroAldeanoEseAldeanoOcupaUnaPosicionEnELMapa() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posAldeano = new Posicion(mapa, 0, 0);
         Aldeano aldeano = new Aldeano(posAldeano, constructor);
         aldeano.asignarFaccion(faccion);
@@ -114,7 +143,7 @@ public class PruebasCrearUbicables {
     }
 
     @Test
-    void unaPlazaCentralCreadaPorUnAldeanoCreaOtroAldeanoSeConsumeElOroCorrecto() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void unaPlazaCentralCreadaPorUnAldeanoCreaOtroAldeanoSeConsumeElOroCorrecto() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posAldeano = new Posicion(mapa, 0, 0);
         Aldeano aldeano = new Aldeano(posAldeano, constructor);
         aldeano.asignarFaccion(faccion);
@@ -130,7 +159,7 @@ public class PruebasCrearUbicables {
     }
 
     @Test
-    void unaPlazaCentralCreadaPorUnAldeanoCreaOtroAldeanoEseAldeanoAumentaLaCantidadDeHabitantes() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    void unaPlazaCentralCreadaPorUnAldeanoCreaOtroAldeanoEseAldeanoAumentaLaCantidadDeHabitantes() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         Posicion posAldeano = new Posicion(mapa, 0, 0);
         Aldeano aldeano = new Aldeano(posAldeano, constructor);
         poblacion.agregarHabitante();
