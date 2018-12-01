@@ -1,5 +1,6 @@
 package Jugador;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
@@ -19,39 +20,64 @@ public class ConstructorDeUbicables {
     }
 
 
-    public Aldeano crearAldeano(Posicion posicionDespliegue) throws PosicionInvalidaException {
-        banco.gastarOro(25);
+    public Aldeano crearAldeano(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+        try {
+            banco.gastarOro(25);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         poblacion.agregarHabitante();
         return new Aldeano(posicionDespliegue, this);
     }
 
-    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws PosicionInvalidaException {
-        banco.gastarOro(100);
+    public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws PosicionInvalidaException, OroInsuficienteException {
+        try {
+            banco.gastarOro(100);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         return new PlazaCentral(posicionConstruccion, this);
     }
 
-    public Cuartel crearCuartel(Posicion posicionConstruccion) throws PosicionInvalidaException {
-        banco.gastarOro(50);
+    public Cuartel crearCuartel(Posicion posicionConstruccion) throws PosicionInvalidaException, OroInsuficienteException {
+        try {
+            banco.gastarOro(50);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         return new Cuartel(posicionConstruccion, this);
     }
 
-    public Espadachin crearEspadachin(Posicion posicionDespliegue) throws PosicionInvalidaException {
-        banco.gastarOro(50);
+    public Espadachin crearEspadachin(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+        try {
+            banco.gastarOro(50);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         poblacion.agregarHabitante();
         return new Espadachin(posicionDespliegue);
     }
 
-    public Arquero crearArquero(Posicion posicionDeDespliegue) throws PosicionInvalidaException {
-        banco.gastarOro(75);
+    public Arquero crearArquero(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+        try {
+            banco.gastarOro(75);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         poblacion.agregarHabitante();
         return new Arquero(posicionDeDespliegue);
     }
 
-    public ArmaDeAsedio crearArmaDeAsedio(Posicion posicionDeDespliegue) throws PosicionInvalidaException {
-        banco.gastarOro(200);
+    public ArmaDeAsedio crearArmaDeAsedio(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException {
+        try {
+            banco.gastarOro(200);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         poblacion.agregarHabitante();
         return new ArmaDeAsedio(posicionDeDespliegue);
     }
 
 
 }
+
