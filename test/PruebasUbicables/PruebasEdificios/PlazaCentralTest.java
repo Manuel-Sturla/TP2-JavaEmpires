@@ -3,6 +3,7 @@ package PruebasUbicables.PruebasEdificios;
 import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UnidadesMaximasException;
 import Jugador.Banco;
 import Jugador.ConstructorDeUbicables;
 import Jugador.Faccion;
@@ -61,7 +62,7 @@ public class PlazaCentralTest {
     }
 
     @Test
-    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
+    void elAldeanoCreadoPorLaPlazaOcupaUnaPosicionEnElMapa() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
         PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
         Faccion faccion = new Faccion();
         plaza.asignarFaccion(faccion);
