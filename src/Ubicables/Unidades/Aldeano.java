@@ -2,10 +2,7 @@ package Ubicables.Unidades;
 
 import Estados.Ocupado;
 import Estados.Reparando;
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableDeOtraFaccionException;
-import Exceptions.UbicableEstaOcupadoException;
-import Exceptions.UbicableFueraDeRangoException;
+import Exceptions.*;
 import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
@@ -21,22 +18,32 @@ public class Aldeano extends Unidad {
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
     }
 
-    public void crearPlazaCentral() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    public void crearPlazaCentral() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         Posicion posicionConstruccion = new Posicion(posicion.getMapa(), posicion.getCoordenadaHorizontal() + 1,posicion.getCoordenadaVertical()); //Parche
-        PlazaCentral plaza = constructor.crearPlazaCentral(posicionConstruccion);
+        PlazaCentral plaza = null;
+        try {
+            plaza = constructor.crearPlazaCentral(posicionConstruccion);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         estado = new Ocupado(3);
         plaza.asignarFaccion(faccion);
     }
 
-    public void crearCuartel() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+    public void crearCuartel() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         Posicion posicionConstruccion = new Posicion(posicion.getMapa(), posicion.getCoordenadaHorizontal() + 1,posicion.getCoordenadaVertical()); //Parche
-        Cuartel cuartel = constructor.crearCuartel(posicionConstruccion);
+        Cuartel cuartel = null;
+        try {
+            cuartel = constructor.crearCuartel(posicionConstruccion);
+        } catch (OroInsuficienteException e) {
+            throw new OroInsuficienteException();
+        }
         estado = new Ocupado(3);
         cuartel.asignarFaccion(faccion);
     }
@@ -51,7 +58,7 @@ public class Aldeano extends Unidad {
     public void reparar(Edificio edificio) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
         if (edificio.estaEnConstruccion()){
             return; //no hace nadaaaa
-         }
+        }
         if (!posicion.estaEnRango(edificio.getPosicion())){
             throw new UbicableFueraDeRangoException();
         }
