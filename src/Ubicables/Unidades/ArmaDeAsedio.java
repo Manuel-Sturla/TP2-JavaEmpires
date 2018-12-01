@@ -1,8 +1,12 @@
 package Ubicables.Unidades;
 
 import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Edificio;
+import Ubicables.Ubicable;
 
 public class ArmaDeAsedio extends Unidad{
     boolean montada = false;
@@ -77,5 +81,18 @@ public class ArmaDeAsedio extends Unidad{
             throw new UbicableEstaOcupadoException();
         }
         super.moverAbajoIzq();
+    }
+
+
+
+    public void atacarUnidad(Edificio objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        if(!posicion.edificioEstaEnRango(objetivo.getPosicion(),3)){
+            throw new UbicableFueraDeRangoException();
+        }
+        if (faccion.perteneceFaccion(objetivo)) {
+            throw new UbicableDeMismaFaccionException();
+        }
+        objetivo.recibirDanio(this);
+        ocuparUnTurno();
     }
 }

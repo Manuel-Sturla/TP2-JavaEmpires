@@ -4,6 +4,9 @@ import Estados.Estado;
 import Estados.Ocupado;
 import Jugador.Faccion;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Castillo;
+import Ubicables.Unidades.Arquero;
+import Ubicables.Unidades.Espadachin;
 
 public abstract class Ubicable {
     protected Estado estado;
@@ -28,6 +31,12 @@ public abstract class Ubicable {
     }
 
     public void recibirDanio(int danioRecibido){
-        vida = vida - danioRecibido;
+        vida -= danioRecibido;
     }
+
+    public void recibirDanio(Castillo castillo) {vida -= 20;}
+
+    public int getvida(){return vida;}
+
+
 }

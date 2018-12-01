@@ -3,8 +3,11 @@ package Ubicables.Unidades;
 import Estados.Desocupado;
 import Estados.Ocupado;
 import Exceptions.PosicionInvalidaException;
+import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Castillo;
 import Ubicables.Ubicable;
 
 public class Unidad extends Ubicable {
@@ -23,7 +26,6 @@ public class Unidad extends Ubicable {
         posicion.moverDerecha();
         estado = new Ocupado(1);
     }
-
     public void moverAbajo() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -31,7 +33,6 @@ public class Unidad extends Ubicable {
         posicion.moverAbajo();
         estado = new Ocupado(1);
     }
-
     public void moverIzquierda() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -39,7 +40,6 @@ public class Unidad extends Ubicable {
         posicion.moverIzquierda();
         estado = new Ocupado(1);
     }
-
     public void moverArriba() throws UbicableEstaOcupadoException, PosicionInvalidaException{
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -47,7 +47,6 @@ public class Unidad extends Ubicable {
         posicion.moverArriba();
         estado = new Ocupado(1);
     }
-
     public void moverArribaIzq() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -55,7 +54,6 @@ public class Unidad extends Ubicable {
         posicion.moverArribaIzq();
         estado = new Ocupado(1);
     }
-
     public void moverArribaDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -63,7 +61,6 @@ public class Unidad extends Ubicable {
         posicion.moverArribaDer();
         estado = new Ocupado(1);
     }
-
     public void moverAbajoIzq() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -71,7 +68,6 @@ public class Unidad extends Ubicable {
         posicion.moverAbajoIzq();
         estado = new Ocupado(1);
     }
-
     public void moverAbajoDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
@@ -80,7 +76,21 @@ public class Unidad extends Ubicable {
         estado = new Ocupado(1);
     }
 
+
     public Posicion getPosicion(){
         return posicion;
     }
+
+    public void atacarUnidad(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        if(!posicion.estaEnRango(objetivo.getPosicion(), 3)){
+            throw new UbicableFueraDeRangoException();
+        }
+        if (faccion.perteneceFaccion(objetivo)) {
+            throw new UbicableDeMismaFaccionException();
+        }
+
+    }
+    public void recibirDanio(Espadachin espadachin){ vida -= 25; }
+    public void recibirDanio(Arquero arquero){ vida -= 15;}
+
 }

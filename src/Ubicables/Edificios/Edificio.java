@@ -5,6 +5,9 @@ import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
 import Posiciones.PosicionEdificio;
 import Ubicables.Ubicable;
+import Ubicables.Unidades.ArmaDeAsedio;
+import Ubicables.Unidades.Arquero;
+import Ubicables.Unidades.Espadachin;
 
 public abstract class Edificio extends Ubicable {
 
@@ -43,4 +46,8 @@ public abstract class Edificio extends Ubicable {
     public PosicionEdificio getPosicion(){
         return posicion;
     }
+
+    public void recibirDanio(Espadachin espadachin){ vida -= 15; }
+    public void recibirDanio(Arquero arquero){ vida -= 10;}
+    public void recibirDanio(ArmaDeAsedio armaDeAsedio){ vida -= 75;}
 }

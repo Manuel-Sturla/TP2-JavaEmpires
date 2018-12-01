@@ -12,15 +12,10 @@ public class Espadachin extends Unidad{
         posicionRecibida.getMapa().ocuparCelda(this, posicionRecibida);
     }
 
+    @Override
     public void atacarUnidad(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
-        if(!posicion.estaEnRango(objetivo.getPosicion(), 1)){
-            throw new UbicableFueraDeRangoException();
-        }
-        if(faccion.perteneceFaccion(objetivo)){
-            throw new UbicableDeMismaFaccionException();
-        }
-        if(!faccion.perteneceFaccion(objetivo)) {
-            objetivo.recibirDanio(25);
-        }
+        super.atacarUnidad(objetivo);
+        objetivo.recibirDanio(this);
+        ocuparUnTurno();
     }
 }
