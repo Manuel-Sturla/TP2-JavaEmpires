@@ -1,5 +1,7 @@
 package Jugador;
 
+import Exceptions.OroInsuficienteException;
+
 public class Banco {
     int oro;
 
@@ -7,7 +9,10 @@ public class Banco {
         oro = cantidadDeOro;
     }
 
-    public void gastarOro(int costo) {
+    public void gastarOro(int costo) throws OroInsuficienteException {
+        if (oro < costo){
+            throw new OroInsuficienteException();
+        }
         oro -= costo;
     }
 
@@ -19,3 +24,4 @@ public class Banco {
         oro += cantidadDeOro;
     }
 }
+
