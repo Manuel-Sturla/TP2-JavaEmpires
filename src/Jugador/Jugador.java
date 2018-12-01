@@ -1,5 +1,6 @@
 package Jugador;
 
+import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Mapa.Mapa;
 import Posiciones.Posicion;
@@ -22,7 +23,7 @@ public class Jugador extends Observable {
         mapa = mapaRecibido;
     }
 
-    public void inicializarJugador(int numeroJugador) throws PosicionInvalidaException {
+    public void inicializarJugador(int numeroJugador) throws PosicionInvalidaException, OroInsuficienteException {
         banco = new Banco(215); //Crear 3 aldeanos y 1 plaza consume 175 de oro
         faccion = new Faccion();
         poblacion = new Poblacion();
@@ -32,7 +33,7 @@ public class Jugador extends Observable {
 
     }
 
-    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException {
+    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException, OroInsuficienteException {
         Posicion posicionCastillo = new Posicion(mapa, posicionInicial ,posicionInicial);
         Posicion posicionPlaza = new Posicion(mapa, posicionInicial+6*direccion,posicionInicial);
         Posicion posicionAldeano1 = new Posicion(mapa, posicionInicial+1*direccion,posicionInicial+5*direccion);
