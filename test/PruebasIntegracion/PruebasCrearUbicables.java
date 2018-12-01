@@ -145,4 +145,6 @@ public class PruebasCrearUbicables {
 
         assertTrue(poblacion.getPoblacion() == 2);
     }
+
+
 }

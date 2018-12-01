@@ -2,6 +2,7 @@ package Jugador;
 
 import Exceptions.PosicionInvalidaException;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Cuartel;
 import Ubicables.Unidades.Aldeano;
 import Ubicables.Edificios.PlazaCentral;
 import Ubicables.Unidades.ArmaDeAsedio;
@@ -29,14 +30,19 @@ public class ConstructorDeUbicables {
         return new PlazaCentral(posicionConstruccion, this);
     }
 
+    public Cuartel crearCuartel(Posicion posicionConstruccion) throws PosicionInvalidaException {
+        banco.gastarOro(50);
+        return new Cuartel(posicionConstruccion, this);
+    }
+
     public Espadachin crearEspadachin(Posicion posicionDespliegue) throws PosicionInvalidaException {
-        banco.gastarOro(25); //Falta verificar si es ese.
+        banco.gastarOro(50);
         poblacion.agregarHabitante();
         return new Espadachin(posicionDespliegue);
     }
 
     public Arquero crearArquero(Posicion posicionDeDespliegue) throws PosicionInvalidaException {
-        banco.gastarOro(100);
+        banco.gastarOro(75);
         poblacion.agregarHabitante();
         return new Arquero(posicionDeDespliegue);
     }
@@ -46,4 +52,6 @@ public class ConstructorDeUbicables {
         poblacion.agregarHabitante();
         return new ArmaDeAsedio(posicionDeDespliegue);
     }
+
+
 }

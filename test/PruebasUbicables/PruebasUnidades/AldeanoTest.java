@@ -1,7 +1,10 @@
 package PruebasUbicables.PruebasUnidades;
 
 import Exceptions.*;
+import Jugador.Banco;
+import Jugador.ConstructorDeUbicables;
 import Jugador.Faccion;
+import Jugador.Poblacion;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
 import Ubicables.Unidades.Aldeano;
@@ -302,36 +305,40 @@ public class AldeanoTest {
         assertTrue(!aldeano.estaOcupado());
 
     }
-/*Hay que decidir como se va a hacer esto a nivel interfaz
+/*Hay que decidir como se va a hacer esto a nivel interfaz*/
     @Test
     public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicion = new Posicion(mapa,5,5);
-        Posicion posicionConstruccion = new Posicion(mapa,1,1);
-        null null = new null();
-        Aldeano aldeano = new Aldeano(posicion,null);
-        assertThrows( PosicionFueraDeRangoException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
-    }
-    @Test
-    public void aldaeanoCreaCuartelALaIzquierdaDelAldeano() throws PosicionFueraDeRangoException, UbicableEstaOcupadoException, PosicionNoDisponibleException {
-        Mapa mapa = new Mapa(10,10);
-        Posicion posicion = new Posicion(mapa,5,5);
-        Posicion posicionConstruccion = new Posicion(mapa,4,5);
-        null null = new null();
-        Aldeano aldeano = new Aldeano(posicion,null);
-        assertThrows( PosicionNoDisponibleException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
+        Posicion posicionConstruccion = new Posicion(mapa,6,5);
+        Faccion faccion = new Faccion();
+        Banco banco = new Banco(100);
+        Poblacion  poblacion = new Poblacion();
+        ConstructorDeUbicables constructor = new ConstructorDeUbicables(banco, poblacion);
+        Aldeano aldeano = new Aldeano(posicion,constructor);
+        aldeano.asignarFaccion(faccion);
+        aldeano.crearCuartel();
+
+        assertTrue(mapa.celdaEstaOcupada(posicionConstruccion));
     }
 
+
     @Test
-    public void aldeanoCreaCuartelDondeHayUnaTropa() throws PosicionNoDisponibleException, PosicionFueraDeRangoException {
+    public void aldeanoNoCreaCuartelSiSuPosicionDeConstruiccionEstaOcupada() throws PosicionInvalidaException {
         Mapa mapa = new Mapa(10,10);
         Posicion posicionAldeano = new Posicion(mapa,5,5);
         Posicion posicionAldaeno1 = new Posicion(mapa,7,6);
         Posicion posicionConstruccion = new Posicion(mapa,6,5);
-        null null = new null();
-        Aldeano aldeano = new Aldeano(posicionAldeano,null);
+
+        Banco banco = new Banco(100);
+        Poblacion  poblacion = new Poblacion();
+        ConstructorDeUbicables constructor = new ConstructorDeUbicables(banco, poblacion);
+        Faccion faccion = new Faccion();
+        Aldeano aldeano = new Aldeano(posicionAldeano,constructor);
+        aldeano.asignarFaccion(faccion);
+
         Aldeano aldeano1 = new Aldeano(posicionAldaeno1,null);
-        assertThrows( PosicionNoDisponibleException.class , ()-> aldeano.aldaeanoCreaCuartel(posicionConstruccion));
+        assertThrows( PosicionInvalidaException.class , ()-> aldeano.crearCuartel());
         assertTrue(!mapa.celdaEstaOcupada(posicionConstruccion));
-    }*/
+    }
 }

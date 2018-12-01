@@ -8,6 +8,7 @@ import Exceptions.UbicableEstaOcupadoException;
 import Exceptions.UbicableFueraDeRangoException;
 import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Cuartel;
 import Ubicables.Edificios.Edificio;
 import Ubicables.Edificios.PlazaCentral;
 
@@ -24,10 +25,20 @@ public class Aldeano extends Unidad {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        estado = new Ocupado(3);
         Posicion posicionConstruccion = new Posicion(posicion.getMapa(), posicion.getCoordenadaHorizontal() + 1,posicion.getCoordenadaVertical()); //Parche
         PlazaCentral plaza = constructor.crearPlazaCentral(posicionConstruccion);
+        estado = new Ocupado(3);
         plaza.asignarFaccion(faccion);
+    }
+
+    public void crearCuartel() throws PosicionInvalidaException, UbicableEstaOcupadoException {
+        if(estado.estaOcupado()){
+            throw new UbicableEstaOcupadoException();
+        }
+        Posicion posicionConstruccion = new Posicion(posicion.getMapa(), posicion.getCoordenadaHorizontal() + 1,posicion.getCoordenadaVertical()); //Parche
+        Cuartel cuartel = constructor.crearCuartel(posicionConstruccion);
+        estado = new Ocupado(3);
+        cuartel.asignarFaccion(faccion);
     }
 
     public void recibirDanio(int danioRecibido) {
