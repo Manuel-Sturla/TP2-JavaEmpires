@@ -2,6 +2,7 @@ package Vista;
 
 import Juego.Juego;
 import Mapa.Celda;
+import Mapa.Mapa;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,9 +27,9 @@ public class Main extends Application{
         //Iniciamos el juego con juego.iniciar() --> hace que se actualicen las cosas
         Juego juego = new Juego();
         juego.inicializarJuego();
-        Celda celdas[][] = juego.getMapa().obtenerCeldas();
 
-        Scene escenaJuego = crearEscenaJuego(celdas);
+
+        Scene escenaJuego = crearEscenaJuego(juego.getMapa());
         ventana.setScene(escenaJuego);
         ventana.setTitle("#AlgoOfEmpires");
 
@@ -37,7 +38,7 @@ public class Main extends Application{
     }
 
 
-    private Scene crearEscenaJuego(Celda celdas[][] ){
+    private Scene crearEscenaJuego(Mapa mapaRecibido ){
 
         //Hacemos el contorno
         BorderPane distribucion = new BorderPane();
@@ -63,8 +64,9 @@ public class Main extends Application{
         mapa.setPadding(new Insets(20, 20, 20, 20));
         mapa.setGridLinesVisible(true);
 
-        for (int i = 0; i < 50; i++) {
-            for (int j = 0; j < 30; j++) {
+        Celda celdas[][]=mapaRecibido.obtenerCeldas();
+        for (int i = 0; i < mapaRecibido.getLargo(); i++) {
+            for (int j = 0; j < mapaRecibido.getAncho(); j++) {
                 Casillero casillero = new Casillero(celdas[i][j]);
                 mapa.setConstraints(casillero,i,j);
                 mapa.getChildren().addAll(casillero);

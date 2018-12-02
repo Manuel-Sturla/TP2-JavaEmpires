@@ -16,7 +16,7 @@ public class Juego {
 
 
     public void inicializarJuego() throws PosicionInvalidaException {
-        mapa = new Mapa(50,30);
+        mapa = new Mapa(40,30);
         jugador1 = new Jugador(mapa);
         jugador2 = new Jugador(mapa);
         jugador1.inicializarJugador(1);

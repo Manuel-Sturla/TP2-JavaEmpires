@@ -47,6 +47,16 @@ public class Mapa {
         return celdasAdyacentes;
     }
 
+    private Celda obtenerCelda(Posicion posicion) throws PosicionInvalidaException {
+        int coordenadaHorizontal = posicion.getCoordenadaHorizontal();
+        int coordenadaVertical = posicion.getCoordenadaVertical();
+        try{
+            return mapa[coordenadaHorizontal][coordenadaVertical];
+        }catch (ArrayIndexOutOfBoundsException e){
+            throw new PosicionInvalidaException();
+        }
+    }
+
     public boolean celdaEstaOcupada(Posicion posicion) throws PosicionInvalidaException {
         return (this.obtenerCelda(posicion).estaOcupada());
     }
@@ -60,16 +70,6 @@ public class Mapa {
 
     public void desocuparCelda(Posicion posicion) throws PosicionInvalidaException {
         this.obtenerCelda(posicion).desocuparCelda();
-    }
-
-    private Celda obtenerCelda(Posicion posicion) throws PosicionInvalidaException {
-        int coordenadaHorizontal = posicion.getCoordenadaHorizontal();
-        int coordenadaVertical = posicion.getCoordenadaVertical();
-        try{
-            return mapa[coordenadaHorizontal][coordenadaVertical];
-        }catch (ArrayIndexOutOfBoundsException e){
-            throw new PosicionInvalidaException();
-        }
     }
 
     public void moverElemento(Posicion posicion, Posicion posicion_llegada) throws PosicionInvalidaException {
@@ -93,7 +93,6 @@ public class Mapa {
 
     public boolean esAdyacente(Posicion posicion, Posicion posicion2) throws PosicionInvalidaException {
         return this.obtenerCelda(posicion).esAdyacente(obtenerCelda(posicion2));
-
     }
 
     public boolean estaEnRango(Posicion posicion, Posicion posicion2, int rango) throws PosicionInvalidaException {
@@ -122,6 +121,12 @@ public class Mapa {
 
     public Celda[][] obtenerCeldas() {
         return mapa.clone();
+    }
 
+    public int getLargo(){
+        return largo;
+    }
+    public int getAncho(){
+        return ancho;
     }
 }

@@ -29,17 +29,17 @@ public class Jugador extends Observable {
         faccion = new Faccion();
         poblacion = new Poblacion();
         constructor = new ConstructorDeUbicables(banco, poblacion);
-        if (numeroJugador == 1) { crearUbicablesIniciales(1, 1);}
-        else {crearUbicablesIniciales(20, 1);}
+        if (numeroJugador == 1) { crearUbicablesIniciales(mapa.getLargo()/6,mapa.getAncho()/6, 1);}
+        else {crearUbicablesIniciales(mapa.getLargo()-2*mapa.getLargo()/6,mapa.getAncho()-2*mapa.getAncho()/6, 1);}
 
     }
 
-    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException {
-        Posicion posicionCastillo = new Posicion(mapa, posicionInicial, posicionInicial);
-        Posicion posicionPlaza = new Posicion(mapa, posicionInicial + 6 * direccion, posicionInicial);
-        Posicion posicionAldeano1 = new Posicion(mapa, posicionInicial + 1 * direccion, posicionInicial + 5 * direccion);
-        Posicion posicionAldeano2 = new Posicion(mapa, posicionInicial + 2 * direccion, posicionInicial + 5 * direccion);
-        Posicion posicionAldeano3 = new Posicion(mapa, posicionInicial + 3 * direccion, posicionInicial + 5 * direccion);
+    private void crearUbicablesIniciales(int coorHorizontal,int coorVertical, int direccion) throws PosicionInvalidaException {
+        Posicion posicionCastillo = new Posicion(mapa, coorHorizontal, coorVertical);
+        Posicion posicionPlaza = new Posicion(mapa, coorHorizontal + 6 * direccion, coorVertical);
+        Posicion posicionAldeano1 = new Posicion(mapa, coorHorizontal + 1 * direccion, coorVertical + 5 * direccion);
+        Posicion posicionAldeano2 = new Posicion(mapa, coorHorizontal + 2 * direccion, coorVertical + 5 * direccion);
+        Posicion posicionAldeano3 = new Posicion(mapa, coorHorizontal + 3 * direccion, coorVertical + 5 * direccion);
 
         Castillo castillo = new Castillo(posicionCastillo, constructor);
         try {
