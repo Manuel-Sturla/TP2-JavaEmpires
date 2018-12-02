@@ -1,6 +1,7 @@
 package Juego;
 
 import Exceptions.PosicionInvalidaException;
+import Exceptions.UnidadesMaximasException;
 import Jugador.Jugador;
 import Mapa.Mapa;
 
@@ -15,14 +16,14 @@ public class Juego {
 
 
     public void inicializarJuego() throws PosicionInvalidaException {
-        mapa = new Mapa(50,50);
+        mapa = new Mapa(50,30);
         jugador1 = new Jugador(mapa);
         jugador2 = new Jugador(mapa);
         jugador1.inicializarJugador(1);
         jugador2.inicializarJugador(2);
         controlador = new ControladorDeTurnos(
                 new ArrayList<Jugador>(Arrays.asList(jugador1, jugador2)));
-
+        //iniciarPrimerTurno()
     }
 
     public void iniciarPrimerTurno() throws PosicionInvalidaException {
@@ -31,5 +32,9 @@ public class Juego {
 
     public ControladorDeTurnos getControladorDeTurnos(){
         return controlador;
+    }
+
+    public Mapa getMapa() {
+        return mapa;
     }
 }

@@ -4,6 +4,7 @@ import Estados.Desocupado;
 import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UnidadesMaximasException;
 import Jugador.ConstructorDeUbicables;
 import Jugador.Faccion;
 import Posiciones.Posicion;
@@ -19,17 +20,14 @@ public class Castillo extends Edificio {
         estado = new Desocupado();
     }
 
-    public void crearArmaDeAsedio() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
+    public void crearArmaDeAsedio() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
         if (estado.estaOcupado()) {
             throw new UbicableEstaOcupadoException();
         }
         ocuparUnTurno();
         ArmaDeAsedio armaDeAsedio = null;
-        try {
-            armaDeAsedio = constructor.crearArmaDeAsedio(posicion.obtenerPosicionDeDespliegue());
-        } catch (OroInsuficienteException e) {
-            throw new OroInsuficienteException();
-        }
+        armaDeAsedio = constructor.crearArmaDeAsedio(posicion.obtenerPosicionDeDespliegue());
+
         armaDeAsedio.asignarFaccion(faccion);
     }
 

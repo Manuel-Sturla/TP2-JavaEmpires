@@ -105,4 +105,8 @@ public class Unidad extends Ubicable {
     public void recibirDanio(Espadachin espadachin){ vida -= 25; }
     public void recibirDanio(Arquero arquero){ vida -= 15;}
 
+
+    public void morir() {
+        //posicion.desocupar(posicion);
+    }
 }

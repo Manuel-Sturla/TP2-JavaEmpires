@@ -4,6 +4,7 @@ import Estados.Ocupado;
 import Exceptions.OroInsuficienteException;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableEstaOcupadoException;
+import Exceptions.UnidadesMaximasException;
 import Jugador.ConstructorDeUbicables;
 import Posiciones.Posicion;
 import Ubicables.Unidades.Aldeano;
@@ -15,17 +16,14 @@ public class PlazaCentral extends Edificio {
         estado = new Ocupado(3);
     }
 
-    public void crearAldeano() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException {
+    public void crearAldeano() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException, UnidadesMaximasException {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
         ocuparUnTurno();
         Aldeano aldeano = null;
-        try {
-            aldeano = constructor.crearAldeano(posicion.obtenerPosicionDeDespliegue());
-        } catch (OroInsuficienteException e) {
-            throw new OroInsuficienteException();
-        }
+        aldeano = constructor.crearAldeano(posicion.obtenerPosicionDeDespliegue());
+
         aldeano.asignarFaccion(faccion);
     }
 

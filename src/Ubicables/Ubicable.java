@@ -29,9 +29,14 @@ public abstract class Ubicable {
 
     public void recibirDanio(int danioRecibido){
         vida -= danioRecibido;
+        if(vida < 1){
+            //morir();
+        }
     }
 
-    public void recibirDanio(Castillo castillo) {vida -= 20;}
+    //public abstract void morir();
+
+    public void recibirDanio(Castillo castillo) {recibirDanio(20);}
 
     public int getvida(){return vida;}
 

@@ -119,4 +119,9 @@ public class Mapa {
         }
         return unidades;
     }
+
+    public Celda[][] obtenerCeldas() {
+        return mapa.clone();
+
+    }
 }

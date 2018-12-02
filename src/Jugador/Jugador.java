@@ -24,22 +24,22 @@ public class Jugador extends Observable {
         mapa = mapaRecibido;
     }
 
-    public void inicializarJugador(int numeroJugador) throws PosicionInvalidaException, UnidadesMaximasException {
+    public void inicializarJugador(int numeroJugador) throws PosicionInvalidaException {
         banco = new Banco(215); //Crear 3 aldeanos y 1 plaza consume 175 de oro
         faccion = new Faccion();
         poblacion = new Poblacion();
         constructor = new ConstructorDeUbicables(banco, poblacion);
         if (numeroJugador == 1) { crearUbicablesIniciales(1, 1);}
-        else {crearUbicablesIniciales(45, -1);}
+        else {crearUbicablesIniciales(20, 1);}
 
     }
 
-    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException, UnidadesMaximasException {
-        Posicion posicionCastillo = new Posicion(mapa, posicionInicial ,posicionInicial);
-        Posicion posicionPlaza = new Posicion(mapa, posicionInicial+6*direccion,posicionInicial);
-        Posicion posicionAldeano1 = new Posicion(mapa, posicionInicial+1*direccion,posicionInicial+5*direccion);
-        Posicion posicionAldeano2 = new Posicion(mapa, posicionInicial+2*direccion,posicionInicial+5*direccion);
-        Posicion posicionAldeano3 = new Posicion(mapa, posicionInicial+3*direccion,posicionInicial+5*direccion);
+    private void crearUbicablesIniciales(int posicionInicial, int direccion) throws PosicionInvalidaException {
+        Posicion posicionCastillo = new Posicion(mapa, posicionInicial, posicionInicial);
+        Posicion posicionPlaza = new Posicion(mapa, posicionInicial + 6 * direccion, posicionInicial);
+        Posicion posicionAldeano1 = new Posicion(mapa, posicionInicial + 1 * direccion, posicionInicial + 5 * direccion);
+        Posicion posicionAldeano2 = new Posicion(mapa, posicionInicial + 2 * direccion, posicionInicial + 5 * direccion);
+        Posicion posicionAldeano3 = new Posicion(mapa, posicionInicial + 3 * direccion, posicionInicial + 5 * direccion);
 
         Castillo castillo = new Castillo(posicionCastillo, constructor);
         try {
@@ -52,7 +52,9 @@ public class Jugador extends Observable {
             aldeano1.asignarFaccion(faccion);
             aldeano2.asignarFaccion(faccion);
             aldeano3.asignarFaccion(faccion);
-        } catch (OroInsuficienteException e){}
+        } catch (OroInsuficienteException e){
+        } catch (UnidadesMaximasException e){}
+
 
 
     }
