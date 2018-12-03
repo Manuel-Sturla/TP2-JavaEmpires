@@ -1,5 +1,7 @@
 package Posiciones;
 
+
+
 import Exceptions.PosicionInvalidaException;
 import Mapa.Mapa;
 import Ubicables.Ubicable;

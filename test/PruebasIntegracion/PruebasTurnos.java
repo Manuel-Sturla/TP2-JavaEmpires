@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PruebasTurnos {
 
     @Test
-    void elPrimerJugadorEsUnoDeLosPosibles(){
+    void elPrimerJugadorEsUnoDeLosPosibles() throws PosicionInvalidaException {
         Mapa mapa = new Mapa(50,50);
         Jugador jugador1 = new Jugador(mapa);
         Jugador jugador2 = new Jugador(mapa);
@@ -22,6 +22,8 @@ public class PruebasTurnos {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
         ArrayList jugadoresCopia = new ArrayList(jugadores);
+        jugador1.inicializarJugador(1);
+        jugador2.inicializarJugador(2);
         ControladorDeTurnos controlador = new ControladorDeTurnos(jugadores);
         assertTrue(jugadoresCopia.contains(controlador.obtenerJugadorActual()));
     }

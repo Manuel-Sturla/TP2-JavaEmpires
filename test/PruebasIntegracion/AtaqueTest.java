@@ -39,7 +39,7 @@ public class AtaqueTest {
 
         espadachin.atacar(arquero);
         assertTrue(arquero.getvida() == 50);
-        assertTrue(espadachin.estaOcupado());// no se pone como ocupado
+        assertTrue(espadachin.estaOcupado());
     }
 
     @Test

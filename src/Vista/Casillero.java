@@ -2,7 +2,9 @@ package Vista;
 
 import Mapa.Celda;
 import Ubicables.Ubicable;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
@@ -22,7 +24,12 @@ public class Casillero extends Rectangle implements Observer {
         rellenar(celda.getElemento());
         setStroke(Color.BLACK);
         setStrokeWidth(0.25);
-
+        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Main.actualizarAccionesUbicable(celda.getElemento());
+            }
+        });
     }
 
     private void rellenar(Ubicable ubicable) {

@@ -7,6 +7,8 @@ import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Edificio;
 
+import java.lang.reflect.Executable;
+
 public class ArmaDeAsedio extends Unidad{
     boolean montada = false;
 
@@ -52,6 +54,7 @@ public class ArmaDeAsedio extends Unidad{
             throw new UbicableEstaOcupadoException();
         }
         super.moverAbajo();
+
     }
     @Override
     public void moverArribaDer() throws UbicableEstaOcupadoException, PosicionInvalidaException {

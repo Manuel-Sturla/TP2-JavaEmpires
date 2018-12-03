@@ -19,9 +19,9 @@ public class ControladorDeTurnos implements Observer {
         jugador.addObserver(this);
         colaTurnos.add(jugador);
         Jugador jugador2 = jugadores.remove(0);
-        jugador2.addObserver(this);
         colaTurnos.add(jugador2);
-
+        jugador2.terminarTurno();
+        jugador2.addObserver(this);
 
     }
 
