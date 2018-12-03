@@ -7,6 +7,7 @@ import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableEstaOcupadoException;
 import Exceptions.UbicableFueraDeRangoException;
 import Posiciones.Posicion;
+import Ubicables.Edificios.Castillo;
 import Ubicables.Edificios.Edificio;
 import Ubicables.Ubicable;
 
@@ -102,11 +103,27 @@ public class Unidad extends Ubicable {
 
     }
 
-    public void recibirDanio(Espadachin espadachin){ vida -= 25; }
-    public void recibirDanio(Arquero arquero){ vida -= 15;}
+    public void recibirDanio(Espadachin espadachin) throws PosicionInvalidaException {
+        /*vida -= 25;
+        if(vida <= 0) morir();*/
+        super.recibirDanio(25,false);
+        if(vida <= 0) morir();
+    }
+    public void recibirDanio(Arquero arquero) throws PosicionInvalidaException {
+        /*vida -= 15;
+        if(vida <= 0) morir();*/
+        super.recibirDanio(15,false);
+        if(vida <= 0) morir();
+    }
+
+    public void recibirDanio(Castillo castillo) throws PosicionInvalidaException {
+        super.recibirDanio(20,false);
+        if(vida <= 0) morir();
+    }
 
 
-    public void morir() {
-        //posicion.desocupar(posicion);
+
+    public void morir() throws PosicionInvalidaException {
+        posicion.desocupar(posicion);
     }
 }
