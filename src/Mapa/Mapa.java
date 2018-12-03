@@ -5,6 +5,7 @@ import Posiciones.Posicion;
 import Ubicables.Ubicable;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class Mapa {
     Celda mapa[][];
@@ -66,10 +67,12 @@ public class Mapa {
             throw new PosicionInvalidaException();
         }
         this.obtenerCelda(posicion).ocuparCelda(elementoMapa);
+
     }
 
     public void desocuparCelda(Posicion posicion) throws PosicionInvalidaException {
         this.obtenerCelda(posicion).desocuparCelda();
+
     }
 
     public void moverElemento(Posicion posicion, Posicion posicion_llegada) throws PosicionInvalidaException {
@@ -81,7 +84,7 @@ public class Mapa {
         this.obtenerCelda(posicion).desocuparCelda();
     }
 
-    public boolean estaEnMapa(Posicion posicion) throws PosicionInvalidaException {
+    public boolean estaEnMapa(Posicion posicion) {
         try{
             this.obtenerCelda(posicion);
             return true;

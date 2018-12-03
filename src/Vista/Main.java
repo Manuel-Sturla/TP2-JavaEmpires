@@ -1,9 +1,12 @@
 package Vista;
 
+import Controladores.ManejadorDeCasilleros;
 import Juego.Juego;
 import Mapa.Celda;
 import Mapa.Mapa;
+import Posiciones.Posicion;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,8 +16,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
+public class Main extends Application implements Observer {
+    ArrayList<Casillero> casilleros;
     public static void main(String[] args){ launch(args); }
 
 
@@ -28,13 +35,13 @@ public class Main extends Application{
         Juego juego = new Juego();
         juego.inicializarJuego();
 
+        Mapa mapa = juego.getMapa();
 
-        Scene escenaJuego = crearEscenaJuego(juego.getMapa());
+        Scene escenaJuego = crearEscenaJuego(mapa);
         ventana.setScene(escenaJuego);
         ventana.setTitle("#AlgoOfEmpires");
 
         ventana.show();
-
     }
 
 
@@ -60,23 +67,34 @@ public class Main extends Application{
         informacionJugadores.setAlignment(Pos.CENTER);
         informacionJugadores.getChildren().addAll(nombreJugador1,nombreJugador2);
 
-        //Seteo el GridPane del mapa
+        //Seteo el GridPane del mapa .----
         mapa.setPadding(new Insets(20, 20, 20, 20));
         mapa.setGridLinesVisible(true);
 
         Celda celdas[][]=mapaRecibido.obtenerCeldas();
+        casilleros = new ArrayList<>();
         for (int i = 0; i < mapaRecibido.getLargo(); i++) {
             for (int j = 0; j < mapaRecibido.getAncho(); j++) {
-                Casillero casillero = new Casillero(celdas[i][j]);
+                Celda celdaActual = celdas[i][j];
+                Casillero casillero = new Casillero(celdaActual);
+                celdaActual.addObserver(casillero);
+
                 mapa.setConstraints(casillero,i,j);
                 mapa.getChildren().addAll(casillero);
-
+                casilleros.add(casillero);
             }
-
         }
+
+        //Seteo el Hbox de las acciones de los ubicables
+            //Tengo que hacer algo?
 
 
         Scene escena = new Scene(distribucion,1024,920);
+
         return escena;
     }
+
+
+
+
 }

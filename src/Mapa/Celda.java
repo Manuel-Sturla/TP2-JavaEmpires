@@ -3,8 +3,9 @@ package Mapa;
 import Ubicables.Ubicable;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Celda {
+public class Celda extends Observable {
     protected boolean ocupado;
     protected Ubicable ubicable;
     private CeldasAdyacentes celdasAdyacentes = new CeldasAdyacentes();
@@ -21,11 +22,15 @@ public class Celda {
         if(this.estaOcupada()) return;
         ubicable = elementoMapa;
         ocupado = true;
+        setChanged();
+        notifyObservers(ubicable);
     }
 
     public void desocuparCelda() {
         ubicable = null;
         ocupado = false;
+        setChanged();
+        notifyObservers();
     }
 
     public Ubicable getElemento() {
