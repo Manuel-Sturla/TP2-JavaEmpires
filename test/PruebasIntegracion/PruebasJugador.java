@@ -31,7 +31,7 @@ public class PruebasJugador {
     void unJugadorRecienInicializadoTiene100DeOroEnSuPrimerTurno() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
-        assertTrue(jugador.getOro() == 100);
+        assertEquals(jugador.getOro() , 100);
     }
 
     @Test

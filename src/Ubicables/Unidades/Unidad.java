@@ -1,6 +1,7 @@
 package Ubicables.Unidades;
 
 import Estados.Desocupado;
+import Estados.Muerto;
 import Estados.Ocupado;
 import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableDeMismaFaccionException;
@@ -104,26 +105,20 @@ public class Unidad extends Ubicable {
     }
 
     public void recibirDanio(Espadachin espadachin) throws PosicionInvalidaException {
-        /*vida -= 25;
-        if(vida <= 0) morir();*/
-        super.recibirDanio(25,false);
-        if(vida <= 0) morir();
+        super.recibirDanio(25);
     }
     public void recibirDanio(Arquero arquero) throws PosicionInvalidaException {
-        /*vida -= 15;
-        if(vida <= 0) morir();*/
-        super.recibirDanio(15,false);
-        if(vida <= 0) morir();
+        super.recibirDanio(15);
     }
 
     public void recibirDanio(Castillo castillo) throws PosicionInvalidaException {
-        super.recibirDanio(20,false);
-        if(vida <= 0) morir();
+        super.recibirDanio(20);
     }
 
 
 
     public void morir() throws PosicionInvalidaException {
         posicion.desocupar(posicion);
+        estado = new Muerto();
     }
 }

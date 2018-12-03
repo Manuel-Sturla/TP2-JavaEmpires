@@ -4,18 +4,21 @@ import Exceptions.PosicionInvalidaException;
 import Exceptions.UbicableDeMismaFaccionException;
 import Exceptions.UbicableFueraDeRangoException;
 import Jugador.Faccion;
+import Jugador.Jugador;
 import Mapa.Mapa;
 import Posiciones.Posicion;
 import Ubicables.Edificios.Cuartel;
+import Ubicables.Ubicable;
+import Ubicables.Unidades.Aldeano;
 import Ubicables.Unidades.ArmaDeAsedio;
 import Ubicables.Unidades.Arquero;
 import Ubicables.Unidades.Espadachin;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AtaqueTest {
 
@@ -97,5 +100,38 @@ public class AtaqueTest {
         espadachin.atacar(arquero);
         espadachin.atacar(arquero);
         assertFalse(mapa.celdaEstaOcupada(posicion));
+    }
+
+    @Test
+    void aldeanoMuere() throws PosicionInvalidaException {
+        Mapa mapa = new Mapa(40,30);
+        Jugador jugador = new Jugador(mapa);
+        jugador.inicializarJugador(1);
+        Posicion posicion = new Posicion(mapa,7,10);
+
+        assertTrue( jugador.getPoblacion() == 3);
+        ArrayList aldeanos = jugador.obtenerAldeanos();
+        Aldeano aldeano = (Aldeano) aldeanos.get(0);
+        aldeano.recibirDanio(999);
+        jugador.terminarTurno();
+        jugador.iniciarTurno();
+        assertEquals(2, jugador.getPoblacion());
+    }
+
+    @Test
+    void muereAldeanoEnsegundoTurnoCobraMenosOro() throws PosicionInvalidaException {
+        Mapa mapa = new Mapa(40,30);
+        Jugador jugador = new Jugador(mapa);
+        jugador.inicializarJugador(1);
+        Posicion posicion = new Posicion(mapa,7,10);
+        jugador.iniciarTurno();
+        assertEquals( jugador.getOro() , 100);
+        ArrayList aldeanos = jugador.obtenerAldeanos();
+        Aldeano aldeano = (Aldeano) aldeanos.get(0);
+        aldeano.recibirDanio(999);
+        jugador.terminarTurno();
+        jugador.iniciarTurno();
+
+        assertEquals(jugador.getOro(),140);
     }
 }

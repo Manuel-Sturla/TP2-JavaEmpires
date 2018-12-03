@@ -73,6 +73,7 @@ public class Jugador extends Observable {
     }
 
     public void iniciarTurno() throws PosicionInvalidaException {
+        poblacion.actualizarPoblacion(faccion);
         faccion.desocuparUnTurnoTodosLosElementos();
         banco.agregarOro(faccion.obtenerCantidadDeAldeanosDesocupados()*20);
         Castillo castillo = faccion.obtenerCastillo();

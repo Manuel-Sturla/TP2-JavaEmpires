@@ -48,13 +48,6 @@ public class Aldeano extends Unidad {
         cuartel.asignarFaccion(faccion);
     }
 
-    public void recibirDanio(int danioRecibido) {
-        vida -= danioRecibido;
-        if(vida < 1){
-            estado = new Ocupado(100);
-        }
-    }
-
     public void reparar(Edificio edificio) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeOtraFaccionException {
         if (edificio.estaEnConstruccion()){
             return; //no hace nadaaaa

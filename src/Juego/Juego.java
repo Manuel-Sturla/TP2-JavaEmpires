@@ -23,7 +23,7 @@ public class Juego {
         jugador2.inicializarJugador(2);
         controlador = new ControladorDeTurnos(
                 new ArrayList<Jugador>(Arrays.asList(jugador1, jugador2)));
-        //iniciarPrimerTurno()
+        jugador1.iniciarTurno();
     }
 
     public void iniciarPrimerTurno() throws PosicionInvalidaException {

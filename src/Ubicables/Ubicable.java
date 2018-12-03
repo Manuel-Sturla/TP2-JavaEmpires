@@ -1,6 +1,7 @@
 package Ubicables;
 
 import Estados.Estado;
+import Estados.Muerto;
 import Estados.Ocupado;
 import Exceptions.PosicionInvalidaException;
 import Jugador.Faccion;
@@ -28,23 +29,21 @@ public abstract class Ubicable {
         estado = new Ocupado(1);
     }
 
-    public void recibirDanio(int danioRecibido,boolean castillo){// si es un castillo faccion debera borrar castillo no miembro 
+    public void recibirDanio(int danioRecibido) throws PosicionInvalidaException {
         vida -= danioRecibido;
-        if(vida < 1 && !castillo ){
-            //morir();
-            faccion.borrarMiembro(this);
-        }
-        if(vida < 1 && castillo ){
-            //morir();
-            faccion.borrarCastillo();
+        if(vida < 1 ){
+            morir();
         }
     }
 
-    //public abstract void morir();
+    protected abstract void morir() throws PosicionInvalidaException;
 
-    public void recibirDanio(Castillo castillo) throws PosicionInvalidaException {recibirDanio(20,false);}
+    public void recibirDanio(Castillo castillo) throws PosicionInvalidaException {recibirDanio(20);}
 
     public int getvida(){return vida;}
 
 
+    public boolean estaMuerto(){
+        return estado instanceof Muerto;
+    }
 }

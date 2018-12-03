@@ -1,6 +1,9 @@
 package Jugador;
 
 import Exceptions.UnidadesMaximasException;
+import Ubicables.Ubicable;
+
+import java.util.ArrayList;
 
 public class Poblacion {
 
@@ -16,5 +19,16 @@ public class Poblacion {
 
     public int getPoblacion() {
         return cantHabitantes;
+    }
+
+    public void actualizarPoblacion(Faccion faccion) {
+        ArrayList miembros = faccion.getMiembros();
+        for(int i = 0; i < miembros.size(); i++){
+            Ubicable miembro = (Ubicable)miembros.get(i);
+            if(miembro.estaMuerto()){
+                cantHabitantes--;
+                faccion.borrarMiembro(miembro);
+            }
+        }
     }
 }

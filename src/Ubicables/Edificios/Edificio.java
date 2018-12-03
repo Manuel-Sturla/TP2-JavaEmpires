@@ -48,42 +48,22 @@ public abstract class Edificio extends Ubicable {
     }
 
     public void recibirDanio(Espadachin espadachin) throws PosicionInvalidaException {
-        //vida -= 15;
-        if(vidaMax == 1000)
-            super.recibirDanio(15,true);
-        super.recibirDanio(15,false);
-        if (vida < 1)
-            morir();
+        super.recibirDanio(15);
     }
 
     public void recibirDanio(Arquero arquero) throws PosicionInvalidaException {
-        //vida -= 10;
-        if (vidaMax == 1000)
-            super.recibirDanio(10,true);
-        super.recibirDanio(10,false);
-        if(vida < 1)
-            morir();
+        super.recibirDanio(10);
     }
     public void recibirDanio(ArmaDeAsedio armaDeAsedio) throws PosicionInvalidaException {
-        //vida -= 75;
-        if(vidaMax == 1000)
-            super.recibirDanio(75,true);
-        super.recibirDanio(75,false);
-        if(vida < 1)
-            morir();
+        super.recibirDanio(75);
     }
 
     public void recibirDanio(Castillo castillo) throws PosicionInvalidaException {
-        if (vidaMax == 1000)
-            super.recibirDanio(20,true);
-        super.recibirDanio(20,false);
-        if(vida < 1)
-            morir();
+        super.recibirDanio(20);
     }
 
     public void morir() throws PosicionInvalidaException {
-
         posicion.desocuparPosiciones();
-
+        faccion.borrarMiembro(this);
     }
 }

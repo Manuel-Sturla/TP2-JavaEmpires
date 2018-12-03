@@ -88,4 +88,8 @@ public class Faccion {
     public Castillo obtenerCastillo() {
         return castillo;
     }
+
+    public ArrayList getMiembros() {
+        return miembros;
+    }
 }
