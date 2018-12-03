@@ -21,6 +21,12 @@ public class Faccion {
         miembros.add(miembro);
     }
 
+    public void borrarMiembro(Ubicable miembro){
+        miembros.remove(miembro);
+    }
+
+    public void borrarCastillo(){ castillo = null;}
+
     public void agregarCastillo(Castillo castilloRecibido){
         castillo= castilloRecibido;
         miembros.add(castillo);
