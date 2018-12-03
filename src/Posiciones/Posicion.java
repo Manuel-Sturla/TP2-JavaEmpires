@@ -1,5 +1,7 @@
 package Posiciones;
 
+package Posiciones;
+
 import Exceptions.PosicionInvalidaException;
 import Mapa.Mapa;
 import Ubicables.Ubicable;
@@ -115,5 +117,9 @@ public class Posicion {
     public ArrayList<Ubicable> obtenerUnidadesEnRango(int rango) throws PosicionInvalidaException {
         ArrayList<Ubicable> unidades = mapa.obtenerUnidadesEnRango(this, rango);
         return unidades;
+    }
+
+    public void desocupar(Posicion posicion) throws PosicionInvalidaException {
+        mapa.desocuparCelda(posicion);
     }
 }
