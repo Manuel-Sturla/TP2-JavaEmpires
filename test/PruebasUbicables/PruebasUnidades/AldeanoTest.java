@@ -132,7 +132,7 @@ public class AldeanoTest {
         aldeano.asignarFaccion(faccion1);
         cuartel.asignarFaccion(faccion1);
 
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanio(50,false);
         aldeano.reparar(cuartel);
         assertTrue(aldeano.estaOcupado());
         aldeano.desocuparUnTurno();
@@ -152,7 +152,7 @@ public class AldeanoTest {
         aldeano.asignarFaccion(faccion1);
         cuartel.asignarFaccion(faccion1);
 
-        cuartel.recibirDanio(150);
+        cuartel.recibirDanio(150,false);
         aldeano.reparar(cuartel);
         assertTrue(aldeano.estaOcupado());
         aldeano.desocuparUnTurno();
@@ -174,7 +174,7 @@ public class AldeanoTest {
         aldeano.asignarFaccion(faccion1);
         cuartel.asignarFaccion(faccion1);
 
-        cuartel.recibirDanio(150);
+        cuartel.recibirDanio(150,false);
         assertThrows(UbicableFueraDeRangoException.class, ()->aldeano.reparar(cuartel));
     }
 
@@ -190,7 +190,7 @@ public class AldeanoTest {
         aldeano.asignarFaccion(faccion1);
         cuartel.asignarFaccion(faccion1);
 
-        cuartel.recibirDanio(150);
+        cuartel.recibirDanio(150,false);
         aldeano.reparar(cuartel);
 
         Posicion posicion3 = new Posicion(mapa, 3, 4);
@@ -215,7 +215,7 @@ public class AldeanoTest {
         cuartel.asignarFaccion(faccion1);
 
 
-        cuartel.recibirDanio(150);
+        cuartel.recibirDanio(150,false);
         aldeano.reparar(cuartel);
 
         Posicion posicion3 = new Posicion(mapa, 3, 4);
@@ -242,7 +242,7 @@ public class AldeanoTest {
         cuartel.asignarFaccion(faccion1);
 
 
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanio(50,false);
         aldeano.reparar(cuartel);
 
         Posicion posicion3 = new Posicion(mapa, 3, 4);
@@ -255,7 +255,7 @@ public class AldeanoTest {
         aldeano2.desocuparUnTurno();
         cuartel.desocuparUnTurno();
 
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanio(50,false);
         aldeano2.reparar(cuartel);
         assertTrue(!aldeano.estaOcupado());
         assertTrue(aldeano2.estaOcupado());
@@ -273,7 +273,7 @@ public class AldeanoTest {
         cuartel.asignarFaccion(faccion1);
 
 
-        cuartel.recibirDanio(150);
+        cuartel.recibirDanio(150,false);
         aldeano.reparar(cuartel);
         assertTrue(cuartel.estaEnConstruccion());
         aldeano.desocuparUnTurno();
@@ -292,7 +292,7 @@ public class AldeanoTest {
         Aldeano aldeano = new Aldeano(posicion, null);
         Posicion posicion2 = new Posicion(mapa, 4, 3);
         Cuartel cuartel = new Cuartel(posicion2, null);
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanio(50,false);
         Faccion faccion1 = new Faccion();
         Faccion faccion2 = new Faccion();
 
@@ -305,7 +305,7 @@ public class AldeanoTest {
         assertTrue(!aldeano.estaOcupado());
 
     }
-/*Hay que decidir como se va a hacer esto a nivel interfaz*/
+    /*Hay que decidir como se va a hacer esto a nivel interfaz*/
     @Test
     public void aldaeanoCreaCuartelYNoEstaARangoDelAldeano() throws UbicableEstaOcupadoException, PosicionInvalidaException, OroInsuficienteException {
         Mapa mapa = new Mapa(10,10);
@@ -342,3 +342,4 @@ public class AldeanoTest {
         assertTrue(!mapa.celdaEstaOcupada(posicionConstruccion));
     }
 }
+
