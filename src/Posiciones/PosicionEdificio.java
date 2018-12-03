@@ -48,6 +48,14 @@ public class PosicionEdificio{
         }
     }
 
+    public void desocuparPosiciones() throws PosicionInvalidaException {
+        for (int i = 0; i < largoLado; i++) {
+            for (int j = 0; j < largoLado; j++) {
+                mapa.desocuparCelda(posiciones[i][j]);
+            }
+        }
+    }
+
     public Posicion obtenerPosicionDeDespliegue() {
         Posicion posicionDespliegue = new Posicion(mapa, posiciones[0][1].getCoordenadaHorizontal() - 1, posiciones[0][1].getCoordenadaVertical());
         return posicionDespliegue;
