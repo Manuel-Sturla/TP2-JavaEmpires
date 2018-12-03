@@ -13,6 +13,7 @@ import Ubicables.Unidades.Espadachin;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -55,6 +56,46 @@ public class AtaqueTest {
         armaDeAsedio.asignarFaccion(faccion);
         cuartel.asignarFaccion(faccion1);
 
+        armaDeAsedio.montarArma();
         armaDeAsedio.atacar(cuartel);
+        assertTrue(cuartel.getvida() == 175);
+    }
+
+    @Test
+    void atacarUnCuartelConUnArmaDeAsedio4VecesLoMataYDesocupaEsaPosicion() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        Posicion posicion2 = new Posicion(mapa,2,4);
+        Posicion posicion3 = new Posicion(mapa,3,3);
+        Posicion posicion4 = new Posicion(mapa,3,4);
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
+        Cuartel cuartel = new Cuartel(posicion1,null);
+        armaDeAsedio.asignarFaccion(faccion);
+        cuartel.asignarFaccion(faccion1);
+
+        armaDeAsedio.montarArma();
+        armaDeAsedio.atacar(cuartel);
+        armaDeAsedio.atacar(cuartel);
+        armaDeAsedio.atacar(cuartel);
+        armaDeAsedio.atacar(cuartel);
+        assertFalse(mapa.celdaEstaOcupada(posicion1));
+        assertFalse(mapa.celdaEstaOcupada(posicion2));
+        assertFalse(mapa.celdaEstaOcupada(posicion3));
+        assertFalse(mapa.celdaEstaOcupada(posicion4));
+
+    }
+
+    @Test
+    void atacarConUnEspadachinAUnArquero3VecesLoMataYSeDesocupaEsaPosicion() throws PosicionInvalidaException, UbicableDeMismaFaccionException, UbicableFueraDeRangoException {
+        Arquero arquero = new Arquero(posicion);
+        Espadachin espadachin = new Espadachin(posicion1);
+
+        espadachin.asignarFaccion (faccion);
+
+        arquero.asignarFaccion(faccion1);
+
+        espadachin.atacar(arquero);
+        espadachin.atacar(arquero);
+        espadachin.atacar(arquero);
+        assertFalse(mapa.celdaEstaOcupada(posicion));
     }
 }
