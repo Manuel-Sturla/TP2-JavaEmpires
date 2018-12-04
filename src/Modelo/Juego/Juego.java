@@ -25,7 +25,7 @@ public class Juego {
     }
 
     public void iniciarPrimerTurno() throws PosicionInvalidaException {
-        jugador1.iniciarTurno();
+        controlador.obtenerJugadorActual().iniciarTurno();
     }
 
     public ControladorDeTurnos getControladorDeTurnos(){

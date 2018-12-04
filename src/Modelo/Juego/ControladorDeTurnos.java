@@ -6,14 +6,14 @@ import Modelo.Jugador.Jugador;
 import java.util.*;
 
 public class ControladorDeTurnos implements Observer {
-
+    static ControladorDeTurnos controladorDeTurnos;
     LinkedList<Jugador> colaTurnos;
 
 
     public ControladorDeTurnos(ArrayList<Jugador> jugadores){
         Random random = new Random();
         int jugadorInicial = random.nextInt(2);
-
+        ControladorDeTurnos controladorDeTurnos = this;
         colaTurnos = new LinkedList<Jugador>();
         Jugador jugador = jugadores.remove(jugadorInicial);
         jugador.addObserver(this);
