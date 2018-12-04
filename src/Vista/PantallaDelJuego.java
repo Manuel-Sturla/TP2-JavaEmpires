@@ -79,7 +79,7 @@ public class PantallaDelJuego {
         //Tengo que hacer algo?
 
 
-        Scene escena = new Scene(distribucion, 1024, 920);
+        Scene escena = new Scene(distribucion, 1024, 700);
 
         return escena;
     }
@@ -87,6 +87,7 @@ public class PantallaDelJuego {
     public static void actualizarAccionesUbicable(Ubicable ubicable) {
         if (ubicable == null){
         Label vacio = new Label("vacio");
+        vacio.setAlignment(Pos.TOP_CENTER);
         distribucion.setBottom(vacio);
         return;
         }
@@ -100,9 +101,6 @@ public class PantallaDelJuego {
 
     }
 
-    public static void actualizarPanelSuperior(PanelSuperior panelSuperiorRescivido){
-        distribucion.setTop(panelSuperiorRescivido);
-    }
 
     public static void actualizarAccionesAldeano(Aldeano aldeano){
 
@@ -130,6 +128,7 @@ public class PantallaDelJuego {
                 } catch (OroInsuficienteException e) {
                     System.out.println("Oro insuficiente");
                 }
+                actualizarPantallaSuperior();
             }
         });
 
@@ -142,7 +141,8 @@ public class PantallaDelJuego {
         acciones.getChildren().addAll(construir, opcionesConstruir);
         accionesUbicable.getChildren().addAll(direccionesMover, acciones);
 
-
+        accionesUbicable.setSpacing(100);
+        accionesUbicable.setAlignment(Pos.TOP_CENTER);
         distribucion.setBottom(accionesUbicable);
     }
 
