@@ -29,8 +29,8 @@ public class JuegoTest {
 
         Jugador jugador1 = juego.getJugador1();
         Jugador jugador2 = juego.getJugador2();
-        assertEquals(40 , jugador1.getOro());
-        assertEquals(40 , jugador2.getOro());
+        assertEquals(3 , jugador1.getPoblacion());
+        assertEquals(3 , jugador2.getPoblacion());
     }
 
     @Test
