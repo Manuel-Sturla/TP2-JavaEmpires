@@ -1,6 +1,6 @@
-package Jugador;
+package Modelo.Jugador;
 
-import Exceptions.OroInsuficienteException;
+import Modelo.Exceptions.OroInsuficienteException;
 
 public class Banco {
     int oro;

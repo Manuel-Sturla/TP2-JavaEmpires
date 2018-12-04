@@ -1,11 +1,11 @@
 package PruebasMapa;
 
-import Mapa.Celda;
-import Exceptions.PosicionInvalidaException;
-import Mapa.Mapa;
-import Posiciones.Posicion;
-import Ubicables.Unidades.Aldeano;
-import Ubicables.Ubicable;
+import Modelo.Mapa.Celda;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Unidades.Aldeano;
+import Modelo.Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

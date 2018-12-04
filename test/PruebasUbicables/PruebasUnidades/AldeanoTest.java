@@ -1,15 +1,15 @@
 package PruebasUbicables.PruebasUnidades;
 
-import Exceptions.*;
-import Jugador.Banco;
-import Jugador.ConstructorDeUbicables;
-import Jugador.Faccion;
-import Jugador.Poblacion;
-import Posiciones.Posicion;
-import Ubicables.Edificios.Cuartel;
-import Ubicables.Unidades.Aldeano;
+import Modelo.Exceptions.*;
+import Modelo.Jugador.Banco;
+import Modelo.Jugador.ConstructorDeUbicables;
+import Modelo.Jugador.Faccion;
+import Modelo.Jugador.Poblacion;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Edificios.Cuartel;
+import Modelo.Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
-import Mapa.Mapa;
+import Modelo.Mapa.Mapa;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;

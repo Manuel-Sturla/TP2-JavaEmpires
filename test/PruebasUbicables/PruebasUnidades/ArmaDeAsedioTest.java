@@ -1,15 +1,15 @@
 package PruebasUbicables.PruebasUnidades;
 
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableDeMismaFaccionException;
-import Exceptions.UbicableEstaOcupadoException;
-import Exceptions.UbicableFueraDeRangoException;
-import Jugador.Faccion;
-import Posiciones.Posicion;
-import Ubicables.Edificios.Cuartel;
-import Ubicables.Unidades.ArmaDeAsedio;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Exceptions.UbicableDeMismaFaccionException;
+import Modelo.Exceptions.UbicableEstaOcupadoException;
+import Modelo.Exceptions.UbicableFueraDeRangoException;
+import Modelo.Jugador.Faccion;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Edificios.Cuartel;
+import Modelo.Ubicables.Unidades.ArmaDeAsedio;
 import org.junit.jupiter.api.Test;
-import Mapa.Mapa;
+import Modelo.Mapa.Mapa;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -113,7 +113,7 @@ public class ArmaDeAsedioTest {
 
     @Test
     void atacerUnidadLevantaExcepcion() throws PosicionInvalidaException {
-        Mapa mapa = new Mapa(10,10);
+        Modelo.Mapa mapa = new Modelo.Mapa(10,10);
         Posicion posicion = new Posicion(mapa, 3,3);
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
         armaDeAsedio.montarArma();

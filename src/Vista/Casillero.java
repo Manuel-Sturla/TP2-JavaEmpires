@@ -1,13 +1,12 @@
 package Vista;
 
-import Mapa.Celda;
-import Ubicables.Ubicable;
+import Modelo.Mapa.Celda;
+import Modelo.Ubicables.Ubicable;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Observable;
@@ -27,7 +26,7 @@ public class Casillero extends Rectangle implements Observer {
         this.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Main.actualizarAccionesUbicable(celda.getElemento());
+                PantallaDelJuego.actualizarAccionesUbicable(celda.getElemento());
             }
         });
     }

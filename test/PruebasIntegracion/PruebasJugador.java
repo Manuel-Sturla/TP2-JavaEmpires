@@ -1,12 +1,12 @@
 package PruebasIntegracion;
 
-import Exceptions.OroInsuficienteException;
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableEstaOcupadoException;
-import Exceptions.UnidadesMaximasException;
-import Jugador.Jugador;
-import Mapa.Mapa;
-import Ubicables.Unidades.Aldeano;
+import Modelo.Exceptions.OroInsuficienteException;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Exceptions.UbicableEstaOcupadoException;
+import Modelo.Exceptions.UnidadesMaximasException;
+import Modelo.Jugador.Jugador;
+import Modelo.Mapa.Mapa;
+import Modelo.Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class PruebasJugador {
     Mapa mapa = new Mapa(30,30);
     Jugador jugador = new Jugador(mapa);
 
-    //Pruebas inicializa Juego.Juego:
+    //Pruebas inicializa Modelo.Juego.Modelo.Juego:
     @Test
     void unJugadorRecienInicializadoTiene3Aldeanos() throws PosicionInvalidaException, UnidadesMaximasException {
         jugador.inicializarJugador(1);

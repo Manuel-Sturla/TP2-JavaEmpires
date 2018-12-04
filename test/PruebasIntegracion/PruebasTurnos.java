@@ -1,11 +1,11 @@
 package PruebasIntegracion;
 
-import Exceptions.PosicionInvalidaException;
-import Juego.Juego;
-import Jugador.Jugador;
-import Mapa.Mapa;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Juego.Juego;
+import Modelo.Jugador.Jugador;
+import Modelo.Mapa.Mapa;
 import org.junit.jupiter.api.Test;
-import Juego.ControladorDeTurnos;
+import Modelo.Juego.ControladorDeTurnos;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

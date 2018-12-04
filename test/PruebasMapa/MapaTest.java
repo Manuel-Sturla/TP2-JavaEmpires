@@ -1,10 +1,10 @@
 package PruebasMapa;
 
-import Exceptions.PosicionInvalidaException;
-import Mapa.Mapa;
-import Posiciones.Posicion;
-import Ubicables.Unidades.Aldeano;
-import Ubicables.Ubicable;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Unidades.Aldeano;
+import Modelo.Ubicables.Ubicable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

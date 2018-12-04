@@ -1,9 +1,9 @@
 package PruebasMapa;
 
-import Exceptions.PosicionInvalidaException;
-import Mapa.Mapa;
-import Posiciones.Posicion;
-import Posiciones.PosicionEdificio;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
+import Modelo.Posiciones.PosicionEdificio;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

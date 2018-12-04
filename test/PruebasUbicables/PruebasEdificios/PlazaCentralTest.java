@@ -1,16 +1,16 @@
 package PruebasUbicables.PruebasEdificios;
 
-import Exceptions.OroInsuficienteException;
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableEstaOcupadoException;
-import Exceptions.UnidadesMaximasException;
-import Jugador.Banco;
-import Jugador.ConstructorDeUbicables;
-import Jugador.Faccion;
-import Jugador.Poblacion;
-import Mapa.Mapa;
-import Posiciones.Posicion;
-import Ubicables.Edificios.PlazaCentral;
+import Modelo.Exceptions.OroInsuficienteException;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Exceptions.UbicableEstaOcupadoException;
+import Modelo.Exceptions.UnidadesMaximasException;
+import Modelo.Jugador.Banco;
+import Modelo.Jugador.ConstructorDeUbicables;
+import Modelo.Jugador.Faccion;
+import Modelo.Jugador.Poblacion;
+import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Edificios.PlazaCentral;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

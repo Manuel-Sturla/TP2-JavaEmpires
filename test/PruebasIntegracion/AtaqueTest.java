@@ -1,18 +1,17 @@
 package PruebasIntegracion;
 
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableDeMismaFaccionException;
-import Exceptions.UbicableFueraDeRangoException;
-import Jugador.Faccion;
-import Jugador.Jugador;
-import Mapa.Mapa;
-import Posiciones.Posicion;
-import Ubicables.Edificios.Cuartel;
-import Ubicables.Ubicable;
-import Ubicables.Unidades.Aldeano;
-import Ubicables.Unidades.ArmaDeAsedio;
-import Ubicables.Unidades.Arquero;
-import Ubicables.Unidades.Espadachin;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Exceptions.UbicableDeMismaFaccionException;
+import Modelo.Exceptions.UbicableFueraDeRangoException;
+import Modelo.Jugador.Faccion;
+import Modelo.Jugador.Jugador;
+import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Edificios.Cuartel;
+import Modelo.Ubicables.Unidades.Aldeano;
+import Modelo.Ubicables.Unidades.ArmaDeAsedio;
+import Modelo.Ubicables.Unidades.Arquero;
+import Modelo.Ubicables.Unidades.Espadachin;
 
 import org.junit.jupiter.api.Test;
 

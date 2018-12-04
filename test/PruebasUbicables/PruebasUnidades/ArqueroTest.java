@@ -1,14 +1,14 @@
 package PruebasUbicables.PruebasUnidades;
 
-import Exceptions.PosicionInvalidaException;
-import Exceptions.UbicableDeMismaFaccionException;
-import Exceptions.UbicableFueraDeRangoException;
-import Jugador.Faccion;
-import Mapa.Mapa;
-import Posiciones.Posicion;
-import Ubicables.Edificios.PlazaCentral;
-import Ubicables.Unidades.Arquero;
-import Ubicables.Unidades.Aldeano;
+import Modelo.Exceptions.PosicionInvalidaException;
+import Modelo.Exceptions.UbicableDeMismaFaccionException;
+import Modelo.Exceptions.UbicableFueraDeRangoException;
+import Modelo.Jugador.Faccion;
+import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
+import Modelo.Ubicables.Edificios.PlazaCentral;
+import Modelo.Ubicables.Unidades.Arquero;
+import Modelo.Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;

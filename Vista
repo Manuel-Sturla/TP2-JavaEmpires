@@ -1,7 +1,7 @@
 package Vista;
 
-import Jugador.Jugador;
-import Jugador.ManejadorDeRecursos;
+import Modelo.Jugador.Modelo.Jugador;
+import Modelo.Jugador.ManejadorDeRecursos;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,15 +21,15 @@ public class Inicio extends Application implements Menu_Inicial {
     @Override
     public void start(Stage stage) {
         Button btn = new Button();
-        btn.setText("¡Comenzar Juego!");
+        btn.setText("¡Comenzar Modelo.Juego!");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                confirmarjugadores(stage);
-               //System.out.println("¡Empezo el Juego!");
-               /*Jugador jugador1 = null;
-               Jugador jugador2 = null;*/
-               /*Jugador jugador1 = validarjugador(stage);
+               //System.out.println("¡Empezo el Modelo.Juego!");
+               /*Modelo.Jugador jugador1 = null;
+               Modelo.Jugador jugador2 = null;*/
+               /*Modelo.Jugador jugador1 = validarjugador(stage);
                jugador2 = validarjugador(stage,jugador2);
                System.out.print("Oro jugador1: ");
                System.out.println(jugador1.ver_oro());
@@ -50,16 +50,16 @@ public class Inicio extends Application implements Menu_Inicial {
     }
 
     private void confirmarjugadores(Stage stage) {
-        //Jugador jugador = null;
+        //Modelo.Jugador jugador = null;
         Button btn = new Button();
         btn.setText("Confirmar Jugadores");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 
-                //System.out.println("¡Elegido Jugador 1!");
+                //System.out.println("¡Elegido Modelo.Jugador 1!");
                 /*ManejadorDeRecursos manejador = new ManejadorDeRecursos();
-                jugador = new Jugador(manejador);
+                jugador = new Modelo.Jugador(manejador);
                 return jugador;*/
 
 

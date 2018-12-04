@@ -6,7 +6,7 @@ public class ConstructorDeUbicablesTest {
 /* Todas las pruebas de crear hay que hacerlas aca y no es los edificios o en el aldeano.
     @Test
     void creoUnEspadachin() throws PosicionInvalidaException, UbicableEstaOcupadoException {
-        Mapa mapa = new Mapa(10,10);
+        Modelo.Mapa mapa = new Modelo.Mapa(10,10);
         Faccion faccion = new Faccion();
         Posicion posicionCostruccion = new Posicion(mapa,2,2);
         Cuartel cuartel = new Cuartel(posicionCostruccion);
