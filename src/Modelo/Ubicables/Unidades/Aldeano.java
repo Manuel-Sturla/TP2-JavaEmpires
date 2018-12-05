@@ -1,5 +1,9 @@
 package Modelo.Ubicables.Unidades;
 
+import Controladores.Comandos.Comando;
+import Controladores.Comandos.CrearCuartel;
+import Controladores.Comandos.CrearPlazaCentral;
+import Controladores.Comandos.Reparar;
 import Modelo.Estados.Ocupado;
 import Modelo.Estados.Reparando;
 import Modelo.Exceptions.*;
@@ -8,6 +12,8 @@ import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Edificios.Cuartel;
 import Modelo.Ubicables.Edificios.Edificio;
 import Modelo.Ubicables.Edificios.PlazaCentral;
+
+import java.util.ArrayList;
 
 public class Aldeano extends Unidad {
     ConstructorDeUbicables constructor;
@@ -65,5 +71,13 @@ public class Aldeano extends Unidad {
     public int getVida(){return vida;}
 
 
+    public ArrayList<Comando> getAcciones(){
+        ArrayList<Comando> acciones = new ArrayList<>();
+        acciones.add(new CrearCuartel(this));
+        acciones.add(new CrearPlazaCentral((this)));
+        acciones.add(new Reparar(this));
 
+
+        return acciones;
+    }
 }

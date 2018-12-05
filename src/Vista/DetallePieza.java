@@ -1,5 +1,8 @@
 package Vista;
 
+import Controladores.BotonAccionObjetivo;
+import Controladores.Comandos.Comando;
+import Modelo.Exceptions.*;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableEstaOcupadoException;
@@ -10,7 +13,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,17 +42,53 @@ public class DetallePieza extends HBox {
         acciones.setHgap(8);
         acciones.setVgap(5);
         acciones.setPadding(new Insets(5,8,5,8));
-        String nombre = ubicable.getClass().getName();
-        if (nombre == "Modelo.Ubicables.Unidades.Aldeano"){
-            actualizarAccionesAldeano((Aldeano) ubicable, acciones);
-        }
 
-        //setPadding(new Insets(10,25,10,10));
+        ArrayList<Comando> comandos = ubicable.getAcciones();
+        for (int i = 0; i < comandos.size()/2; i++) {
+            for (int j = 0; j <= comandos.size()/2+1 ; j++) {
+                Comando comandoActual = comandos.get(i+j);
+                if (comandoActual.getNombre()=="Atacar" || comandoActual.getNombre()=="Reparar"){
+                    BotonAccionObjetivo botonObjetivo = new BotonAccionObjetivo(comandoActual);
+                    acciones.setConstraints(botonObjetivo, i,j);
+                    acciones.getChildren().add(botonObjetivo);
+                    continue;
+                }
+                Button boton = new Button(comandoActual.getNombre());
+                boton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            comandoActual.execute();
+                            PantallaDelJuego.actualizarPantallaSuperior();
+                        } catch (PosicionInvalidaException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("La posicion es invalida");
+
+                        } catch (UbicableEstaOcupadoException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("El ubicable esta ocupado");
+                        } catch (OroInsuficienteException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("El oro es insuficiente");
+                        } catch (UbicableFueraDeRangoException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado esta fuera de rango");
+                        } catch (UbicableDeMismaFaccionException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es del mismo equipo");
+                        } catch (UbicableDeOtraFaccionException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es de enemigo");
+                        }
+                    }
+                });
+                acciones.setConstraints(boton, i,j);
+                acciones.getChildren().add(boton);
+
+            }
+
+        }
+        getChildren().add(acciones);
+
         setSpacing(10);
 
     }
 
-    public void actualizarAccionesAldeano(Aldeano aldeano,GridPane acciones){
+   /* public void actualizarAccionesAldeano(Aldeano aldeano,GridPane acciones){
 
         GridPane direccionesMover = botonesDeMovimiento(aldeano);
 
@@ -97,7 +135,7 @@ public class DetallePieza extends HBox {
 
 
 
-    }
+    }*/
 
 
     private static GridPane botonesDeMovimiento(Aldeano aldeano) {

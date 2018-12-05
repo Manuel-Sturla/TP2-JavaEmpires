@@ -1,6 +1,10 @@
 package Controladores.Comandos;
 
+import Modelo.Exceptions.*;
+
 public interface Comando {
 
-    void execute();
+    void execute() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException, UbicableDeOtraFaccionException;
+
+    String getNombre();
 }

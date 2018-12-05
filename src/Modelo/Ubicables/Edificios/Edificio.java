@@ -1,5 +1,6 @@
 package Modelo.Ubicables.Edificios;
 
+import Controladores.Comandos.Comando;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Jugador.ConstructorDeUbicables;
 import Modelo.Posiciones.Posicion;
@@ -8,6 +9,8 @@ import Modelo.Ubicables.Ubicable;
 import Modelo.Ubicables.Unidades.ArmaDeAsedio;
 import Modelo.Ubicables.Unidades.Arquero;
 import Modelo.Ubicables.Unidades.Espadachin;
+
+import java.util.ArrayList;
 
 public abstract class Edificio extends Ubicable {
 
@@ -37,7 +40,9 @@ public abstract class Edificio extends Ubicable {
         }
 
     }
-
+    public ArrayList<Comando> getAcciones(){
+        return null;
+    }
 
     public boolean estaEnConstruccion() {
         return enConstruccion;
