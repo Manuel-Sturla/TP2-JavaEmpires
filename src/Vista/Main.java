@@ -6,19 +6,25 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-
+    static Stage ventana;
     public static void main(String[] args) {
         launch(args);
     }
 
+    public static void actualizar() {
+
+        ventana.show();
+    }
+
 
     @Override
-    public void start(Stage ventana) throws Exception {
+    public void start(Stage stage) throws Exception {
         /*
         Escena inicial y boton para iniciar juego desencadena lo siguiente (de alguna manera)
          */
         //Seteos iniciales de la escena
         //Iniciamos el juego con juego.iniciar() --> hace que se actualicen las cosas
+        ventana = stage;
 
         PantallaDelJuego pantallaDelJuego = new PantallaDelJuego();
         Scene escenaJuego = (Scene) pantallaDelJuego.crearEscenaJuego();

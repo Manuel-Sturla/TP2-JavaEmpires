@@ -34,6 +34,12 @@ public class PantallaDelJuego {
     static ControladorDeTurnos controladorDeTurnos;
     static Juego juego;
 
+    public static void actualizarPanelInferior(DetallePieza detallePieza) {
+        distribucion.setBottom(detallePieza);
+    }
+
+
+
     Scene crearEscenaJuego() throws PosicionInvalidaException {
         juego = new Juego();
         juego.inicializarJuego();
@@ -79,120 +85,31 @@ public class PantallaDelJuego {
         //Tengo que hacer algo?
 
 
-        Scene escena = new Scene(distribucion, 1024, 700);
+        Scene escena = new Scene(distribucion, 800, 700);
 
         return escena;
     }
 
-    public static void actualizarAccionesUbicable(Ubicable ubicable) {
-        if (ubicable == null){
-        Label vacio = new Label("vacio");
-        vacio.setAlignment(Pos.TOP_CENTER);
-        distribucion.setBottom(vacio);
-        return;
-        }
-        GridPane acciones = new GridPane();
-        acciones.setHgap(8);
-        acciones.setVgap(5);
-        String nombre = ubicable.getClass().getName();
-        if (nombre == "Modelo.Ubicables.Unidades.Aldeano"){
-            actualizarAccionesAldeano((Aldeano) ubicable);
-        }
-
+    public static void actualizarPanelSuperior(PanelSuperior panelSuperiorRecibido){
+        distribucion.setTop(panelSuperiorRecibido);
     }
 
 
-    public static void actualizarAccionesAldeano(Aldeano aldeano){
-
-        GridPane direccionesMover = botonesDeMovimiento(aldeano);
-
-        Button construir = new Button("Contruir");
-        ChoiceBox<String> opcionesConstruir= new ChoiceBox<>();
-        opcionesConstruir.getItems().add("Plaza Central");
-        opcionesConstruir.getItems().add("Cuartel");
-        opcionesConstruir.setValue("Plaza Central");
-        construir.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                try {
-                    if(opcionesConstruir.getValue() == "Plaza Central"){
-                        aldeano.crearPlazaCentral();
-                    }else {
-                        aldeano.crearCuartel();
-                    }
-                } catch (UbicableEstaOcupadoException e) {
-                    System.out.println("El ubicable esta ocupado");
-                } catch (PosicionInvalidaException e) {
-                    System.out.println("La posicion de destino no es valida");
-                } catch (OroInsuficienteException e) {
-                    System.out.println("Oro insuficiente");
-                }
-                actualizarPantallaSuperior();
-            }
-        });
-
-        HBox accionesUbicable = new HBox();
-        GridPane acciones = new GridPane();
-        acciones.setVgap(5);
-        acciones.setHgap(7);
-        acciones.setConstraints(opcionesConstruir,0,0);
-        acciones.setConstraints(construir,1,0);
-        acciones.getChildren().addAll(construir, opcionesConstruir);
-        accionesUbicable.getChildren().addAll(direccionesMover, acciones);
-
-        accionesUbicable.setSpacing(100);
-        accionesUbicable.setAlignment(Pos.TOP_CENTER);
-        distribucion.setBottom(accionesUbicable);
-    }
-
-
-    private static GridPane botonesDeMovimiento(Aldeano aldeano) {
-        String imagenesDireccion[][] = new String[3][3];
-        imagenesDireccion[0][0] =  "izq-arriba";
-        imagenesDireccion[0][1]= "arriba-arriba";
-        imagenesDireccion[0][2]= "der-arriba";
-        imagenesDireccion[1][0]= "izq-izq";
-        imagenesDireccion[1][2]= "der-der";
-        imagenesDireccion[2][0]= "izq-abajo";
-        imagenesDireccion[2][1]= "abajo-abajo";
-        imagenesDireccion[2][2] = "der-abajo";
-
-        GridPane direccionesMover = new GridPane();
-        direccionesMover.setHgap(7);
-        direccionesMover.setVgap(5);
-        for (int i = 0; i <3 ; i++) {
-            for (int j = 0; j < 3; j++) {
-                if(i==1 && j==1) continue;
-                Button mover = new Button();
-
-                String nombre = imagenesDireccion[i][j];
-                Image imagen = new Image("Recursos/" + nombre + ".png");
-                ImageView imageView = new ImageView(imagen);
-                imageView.setFitHeight(10);
-                imageView.setFitWidth(10);
-                mover.setGraphic(imageView);
-                direccionesMover.setConstraints(mover, j,i);
-                direccionesMover.getChildren().add(mover);
-                mover.setOnAction(e ->
-                {
-                    try {
-                        aldeano.moverAbajo(); //LO HARDCODEO PARA MAS PLACER - Manu
-                    } catch (UbicableEstaOcupadoException e1) {
-                        e1.printStackTrace();
-                    } catch (PosicionInvalidaException e1) {
-                        e1.printStackTrace();
-                    }
-                });
-            }
-
-        }
-    return direccionesMover;
-    }
 
     public static void actualizarPantallaSuperior() {
         PanelSuperior panelSuperior = new PanelSuperior(juego);
         distribucion.setTop(panelSuperior);
+    }
+
+    public static void actualizarPantallaSuperior(String advertencia) {
+        PanelSuperior panelSuperior = new PanelSuperior(juego, advertencia);
+        distribucion.setTop(panelSuperior);
+    }
+
+
+    public static void actualizarAccionesUbicable(Ubicable ubicable) {
+
+        actualizarPanelInferior(new DetallePieza(ubicable));
     }
 
 }

@@ -5,6 +5,7 @@ import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Juego.ControladorDeTurnos;
 import Modelo.Juego.Juego;
 import Modelo.Jugador.Jugador;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,11 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class PanelSuperior extends HBox{
+public class PanelSuperior extends VBox{
 
     ControladorDeTurnos controladorDeTurnos;
     Jugador jugado1;
@@ -24,7 +26,25 @@ public class PanelSuperior extends HBox{
 
 
     public PanelSuperior(Juego juego){
+        crearInformacionJugadores(juego);
 
+        Label infoImportante = new Label();
+        this.setAlignment(Pos.CENTER);
+        this.getChildren().add(infoImportante);
+        }
+
+
+    public PanelSuperior(Juego juego, String advertencia){
+        crearInformacionJugadores(juego);
+
+        Label infoImportante = new Label(advertencia);
+        infoImportante.setStyle("-fx-border-color: black;");
+        this.setAlignment(Pos.CENTER);
+        this.getChildren().add(infoImportante);
+
+    }
+    private void crearInformacionJugadores(Juego juego){
+        HBox jugadores = new HBox();
         jugado1 = juego.getJugador1();
         jugado2 = juego.getJugador2();
         controladorDeTurnos = juego.getControladorDeTurnos();
@@ -44,13 +64,11 @@ public class PanelSuperior extends HBox{
         Label poblacionJugador1 = new Label("Poblacion: "+ jugado2.getPoblacion() +"/50");
         Label poblacionJugador2 = new Label("Poblacion: "+ jugado2.getPoblacion() +"/50");
 
-        this.setSpacing(220);
-        this.setAlignment(Pos.CENTER);
+        jugadores.setSpacing(220);
+        jugadores.setAlignment(Pos.CENTER);
         informacionJugaddor1.getChildren().addAll(nombreJugador1,oroJugador1,poblacionJugador1);
         informacionJugaddor2.getChildren().addAll(nombreJugador2,oroJugador2,poblacionJugador2);
-        this.getChildren().addAll(informacionJugaddor1,terminarTurnoBoton,informacionJugaddor2);
-
+        jugadores.getChildren().addAll(informacionJugaddor1,terminarTurnoBoton,informacionJugaddor2);
+        this.getChildren().add(jugadores);
     }
-
-
 }
