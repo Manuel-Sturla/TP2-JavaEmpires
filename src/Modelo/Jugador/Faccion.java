@@ -25,10 +25,8 @@ public class Faccion {
         miembros.remove(miembro);
     }
 
-    public void borrarCastillo(){ castillo = null;}
-
     public void agregarCastillo(Castillo castilloRecibido){
-        castillo= castilloRecibido;
+        castillo = castilloRecibido;
         miembros.add(castillo);
     }
 
@@ -91,5 +89,9 @@ public class Faccion {
 
     public ArrayList getMiembros() {
         return miembros;
+    }
+
+    public boolean castilloFueDestruido() {
+        return castillo.estaMuerto();
     }
 }

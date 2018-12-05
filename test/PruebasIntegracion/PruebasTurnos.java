@@ -1,5 +1,6 @@
 package PruebasIntegracion;
 
+import Modelo.Exceptions.FinDelJuego;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Juego.Juego;
 import Modelo.Jugador.Jugador;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PruebasTurnos {
 
     @Test
-    void elPrimerJugadorEsUnoDeLosPosibles() throws PosicionInvalidaException {
+    void elPrimerJugadorEsUnoDeLosPosibles() throws PosicionInvalidaException, FinDelJuego {
         Mapa mapa = new Mapa(50,50);
         Jugador jugador1 = new Jugador(mapa);
         Jugador jugador2 = new Jugador(mapa);
@@ -29,7 +30,7 @@ public class PruebasTurnos {
     }
 
     @Test
-    void jugador1TerminaTurnoEntoncesVaJugador2() throws PosicionInvalidaException {
+    void jugador1TerminaTurnoEntoncesVaJugador2() throws PosicionInvalidaException, FinDelJuego {
         Mapa mapa = new Mapa(50,50);
 
         Jugador jugador1 = new Jugador(mapa);
@@ -50,7 +51,7 @@ public class PruebasTurnos {
     }
 
     @Test
-    void losJugadoresSeAlternanEnCadaTurno() throws PosicionInvalidaException {
+    void losJugadoresSeAlternanEnCadaTurno() throws PosicionInvalidaException, FinDelJuego {
         Mapa mapa = new Mapa(50,50);
         Jugador jugador1 = new Jugador(mapa);
         Jugador jugador2 = new Jugador(mapa);
@@ -73,7 +74,7 @@ public class PruebasTurnos {
     }
 
     @Test
-    void iniciarJuegoEIniciarElPrimerTurnoInicianAlosJugadoresYUnTurno() throws PosicionInvalidaException {
+    void iniciarJuegoEIniciarElPrimerTurnoInicianAlosJugadoresYUnTurno() throws PosicionInvalidaException, FinDelJuego {
 
         Juego juego = new Juego();
         juego.inicializarJuego();

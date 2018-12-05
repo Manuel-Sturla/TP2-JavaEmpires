@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.Exceptions.FinDelJuego;
 import Modelo.Exceptions.PosicionInvalidaException;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -15,8 +16,8 @@ import javafx.stage.Stage;
 public class PantallaInicio {
     PantallaDelJuego pantallaDelJuego;
 
-    public PantallaInicio(){
-        pantallaDelJuego = new PantallaDelJuego();
+    public PantallaInicio(PantallaFinJuego pantallaFinJuego) throws PosicionInvalidaException, FinDelJuego {
+        pantallaDelJuego = new PantallaDelJuego(pantallaFinJuego);
     }
 
     public Scene crearEscenaInicio(Stage ventana){
@@ -48,13 +49,9 @@ public class PantallaInicio {
         iniciarJuego.setMinSize(200,65);
         iniciarJuego.setStyle("-fx-background-color:yellow");
         iniciarJuego.setOnAction(event -> {
-            try {
-                String jugador1Nombre = String.valueOf(nombreJugador1.getText());
-                String jugador2Nombre = String.valueOf(nombreJugador2.getText());
-                ventana.setScene(pantallaDelJuego.crearEscenaJuego(jugador1Nombre, jugador2Nombre));
-            } catch (PosicionInvalidaException e) {
-                e.printStackTrace();
-            }
+            String jugador1Nombre = String.valueOf(nombreJugador1.getText());
+            String jugador2Nombre = String.valueOf(nombreJugador2.getText());
+            ventana.setScene(pantallaDelJuego.crearEscenaJuego(jugador1Nombre, jugador2Nombre));
         });
         GridPane.setConstraints(iniciarJuego, 2, 10);
 

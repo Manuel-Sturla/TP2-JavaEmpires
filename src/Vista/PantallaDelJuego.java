@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.Exceptions.FinDelJuego;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableEstaOcupadoException;
@@ -27,6 +28,7 @@ import javafx.scene.layout.HBox;
 import java.util.ArrayList;
 
 public class PantallaDelJuego {
+    PantallaFinJuego pantallaFinJuego;
     ArrayList<Casillero> casilleros;
     static BorderPane distribucion;
     Jugador jugador1;
@@ -36,22 +38,28 @@ public class PantallaDelJuego {
     static ControladorDeTurnos controladorDeTurnos;
     static Juego juego;
 
+    public PantallaDelJuego(PantallaFinJuego pantallaFinJuegoRecibida) throws PosicionInvalidaException, FinDelJuego {
+        juego = new Juego();
+        juego.inicializarJuego();
+        juego.iniciarPrimerTurno();
+        controladorDeTurnos = juego.getControladorDeTurnos();
+        jugador1 = juego.getJugador1();
+        jugador2 = juego.getJugador2();
+        pantallaFinJuego = pantallaFinJuegoRecibida;
+        pantallaFinJuego.agregarControlador(controladorDeTurnos);
+
+    }
+
     public static void actualizarPanelInferior(DetallePieza detallePieza) {
         distribucion.setBottom(detallePieza);
     }
 
 
 
-    Scene crearEscenaJuego(String nombreJugador1Recibido, String nombreJugador2Recibido) throws PosicionInvalidaException {
-        juego = new Juego();
-        juego.inicializarJuego();
-        juego.iniciarPrimerTurno();
-        controladorDeTurnos = juego.getControladorDeTurnos();
-        Mapa mapaJuego = juego.getMapa();
-        jugador1 = juego.getJugador1();
-        jugador2 = juego.getJugador2();
+    Scene crearEscenaJuego(String nombreJugador1Recibido, String nombreJugador2Recibido) {
         nombreJugador1 = nombreJugador1Recibido;
         nombreJugador2 = nombreJugador2Recibido;
+        Mapa mapaJuego = juego.getMapa();
 
         //Hacemos el contorno
         distribucion = new BorderPane();

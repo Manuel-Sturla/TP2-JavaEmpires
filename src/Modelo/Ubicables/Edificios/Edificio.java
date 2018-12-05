@@ -1,5 +1,6 @@
 package Modelo.Ubicables.Edificios;
 
+import Modelo.Estados.Muerto;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Jugador.ConstructorDeUbicables;
 import Modelo.Posiciones.Posicion;
@@ -64,6 +65,6 @@ public abstract class Edificio extends Ubicable {
 
     public void morir() throws PosicionInvalidaException {
         posicion.desocuparPosiciones();
-        faccion.borrarMiembro(this);
+        estado = new Muerto();
     }
 }

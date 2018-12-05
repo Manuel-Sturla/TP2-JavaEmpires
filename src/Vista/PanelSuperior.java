@@ -48,6 +48,7 @@ public class PanelSuperior extends VBox{
         this.getChildren().add(infoImportante);
 
     }
+
     private void crearInformacionJugadores(Juego juego){
         HBox jugadores = new HBox();
         jugado1 = juego.getJugador1();

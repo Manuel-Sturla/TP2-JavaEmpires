@@ -20,8 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ventana = stage;
-
-        PantallaInicio pantallaInicio = new PantallaInicio();
+        PantallaInicio pantallaInicio = new PantallaInicio(new PantallaFinJuego(ventana));
         ventana.setScene(pantallaInicio.crearEscenaInicio(ventana));
 
         ventana.show();

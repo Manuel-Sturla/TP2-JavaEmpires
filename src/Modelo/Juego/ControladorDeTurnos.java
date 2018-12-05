@@ -1,16 +1,17 @@
 package Modelo.Juego;
 
+import Modelo.Exceptions.FinDelJuego;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Jugador.Jugador;
 
 import java.util.*;
 
-public class ControladorDeTurnos implements Observer {
+public class ControladorDeTurnos extends Observable implements Observer {
     static ControladorDeTurnos controladorDeTurnos;
     LinkedList<Jugador> colaTurnos;
 
 
-    public ControladorDeTurnos(ArrayList<Jugador> jugadores){
+    public ControladorDeTurnos(ArrayList<Jugador> jugadores) throws FinDelJuego {
         Random random = new Random();
         int jugadorInicial = random.nextInt(2);
         ControladorDeTurnos controladorDeTurnos = this;
@@ -43,6 +44,8 @@ public class ControladorDeTurnos implements Observer {
             jugadorTurnoActual.iniciarTurno();
         } catch (PosicionInvalidaException e) {
 
+        } catch (FinDelJuego finDelJuego) {
+            notifyObservers();
         }
     }
 }

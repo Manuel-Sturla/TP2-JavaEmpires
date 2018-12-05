@@ -1,5 +1,6 @@
 package Modelo.Jugador;
 
+import Modelo.Exceptions.FinDelJuego;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UnidadesMaximasException;
@@ -72,7 +73,10 @@ public class Jugador extends Observable {
         return poblacion.getPoblacion();
     }
 
-    public void iniciarTurno() throws PosicionInvalidaException {
+    public void iniciarTurno() throws PosicionInvalidaException, FinDelJuego {
+        if(faccion.castilloFueDestruido()){
+            throw new FinDelJuego();
+        }
         poblacion.actualizarPoblacion(faccion);
         faccion.desocuparUnTurnoTodosLosElementos();
         banco.agregarOro(faccion.obtenerCantidadDeAldeanosDesocupados()*20);
@@ -90,6 +94,10 @@ public class Jugador extends Observable {
     public void terminarTurno() {
         faccion.ocuparUnTurnoTodosLosElementosDesocupados();
         notifyObservers();
+    }
+
+    public Castillo obtenerCastillo(){
+        return faccion.obtenerCastillo();
     }
 
 }

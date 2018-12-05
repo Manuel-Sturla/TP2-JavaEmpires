@@ -1,5 +1,6 @@
 package PruebasIntegracion;
 
+import Modelo.Exceptions.FinDelJuego;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableDeMismaFaccionException;
 import Modelo.Exceptions.UbicableFueraDeRangoException;
@@ -102,7 +103,7 @@ public class AtaqueTest {
     }
 
     @Test
-    void aldeanoMuere() throws PosicionInvalidaException {
+    void aldeanoMuere() throws PosicionInvalidaException, FinDelJuego {
         Mapa mapa = new Mapa(40,30);
         Jugador jugador = new Jugador(mapa);
         jugador.inicializarJugador(1);
@@ -118,7 +119,7 @@ public class AtaqueTest {
     }
 
     @Test
-    void muereAldeanoEnsegundoTurnoCobraMenosOro() throws PosicionInvalidaException {
+    void muereAldeanoEnsegundoTurnoCobraMenosOro() throws PosicionInvalidaException, FinDelJuego {
         Mapa mapa = new Mapa(40,30);
         Jugador jugador = new Jugador(mapa);
         jugador.inicializarJugador(1);

@@ -1,17 +1,16 @@
 package PruebasIntegracion;
 
-import Modelo.Exceptions.OroInsuficienteException;
-import Modelo.Exceptions.PosicionInvalidaException;
-import Modelo.Exceptions.UbicableEstaOcupadoException;
-import Modelo.Exceptions.UnidadesMaximasException;
+import Modelo.Exceptions.*;
 import Modelo.Jugador.Jugador;
 import Modelo.Mapa.Mapa;
+import Modelo.Ubicables.Edificios.Castillo;
 import Modelo.Ubicables.Unidades.Aldeano;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PruebasJugador {
@@ -28,7 +27,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void unJugadorRecienInicializadoTiene100DeOroEnSuPrimerTurno() throws PosicionInvalidaException, UnidadesMaximasException {
+    void unJugadorRecienInicializadoTiene100DeOroEnSuPrimerTurno() throws PosicionInvalidaException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         assertEquals(jugador.getOro() , 100);
@@ -42,7 +41,7 @@ public class PruebasJugador {
 
     //Pruebas iniciar turno:
     @Test
-    void unJugadorCuandoComienzaElPrimerTurnoTieneTodosSusUbicablesDesocupado() throws PosicionInvalidaException, UnidadesMaximasException {
+    void unJugadorCuandoComienzaElPrimerTurnoTieneTodosSusUbicablesDesocupado() throws PosicionInvalidaException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         assertTrue(jugador.obtenerUbicablesDesocupados().size() == 4);
@@ -50,7 +49,7 @@ public class PruebasJugador {
 
     //Pruebas terminar turno:
     @Test
-    void unJugadorCuandoTerminaSuTurnoTieneTodosSusUbicablesOcupados() throws PosicionInvalidaException, UnidadesMaximasException {
+    void unJugadorCuandoTerminaSuTurnoTieneTodosSusUbicablesOcupados() throws PosicionInvalidaException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         jugador.terminarTurno();
@@ -58,7 +57,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siNigunoDeLosAldeanosTrabajoElTurnoAnteriorElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UnidadesMaximasException {
+    void siNigunoDeLosAldeanosTrabajoElTurnoAnteriorElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         jugador.terminarTurno();
@@ -67,7 +66,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siNingunoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, UnidadesMaximasException {
+    void siNingunoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe60DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         ArrayList ubicables = jugador.obtenerAldeanos();
@@ -81,7 +80,7 @@ public class PruebasJugador {
     }
 
     @Test
-    void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException, UnidadesMaximasException {
+    void siUnoDeLosAldeanosEstaConstruyendoUnEdificioElJugadorRecibe40DeOroEnELSegundoTurno() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
         ArrayList aldeanos = jugador.obtenerAldeanos();
@@ -96,5 +95,12 @@ public class PruebasJugador {
         assertEquals(40, jugador.getOro());//Gasto 100 en construir la plazaCentral
     }
 
+    @Test
+    void siElCastilloEsDestruidoAlIniciarElTurnoElJuegoTermina() throws PosicionInvalidaException {
+        jugador.inicializarJugador(1);
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.recibirDanio(1500);
+        assertThrows(FinDelJuego.class, jugador::iniciarTurno);
+    }
 
 }
