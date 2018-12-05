@@ -1,7 +1,5 @@
 package Vista;
 
-import Controladores.BotonAtacar;
-import Controladores.Comandos.Comando;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableEstaOcupadoException;
@@ -16,12 +14,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
 
 public class DetallePieza extends HBox {
 

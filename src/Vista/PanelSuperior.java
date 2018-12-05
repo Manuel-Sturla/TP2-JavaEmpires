@@ -23,18 +23,23 @@ public class PanelSuperior extends VBox{
     ControladorDeTurnos controladorDeTurnos;
     Jugador jugado1;
     Jugador jugado2;
+    String nombreJug1;
+    String nombreJug2;
 
 
-    public PanelSuperior(Juego juego){
+    public PanelSuperior(Juego juego, String nombreJugador1Recibido, String nombreJugador2Recibido){
+        nombreJug1 = nombreJugador1Recibido;
+        nombreJug2 = nombreJugador2Recibido;
         crearInformacionJugadores(juego);
 
         Label infoImportante = new Label();
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(infoImportante);
-        }
+    }
 
-
-    public PanelSuperior(Juego juego, String advertencia){
+    public PanelSuperior(Juego juego, String advertencia, String nombreJugador1Recibido, String nombreJugador2Recibido){
+        nombreJug1 = nombreJugador1Recibido;
+        nombreJug2 = nombreJugador2Recibido;
         crearInformacionJugadores(juego);
 
         Label infoImportante = new Label(advertencia);
@@ -57,8 +62,8 @@ public class PanelSuperior extends VBox{
         Button terminarTurnoBoton = new Button("Terminar turno.");
         terminarTurnoBoton.setOnAction(new ControladorTerminadorDeTurnos(controladorDeTurnos));
 
-        Label nombreJugador1 = new Label("Jugador1");
-        Label nombreJugador2 = new Label("Jugador2");
+        Label nombreJugador1 = new Label(nombreJug1);
+        Label nombreJugador2 = new Label(nombreJug2);
         Label oroJugador1 = new Label("Oro: "+ jugado1.getOro());
         Label oroJugador2 = new Label("Oro: "+ jugado2.getOro());
         Label poblacionJugador1 = new Label("Poblacion: "+ jugado2.getPoblacion() +"/50");

@@ -29,8 +29,10 @@ import java.util.ArrayList;
 public class PantallaDelJuego {
     ArrayList<Casillero> casilleros;
     static BorderPane distribucion;
-    Jugador jugado1;
-    Jugador jugado2;
+    Jugador jugador1;
+    Jugador jugador2;
+    static String nombreJugador1;
+    static String nombreJugador2;
     static ControladorDeTurnos controladorDeTurnos;
     static Juego juego;
 
@@ -40,20 +42,22 @@ public class PantallaDelJuego {
 
 
 
-    Scene crearEscenaJuego() throws PosicionInvalidaException {
+    Scene crearEscenaJuego(String nombreJugador1Recibido, String nombreJugador2Recibido) throws PosicionInvalidaException {
         juego = new Juego();
         juego.inicializarJuego();
         juego.iniciarPrimerTurno();
         controladorDeTurnos = juego.getControladorDeTurnos();
         Mapa mapaJuego = juego.getMapa();
-        jugado1 = juego.getJugador1();
-        jugado2 = juego.getJugador2();
+        jugador1 = juego.getJugador1();
+        jugador2 = juego.getJugador2();
+        nombreJugador1 = nombreJugador1Recibido;
+        nombreJugador2 = nombreJugador2Recibido;
 
         //Hacemos el contorno
         distribucion = new BorderPane();
 
         //Creo HBox para arriba y abajo; y GridPane para el centro
-        PanelSuperior informacionJugadores = new PanelSuperior(juego);
+        PanelSuperior informacionJugadores = new PanelSuperior(juego, nombreJugador1, nombreJugador2);
 
         GridPane mapa = new GridPane();
         distribucion.setTop(informacionJugadores);
@@ -97,12 +101,12 @@ public class PantallaDelJuego {
 
 
     public static void actualizarPantallaSuperior() {
-        PanelSuperior panelSuperior = new PanelSuperior(juego);
+        PanelSuperior panelSuperior = new PanelSuperior(juego, nombreJugador1, nombreJugador2);
         distribucion.setTop(panelSuperior);
     }
 
     public static void actualizarPantallaSuperior(String advertencia) {
-        PanelSuperior panelSuperior = new PanelSuperior(juego, advertencia);
+        PanelSuperior panelSuperior = new PanelSuperior(juego, advertencia, nombreJugador1, nombreJugador2);
         distribucion.setTop(panelSuperior);
     }
 
