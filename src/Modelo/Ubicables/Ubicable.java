@@ -7,7 +7,7 @@ import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Jugador.Faccion;
 import Modelo.Ubicables.Edificios.Castillo;
 
-public abstract class Ubicable {
+public abstract class Ubicable implements Accionable{
     protected Estado estado;
     protected int vida;
     protected Faccion faccion;

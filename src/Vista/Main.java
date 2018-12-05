@@ -26,16 +26,5 @@ public class Main extends Application {
         ventana.show();
     }
 
-/*
-    private void hashearMetodos(){
-        metodos= new Hashtable();
-        metodos.put("Modelo.Ubicables.Unidades.Aldeano", actualizarAccionesAldeano() );
-        metodos.put("Modelo.Ubicables.Unidades.Espadachin", actualizarAccionesEjercito() );
-        metodos.put("Modelo.Ubicables.Unidades.Arquero", actualizarAccionesEjercito() );
-        metodos.put("Modelo.Ubicables.Unidades.ArmaDeAsedio", actualizarAccionesEjercitoArmaDeAsedio() );
-        metodos.put("Modelo.Ubicables.Edificios.Castillo", actualizarAccionesCastillo());
-        metodos.put("Modelo.Ubicables.Edificios.PlazaCentral", actualizarAccionesPlazaCentral() );
-        metodos.put("Modelo.Ubicables.Edificios.Cuartel", actualizarAccionesCuartel() );
-    }
-*/
+
 }

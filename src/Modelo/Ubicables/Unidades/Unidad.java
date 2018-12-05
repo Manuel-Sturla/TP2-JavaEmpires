@@ -1,5 +1,6 @@
 package Modelo.Ubicables.Unidades;
 
+import Controladores.Comandos.Comando;
 import Modelo.Estados.Desocupado;
 import Modelo.Estados.Muerto;
 import Modelo.Estados.Ocupado;
@@ -11,6 +12,8 @@ import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Edificios.Castillo;
 import Modelo.Ubicables.Edificios.Edificio;
 import Modelo.Ubicables.Ubicable;
+
+import java.util.ArrayList;
 
 public class Unidad extends Ubicable {
     Posicion posicion;
@@ -120,5 +123,10 @@ public class Unidad extends Ubicable {
     public void morir() throws PosicionInvalidaException {
         posicion.desocupar(posicion);
         estado = new Muerto();
+    }
+
+    @Override
+    public ArrayList<Comando> getAcciones() {
+        return null;
     }
 }

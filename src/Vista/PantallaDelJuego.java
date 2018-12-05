@@ -9,8 +9,10 @@ import Modelo.Juego.Juego;
 import Modelo.Jugador.Jugador;
 import Modelo.Mapa.Celda;
 import Modelo.Mapa.Mapa;
+import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Ubicable;
 import Modelo.Ubicables.Unidades.Aldeano;
+import Modelo.Ubicables.Unidades.Espadachin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -61,6 +63,7 @@ public class PantallaDelJuego {
         nombreJugador2 = nombreJugador2Recibido;
         Mapa mapaJuego = juego.getMapa();
 
+
         //Hacemos el contorno
         distribucion = new BorderPane();
 
@@ -70,28 +73,11 @@ public class PantallaDelJuego {
         GridPane mapa = new GridPane();
         distribucion.setTop(informacionJugadores);
 
-        //distribucion.setBottom(accionesUbicable);
-        distribucion.setCenter(mapa);
+        VistaMapa vistaMapa = new VistaMapa(mapaJuego);
+        distribucion.setCenter(vistaMapa);
 
 
-        //Seteo el GridPane del mapa .
-        mapa.setPadding(new Insets(20, 20, 20, 20));
-        mapa.setGridLinesVisible(true);
-        mapa.setAlignment(Pos.TOP_CENTER);
 
-        Celda celdas[][] = mapaJuego.obtenerCeldas();
-        casilleros = new ArrayList<>();
-        for (int i = 0; i < mapaJuego.getLargo(); i++) {
-            for (int j = 0; j < mapaJuego.getAncho(); j++) {
-                Celda celdaActual = celdas[i][j];
-                Casillero casillero = new Casillero(celdaActual);
-                celdaActual.addObserver(casillero);
-
-                mapa.setConstraints(casillero, i, j);
-                mapa.getChildren().addAll(casillero);
-                casilleros.add(casillero);
-            }
-        }
 
         //Seteo el Hbox de las acciones de los ubicables
         //Tengo que hacer algo?
@@ -119,9 +105,16 @@ public class PantallaDelJuego {
     }
 
 
+
     public static void actualizarAccionesUbicable(Ubicable ubicable) {
 
         actualizarPanelInferior(new DetallePieza(ubicable));
     }
+
+    public static void actualizarPanelInferior(DetallePieza detallePieza) {
+        distribucion.setBottom(detallePieza);
+        Main.actualizar();
+    }
+
 
 }

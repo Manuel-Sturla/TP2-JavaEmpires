@@ -14,13 +14,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Casillero extends Rectangle implements Observer {
-    //LO COMENTADO ES DE OTRA VERSION. DESPUES LO SACO SI ES NECESARIO -Manu
-    //Celda celdaRepresentada;
+
 
     public Casillero(Celda celda) {
         super(15, 15);
-        //celdaRepresentada = celda;
-        //rellenar();
         rellenar(celda.getElemento());
         setStroke(Color.BLACK);
         setStrokeWidth(0.25);
@@ -45,7 +42,7 @@ public class Casillero extends Rectangle implements Observer {
             @Override
             public void handle(MouseEvent event) {
                 PantallaDelJuego.actualizarAccionesUbicable(celda.getElemento());
-
+                PantallaDelJuego.actualizarPantallaSuperior();
             }
         });
     }
