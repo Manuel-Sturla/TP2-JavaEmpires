@@ -16,6 +16,7 @@ public class CasilleroObjetivo extends Rectangle {
     public CasilleroObjetivo(Celda celda){
         super(15, 15);
         setFill(Color.TRANSPARENT);
+        setStroke(Color.TRANSPARENT);
         setStrokeWidth(0.25);
         ubicable = celda.getElemento();
 
@@ -27,14 +28,17 @@ public class CasilleroObjetivo extends Rectangle {
                 try{
                     comando.agregarObjetivo(ubicable);
 
-                }catch (java.lang.ClassCastException e){
+                }catch (ClassCastException | NullPointerException e){
                     PantallaDelJuego.actualizarPantallaSuperior("El objetivo no es valido");
+                    VistaMapa.moverAlFrenteCasilleros();
+
+                    return;
                 }
 
 
                 try{
-                    comando.execute();
                     VistaMapa.moverAlFrenteCasilleros();
+                    comando.execute();
                     PantallaDelJuego.actualizarPantallaSuperior();
                 } catch (PosicionInvalidaException e) {
                     PantallaDelJuego.actualizarPantallaSuperior("La posicion es invalida");

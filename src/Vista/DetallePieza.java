@@ -19,6 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.util.ArrayList;
+
 public class DetallePieza extends HBox {
 
     public void actualizarAcciones(Ubicable ubicable){

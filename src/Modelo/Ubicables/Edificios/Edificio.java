@@ -1,5 +1,6 @@
 package Modelo.Ubicables.Edificios;
 
+import Controladores.Comandos.Comando;
 import Modelo.Estados.Muerto;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Jugador.ConstructorDeUbicables;

@@ -52,12 +52,6 @@ public class PantallaDelJuego {
 
     }
 
-    public static void actualizarPanelInferior(DetallePieza detallePieza) {
-        distribucion.setBottom(detallePieza);
-    }
-
-
-
     Scene crearEscenaJuego(String nombreJugador1Recibido, String nombreJugador2Recibido) {
         nombreJugador1 = nombreJugador1Recibido;
         nombreJugador2 = nombreJugador2Recibido;
