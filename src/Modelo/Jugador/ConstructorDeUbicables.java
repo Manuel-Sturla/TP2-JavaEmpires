@@ -22,81 +22,74 @@ public class ConstructorDeUbicables {
 
 
     public Aldeano crearAldeano(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
-        try {
-            banco.gastarOro(25);
-        } catch (OroInsuficienteException e) {
+        if (!banco.hayOroSuficiente(25)){
             throw new OroInsuficienteException();
         }
-        try {
-            poblacion.agregarHabitante();
-        } catch (UnidadesMaximasException e) {
-            banco.agregarOro(25);
+        if (poblacion.esMaxima()) {
             throw new UnidadesMaximasException();
         }
-        return new Aldeano(posicionDespliegue, this);
+        Aldeano aldeano =  new Aldeano(posicionDespliegue, this);
+        banco.gastarOro(25);
+        poblacion.agregarHabitante();
+        return aldeano;
     }
 
     public PlazaCentral crearPlazaCentral(Posicion posicionConstruccion) throws PosicionInvalidaException, OroInsuficienteException {
-        try {
-            banco.gastarOro(100);
-        } catch (OroInsuficienteException e) {
+        if (!banco.hayOroSuficiente(100)){
             throw new OroInsuficienteException();
         }
-        return new PlazaCentral(posicionConstruccion, this);
+        PlazaCentral plazaCentral = new PlazaCentral(posicionConstruccion, this);
+        banco.gastarOro(100);
+        return plazaCentral;
     }
 
     public Cuartel crearCuartel(Posicion posicionConstruccion) throws PosicionInvalidaException, OroInsuficienteException {
-        try {
-            banco.gastarOro(50);
-        } catch (OroInsuficienteException e) {
+        if (!banco.hayOroSuficiente(50)){
             throw new OroInsuficienteException();
         }
-        return new Cuartel(posicionConstruccion, this);
+        Cuartel cuartel = new Cuartel(posicionConstruccion, this);
+        banco.gastarOro(50);
+        return cuartel;
     }
 
     public Espadachin crearEspadachin(Posicion posicionDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
-        try {
-            banco.gastarOro(50);
-        } catch (OroInsuficienteException e) {
+        if (!banco.hayOroSuficiente(50)){
             throw new OroInsuficienteException();
         }
-        try {
-            poblacion.agregarHabitante();
-        } catch (UnidadesMaximasException e) {
-            banco.agregarOro(50);
+        if (poblacion.esMaxima()) {
             throw new UnidadesMaximasException();
         }
-        return new Espadachin(posicionDespliegue);
+        Espadachin espadachin = new Espadachin(posicionDespliegue);
+        banco.gastarOro(50);
+        poblacion.agregarHabitante();
+        return espadachin;
     }
 
     public Arquero crearArquero(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
-        try {
-            banco.gastarOro(75);
-        } catch (OroInsuficienteException e) {
+        if (!banco.hayOroSuficiente(75)){
             throw new OroInsuficienteException();
+
         }
-        try {
-            poblacion.agregarHabitante();
-        } catch (UnidadesMaximasException e) {
-            banco.agregarOro(75);
+        if (poblacion.esMaxima()) {
             throw new UnidadesMaximasException();
         }
-        return new Arquero(posicionDeDespliegue);
+        Arquero arquero =  new Arquero(posicionDeDespliegue);
+        banco.gastarOro(75);
+        poblacion.agregarHabitante();
+        return arquero;
     }
 
     public ArmaDeAsedio crearArmaDeAsedio(Posicion posicionDeDespliegue) throws PosicionInvalidaException, OroInsuficienteException, UnidadesMaximasException {
-        try {
-            banco.gastarOro(200);
-        } catch (OroInsuficienteException e) {
+        if (!banco.hayOroSuficiente(200)){
             throw new OroInsuficienteException();
         }
-        try {
-            poblacion.agregarHabitante();
-        } catch (UnidadesMaximasException e) {
-            banco.agregarOro(200);
+        if (poblacion.esMaxima()) {
             throw new UnidadesMaximasException();
         }
-        return new ArmaDeAsedio(posicionDeDespliegue);
+        ArmaDeAsedio arma = new ArmaDeAsedio(posicionDeDespliegue);
+        banco.gastarOro(200);
+        poblacion.agregarHabitante();
+        return arma;
     }
 
 

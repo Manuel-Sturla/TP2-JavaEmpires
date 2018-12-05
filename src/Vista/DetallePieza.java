@@ -1,5 +1,7 @@
 package Vista;
 
+import Controladores.BotonAtacar;
+import Controladores.Comandos.Comando;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableEstaOcupadoException;
@@ -19,6 +21,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 public class DetallePieza extends HBox {
 
     public void actualizarAcciones(Ubicable ubicable){
@@ -29,7 +33,7 @@ public class DetallePieza extends HBox {
         setAlignment(Pos.CENTER);
 
         if (ubicable == null){
-            Label vacio = new Label("vacio");
+            Label vacio = new Label("Posicion vacia");
             getChildren().add(vacio);
             PantallaDelJuego.actualizarPanelInferior(this);
             return;
@@ -39,8 +43,8 @@ public class DetallePieza extends HBox {
         getChildren().add(etiquetaVida);
 
         GridPane acciones = new GridPane();
-        //acciones.setHgap(8);
-        //acciones.setVgap(5);
+        acciones.setHgap(8);
+        acciones.setVgap(5);
         acciones.setPadding(new Insets(5,8,5,8));
         String nombre = ubicable.getClass().getName();
         if (nombre == "Modelo.Ubicables.Unidades.Aldeano"){

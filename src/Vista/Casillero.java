@@ -51,23 +51,18 @@ public class Casillero extends Rectangle implements Observer {
     }
 
     private void rellenar(Ubicable ubicable) {
-        /*
-        if(!celdaRepresentada.estaOcupada()){
-            setFill(Color.BURLYWOOD);
-            return;
-        }*/
-        if (ubicable == null){
+       if (ubicable == null){
             setFill(Color.BURLYWOOD);
             return;
         }
-        //String nombre = celdaRepresentada.getElemento().getClass().toString();
+
+
         String nombre = ubicable.getClass().toString();
         String cadena = "Recursos/" + nombre + ".png";
         Image imagen = new Image(cadena);
         setFill(new ImagePattern(imagen));
 
 
-        //Si es jugador1 --> contorno azul y sino violeta
     }
 
     @Override

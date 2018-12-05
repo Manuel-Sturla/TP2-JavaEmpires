@@ -23,5 +23,9 @@ public class Banco {
     public void agregarOro(int cantidadDeOro) {
         oro += cantidadDeOro;
     }
+
+    public boolean hayOroSuficiente(int costo){
+        return oro >= costo;
+    }
 }
 

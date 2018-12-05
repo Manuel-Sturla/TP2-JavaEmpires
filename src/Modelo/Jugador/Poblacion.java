@@ -11,7 +11,7 @@ public class Poblacion {
 
     public void agregarHabitante() throws UnidadesMaximasException {
 
-        if(cantHabitantes == 50){
+        if(esMaxima()){
             throw new UnidadesMaximasException();
         }
         cantHabitantes++;
@@ -30,5 +30,9 @@ public class Poblacion {
                 faccion.borrarMiembro(miembro);
             }
         }
+    }
+
+    public boolean esMaxima() {
+        return cantHabitantes == 50;
     }
 }
