@@ -67,10 +67,8 @@ public class PantallaDelJuego {
         GridPane mapa = new GridPane();
         distribucion.setTop(informacionJugadores);
 
-        VistaMapa vistaMapa = new VistaMapa(mapaJuego);
+        VistaMapa vistaMapa = new VistaMapa(mapaJuego, jugador1.getFaccion());
         distribucion.setCenter(vistaMapa);
-
-
 
 
         //Seteo el Hbox de las acciones de los ubicables

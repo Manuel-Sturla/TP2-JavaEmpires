@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.Jugador.Faccion;
 import Modelo.Mapa.Celda;
 import Modelo.Ubicables.Ubicable;
 import javafx.event.EventHandler;
@@ -14,10 +15,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Casillero extends Rectangle implements Observer {
+    Faccion faccion1;
 
-
-    public Casillero(Celda celda) {
+    public Casillero(Celda celda, Faccion faccion1Recibida) {
         super(15, 15);
+        faccion1 = faccion1Recibida;
         rellenar(celda.getElemento());
         setStroke(Color.BLACK);
         setStrokeWidth(0.25);
@@ -53,6 +55,13 @@ public class Casillero extends Rectangle implements Observer {
             return;
         }
 
+        if(ubicable.getFaccion() == faccion1){
+            setStroke(Color.rgb(0,0,255));
+        }
+        else{
+            setStroke(Color.rgb(255,0,0));
+        }
+        setStrokeWidth(100);
 
         String nombre = ubicable.getClass().toString();
         String cadena = "Recursos/" + nombre + ".png";
@@ -64,7 +73,7 @@ public class Casillero extends Rectangle implements Observer {
 
     @Override
     public void update(Observable o, Object contenido) {
-        rellenar((Ubicable) contenido);
+        rellenar((Ubicable)contenido);
     }
 
 

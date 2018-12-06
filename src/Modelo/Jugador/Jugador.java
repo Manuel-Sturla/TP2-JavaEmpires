@@ -100,4 +100,7 @@ public class Jugador extends Observable {
         return faccion.obtenerCastillo();
     }
 
+    public Faccion getFaccion() {
+        return faccion;
+    }
 }

@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.Jugador.Faccion;
 import Modelo.Mapa.Celda;
 import Modelo.Mapa.Mapa;
 import javafx.geometry.Insets;
@@ -15,7 +16,7 @@ public class VistaMapa extends StackPane {
     static GridPane casillerosObjetivo;
     static GridPane mapa;
 
-    public VistaMapa(Mapa mapaRecibido){
+    public VistaMapa(Mapa mapaRecibido, Faccion faccion1){
         mapaJuego = mapaRecibido;
         mapa = new GridPane();
         casillerosObjetivo = new GridPane();
@@ -32,7 +33,7 @@ public class VistaMapa extends StackPane {
         for (int i = 0; i < mapaJuego.getLargo(); i++) {
             for (int j = 0; j < mapaJuego.getAncho(); j++) {
                 Celda celdaActual = celdas[i][j];
-                Casillero casillero = new Casillero(celdaActual);
+                Casillero casillero = new Casillero(celdaActual, faccion1);
                 CasilleroObjetivo casilleroObjetivo = new CasilleroObjetivo(celdaActual);
                 celdaActual.addObserver(casillero);
 

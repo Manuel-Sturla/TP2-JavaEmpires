@@ -46,4 +46,8 @@ public abstract class Ubicable implements Accionable{
     public boolean estaMuerto(){
         return estado instanceof Muerto;
     }
+
+    public Faccion getFaccion(){
+        return faccion;
+    }
 }
