@@ -55,7 +55,7 @@ public class PantallaInicio {
         });
         GridPane.setConstraints(iniciarJuego, 2, 10);
 
-        Image imagenFondo = new Image("file:/home/diego/algo/TP2-Algo3/pruebInicioJuego/Inicio.jpg",800,620,false, false);
+        Image imagenFondo = new Image("Recursos/Inicio.jpg",800,620,false, false);
         BackgroundImage bc = new BackgroundImage(imagenFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         grid.setBackground(new Background(bc));
         grid.getChildren().addAll(nombreJuego, jugador1, jugador2, nombreJugador1, nombreJugador2, iniciarJuego);
