@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.util.Observable;
@@ -65,6 +66,12 @@ public class PanelSuperior extends VBox{
 
         Label nombreJugador1 = new Label(nombreJug1);
         Label nombreJugador2 = new Label(nombreJug2);
+        if(controladorDeTurnos.obtenerJugadorActual() == jugado1){
+            nombreJugador1.setTextFill(Color.rgb(0,0,255));
+        }
+        else{
+            nombreJugador2.setTextFill(Color.rgb(255,0,0));
+        }
         Label oroJugador1 = new Label("Oro: "+ jugado1.getOro());
         Label oroJugador2 = new Label("Oro: "+ jugado2.getOro());
         Label poblacionJugador1 = new Label("Poblacion: "+ jugado2.getPoblacion() +"/50");
