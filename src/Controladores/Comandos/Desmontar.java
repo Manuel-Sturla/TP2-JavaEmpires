@@ -11,11 +11,11 @@ public class Desmontar implements Comando {
 
     @Override
     public void execute() throws PosicionInvalidaException, UbicableEstaOcupadoException, OroInsuficienteException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException, UbicableDeOtraFaccionException, UnidadesMaximasException {
-        invoker.montarArma();
+        invoker.desmontarArma();
     }
 
     @Override
     public String getNombre() {
-        return "Montar";
+        return "Desmontar";
     }
 }

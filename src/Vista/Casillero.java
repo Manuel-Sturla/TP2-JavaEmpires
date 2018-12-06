@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import sun.plugin2.util.ColorUtil;
 
 import java.util.Observable;
 import java.util.Observer;

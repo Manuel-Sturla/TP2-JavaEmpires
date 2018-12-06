@@ -39,7 +39,6 @@ public class Faccion {
         for (int i = 0; i < miembros.size(); i++) {
             if(miembros.get(i) instanceof Aldeano){
                 aldeanos.add(miembros.get(i));
-
             }
         }
         return aldeanos;

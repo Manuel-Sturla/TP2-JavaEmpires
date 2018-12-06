@@ -19,7 +19,7 @@ public class PantallaFinJuego implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        ventana.setScene(crearPantallaFinJuego());
+        Main.finDelJUego(crearPantallaFinJuego());
     }
 
     private Scene crearPantallaFinJuego() {

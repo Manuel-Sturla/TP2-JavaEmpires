@@ -9,6 +9,7 @@ import Modelo.Jugador.Jugador;
 import Modelo.Mapa.Mapa;
 import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Edificios.Cuartel;
+import Modelo.Ubicables.Ubicable;
 import Modelo.Ubicables.Unidades.Aldeano;
 import Modelo.Ubicables.Unidades.ArmaDeAsedio;
 import Modelo.Ubicables.Unidades.Arquero;
@@ -133,5 +134,27 @@ public class AtaqueTest {
         jugador.iniciarTurno();
 
         assertEquals(jugador.getOro(),140);
+    }
+    @Test
+    void atacoAldeanoNoSeOcupa() throws PosicionInvalidaException, FinDelJuego {
+        Mapa mapa = new Mapa(5,5);
+        Posicion posicion = new Posicion(mapa,2,2);
+        Aldeano aldeano = new Aldeano(posicion,null);
+        aldeano.recibirDanio(15);
+
+        assertTrue(!aldeano.estaOcupado());
+    }
+
+    @Test
+    void atacoAldeanoConArqueroNoSeOcupa() throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        Aldeano aldeano = new Aldeano(posicion,null);
+        Arquero arquero = new Arquero(posicion1);
+        aldeano.asignarFaccion(faccion);
+        arquero.asignarFaccion(faccion1);
+
+        arquero.atacar(aldeano);
+
+        assertTrue(!aldeano.estaOcupado());
+
     }
 }

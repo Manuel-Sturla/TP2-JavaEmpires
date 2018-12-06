@@ -27,8 +27,8 @@ public class Cuartel extends Edificio {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        ocuparUnTurno();
         Espadachin espadachin = constructor.crearEspadachin(posicion.obtenerPosicionDeDespliegue());
+        ocuparUnTurno();
         espadachin.asignarFaccion(faccion);
     }
 
@@ -36,8 +36,8 @@ public class Cuartel extends Edificio {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        ocuparUnTurno();
         Arquero arquero = constructor.crearArquero(posicion.obtenerPosicionDeDespliegue());
+        ocuparUnTurno();
         arquero.asignarFaccion(faccion);
     }
 

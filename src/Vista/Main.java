@@ -12,7 +12,11 @@ public class Main extends Application {
     }
 
     public static void actualizar() {
+        ventana.show();
+    }
 
+    public static void finDelJUego(Scene pantallaFinal) {
+        ventana.setScene(pantallaFinal);
         ventana.show();
     }
 

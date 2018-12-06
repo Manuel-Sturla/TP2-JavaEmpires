@@ -1,5 +1,6 @@
 package Controladores;
 
+import Exceptions.FinDelJuegoException;
 import Modelo.Exceptions.FinDelJuego;
 import Modelo.Juego.ControladorDeTurnos;
 import Modelo.Jugador.Jugador;

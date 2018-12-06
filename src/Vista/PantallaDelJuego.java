@@ -1,31 +1,17 @@
 package Vista;
 
 import Modelo.Exceptions.FinDelJuego;
-import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
-import Modelo.Exceptions.UbicableEstaOcupadoException;
 import Modelo.Juego.ControladorDeTurnos;
 import Modelo.Juego.Juego;
 import Modelo.Jugador.Jugador;
-import Modelo.Mapa.Celda;
 import Modelo.Mapa.Mapa;
-import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Ubicable;
-import Modelo.Ubicables.Unidades.Aldeano;
-import Modelo.Ubicables.Unidades.Espadachin;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.util.ArrayList;
 
@@ -39,6 +25,9 @@ public class PantallaDelJuego {
     static String nombreJugador2;
     static ControladorDeTurnos controladorDeTurnos;
     static Juego juego;
+    static ArrayList<MediaPlayer> sonido = new ArrayList();
+    static MediaPlayer musicaDeFondo;
+    static boolean mudo = false;
 
     public PantallaDelJuego(PantallaFinJuego pantallaFinJuegoRecibida) throws PosicionInvalidaException, FinDelJuego {
         juego = new Juego();
@@ -80,10 +69,6 @@ public class PantallaDelJuego {
         return escena;
     }
 
-    public static void actualizarPanelSuperior(PanelSuperior panelSuperiorRecibido){
-        distribucion.setTop(panelSuperiorRecibido);
-    }
-
 
 
     public static void actualizarPantallaSuperior() {
@@ -96,10 +81,7 @@ public class PantallaDelJuego {
         distribucion.setTop(panelSuperior);
     }
 
-
-
     public static void actualizarAccionesUbicable(Ubicable ubicable) {
-
         actualizarPanelInferior(new DetallePieza(ubicable));
     }
 
@@ -107,6 +89,19 @@ public class PantallaDelJuego {
         distribucion.setBottom(detallePieza);
         Main.actualizar();
     }
+    public static void mutear(){
+        if (mudo == true) mudo=false;
+        else if (mudo == false) mudo=true;
+    }
+    public static void musicaFondo(Class c) {
+        Media media = new Media(c.getResource("/Recursos/Sonido/MusicaDeFondoAOE.mp3").toExternalForm());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+        musicaDeFondo = mediaPlayer;
+    }
+    public static void frenarSonidos() {
 
-
+        if(musicaDeFondo.getStatus().equals(MediaPlayer.Status.PLAYING)) musicaDeFondo.pause();
+        else musicaDeFondo.play();
+    }
 }

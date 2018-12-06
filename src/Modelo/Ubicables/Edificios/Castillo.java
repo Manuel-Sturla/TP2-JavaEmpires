@@ -20,7 +20,7 @@ import java.util.Iterator;
 
 public class Castillo extends Edificio {
     public Castillo(Posicion posicionRecibida, ConstructorDeUbicables constructorRecibido) throws PosicionInvalidaException {
-        super(posicionRecibida, 1000, 4, constructorRecibido, 15);
+        super(posicionRecibida, 10, 4, constructorRecibido, 15);
         estado = new Desocupado();
     }
 
@@ -28,10 +28,9 @@ public class Castillo extends Edificio {
         if (estado.estaOcupado()) {
             throw new UbicableEstaOcupadoException();
         }
-        ocuparUnTurno();
         ArmaDeAsedio armaDeAsedio = null;
         armaDeAsedio = constructor.crearArmaDeAsedio(posicion.obtenerPosicionDeDespliegue());
-
+        ocuparUnTurno();
         armaDeAsedio.asignarFaccion(faccion);
     }
 

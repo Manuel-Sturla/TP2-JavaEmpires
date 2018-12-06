@@ -25,10 +25,10 @@ public class PlazaCentral extends Edificio {
         if(estado.estaOcupado()){
             throw new UbicableEstaOcupadoException();
         }
-        ocuparUnTurno();
+
         Aldeano aldeano = null;
         aldeano = constructor.crearAldeano(posicion.obtenerPosicionDeDespliegue());
-
+        ocuparUnTurno();
         aldeano.asignarFaccion(faccion);
     }
 

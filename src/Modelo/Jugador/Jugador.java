@@ -60,8 +60,6 @@ public class Jugador extends Observable {
         } catch (OroInsuficienteException e){
         } catch (UnidadesMaximasException e){}
 
-
-
     }
 
 

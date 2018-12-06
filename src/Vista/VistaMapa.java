@@ -42,7 +42,6 @@ public class VistaMapa extends StackPane {
                 casillerosObjetivo.getChildren().add(casilleroObjetivo);
                 mapa.setConstraints(casillero, i, j);
                 mapa.getChildren().addAll(casillero);
-
             }
         }
         getChildren().addAll( casillerosObjetivo, mapa);

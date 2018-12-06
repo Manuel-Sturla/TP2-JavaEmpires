@@ -20,10 +20,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+
+import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 public class DetallePieza extends HBox {
 
@@ -63,11 +70,16 @@ public class DetallePieza extends HBox {
                 Button boton = new Button(comandoActual.getNombre());
                 boton.setMinSize(150,10);
                 boton.setOnAction(new EventHandler<ActionEvent>() {
+
                     @Override
                     public void handle(ActionEvent event) {
                         try {
                             comandoActual.execute();
                             PantallaDelJuego.actualizarPantallaSuperior();
+                            Media media = new Media(this.getClass().getResource("/Recursos/Sonido/Button-click.mp3").toExternalForm());
+                            MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+                            mediaPlayer.play();
                         } catch (PosicionInvalidaException e) {
                             PantallaDelJuego.actualizarPantallaSuperior("La posicion es invalida");
 
