@@ -1,5 +1,7 @@
 package Modelo.Ubicables.Unidades;
 
+import Controladores.Comandos.Atacar;
+import Controladores.Comandos.Comando;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableDeMismaFaccionException;
 import Modelo.Exceptions.UbicableEstaOcupadoException;
@@ -7,7 +9,9 @@ import Modelo.Exceptions.UbicableFueraDeRangoException;
 import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Edificios.Edificio;
 
-public class ArmaDeAsedio extends Unidad{
+import java.util.ArrayList;
+
+public class ArmaDeAsedio extends Unidad implements Ejercito{
     boolean montada = false;
 
     public ArmaDeAsedio(Posicion posicion) throws PosicionInvalidaException {
@@ -84,6 +88,10 @@ public class ArmaDeAsedio extends Unidad{
     }
 
 
+    @Override
+    public void atacar(Unidad objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
+        return;
+    }
 
     public void atacar(Edificio objetivo) throws PosicionInvalidaException, UbicableFueraDeRangoException, UbicableDeMismaFaccionException {
         if(!montada) {
@@ -92,5 +100,11 @@ public class ArmaDeAsedio extends Unidad{
         super.atacar(objetivo, 5);
         objetivo.recibirDanio(this);
         ocuparUnTurno();
+    }
+
+    public ArrayList<Comando> getAcciones(){
+        ArrayList<Comando> acciones = new ArrayList<>();
+        acciones.add(new Atacar(this));
+        return acciones;
     }
 }

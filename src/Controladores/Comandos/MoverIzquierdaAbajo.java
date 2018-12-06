@@ -17,6 +17,6 @@ public class MoverIzquierdaAbajo implements Comando {
 
     @Override
     public String getNombre() {
-        return "der-abajo";
+        return "izq-abajo";
     }
 }

@@ -34,12 +34,15 @@ public class AldeanoTest {
     }
     @Test
     void moverAldeanoHaciaAbajoOcupaLaNuevaPosicion() throws PosicionInvalidaException, UbicableEstaOcupadoException{
-        Mapa mapa  = new Mapa(3,3);
-        Posicion posicion = new Posicion(mapa, 2,2);
+        Mapa mapa  = new Mapa(5,5);
+        Posicion posicion = new Posicion(mapa, 2,1);
         Aldeano aldeano = new Aldeano(posicion, null);
         aldeano.moverAbajo();
+
         Posicion posicion2 = new Posicion(mapa, 2,2);
-        assertTrue(mapa.celdaEstaOcupada(posicion) && !mapa.celdaEstaOcupada(posicion2));;
+        Posicion posicion3 = new Posicion(mapa, 2,1);
+        assertFalse(mapa.celdaEstaOcupada(posicion3));
+        assertTrue(mapa.celdaEstaOcupada(posicion2));
     }
     @Test
     void moverAldeanoFueraDelMapaNoLoMueve() throws PosicionInvalidaException {
@@ -53,10 +56,10 @@ public class AldeanoTest {
     @Test
     void moverAldeanoDesocupaLaPosicionInicial() throws UbicableEstaOcupadoException, PosicionInvalidaException {
         Mapa mapa  = new Mapa(3,3);
-        Posicion posicion = new Posicion(mapa, 2,2);
+        Posicion posicion = new Posicion(mapa, 2,1);
         Aldeano aldeano = new Aldeano(posicion, null);
         aldeano.moverAbajo();
-        Posicion posicion2 = new Posicion(mapa, 2,2);
+        Posicion posicion2 = new Posicion(mapa, 2,1);
         assertFalse(mapa.celdaEstaOcupada(posicion2));
     }
     @Test

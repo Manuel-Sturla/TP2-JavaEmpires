@@ -69,6 +69,7 @@ public class Casillero extends Rectangle implements Observer {
         setFill(new ImagePattern(imagen));
 
 
+
     }
 
     @Override

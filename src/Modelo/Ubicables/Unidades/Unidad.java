@@ -15,7 +15,7 @@ import Modelo.Ubicables.Ubicable;
 
 import java.util.ArrayList;
 
-public class Unidad extends Ubicable {
+public abstract class  Unidad extends Ubicable {
     Posicion posicion;
 
     public Unidad(int vidaRecibida, Posicion posicionRescibida){
@@ -125,20 +125,18 @@ public class Unidad extends Ubicable {
         estado = new Muerto();
     }
 
-    @Override
-    public ArrayList<Comando> getAcciones() {
-        return null;
-    }
+
+    public abstract ArrayList<Comando> getAcciones();
 
     public ArrayList<Comando> getAccionesMovimiento(){
         ArrayList<Comando> comandos = new ArrayList<>();
         comandos.add(new MoverIzquierdaArriba(this));
-        comandos.add(new MoverArriba(this));
-        comandos.add(new MoverDerechaArriba(this));
         comandos.add(new MoverIzquierda(this));
-        comandos.add(new MoverDerecha(this));
         comandos.add(new MoverIzquierdaAbajo(this));
+        comandos.add(new MoverArriba(this));
         comandos.add(new MoverAbajo(this));
+        comandos.add(new MoverDerechaArriba(this));
+        comandos.add(new MoverDerecha(this));
         comandos.add(new MoverDerechaAbajo(this));
         return comandos;
 

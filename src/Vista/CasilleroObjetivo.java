@@ -54,6 +54,8 @@ public class CasilleroObjetivo extends Rectangle {
                     PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es de enemigo");
                 } catch (NullPointerException e){
                     PantallaDelJuego.actualizarPantallaSuperior("La posicion esta vacia");
+                } catch (UnidadesMaximasException e) {
+                    PantallaDelJuego.actualizarPantallaSuperior("Se alcanzo el limite de poblacion");
                 }
 
             }

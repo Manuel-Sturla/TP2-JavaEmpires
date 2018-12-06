@@ -43,8 +43,12 @@ public class Jugador extends Observable {
         Posicion posicionAldeano3 = new Posicion(mapa, coorHorizontal + 3 * direccion, coorVertical + 5 * direccion);
 
         Castillo castillo = new Castillo(posicionCastillo, constructor);
+
         try {
             PlazaCentral plaza = constructor.crearPlazaCentral(posicionPlaza);
+            plaza.desocuparUnTurno();
+            plaza.desocuparUnTurno();
+            plaza.desocuparUnTurno();
             Aldeano aldeano1 = constructor.crearAldeano(posicionAldeano1);
             Aldeano aldeano2 = constructor.crearAldeano(posicionAldeano2);
             Aldeano aldeano3 = constructor.crearAldeano(posicionAldeano3);

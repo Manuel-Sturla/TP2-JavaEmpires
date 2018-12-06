@@ -1,5 +1,9 @@
 package Modelo.Ubicables.Edificios;
 
+import Controladores.Comandos.Atacar;
+import Controladores.Comandos.Comando;
+import Controladores.Comandos.CrearArquero;
+import Controladores.Comandos.CrearEspadachin;
 import Modelo.Estados.Ocupado;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
@@ -9,6 +13,8 @@ import Modelo.Jugador.ConstructorDeUbicables;
 import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Unidades.Arquero;
 import Modelo.Ubicables.Unidades.Espadachin;
+
+import java.util.ArrayList;
 
 public class Cuartel extends Edificio {
 
@@ -33,5 +39,12 @@ public class Cuartel extends Edificio {
         ocuparUnTurno();
         Arquero arquero = constructor.crearArquero(posicion.obtenerPosicionDeDespliegue());
         arquero.asignarFaccion(faccion);
+    }
+
+    public ArrayList<Comando> getAcciones(){
+        ArrayList<Comando> acciones = new ArrayList<>();
+        acciones.add(new CrearArquero(this));
+        acciones.add(new CrearEspadachin(this));
+        return acciones;
     }
 }

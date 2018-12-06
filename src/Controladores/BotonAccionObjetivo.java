@@ -15,6 +15,7 @@ public class BotonAccionObjetivo extends Button {
 
     public BotonAccionObjetivo(Comando recibido){
         super();
+        this.setMinSize(150,10);
         comando = recibido;
         setText(comando.getNombre());
 

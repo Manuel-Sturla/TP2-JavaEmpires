@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,6 +22,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class DetallePieza extends HBox {
 
@@ -48,8 +51,8 @@ public class DetallePieza extends HBox {
 
         ArrayList<Comando>comandos = ubicable.getAcciones();
 
-        for (int i = 0; i < comandos.size()/2; i++) {
-            for (int j = 0; j <= comandos.size()/2+1 ; j++) {
+        for (int i = 0; i <= comandos.size()/2; i++) {
+            for (int j = 0; j <= comandos.size()/2 ; j++) {
                 Comando comandoActual = comandos.get(i+j);
                 if (comandoActual.getNombre()=="Atacar" || comandoActual.getNombre()=="Reparar"){
                     BotonAccionObjetivo botonObjetivo = new BotonAccionObjetivo(comandoActual);
@@ -78,6 +81,8 @@ public class DetallePieza extends HBox {
                             PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es del mismo equipo");
                         } catch (UbicableDeOtraFaccionException e) {
                             PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es de enemigo");
+                        } catch (UnidadesMaximasException e) {
+                            PantallaDelJuego.actualizarPantallaSuperior("Se alcanzo el limite de poblacion");
                         }
                     }
                 });
@@ -87,10 +92,14 @@ public class DetallePieza extends HBox {
             }
 
         }
+        ArrayList <Node> botones = new ArrayList<>();
+        try {
+            GridPane botonesMovimiento = botonesDeMovimiento((Unidad) ubicable);
+            botones.add(botonesMovimiento);
+        }catch (ClassCastException e){};
 
-        GridPane botonesMovimiento = botonesDeMovimiento((Unidad) ubicable);
-        getChildren().addAll(botonesMovimiento, acciones);
-
+        botones.add(acciones);
+        getChildren().addAll(botones);
         setSpacing(10);
 
     }
@@ -101,12 +110,13 @@ public class DetallePieza extends HBox {
         direccionesMover.setHgap(7);
         direccionesMover.setVgap(5);
         ArrayList<Comando> comandosMovimiento = unidad.getAccionesMovimiento();
+        Iterator iterador = comandosMovimiento.iterator();
         for (int i = 0; i <3 ; i++) {
             for (int j = 0; j < 3; j++) {
                 if(i==1 && j==1) continue;
                 Button mover = new Button();
 
-                Comando comando = comandosMovimiento.get(i+j);
+                Comando comando = (Comando) iterador.next();
                 Image imagen = new Image("Recursos/" + comando.getNombre() + ".png");
                 ImageView imageView = new ImageView(imagen);
                 imageView.setFitHeight(10);
@@ -131,6 +141,8 @@ public class DetallePieza extends HBox {
                         PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es del mismo equipo");
                     } catch (UbicableDeOtraFaccionException k) {
                         PantallaDelJuego.actualizarPantallaSuperior("El ubicable seleccionado es de enemigo");
+                    } catch (UnidadesMaximasException e1) {
+                        PantallaDelJuego.actualizarPantallaSuperior("Se alcanzo el limite de poblacion");
                     }
                 });
             }

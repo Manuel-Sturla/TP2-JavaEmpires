@@ -53,40 +53,40 @@ public class Posicion {
         coordenadaHorizontal-=1;
     }
 
-    public void moverArriba() throws PosicionInvalidaException {
+    public void moverAbajo() throws PosicionInvalidaException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical+1);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaVertical += 1;
     }
 
-    public void moverAbajo() throws PosicionInvalidaException {
+    public void moverArriba() throws PosicionInvalidaException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal,coordenadaVertical-1);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaVertical -= 1;
     }
 
-    public void moverArribaDer() throws PosicionInvalidaException {
+    public void moverAbajoDer() throws PosicionInvalidaException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal+1,coordenadaVertical+1);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal += 1;
         coordenadaVertical += 1;
     }
 
-    public void moverArribaIzq() throws PosicionInvalidaException {
+    public void moverAbajoIzq() throws PosicionInvalidaException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical+1);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal -= 1;
         coordenadaVertical += 1;
     }
 
-    public void moverAbajoIzq() throws PosicionInvalidaException {
+    public void moverArribaIzq() throws PosicionInvalidaException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal-1,coordenadaVertical-1);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal -= 1;
         coordenadaVertical -= 1;
     }
 
-    public void moverAbajoDer() throws PosicionInvalidaException {
+    public void moverArribaDer() throws PosicionInvalidaException {
         Posicion posicionLlegada = new Posicion(mapa,coordenadaHorizontal+1,coordenadaVertical-1);
         mapa.moverElemento(this, posicionLlegada);
         coordenadaHorizontal += 1;

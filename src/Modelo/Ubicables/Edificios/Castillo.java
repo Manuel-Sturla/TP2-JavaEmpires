@@ -1,5 +1,8 @@
 package Modelo.Ubicables.Edificios;
 
+import Controladores.Comandos.Atacar;
+import Controladores.Comandos.Comando;
+import Controladores.Comandos.CrearArmaDeAsedio;
 import Modelo.Estados.Desocupado;
 import Modelo.Exceptions.OroInsuficienteException;
 import Modelo.Exceptions.PosicionInvalidaException;
@@ -11,6 +14,7 @@ import Modelo.Posiciones.Posicion;
 import Modelo.Ubicables.Ubicable;
 import Modelo.Ubicables.Unidades.ArmaDeAsedio;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -51,5 +55,11 @@ public class Castillo extends Edificio {
     public void asignarFaccion(Faccion faccionRecibida) {
         faccion = faccionRecibida;
         faccion.agregarCastillo(this);
+    }
+
+    public ArrayList<Comando> getAcciones(){
+        ArrayList<Comando> acciones = new ArrayList<>();
+        acciones.add(new CrearArmaDeAsedio(this));
+        return acciones;
     }
 }

@@ -4,13 +4,14 @@ import Modelo.Exceptions.*;
 import Modelo.Ubicables.Edificios.Edificio;
 import Modelo.Ubicables.Ubicable;
 import Modelo.Ubicables.Unidades.Arquero;
+import Modelo.Ubicables.Unidades.Ejercito;
 import Modelo.Ubicables.Unidades.Unidad;
 
 public class Atacar implements ComandoConObjetivo {
-    Arquero invocador;
+    Ejercito invocador;
     Ubicable objetivo;
-    public Atacar(Arquero unidad){
-        invocador=unidad;
+    public Atacar(Unidad unidad){
+        invocador=(Ejercito)unidad;
     }
 
     public void agregarObjetivo(Ubicable ubicable) {

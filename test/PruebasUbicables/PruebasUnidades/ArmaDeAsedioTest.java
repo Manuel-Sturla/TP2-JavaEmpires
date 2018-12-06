@@ -64,7 +64,7 @@ public class ArmaDeAsedioTest {
         Posicion posicion = new Posicion(mapa, 3,3);
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
         armaDeAsedio.moverArribaDer();
-        Posicion posicionLlegada = new Posicion(mapa, 4,4);
+        Posicion posicionLlegada = new Posicion(mapa, 4,2);
         assertTrue(mapa.celdaEstaOcupada(posicionLlegada));
     }
 
@@ -74,7 +74,7 @@ public class ArmaDeAsedioTest {
         Posicion posicion = new Posicion(mapa, 3,3);
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicion);
         armaDeAsedio.moverAbajoIzq();
-        Posicion posicionLlegada = new Posicion(mapa, 2,2);
+        Posicion posicionLlegada = new Posicion(mapa, 2,4);
         assertTrue(mapa.celdaEstaOcupada(posicionLlegada));
     }
 

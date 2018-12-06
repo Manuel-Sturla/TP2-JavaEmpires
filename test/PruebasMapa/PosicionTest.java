@@ -46,10 +46,10 @@ public class PosicionTest {
     @Test
     <x1, x2, m>
     void prueboMoverArriba() throws PosicionInvalidaException{
-        Posicion p = new Posicion(m, 0, 0);
+        Posicion p = new Posicion(m, 0, 01);
         p.moverArriba();
         setx1Yx2(p);
-        assertTrue(x1 == 0 && x2 == 1);
+        assertTrue(x1 == 0 && x2 == 0);
     }
 
     @Test
@@ -58,25 +58,25 @@ public class PosicionTest {
         Posicion p = new Posicion(m, 0, 1);
         p.moverAbajo();
         setx1Yx2(p);
-        assertTrue(x1 == 0 && x2 == 0);
+        assertTrue(x1 == 0 && x2 == 2);
     }
 
     @Test
     <x1, x2, m>
     void prueboMovermeArribaDer() throws PosicionInvalidaException{
-        Posicion p = new Posicion(m, 0, 0);
+        Posicion p = new Posicion(m, 0, 1);
         p.moverArribaDer();
         setx1Yx2(p);
-        assertTrue(x1 == 1 && x2 == 1);
+        assertTrue(x1 == 1 && x2 == 0);
     }
 
     @Test
     <x1, x2, m>
     void prueboMoverArribaIzq() throws PosicionInvalidaException{
-        Posicion p = new Posicion(m, 1, 0);
+        Posicion p = new Posicion(m, 1, 1);
         p.moverArribaIzq();
         setx1Yx2(p);
-        assertTrue(x1 == 0 && x2 == 1);
+        assertTrue(x1 == 0 && x2 == 0);
     }
     @Test
     <x1, x2, m>
@@ -84,7 +84,7 @@ public class PosicionTest {
         Posicion p = new Posicion(m, 0, 1);
         p.moverAbajoDer();
         setx1Yx2(p);
-        assertTrue(x1 == 1 && x2 == 0);
+        assertTrue(x1 == 1 && x2 == 2);
     }
     @Test
     <x1, x2, m>
@@ -92,7 +92,7 @@ public class PosicionTest {
         Posicion p = new Posicion(m, 2, 2);
         p.moverAbajoIzq();
         setx1Yx2(p);
-        assertTrue(x1 == 1 && x2 == 1);
+        assertTrue(x1 == 1 && x2 == 3);
     }
     @Test
     void obtenerAdyacenteDaLaCorrecta() throws PosicionInvalidaException{
