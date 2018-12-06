@@ -51,12 +51,12 @@ public class DetallePieza extends HBox {
 
         ArrayList<Comando>comandos = ubicable.getAcciones();
 
-        for (int i = 0; i <= comandos.size()/2; i++) {
-            for (int j = 0; j <= comandos.size()/2 ; j++) {
-                Comando comandoActual = comandos.get(i+j);
+        for (int i = 0; i < comandos.size(); i++) {
+
+                Comando comandoActual = comandos.get(i);
                 if (comandoActual.getNombre()=="Atacar" || comandoActual.getNombre()=="Reparar"){
                     BotonAccionObjetivo botonObjetivo = new BotonAccionObjetivo(comandoActual);
-                    acciones.setConstraints(botonObjetivo, i,j);
+                    acciones.setConstraints(botonObjetivo, 0,i);
                     acciones.getChildren().add(botonObjetivo);
                     continue;
                 }
@@ -86,12 +86,12 @@ public class DetallePieza extends HBox {
                         }
                     }
                 });
-                acciones.setConstraints(boton, i,j);
+                acciones.setConstraints(boton, 0,i);
                 acciones.getChildren().add(boton);
 
             }
 
-        }
+
         ArrayList <Node> botones = new ArrayList<>();
         try {
             GridPane botonesMovimiento = botonesDeMovimiento((Unidad) ubicable);

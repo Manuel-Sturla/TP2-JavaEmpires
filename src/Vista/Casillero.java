@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import sun.plugin2.util.ColorUtil;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -19,10 +20,9 @@ public class Casillero extends Rectangle implements Observer {
 
     public Casillero(Celda celda, Faccion faccion1Recibida) {
         super(15, 15);
-        faccion1 = faccion1Recibida;
-        rellenar(celda.getElemento());
         setStroke(Color.BLACK);
         setStrokeWidth(0.25);
+        rellenar(celda.getElemento());
         this.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -61,12 +61,13 @@ public class Casillero extends Rectangle implements Observer {
         else{
             setStroke(Color.rgb(255,0,0));
         }
-        setStrokeWidth(100);
+        setStrokeWidth(1);
 
         String nombre = ubicable.getClass().toString();
         String cadena = "Recursos/" + nombre + ".png";
         Image imagen = new Image(cadena);
         setFill(new ImagePattern(imagen));
+
 
 
 

@@ -10,7 +10,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class CasilleroObjetivo extends Rectangle {
+import java.util.Observable;
+import java.util.Observer;
+
+public class CasilleroObjetivo extends Rectangle implements Observer {
 
     Ubicable ubicable;
     public CasilleroObjetivo(Celda celda){
@@ -61,5 +64,11 @@ public class CasilleroObjetivo extends Rectangle {
             }
         });
 
+    }
+
+    @Override
+    public void update(Observable o, Object ubicableNuevo) {
+        if (ubicableNuevo == null) { ubicable = null;}
+        ubicable = (Ubicable) ubicableNuevo;
     }
 }

@@ -25,7 +25,7 @@ public class VistaMapa extends StackPane {
         mapa.setGridLinesVisible(true);
         mapa.setAlignment(Pos.TOP_CENTER);
         casillerosObjetivo.setPadding(new Insets(20, 20, 20, 20));
-        casillerosObjetivo.setGridLinesVisible(true);
+        casillerosObjetivo.setGridLinesVisible(false);
         casillerosObjetivo.setAlignment(Pos.TOP_CENTER);
 
         Celda celdas[][] = mapaJuego.obtenerCeldas();
@@ -36,6 +36,7 @@ public class VistaMapa extends StackPane {
                 Casillero casillero = new Casillero(celdaActual, faccion1);
                 CasilleroObjetivo casilleroObjetivo = new CasilleroObjetivo(celdaActual);
                 celdaActual.addObserver(casillero);
+                celdaActual.addObserver(casilleroObjetivo);
 
                 casillerosObjetivo.setConstraints(casilleroObjetivo,i,j);
                 casillerosObjetivo.getChildren().add(casilleroObjetivo);

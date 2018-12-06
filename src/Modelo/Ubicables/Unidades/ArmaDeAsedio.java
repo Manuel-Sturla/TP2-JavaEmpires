@@ -2,6 +2,8 @@ package Modelo.Ubicables.Unidades;
 
 import Controladores.Comandos.Atacar;
 import Controladores.Comandos.Comando;
+import Controladores.Comandos.Desmontar;
+import Controladores.Comandos.Montar;
 import Modelo.Exceptions.PosicionInvalidaException;
 import Modelo.Exceptions.UbicableDeMismaFaccionException;
 import Modelo.Exceptions.UbicableEstaOcupadoException;
@@ -105,6 +107,8 @@ public class ArmaDeAsedio extends Unidad implements Ejercito{
     public ArrayList<Comando> getAcciones(){
         ArrayList<Comando> acciones = new ArrayList<>();
         acciones.add(new Atacar(this));
+        acciones.add(new Montar(this));
+        acciones.add(new Desmontar(this));
         return acciones;
     }
 }
