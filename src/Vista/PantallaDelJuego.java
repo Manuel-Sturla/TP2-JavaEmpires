@@ -67,7 +67,7 @@ public class PantallaDelJuego {
         GridPane mapa = new GridPane();
         distribucion.setTop(informacionJugadores);
 
-        VistaMapa vistaMapa = new VistaMapa(mapaJuego, jugador1.getFaccion());
+        VistaMapa vistaMapa = new VistaMapa(mapaJuego, jugador1.getFaccion(), jugador2.getFaccion());
         distribucion.setCenter(vistaMapa);
 
 

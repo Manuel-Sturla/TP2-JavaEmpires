@@ -23,7 +23,7 @@ public class PantallaFinJuego implements Observer {
     }
 
     private Scene crearPantallaFinJuego() {
-        Button cerrarJuego = new Button("El Juego ha finalizado");
+        Button cerrarJuego = new Button("Has ganado!!");
         cerrarJuego.setOnAction(e -> Platform.exit());
         StackPane layout = new StackPane();
         layout.getChildren().add(cerrarJuego);

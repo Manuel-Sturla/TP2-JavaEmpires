@@ -16,7 +16,7 @@ public class VistaMapa extends StackPane {
     static GridPane casillerosObjetivo;
     static GridPane mapa;
 
-    public VistaMapa(Mapa mapaRecibido, Faccion faccion1){
+    public VistaMapa(Mapa mapaRecibido, Faccion faccion1, Faccion faccion2){
         mapaJuego = mapaRecibido;
         mapa = new GridPane();
         casillerosObjetivo = new GridPane();
@@ -33,7 +33,7 @@ public class VistaMapa extends StackPane {
         for (int i = 0; i < mapaJuego.getLargo(); i++) {
             for (int j = 0; j < mapaJuego.getAncho(); j++) {
                 Celda celdaActual = celdas[i][j];
-                Casillero casillero = new Casillero(celdaActual, faccion1);
+                Casillero casillero = new Casillero(celdaActual, faccion1, faccion2);
                 CasilleroObjetivo casilleroObjetivo = new CasilleroObjetivo(celdaActual);
                 celdaActual.addObserver(casillero);
                 celdaActual.addObserver(casilleroObjetivo);

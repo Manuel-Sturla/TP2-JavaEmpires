@@ -74,7 +74,7 @@ public class PanelSuperior extends VBox{
         }
         Label oroJugador1 = new Label("Oro: "+ jugado1.getOro());
         Label oroJugador2 = new Label("Oro: "+ jugado2.getOro());
-        Label poblacionJugador1 = new Label("Poblacion: "+ jugado2.getPoblacion() +"/50");
+        Label poblacionJugador1 = new Label("Poblacion: "+ jugado1.getPoblacion() +"/50");
         Label poblacionJugador2 = new Label("Poblacion: "+ jugado2.getPoblacion() +"/50");
 
         jugadores.setSpacing(220);

@@ -17,9 +17,12 @@ import java.util.Observer;
 
 public class Casillero extends Rectangle implements Observer {
     Faccion faccion1;
+    Faccion faccion2;
 
-    public Casillero(Celda celda, Faccion faccion1Recibida) {
+    public Casillero(Celda celda, Faccion faccion1Recibida, Faccion faccion2Recibida) {
         super(15, 15);
+        faccion1 = faccion1Recibida;
+        faccion2 = faccion2Recibida;
         setStroke(Color.BLACK);
         setStrokeWidth(0.25);
         rellenar(celda.getElemento());
@@ -52,25 +55,23 @@ public class Casillero extends Rectangle implements Observer {
     private void rellenar(Ubicable ubicable) {
        if (ubicable == null){
             setFill(Color.BURLYWOOD);
+            setStroke(Color.BLACK);
+            setStrokeWidth(0.25);
             return;
         }
-
-        if(ubicable.getFaccion() == faccion1){
-            setStroke(Color.rgb(0,0,255));
-        }
-        else{
-            setStroke(Color.rgb(255,0,0));
-        }
-        setStrokeWidth(1);
 
         String nombre = ubicable.getClass().toString();
         String cadena = "Recursos/" + nombre + ".png";
         Image imagen = new Image(cadena);
-        setFill(new ImagePattern(imagen));
-
-
-
-
+        ImagePattern pattern = new ImagePattern(imagen);
+        setFill(pattern);
+        if(ubicable.getFaccion() == faccion1) {
+            setStroke(Color.rgb(0, 0, 255));
+        }
+        if(ubicable.getFaccion() == faccion2) {
+            setStroke(Color.rgb(255, 0, 0));
+        }
+        setStrokeWidth(1);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class PruebasJugador {
     void unJugadorCuandoComienzaElPrimerTurnoTieneTodosSusUbicablesDesocupado() throws PosicionInvalidaException, UnidadesMaximasException, FinDelJuego {
         jugador.inicializarJugador(1);
         jugador.iniciarTurno();
-        assertTrue(jugador.obtenerUbicablesDesocupados().size() == 4);
+        assertTrue(jugador.obtenerUbicablesDesocupados().size() == 5);
     }
 
     //Pruebas terminar turno:

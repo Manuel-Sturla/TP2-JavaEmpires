@@ -45,6 +45,7 @@ public class ControladorDeTurnos extends Observable implements Observer {
         } catch (PosicionInvalidaException e) {
 
         } catch (FinDelJuego finDelJuego) {
+            setChanged();
             notifyObservers();
         }
     }
