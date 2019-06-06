@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-    <info organisation="org.apache" module="TP2-JavaEmpires"/>
+    <info organisation="org.apache" module="TP2-Minecraft"/>
 
      <configurations>
         <conf name="analysis"  description="analysis jars"/>

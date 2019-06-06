@@ -1,126 +1,42 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="TP2-JavaEmpires" basedir="." default="test">
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TP2-Minecraft" default="build" basedir=".">
 
 
-  <!-- input directories and files -->
-    <property name="sources.dir" value="src" />
-    <property name="tests.dir" value="test" />
-    <property name="lib.dir" value="lib" />
-
-  <!-- output directories and files -->
-    <property name="build.dir" value="build" />
-    <property name="classes.dir" value="${build.dir}/classes" />
-    <property name="testsclasses.dir" value="${build.dir}/tests" />
-    <property name="reports.dir" value="${build.dir}/reports" />
-
-
-  <!-- Classpath Setup-->  
-    <path id="classpath">
-      <fileset dir="${lib.dir}">
-        <include name="*.jar" />
-        <include name="*.zip"/>
-      </fileset>
-      <pathelement location="${sources.dir}" />
-      <pathelement location="${tests.dir}" /> 
-      <pathelement location="${classes.dir}" /> 
-      <pathelement location="${testsclasses.dir}" />
-    </path>  
-       
-   
-  <!-- IVY STUFF -->
-    <!-- Ivy version and output directories -->
-    <property name="ivy.install.version" value="2.5.0-rc1" />
-    <property name="ivy.dir" value="${lib.dir}/" />
-    <property name="ivy.jar" value="${lib.dir}/ivy.jar" />
-    
-    <!-- Ivy installation -->
-    <target name="check-installation" unless="ivy.jar.exists">
-    	<available property="ivy.jar.exists" file="${ivy.jar}"/>
-	  </target>
-
-    <target name="download-ivy" depends="check-installation" unless="ivy.jar.exists">
-      <mkdir dir="${ivy.dir}" />
-      <!-- download Ivy from web site so that it can be used even
-         without any special installation -->
-      <echo message="downloading ivy..." />
-      <get src="https://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar}" usetimestamp="true" />
-    </target>  
-
-    <target name="install-ivy" depends="download-ivy" description="--> install ivy">
-		<path id="ivy-lib-path">
-			<fileset dir="${ivy.dir}" includes="*.jar" />
-		</path>
-		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy-lib-path" />
-	</target>
-
-	<!-- Resolve Ivy dependencies -->
-    <target name="resolve-dependencies"  depends="install-ivy"  description="--> retrieve dependencies with ivy">
-      <ivy:retrieve conf="build"  pattern="${lib.dir}/[artifact]-[type]-[revision].[ext]" />
-      <ivy:retrieve conf="analysis" pattern="${lib.dir}/analysis/[artifact](-[classifier]).[ext]"/>
-    </target>
-
-
-
-  <!-- COMPILACION -->
-    <target name="clean">
-      <delete dir="${build.dir}" />
-    </target>   
-    
-    <target name="setup" depends='clean'>
-      <mkdir dir="${build.dir}" />
-      <mkdir dir="${classes.dir}" />
-      <mkdir dir="${testsclasses.dir}" />
-      <mkdir dir="${reports.dir}" />
-      <mkdir dir='${lib.dir}'/>
-    </target>
-    
-    <target name="build" depends='setup, resolve-dependencies'>
-      <javac srcdir = "${sources.dir}" includeantruntime="false" debug="yes" destdir = "${classes.dir}" verbose = "false">
-         <classpath refid = "classpath"/>
-      </javac>
-      <javac srcdir="${tests.dir}" destdir="${testsclasses.dir}" includeantruntime="false" debug="yes" target="1.8">
-        <classpath refid="classpath" />
-      </javac>
-    </target>
-
-  <!-- Testing with Junit! -->
-  <path id="test.classpath">
-    <pathelement location="${build.dir}" />
-    <pathelement location="${reports.dir}" />
-    
-
-    
-  </path>
-  <!-- defino el target Junitlauncher para travis -->
-    <path id="junitlauncher.classpath">
-      <fileset dir="${lib.dir}">
-        <include name="*.jar" />
-      </fileset>
+    <path id="test.classpath">
+        <pathelement path="build/test"/>
+        <pathelement path="build/main"/>
+        <fileset dir="${basedir}/staticLib" includes="*.jar" />
     </path>
 
-   
-  <!--Testeo con el target echo a mano de Junitlauncher -->
-   <target name="test" depends='build' >
-     <taskdef name="junit5" classname="org.apache.tools.ant.taskdefs.optional.junitlauncher.JUnitLauncherTask" >
-      <classpath refid="junitlauncher.classpath" />
-    </taskdef>
+    <target name="build" description="clean build" depends="clean, test" />
 
-      <!-- Usa Junit5 y 4-->
-      <junit5 printSummary='true' haltOnFailure='false' >
-        <classpath refid='classpath' />  
-        <classpath refid='test.classpath'/>
-        
-        <testclasses outputdir="${reports.dir}">
-          <fileset dir="${testsclasses.dir}">
-          </fileset>
-        </testclasses>
-          <listener type="legacy-xml" sendSysOut="true" sendSysErr="true" />
-        
-      </junit5>  
-      <junitreport todir="${reports.dir}">
-            <fileset dir="${reports.dir}">
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="build/main"/>
+        <mkdir dir="build/test"/>
+        <mkdir dir="build/test-report"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac destdir="build/main" srcdir="src" includeantruntime="false"/>
+        <javac destdir="build/test" classpathref="test.classpath" srcdir="test" includeantruntime="false"/>
+    </target>
+
+    <!-- https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher -->
+    <target name="test" depends="compile">
+        <java classpathref="test.classpath" classname="org.junit.platform.console.ConsoleLauncher" fork="true" failonerror="true">
+            <arg value="--scan-classpath"/>
+            <arg line="--reports-dir build/test-report"/>
+        </java>
+        <junitreport todir="build/test-report">
+            <fileset dir="build/test-report">
                 <include name="TEST-*.xml"/>
             </fileset>
-            <report format="noframes" todir="${reports.dir}/resumen"/>
+            <report format="frames" todir="build/test-report/html"/>
         </junitreport>
-    </target> 
+    </target>
+
 </project>
